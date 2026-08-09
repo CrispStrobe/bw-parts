@@ -1,0 +1,24 @@
+{
+  "kind": "motor_driver_l293d",
+  "w": 90,
+  "h": 48,
+  "terminals": [
+    { "name": "en1", "x": 0, "y": 6 },
+    { "name": "in1", "x": 0, "y": 11 },
+    { "name": "out1", "x": 0, "y": 16 },
+    { "name": "gnd1", "x": 0, "y": 21 },
+    { "name": "gnd2", "x": 0, "y": 26 },
+    { "name": "out2", "x": 0, "y": 31 },
+    { "name": "in2", "x": 0, "y": 36 },
+    { "name": "vcc2", "x": 0, "y": 41 },
+    { "name": "vcc1", "x": 90, "y": 6 },
+    { "name": "en2", "x": 90, "y": 11 },
+    { "name": "in3", "x": 90, "y": 16 },
+    { "name": "out3", "x": 90, "y": 21 },
+    { "name": "gnd3", "x": 90, "y": 26 },
+    { "name": "gnd4", "x": 90, "y": 31 },
+    { "name": "out4", "x": 90, "y": 36 },
+    { "name": "in4", "x": 90, "y": 41 }
+  ],
+  "variants": null
+}

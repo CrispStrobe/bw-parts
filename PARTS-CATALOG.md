@@ -100,22 +100,22 @@ Parts with working engine models. These are the simulation backbone.
 
 | # | Kind slug | Name EN | Name DE | Category | Terminals | Key params | Engine | Art |
 |---|-----------|---------|---------|----------|-----------|------------|--------|-----|
-| 29 | `shift_register` | Shift Register 74HC595 | Schieberegister 74HC595 | Digital ICs | data, clock, latch, oe, q0-q7 | — | modeled | pending |
+| 29 | `shift_register` | Shift Register 74HC595 | Schieberegister 74HC595 | Digital ICs | data, clock, latch, oe, q0-q7 | — | modeled | done |
 | 30 | `eeprom` | I2C EEPROM | I2C-EEPROM | Digital ICs | sda, scl, vcc, gnd | — | modeled | pending |
-| 31 | `gate_and` | AND Gate | UND-Gatter | Logic Gates | in0, in1, out | inputs | modeled | pending |
-| 32 | `gate_or` | OR Gate | ODER-Gatter | Logic Gates | in0, in1, out | inputs | modeled | pending |
-| 33 | `gate_not` | NOT Gate (Inverter) | NICHT-Gatter (Inverter) | Logic Gates | in0, out | — | modeled | pending |
-| 34 | `gate_nand` | NAND Gate | NAND-Gatter | Logic Gates | in0, in1, out | inputs | modeled | pending |
-| 35 | `gate_nor` | NOR Gate | NOR-Gatter | Logic Gates | in0, in1, out | inputs | modeled | pending |
-| 36 | `gate_xor` | XOR Gate | XOR-Gatter | Logic Gates | in0, in1, out | inputs | modeled | pending |
+| 31 | `gate_and` | AND Gate | UND-Gatter | Logic Gates | in0, in1, out | inputs | modeled | done |
+| 32 | `gate_or` | OR Gate | ODER-Gatter | Logic Gates | in0, in1, out | inputs | modeled | done |
+| 33 | `gate_not` | NOT Gate (Inverter) | NICHT-Gatter (Inverter) | Logic Gates | in0, out | — | modeled | done |
+| 34 | `gate_nand` | NAND Gate | NAND-Gatter | Logic Gates | in0, in1, out | inputs | modeled | done |
+| 35 | `gate_nor` | NOR Gate | NOR-Gatter | Logic Gates | in0, in1, out | inputs | modeled | done |
+| 36 | `gate_xor` | XOR Gate | XOR-Gatter | Logic Gates | in0, in1, out | inputs | modeled | done |
 
 ### Electromechanical
 
 | # | Kind slug | Name EN | Name DE | Category | Terminals | Key params | Engine | Art |
 |---|-----------|---------|---------|----------|-----------|------------|--------|-----|
-| 37 | `relay` | SPDT Relay | SPDT-Relais | Electromechanical | coil_a, coil_b, com, nc, no | coilR | modeled | pending |
-| 38 | `dc_motor` | DC Motor | Gleichstrommotor | Electromechanical | a, b | — | modeled | pending |
-| 39 | `servo` | Micro Servo | Micro-Servo | Electromechanical | signal, vcc, gnd | — | modeled | pending |
+| 37 | `relay` | SPDT Relay | SPDT-Relais | Electromechanical | coil_a, coil_b, com, nc, no | coilR | modeled | done |
+| 38 | `dc_motor` | DC Motor | Gleichstrommotor | Electromechanical | a, b | — | modeled | done |
+| 39 | `servo` | Micro Servo | Micro-Servo | Electromechanical | signal, vcc, gnd | — | modeled | done |
 
 ### Microcontroller
 
@@ -131,9 +131,9 @@ Models being built or about to land in bw-board's device plugin interface.
 
 | # | Kind slug | Name EN | Name DE | Category | Terminals | Key params | Engine | Art |
 |---|-----------|---------|---------|----------|-----------|------------|--------|-----|
-| 41 | `555` | 555 Timer | 555-Timer | Analog ICs | gnd, trigger, output, reset, control, threshold, discharge, vcc | — | registry-candidate | pending |
-| 42 | `hobby_gearmotor` | Hobby Gearmotor | Hobby-Getriebemotor | Electromechanical | a, b | gear_ratio | registry-candidate | pending |
-| 43 | `motor_driver_l293d` | H-Bridge L293D | H-Bruecke L293D | Digital ICs | en1, in1, out1, gnd1, gnd2, out2, in2, en2, vcc2, vcc1 | — | registry-candidate | pending |
+| 41 | `555` | 555 Timer | 555-Timer | Analog ICs | gnd, trigger, output, reset, control, threshold, discharge, vcc | — | registry-candidate | done |
+| 42 | `hobby_gearmotor` | Hobby Gearmotor | Hobby-Getriebemotor | Electromechanical | a, b | gear_ratio | registry-candidate | done |
+| 43 | `motor_driver_l293d` | H-Bridge L293D | H-Bruecke L293D | Digital ICs | en1, in1, out1, gnd1, gnd2, out2, in2, en2, vcc2, vcc1 | — | registry-candidate | done |
 
 ---
 
