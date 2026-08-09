@@ -158,8 +158,8 @@ Parts needed for parity with mainstream learning simulators. No engine model yet
 | # | Kind slug | Name EN | Name DE | Category | Terminals | Key params | Engine | Art |
 |---|-----------|---------|---------|----------|-----------|------------|--------|-----|
 | 51 | `led_5mm` | LED 5mm (colored) | LED 5mm (farbig) | Diodes | anode, cathode | color, vf | drawable-only | pending |
-| 52 | `neopixel_strip` | NeoPixel Strip (8) | NeoPixel-Streifen (8) | Displays | din, vcc, gnd, dout | leds | drawable-only | pending |
-| 53 | `neopixel_ring` | NeoPixel Ring (16) | NeoPixel-Ring (16) | Displays | din, vcc, gnd, dout | leds | drawable-only | pending |
+| 52 | `neopixel_strip` | NeoPixel Strip (8) | NeoPixel-Streifen (8) | Displays | din, vcc, gnd, dout | leds | drawable-only | done |
+| 53 | `neopixel_ring` | NeoPixel Ring (16) | NeoPixel-Ring (16) | Displays | din, vcc, gnd, dout | leds | drawable-only | done |
 | 54 | `ir_led` | IR LED | IR-LED | Diodes | anode, cathode | — | drawable-only | pending |
 
 ### Switches
@@ -177,27 +177,27 @@ Parts needed for parity with mainstream learning simulators. No engine model yet
 
 | # | Kind slug | Name EN | Name DE | Category | Terminals | Key params | Engine | Art |
 |---|-----------|---------|---------|----------|-----------|------------|--------|-----|
-| 61 | `force_sensor` | Force Sensor (FSR) | Kraftsensor (FSR) | Sensors | a, b | — | drawable-only | pending |
-| 62 | `flex_sensor` | Flex Sensor | Biegesensor | Sensors | a, b | — | drawable-only | pending |
-| 63 | `ultrasonic` | Ultrasonic Distance Sensor | Ultraschall-Entfernungssensor | Sensors | vcc, trig, echo, gnd | — | drawable-only | pending |
-| 64 | `pir` | PIR Motion Sensor | PIR-Bewegungssensor | Sensors | vcc, out, gnd | — | drawable-only | pending |
-| 65 | `imu_6dof` | 6-DOF IMU (MPU-6050) | 6-DOF IMU (MPU-6050) | Sensors | vcc, gnd, scl, sda, int | — | drawable-only | pending |
-| 66 | `soil_moisture` | Soil Moisture Sensor | Bodenfeuchtesensor | Sensors | vcc, gnd, sig | — | drawable-only | pending |
-| 67 | `gas_sensor` | Gas Sensor (MQ-2) | Gassensor (MQ-2) | Sensors | vcc, gnd, aout, dout | — | drawable-only | pending |
-| 68 | `hall_effect` | Hall Effect Sensor | Hall-Effekt-Sensor | Sensors | vcc, gnd, out | — | drawable-only | pending |
-| 69 | `dht11` | Temp & Humidity Sensor (DHT11) | Temp- & Feuchtigkeitssensor (DHT11) | Sensors | vcc, data, gnd | — | drawable-only | pending |
-| 70 | `light_sensor` | Ambient Light Sensor | Umgebungslichtsensor | Sensors | vcc, gnd, out | — | drawable-only | pending |
-| 71 | `water_level` | Water Level Sensor | Wasserstandsensor | Sensors | vcc, gnd, sig | — | drawable-only | pending |
+| 61 | `force_sensor` | Force Sensor (FSR) | Kraftsensor (FSR) | Sensors | a, b | — | drawable-only | done |
+| 62 | `flex_sensor` | Flex Sensor | Biegesensor | Sensors | a, b | — | drawable-only | done |
+| 63 | `ultrasonic` | Ultrasonic Distance Sensor | Ultraschall-Entfernungssensor | Sensors | vcc, trig, echo, gnd | — | drawable-only | done |
+| 64 | `pir` | PIR Motion Sensor | PIR-Bewegungssensor | Sensors | vcc, out, gnd | — | drawable-only | done |
+| 65 | `imu_6dof` | 6-DOF IMU (MPU-6050) | 6-DOF IMU (MPU-6050) | Sensors | vcc, gnd, scl, sda, int | — | drawable-only | done |
+| 66 | `soil_moisture` | Soil Moisture Sensor | Bodenfeuchtesensor | Sensors | vcc, gnd, sig | — | drawable-only | done |
+| 67 | `gas_sensor` | Gas Sensor (MQ-2) | Gassensor (MQ-2) | Sensors | vcc, gnd, aout, dout | — | drawable-only | done |
+| 68 | `hall_effect` | Hall Effect Sensor | Hall-Effekt-Sensor | Sensors | vcc, gnd, out | — | drawable-only | done |
+| 69 | `dht11` | Temp & Humidity Sensor (DHT11) | Temp- & Feuchtigkeitssensor (DHT11) | Sensors | vcc, data, gnd | — | drawable-only | done |
+| 70 | `light_sensor` | Ambient Light Sensor | Umgebungslichtsensor | Sensors | vcc, gnd, out | — | drawable-only | done |
+| 71 | `water_level` | Water Level Sensor | Wasserstandsensor | Sensors | vcc, gnd, sig | — | drawable-only | done |
 
 ### Displays
 
 | # | Kind slug | Name EN | Name DE | Category | Terminals | Key params | Engine | Art |
 |---|-----------|---------|---------|----------|-----------|------------|--------|-----|
-| 72 | `seven_segment_4` | 4-Digit 7-Segment | 4-Stellige 7-Segment-Anzeige | Displays | (composite) | — | drawable-only | pending |
-| 73 | `oled_128x64` | OLED Display 128x64 | OLED-Anzeige 128x64 | Displays | vcc, gnd, scl, sda | — | drawable-only | pending |
-| 74 | `lcd_i2c` | I2C LCD 16x2 | I2C-LCD 16x2 | Displays | vcc, gnd, sda, scl | rows, cols | drawable-only | pending |
-| 75 | `bargraph` | 10-Segment Bar Graph | 10-Segment-Balkenanzeige | Displays | a0-a9, c0-c9 | — | drawable-only | pending |
-| 76 | `dot_matrix_max` | LED Matrix MAX7219 | LED-Matrix MAX7219 | Displays | vcc, gnd, din, cs, clk | — | drawable-only | pending |
+| 72 | `seven_segment_4` | 4-Digit 7-Segment | 4-Stellige 7-Segment-Anzeige | Displays | (composite) | — | drawable-only | done |
+| 73 | `oled_128x64` | OLED Display 128x64 | OLED-Anzeige 128x64 | Displays | vcc, gnd, scl, sda | — | drawable-only | done |
+| 74 | `lcd_i2c` | I2C LCD 16x2 | I2C-LCD 16x2 | Displays | vcc, gnd, sda, scl | rows, cols | drawable-only | done |
+| 75 | `bargraph` | 10-Segment Bar Graph | 10-Segment-Balkenanzeige | Displays | a0-a9, c0-c9 | — | drawable-only | done |
+| 76 | `dot_matrix_max` | LED Matrix MAX7219 | LED-Matrix MAX7219 | Displays | vcc, gnd, din, cs, clk | — | drawable-only | done |
 
 ### Digital ICs
 
@@ -219,18 +219,18 @@ Parts needed for parity with mainstream learning simulators. No engine model yet
 
 | # | Kind slug | Name EN | Name DE | Category | Terminals | Key params | Engine | Art |
 |---|-----------|---------|---------|----------|-----------|------------|--------|-----|
-| 88 | `vreg_7805` | Voltage Regulator 7805 | Spannungsregler 7805 | Power | vin, gnd, vout | — | drawable-only | pending |
+| 88 | `vreg_7805` | Voltage Regulator 7805 | Spannungsregler 7805 | Power | vin, gnd, vout | — | drawable-only | done |
 | 89 | `vreg_ldo` | LDO Regulator (3.3V) | LDO-Regler (3,3V) | Power | vin, gnd, vout | vout | drawable-only | pending |
 
 ### Power / Batteries
 
 | # | Kind slug | Name EN | Name DE | Category | Terminals | Key params | Engine | Art |
 |---|-----------|---------|---------|----------|-----------|------------|--------|-----|
-| 90 | `battery_9v` | 9V Battery | 9V-Batterie | Power | pos, neg | — | drawable-only | pending |
-| 91 | `battery_aa` | AA Battery (1.5V) | AA-Batterie (1,5V) | Power | pos, neg | — | drawable-only | pending |
-| 92 | `battery_coin` | Coin Cell (CR2032) | Knopfzelle (CR2032) | Power | pos, neg | — | drawable-only | pending |
-| 93 | `battery_holder_2aa` | 2xAA Battery Holder | 2xAA-Batteriehalter | Power | pos, neg | — | drawable-only | pending |
-| 94 | `breadboard_psu` | Breadboard Power Supply | Breadboard-Netzteil | Power | 5v, 3v3, gnd | — | drawable-only | pending |
+| 90 | `battery_9v` | 9V Battery | 9V-Batterie | Power | pos, neg | — | drawable-only | done |
+| 91 | `battery_aa` | AA Battery (1.5V) | AA-Batterie (1,5V) | Power | pos, neg | — | drawable-only | done |
+| 92 | `battery_coin` | Coin Cell (CR2032) | Knopfzelle (CR2032) | Power | pos, neg | — | drawable-only | done |
+| 93 | `battery_holder_2aa` | 2xAA Battery Holder | 2xAA-Batteriehalter | Power | pos, neg | — | drawable-only | done |
+| 94 | `breadboard_psu` | Breadboard Power Supply | Breadboard-Netzteil | Power | 5v, 3v3, gnd | — | drawable-only | done |
 
 ### Electromechanical
 

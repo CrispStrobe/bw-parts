@@ -1,0 +1,13 @@
+{
+  "kind": "dot_matrix_max",
+  "w": 56,
+  "h": 44,
+  "terminals": [
+    { "name": "vcc", "x": 10, "y": 44 },
+    { "name": "gnd", "x": 18, "y": 44 },
+    { "name": "din", "x": 26, "y": 44 },
+    { "name": "cs", "x": 34, "y": 44 },
+    { "name": "clk", "x": 42, "y": 44 }
+  ],
+  "variants": null
+}

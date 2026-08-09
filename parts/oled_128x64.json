@@ -1,0 +1,12 @@
+{
+  "kind": "oled_128x64",
+  "w": 56,
+  "h": 40,
+  "terminals": [
+    { "name": "vcc", "x": 14, "y": 40 },
+    { "name": "gnd", "x": 22, "y": 40 },
+    { "name": "scl", "x": 30, "y": 40 },
+    { "name": "sda", "x": 38, "y": 40 }
+  ],
+  "variants": null
+}

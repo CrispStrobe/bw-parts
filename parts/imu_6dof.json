@@ -1,0 +1,13 @@
+{
+  "kind": "imu_6dof",
+  "w": 48,
+  "h": 36,
+  "terminals": [
+    { "name": "vcc", "x": 0, "y": 8 },
+    { "name": "gnd", "x": 0, "y": 14 },
+    { "name": "scl", "x": 0, "y": 20 },
+    { "name": "sda", "x": 0, "y": 26 },
+    { "name": "int", "x": 0, "y": 32 }
+  ],
+  "variants": null
+}

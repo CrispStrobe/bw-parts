@@ -1,0 +1,11 @@
+{
+  "kind": "water_level",
+  "w": 16,
+  "h": 56,
+  "terminals": [
+    { "name": "vcc", "x": 4, "y": 56 },
+    { "name": "gnd", "x": 8, "y": 56 },
+    { "name": "sig", "x": 12, "y": 56 }
+  ],
+  "variants": null
+}

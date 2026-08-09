@@ -1,0 +1,12 @@
+{
+  "kind": "seven_segment_4",
+  "w": 100,
+  "h": 48,
+  "terminals": [
+    { "name": "a", "x": 20, "y": 48 },
+    { "name": "b", "x": 40, "y": 48 },
+    { "name": "c", "x": 60, "y": 48 },
+    { "name": "d", "x": 80, "y": 48 }
+  ],
+  "variants": null
+}
