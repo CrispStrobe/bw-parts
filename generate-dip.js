@@ -221,6 +221,22 @@ const PIN_MAPS = [
     kind: '74hc595', pinCount: 16, label: '74HC595', sublabel: 'SHIFT REG',
     pins: ['qb','qc','qd','qe','qf','qg','qh','gnd', 'qh_s','srclr','srclk','rclk','oe','ser','qa','vcc'],
   },
+  // ── Added from Tinkercad gap analysis, pin maps from datasheets ───
+  // 74HC75: TI SN74HC75 datasheet (SCLS154) — 16-pin quad bistable latch
+  {
+    kind: '74hc75', pinCount: 16, label: '74HC75', sublabel: 'QUAD LATCH',
+    pins: ['1q','1qn','1d','3_4e','vcc','3d','3qn','3q', '4q','4qn','4d','gnd','1_2e','2d','2qn','2q'],
+  },
+  // 74HC283: TI SN74HC283 datasheet (SCLS108) — 16-pin 4-bit adder
+  {
+    kind: '74hc283', pinCount: 16, label: '74HC283', sublabel: '4-BIT ADDER',
+    pins: ['s2','b2','a2','s1','a1','b1','cin','gnd', 'cout','s4','b4','a4','s3','a3','b3','vcc'],
+  },
+  // PCF8574: NXP PCF8574 datasheet (Rev 5) — 16-pin I2C I/O expander
+  {
+    kind: 'pcf8574', pinCount: 16, label: 'PCF8574', sublabel: 'I2C EXPAND',
+    pins: ['a0','a1','a2','p0','p1','p2','p3','vss', 'p4','p5','p6','p7','int','scl','sda','vdd'],
+  },
 ];
 
 // ── Main ────────────────────────────────────────────────────────────
