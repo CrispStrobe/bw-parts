@@ -24,7 +24,7 @@
 |---|-----------|-------------|----------|-----------|------------|--------|-----|
 | 1 | `resistor` | Resistor / Widerstand | Passives | a, b | ohms | modeled | done |
 | 2 | `capacitor` | Capacitor / Kondensator | Passives | a, b | farads | modeled | done |
-| 3 | `polarized_cap` | Polarized Capacitor / Elektrolytkondensator | Passives | pos, neg | farads, voltage | drawable-only | pending |
+| 3 | `polarized_cap` | Polarized Capacitor / Elektrolytkondensator | Passives | pos, neg | farads, voltage | drawable-only | done |
 | 4 | `diode` | Diode / Diode | Passives | anode, cathode | vf | modeled | done |
 | 5 | `zener` | Zener Diode / Zener-Diode | Passives | anode, cathode | vf, vz | modeled | done |
 | 6 | `inductor` | Inductor / Spule | Passives | a, b | henrys | modeled | done |
@@ -39,16 +39,16 @@
 | 10 | `dip_switch_spst` | DIP Switch SPST / DIP-Schalter SPST | Input | (composite) | positions | drawable-only | pending |
 | 11 | `dip_switch_dpst` | DIP Switch DPST / DIP-Schalter DPST | Input | (composite) | positions | drawable-only | pending |
 | 12 | `ldr` | Photoresistor / Fotowiderstand | Sensors | a, b | rDark, rLight | modeled | done |
-| 13 | `photodiode` | Photodiode / Fotodiode | Sensors | anode, cathode | — | drawable-only | pending |
+| 13 | `photodiode` | Photodiode / Fotodiode | Sensors | anode, cathode | — | drawable-only | done |
 | 14 | `light_sensor` | Ambient Light Sensor / Umgebungslichtsensor | Sensors | vcc, gnd, out | — | drawable-only | done |
 | 15 | `ir_receiver` | IR Sensor / IR-Empfaenger | Sensors | vcc, gnd, out | — | modeled | done |
 | 16 | `ultrasonic` | Ultrasonic Distance Sensor / Ultraschall-Entfernungssensor | Sensors | vcc, trig, echo, gnd | — | drawable-only | done |
 | 17 | `pir` | PIR Motion Sensor / PIR-Bewegungssensor | Sensors | vcc, out, gnd | — | drawable-only | done |
-| 18 | `tilt_switch` | Tilt Sensor / Neigungsschalter | Sensors | a, b | — | drawable-only | pending |
-| 19 | `tilt_switch_v2` | Tilt Sensor (ball) / Neigungsschalter (Kugel) | Sensors | a, b | — | drawable-only | pending |
-| 20 | `tmp36` | Temperature Sensor TMP36 / Temperatursensor TMP36 | Sensors | vcc, vout, gnd | — | drawable-only | pending |
+| 18 | `tilt_switch` | Tilt Sensor / Neigungsschalter | Sensors | a, b | — | drawable-only | done |
+| 19 | `tilt_switch_v2` | Tilt Sensor (ball) / Neigungsschalter (Kugel) | Sensors | a, b | — | drawable-only | done |
+| 20 | `tmp36` | Temperature Sensor TMP36 / Temperatursensor TMP36 | Sensors | vcc, vout, gnd | — | drawable-only | done |
 | 21 | `gas_sensor` | Gas Sensor MQ-2 / Gassensor MQ-2 | Sensors | vcc, gnd, aout, dout | — | drawable-only | done |
-| 22 | `keypad_4x4` | 4x4 Keypad / 4x4-Matrixtastatur | Input | r0-r3, c0-c3 | — | drawable-only | pending |
+| 22 | `keypad_4x4` | 4x4 Keypad / 4x4-Matrixtastatur | Input | r0-r3, c0-c3 | — | drawable-only | done |
 
 ## Outputs (15 parts)
 
@@ -56,13 +56,13 @@
 |---|-----------|-------------|----------|-----------|------------|--------|-----|
 | 23 | `led` | LED / LED | Outputs | anode, cathode | vf, color | modeled | done |
 | 24 | `rgb_led` | RGB LED / RGB-LED | Outputs | r_anode, g_anode, b_anode, cathode | — | modeled | done |
-| 25 | `light_bulb` | Light Bulb / Gluehlampe | Outputs | a, b | ohms | drawable-only | pending |
-| 26 | `neopixel` | NeoPixel (single) / NeoPixel (einzeln) | Outputs | din, vcc, gnd, dout | — | drawable-only | pending |
+| 25 | `light_bulb` | Light Bulb / Gluehlampe | Outputs | a, b | ohms | drawable-only | done |
+| 26 | `neopixel` | NeoPixel (single) / NeoPixel (einzeln) | Outputs | din, vcc, gnd, dout | — | drawable-only | done |
 | 27 | `neopixel_jewel` | NeoPixel Jewel / NeoPixel Jewel | Outputs | din, vcc, gnd, dout | — | drawable-only | pending |
 | 28 | `neopixel_ring` | NeoPixel Ring / NeoPixel-Ring | Outputs | din, vcc, gnd, dout | leds (12/16/24) | drawable-only | done |
-| 29 | `vibration_motor` | Vibration Motor / Vibrationsmotor | Outputs | a, b | — | drawable-only | pending |
+| 29 | `vibration_motor` | Vibration Motor / Vibrationsmotor | Outputs | a, b | — | drawable-only | done |
 | 30 | `dc_motor` | DC Motor / Gleichstrommotor | Outputs | a, b | — | modeled | done |
-| 31 | `dc_motor_encoder` | DC Motor with Encoder / Gleichstrommotor mit Encoder | Outputs | a, b, enc_a, enc_b | — | drawable-only | pending |
+| 31 | `dc_motor_encoder` | DC Motor with Encoder / Gleichstrommotor mit Encoder | Outputs | a, b, enc_a, enc_b | — | drawable-only | done |
 | 32 | `servo` | Micro Servo / Micro-Servo | Outputs | signal, vcc, gnd | — | modeled | done |
 | 33 | `hobby_gearmotor` | Hobby Gearmotor / Hobby-Getriebemotor | Outputs | a, b | gear_ratio | registry-candidate | done |
 | 34 | `buzzer` | Piezo Buzzer / Piezo-Summer | Outputs | a, b | — | modeled | done |
@@ -77,7 +77,7 @@
 | 38 | `battery_aa` | 1.5V AA Battery / AA-Batterie 1,5V | Power | pos, neg | emf, rint | drawable-only | done |
 | 39 | `battery_coin` | 3V Coin Cell CR2032 / Knopfzelle CR2032 | Power | pos, neg | emf, rint | drawable-only | done |
 | 40 | `lm7805` | LM7805 5V Regulator / LM7805-Spannungsregler 5V | Power | vin, gnd, vout | — | drawable-only | done |
-| 41 | `ld1117v33` | LD1117V33 3.3V LDO / LD1117V33-LDO 3,3V | Power | vin, gnd, vout | — | drawable-only | pending |
+| 41 | `ld1117v33` | LD1117V33 3.3V LDO / LD1117V33-LDO 3,3V | Power | vin, gnd, vout | — | drawable-only | done |
 | 42 | `breadboard_psu` | Breadboard Power Supply / Breadboard-Netzteil | Power | 5v, 3v3, gnd | — | drawable-only | done |
 
 ## Power Control / Discrete (8 parts)
@@ -88,10 +88,10 @@
 | 44 | `pnp` | PNP Transistor / PNP-Transistor | Transistors | base, collector, emitter | beta, vbe | modeled | done |
 | 45 | `nmos` | N-Channel MOSFET / N-Kanal MOSFET | Transistors | gate, drain, source | vth | modeled | done |
 | 46 | `pmos` | P-Channel MOSFET / P-Kanal MOSFET | Transistors | gate, drain, source | vth | modeled | done |
-| 47 | `tip120` | TIP120 Darlington / TIP120-Darlington | Transistors | base, collector, emitter | — | drawable-only | pending |
+| 47 | `tip120` | TIP120 Darlington / TIP120-Darlington | Transistors | base, collector, emitter | — | drawable-only | done |
 | 48 | `relay` | Relay SPDT / SPDT-Relais | Electromechanical | coil_a, coil_b, com, nc, no | coilR | modeled | done |
 | 49 | `motor_driver_l293d` | H-Bridge L293D / H-Bruecke L293D | ICs | (16-pin DIP) | — | registry-candidate | done |
-| 50 | `optocoupler` | Optocoupler / Optokoppler | ICs | anode, cathode, emitter, collector | — | drawable-only | pending |
+| 50 | `optocoupler` | Optocoupler / Optokoppler | ICs | anode, cathode, emitter, collector | — | drawable-only | done |
 
 ## Logic ICs — 74HC / CD4xxx DIP family (20 parts)
 
