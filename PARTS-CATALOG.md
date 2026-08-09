@@ -27,81 +27,81 @@ Parts with working engine models. These are the simulation backbone.
 
 | # | Kind slug | Name EN | Name DE | Category | Terminals | Key params | Engine | Art |
 |---|-----------|---------|---------|----------|-----------|------------|--------|-----|
-| 1 | `vcc` | VCC Supply | VCC-Versorgung | Power | vcc | voltage | modeled | pending |
-| 2 | `gnd` | Ground | Masse | Power | gnd | — | modeled | pending |
-| 3 | `vsource` | Voltage Source | Spannungsquelle | Power | pos, neg | voltage, waveform | modeled | pending |
-| 4 | `isource` | Current Source | Stromquelle | Power | pos, neg | amps, waveform | modeled | pending |
+| 1 | `vcc` | VCC Supply | VCC-Versorgung | Power | vcc | voltage | modeled | done |
+| 2 | `gnd` | Ground | Masse | Power | gnd | — | modeled | done |
+| 3 | `vsource` | Voltage Source | Spannungsquelle | Power | pos, neg | voltage, waveform | modeled | done |
+| 4 | `isource` | Current Source | Stromquelle | Power | pos, neg | amps, waveform | modeled | done |
 
 ### Passives
 
 | # | Kind slug | Name EN | Name DE | Category | Terminals | Key params | Engine | Art |
 |---|-----------|---------|---------|----------|-----------|------------|--------|-----|
-| 5 | `resistor` | Resistor | Widerstand | Passives | a, b | ohms | modeled | pending |
-| 6 | `capacitor` | Capacitor | Kondensator | Passives | a, b | farads | modeled | pending |
-| 7 | `inductor` | Inductor | Spule | Passives | a, b | henrys | modeled | pending |
-| 8 | `potentiometer` | Potentiometer | Potentiometer | Passives | a, b, wiper | ohms, position | modeled | pending |
+| 5 | `resistor` | Resistor | Widerstand | Passives | a, b | ohms | modeled | done |
+| 6 | `capacitor` | Capacitor | Kondensator | Passives | a, b | farads | modeled | done |
+| 7 | `inductor` | Inductor | Spule | Passives | a, b | henrys | modeled | done |
+| 8 | `potentiometer` | Potentiometer | Potentiometer | Passives | a, b, wiper | ohms, position | modeled | done |
 
 ### Diodes & LEDs
 
 | # | Kind slug | Name EN | Name DE | Category | Terminals | Key params | Engine | Art |
 |---|-----------|---------|---------|----------|-----------|------------|--------|-----|
-| 9 | `diode` | Diode | Diode | Diodes | anode, cathode | vf | modeled | pending |
-| 10 | `led` | LED | LED | Diodes | anode, cathode | vf, color | modeled | pending |
-| 11 | `zener` | Zener Diode | Zener-Diode | Diodes | anode, cathode | vf, vz | modeled | pending |
-| 12 | `rgb_led` | RGB LED | RGB-LED | Diodes | r_anode, g_anode, b_anode, cathode | vf_r, vf_g, vf_b | modeled | pending |
+| 9 | `diode` | Diode | Diode | Diodes | anode, cathode | vf | modeled | done |
+| 10 | `led` | LED | LED | Diodes | anode, cathode | vf, color | modeled | done |
+| 11 | `zener` | Zener Diode | Zener-Diode | Diodes | anode, cathode | vf, vz | modeled | done |
+| 12 | `rgb_led` | RGB LED | RGB-LED | Diodes | r_anode, g_anode, b_anode, cathode | vf_r, vf_g, vf_b | modeled | done |
 
 ### Transistors
 
 | # | Kind slug | Name EN | Name DE | Category | Terminals | Key params | Engine | Art |
 |---|-----------|---------|---------|----------|-----------|------------|--------|-----|
-| 13 | `npn` | NPN Transistor | NPN-Transistor | Transistors | base, collector, emitter | beta, vbe | modeled | pending |
-| 14 | `pnp` | PNP Transistor | PNP-Transistor | Transistors | base, collector, emitter | beta, vbe | modeled | pending |
-| 15 | `nmos` | N-Channel MOSFET | N-Kanal MOSFET | Transistors | gate, drain, source | vth | modeled | pending |
-| 16 | `pmos` | P-Channel MOSFET | P-Kanal MOSFET | Transistors | gate, drain, source | vth | modeled | pending |
+| 13 | `npn` | NPN Transistor | NPN-Transistor | Transistors | base, collector, emitter | beta, vbe | modeled | done |
+| 14 | `pnp` | PNP Transistor | PNP-Transistor | Transistors | base, collector, emitter | beta, vbe | modeled | done |
+| 15 | `nmos` | N-Channel MOSFET | N-Kanal MOSFET | Transistors | gate, drain, source | vth | modeled | done |
+| 16 | `pmos` | P-Channel MOSFET | P-Kanal MOSFET | Transistors | gate, drain, source | vth | modeled | done |
 
 ### Analog ICs
 
 | # | Kind slug | Name EN | Name DE | Category | Terminals | Key params | Engine | Art |
 |---|-----------|---------|---------|----------|-----------|------------|--------|-----|
-| 17 | `opamp` | Op-Amp | Operationsverstaerker | Analog ICs | inp, inn, out | gain | modeled | pending |
+| 17 | `opamp` | Op-Amp | Operationsverstaerker | Analog ICs | inp, inn, out | gain | modeled | done |
 
 ### Switches & Input
 
 | # | Kind slug | Name EN | Name DE | Category | Terminals | Key params | Engine | Art |
 |---|-----------|---------|---------|----------|-----------|------------|--------|-----|
-| 18 | `button` | Push Button | Taster | Input | a, b | — | modeled | pending |
-| 19 | `switch` | Toggle Switch | Schalter | Input | a, b | — | modeled | pending |
+| 18 | `button` | Push Button | Taster | Input | a, b | — | modeled | done |
+| 19 | `switch` | Toggle Switch | Schalter | Input | a, b | — | modeled | done |
 
 ### Sensors
 
 | # | Kind slug | Name EN | Name DE | Category | Terminals | Key params | Engine | Art |
 |---|-----------|---------|---------|----------|-----------|------------|--------|-----|
-| 20 | `ldr` | Photoresistor (LDR) | Fotowiderstand (LDR) | Sensors | a, b | rDark, rLight | modeled | pending |
-| 21 | `ntc` | NTC Thermistor | NTC-Thermistor | Sensors | a, b | rCold, rHot | modeled | pending |
-| 22 | `ir_receiver` | IR Receiver | IR-Empfaenger | Sensors | vcc, gnd, out | — | modeled | pending |
-| 23 | `temp_sensor` | Temperature Sensor | Temperatursensor | Sensors | vcc, gnd, dq | — | modeled | pending |
+| 20 | `ldr` | Photoresistor (LDR) | Fotowiderstand (LDR) | Sensors | a, b | rDark, rLight | modeled | done |
+| 21 | `ntc` | NTC Thermistor | NTC-Thermistor | Sensors | a, b | rCold, rHot | modeled | done |
+| 22 | `ir_receiver` | IR Receiver | IR-Empfaenger | Sensors | vcc, gnd, out | — | modeled | done |
+| 23 | `temp_sensor` | Temperature Sensor | Temperatursensor | Sensors | vcc, gnd, dq | — | modeled | done |
 
 ### Outputs
 
 | # | Kind slug | Name EN | Name DE | Category | Terminals | Key params | Engine | Art |
 |---|-----------|---------|---------|----------|-----------|------------|--------|-----|
-| 24 | `buzzer` | Piezo Buzzer | Piezo-Summer | Outputs | a, b | — | modeled | pending |
+| 24 | `buzzer` | Piezo Buzzer | Piezo-Summer | Outputs | a, b | — | modeled | done |
 
 ### Displays
 
 | # | Kind slug | Name EN | Name DE | Category | Terminals | Key params | Engine | Art |
 |---|-----------|---------|---------|----------|-----------|------------|--------|-----|
-| 25 | `seven_segment` | 7-Segment Display | 7-Segment-Anzeige | Displays | (composite) | digits | modeled | pending |
-| 26 | `char_lcd` | Character LCD 16x2 | Zeichen-LCD 16x2 | Displays | rs, rw, e, d0-d7, vcc, gnd, vo, bl_a, bl_k | rows, cols | modeled | pending |
-| 27 | `led_matrix` | LED Matrix | LED-Matrix | Displays | (composite) | rows, cols | modeled | pending |
-| 28 | `led_cube` | LED Cube | LED-Wuerfel | Displays | (composite) | size | modeled | pending |
+| 25 | `seven_segment` | 7-Segment Display | 7-Segment-Anzeige | Displays | (composite) | digits | modeled | done |
+| 26 | `char_lcd` | Character LCD 16x2 | Zeichen-LCD 16x2 | Displays | rs, rw, e, d0-d7, vcc, gnd, vo, bl_a, bl_k | rows, cols | modeled | done |
+| 27 | `led_matrix` | LED Matrix | LED-Matrix | Displays | (composite) | rows, cols | modeled | done |
+| 28 | `led_cube` | LED Cube | LED-Wuerfel | Displays | (composite) | size | modeled | done |
 
 ### Digital ICs
 
 | # | Kind slug | Name EN | Name DE | Category | Terminals | Key params | Engine | Art |
 |---|-----------|---------|---------|----------|-----------|------------|--------|-----|
 | 29 | `shift_register` | Shift Register 74HC595 | Schieberegister 74HC595 | Digital ICs | data, clock, latch, oe, q0-q7 | — | modeled | done |
-| 30 | `eeprom` | I2C EEPROM | I2C-EEPROM | Digital ICs | sda, scl, vcc, gnd | — | modeled | pending |
+| 30 | `eeprom` | I2C EEPROM | I2C-EEPROM | Digital ICs | sda, scl, vcc, gnd | — | modeled | done |
 | 31 | `gate_and` | AND Gate | UND-Gatter | Logic Gates | in0, in1, out | inputs | modeled | done |
 | 32 | `gate_or` | OR Gate | ODER-Gatter | Logic Gates | in0, in1, out | inputs | modeled | done |
 | 33 | `gate_not` | NOT Gate (Inverter) | NICHT-Gatter (Inverter) | Logic Gates | in0, out | — | modeled | done |
@@ -121,7 +121,7 @@ Parts with working engine models. These are the simulation backbone.
 
 | # | Kind slug | Name EN | Name DE | Category | Terminals | Key params | Engine | Art |
 |---|-----------|---------|---------|----------|-----------|------------|--------|-----|
-| 40 | `mcu` | Microcontroller | Mikrocontroller | MCU | (dynamic pin IDs) | arch | modeled | pending |
+| 40 | `mcu` | Microcontroller | Mikrocontroller | MCU | (dynamic pin IDs) | arch | modeled | done |
 
 ---
 
