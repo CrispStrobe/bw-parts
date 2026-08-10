@@ -155,8 +155,8 @@ Legend: ✓ = present, — = absent, *alias* = present under different slug
 | 104 | `breadboard_mini` | — | — | — | done | |
 | 105 | `header` | — | ✓ | ✓ | done | renamed from `header_8pin` |
 | 106 | `usb_a` | ✓ | ✓ | done | |
-| 107 | `microbit_breakout` | — | — | — | pending | |
-| 108 | `pololu_motor_ctrl` | — | — | — | pending | help-page-only |
+| 107 | `microbit_breakout` | — | — | — | done | combo part |
+| 108 | `pololu_motor_ctrl` | — | — | — | done | help-page-only |
 | 109 | `switch` | — | ✓ | ✓ | done | engine-only; kept alongside slide_switch |
 | 110 | `ntc` | — | ✓ | ✓ | done | |
 | 111 | `eeprom` | — | ✓ | ✓ | done | |

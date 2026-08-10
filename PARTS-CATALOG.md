@@ -209,8 +209,8 @@ like any other part (per bw-board ruling 2db84b2).
 | 103 | `breadboard_mini` | Breadboard Mini / Steckbrett Mini | drawable-only | done |
 | 104 | `header` | 8-Pin Header / 8-Pin-Stiftleiste | drawable-only | done |
 | 105 | `usb_a` | USB-A Connector / USB-A-Stecker | drawable-only | done |
-| 106 | `microbit_breakout` | micro:bit with Breakout / micro:bit mit Breakout | drawable-only | pending |
-| 107 | `pololu_motor_ctrl` | Pololu Motor Controller / Pololu-Motorsteuerung | drawable-only | pending |
+| 106 | `microbit_breakout` | micro:bit with Breakout / micro:bit mit Breakout | drawable-only | done |
+| 107 | `pololu_motor_ctrl` | Pololu Motor Controller / Pololu-Motorsteuerung | drawable-only | done |
 
 ## Engine-only parts (not in reference library)
 
@@ -236,14 +236,11 @@ Modeled in bw-board, useful, not in the reference catalogue. Kept as extras.
 
 | | Kinds | With art |
 |---|---|---|
-| Reference library match | 107 | 105 |
+| Reference library match | 107 | 107 |
 | Engine-only extras | 11 | 11 |
 | Declined | 1 | — |
-| **Total** | **118 + 1 declined** | **116** |
+| **Total** | **118 + 1 declined** | **118** |
 
-### Art remaining (2 kinds, both low priority)
+### Art status: complete
 
-| Kind slug | Effort | Why deferred |
-|---|---|---|
-| `microbit_breakout` | New drawing (board + breakout) | Combo part, no consumer in current campaign |
-| `pololu_motor_ctrl` | New drawing (board) | Help-page-only in reference catalogue, no engine model |
+All 118 parts have SVG art and JSON terminal sidecars. No pending items.

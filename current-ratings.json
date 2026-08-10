@@ -317,6 +317,11 @@
     "chip_mA": 0,
     "supply_mA": 30
   },
+  "microbit_breakout": {
+    "_src": "nRF51822 Icc ~15mA + LED matrix scanning; 30mA conservative. Variant unverified.",
+    "chip_mA": 0,
+    "supply_mA": 30
+  },
   "multimeter": {
     "chip_mA": 0,
     "supply_mA": 0
@@ -408,6 +413,10 @@
   "polarized_cap": {
     "chip_mA": 0,
     "supply_mA": 0
+  },
+  "pololu_motor_ctrl": {
+    "chip_mA": 0,
+    "supply_mA": "circuit"
   },
   "potato_battery": {
     "chip_mA": 0,
