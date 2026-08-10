@@ -1,24 +1,33 @@
-# Tinkercad Circuits — component library
+# Reference catalogue — target component library
 
-Extracted from a saved copy of the Tinkercad Circuits component picker (`partslist.html`): **114 parts** in 11 categories, plus 67 prebuilt starter circuits listed at the end.
+> **PRIVATE REPOSITORY ONLY. Do not redistribute, vendor into
+> brickwright-lite, or include in any public artefact.**
+>
+> This file is extracted from a third-party product's component picker.
+> Their list shaped our catalogue decisions (which parts to include,
+> how variants collapse); none of their content is in our output.
+> The SVGs, sidecars, and pin maps are original work informed by
+> hardware datasheets — not derived from this file.
+
+Extracted from a saved copy of the reference component picker (`partslist.html`): **114 parts** in 11 categories, plus 67 prebuilt starter circuits listed at the end.
 
 ## Reading the "Actual part" column
 
-Tinkercad labels components by function, not by part number — "8-port I2C expander" rather than PCF8574. Often the real part is hiding in the thumbnail slug (`icPCF8574`), sometimes in the label itself (`Temperature Sensor [TMP36]`), and sometimes nowhere at all.
+The reference catalogue labels components by function, not by part number — "8-port I2C expander" rather than PCF8574. Often the real part is hiding in the thumbnail slug (`icPCF8574`), sometimes in the label itself (`Temperature Sensor [TMP36]`), and sometimes nowhere at all.
 
 So the source of each identification is marked, because they are not equally solid:
 
 | mark | means |
 |---|---|
-| `slug` | Tinkercad's own thumbnail slug names the part. Not a guess. |
+| `slug` | The catalogue's own thumbnail slug names the part. Not a guess. |
 | `label` | The visible label names it. |
-| standard | Tinkercad does not name a part; this is the standard component for that function and behaviour. |
-| **unverified** | Tinkercad does not name a part and more than one plausible candidate exists. Do not rely on it. |
+| standard | The catalogue does not name a part; this is the standard component for that function and behaviour. |
+| **unverified** | The catalogue does not name a part and more than one plausible candidate exists. Do not rely on it. |
 | *(blank)* | A generic component — a resistor is a resistor. |
 
 ## General
 
-| Tinkercad name | Actual part | Part src | Listed in | Notes |
+| Catalogue name | Actual part | Part src | Listed in | Notes |
 |---|---|---|---|---|
 | Resistor | — |  | both |  |
 | Capacitor | — |  | both |  |
@@ -29,24 +38,24 @@ So the source of each identification is marked, because they are not equally sol
 
 ## Input
 
-| Tinkercad name | Actual part | Part src | Listed in | Notes |
+| Catalogue name | Actual part | Part src | Listed in | Notes |
 |---|---|---|---|---|
 | Pushbutton | — |  | both |  |
 | Potentiometer | — |  | both |  |
 | Slideswitch | — |  | both |  |
 | Photoresistor | — |  | both |  |
 | Photodiode | — |  | both |  |
-| Ambient Light Sensor [Phototransistor] | **phototransistor** | `label` | both | Tinkercad calls it an ambient light sensor. |
+| Ambient Light Sensor [Phototransistor] | **phototransistor** | `label` | both | The catalogue calls it an ambient light sensor. |
 | Flex Sensor | **flex resistor** | standard | both | Resistance rises when bent; use as one half of a divider. |
 | Force Sensor | **FSR** | standard | both | Force-sensitive resistor. Wildly non-linear. |
 | IR sensor | — |  | both |  |
 | Ultrasonic Distance Sensor | **Parallax PING)))** | standard | both | The 3-pin variant: one pin is both trigger and echo. |
 | Ultrasonic Distance Sensor (4-pin) | — |  | both |  |
-| PIR Sensor | **HC-SR501** | standard | both | The usual PIR module. Tinkercad does not name a part. |
+| PIR Sensor | **HC-SR501** | standard | both | The usual PIR module. The catalogue does not name a part. |
 | Soil Moisture Sensor | **resistive probe** | standard | **picker only** | Generic. The capacitive kind behaves differently and corrodes less. |
 | Tilt Sensor | — |  | both |  |
 | Temperature Sensor [TMP36] | **TMP36** | `label` | both | Analog, 10 mV/degC with a 500 mV offset at 0 degC. Not the LM35 — the offset differs. |
-| Gas Sensor | **MQ-series** | standard | both | Tinkercad tags it air/smoke/alcohol/methane, which spans MQ-2 / MQ-3 / MQ-4. No single part. |
+| Gas Sensor | **MQ-series** | standard | both | The catalogue tags it air/smoke/alcohol/methane, which spans MQ-2 / MQ-3 / MQ-4. No single part. |
 | Keypad 4x4 | **4x4 matrix keypad** | standard | both | Generic membrane keypad — 8 lines, 4 rows x 4 columns, no controller. |
 | DIP Switch DPST | — |  | both |  |
 | DIP Switch SPST x 4 | — |  | both |  |
@@ -55,7 +64,7 @@ So the source of each identification is marked, because they are not equally sol
 
 ## Output
 
-| Tinkercad name | Actual part | Part src | Listed in | Notes |
+| Catalogue name | Actual part | Part src | Listed in | Notes |
 |---|---|---|---|---|
 | LED | — |  | both |  |
 | LED RGB | — |  | both |  |
@@ -81,13 +90,13 @@ So the source of each identification is marked, because they are not equally sol
 | 7 Segment Display | — |  | both |  |
 | LCD 16 x 2 | **HD44780** | standard | both | Every 16x2 character LCD is HD44780-compatible; that is the controller, not the module. |
 | LCD 16 x 2 (I2C) | **HD44780 + PCF8574** | standard | **picker only** | The I2C backpack IS a PCF8574 driving the HD44780 in 4-bit mode — the same expander as the standalone part above. |
-| 7-Segment Clock Display | **HT16K33-class** | **unverified** | **picker only** | Tinkercad does not name it. 4-digit I2C clock displays are usually HT16K33 or TM1637; the two are NOT interchangeable. |
+| 7-Segment Clock Display | **HT16K33-class** | **unverified** | **picker only** | The catalogue does not name it. 4-digit I2C clock displays are usually HT16K33 or TM1637; the two are NOT interchangeable. |
 | NeoPixel Jewel | **WS2812B x7** | `slug` | **help page only** | Seven addressable pixels; same one-wire protocol as the strips. |
 | DC Motor with Encoder (large) | **quadrature encoder motor** | standard | **help page only** | Two channels in quadrature give direction as well as counts. |
 
 ## Power
 
-| Tinkercad name | Actual part | Part src | Listed in | Notes |
+| Catalogue name | Actual part | Part src | Listed in | Notes |
 |---|---|---|---|---|
 | 9V Battery | — |  | both |  |
 | 1.5V Battery | — |  | both |  |
@@ -98,7 +107,7 @@ So the source of each identification is marked, because they are not equally sol
 
 ## Breadboards
 
-| Tinkercad name | Actual part | Part src | Listed in | Notes |
+| Catalogue name | Actual part | Part src | Listed in | Notes |
 |---|---|---|---|---|
 | Breadboard | — |  | both |  |
 | Breadboard Small | — |  | both |  |
@@ -106,16 +115,16 @@ So the source of each identification is marked, because they are not equally sol
 
 ## Microcontrollers
 
-| Tinkercad name | Actual part | Part src | Listed in | Notes |
+| Catalogue name | Actual part | Part src | Listed in | Notes |
 |---|---|---|---|---|
-| micro:bit | **nRF51822 / nRF52833** | **unverified** | both | v1 is nRF51822, v2 nRF52833. The label does not say which Tinkercad models. |
+| micro:bit | **nRF51822 / nRF52833** | **unverified** | both | v1 is nRF51822, v2 nRF52833. The label does not say which the catalogue models. |
 | micro:bit with Breakout | — |  | both |  |
 | Arduino Uno R3 | **ATmega328P** | standard | both | The Uno is the board; the MCU is the ATmega328P. |
-| ATtiny | **ATtiny85** | **unverified** | both | Tinkercad shows an 8-pin ATtiny; 85 is the usual one, but the label does not say. |
+| ATtiny | **ATtiny85** | **unverified** | both | The catalogue shows an 8-pin ATtiny; 85 is the usual one, but the label does not say. |
 
 ## Instruments
 
-| Tinkercad name | Actual part | Part src | Listed in | Notes |
+| Catalogue name | Actual part | Part src | Listed in | Notes |
 |---|---|---|---|---|
 | Multimeter | — |  | both |  |
 | Power Supply | — |  | both |  |
@@ -124,7 +133,7 @@ So the source of each identification is marked, because they are not equally sol
 
 ## Integrated Circuits
 
-| Tinkercad name | Actual part | Part src | Listed in | Notes |
+| Catalogue name | Actual part | Part src | Listed in | Notes |
 |---|---|---|---|---|
 | Timer | **NE555** | `slug` | both | Bipolar original; CMOS equivalents TLC555 / LMC555 draw far less and swing rail-to-rail. |
 | Dual Timer | **NE556** | `slug` | both | Two 555s in one 14-pin package. |
@@ -135,7 +144,7 @@ So the source of each identification is marked, because they are not equally sol
 
 ## Power Control
 
-| Tinkercad name | Actual part | Part src | Listed in | Notes |
+| Catalogue name | Actual part | Part src | Listed in | Notes |
 |---|---|---|---|---|
 | NPN Transistor (BJT) | — |  | both |  |
 | PNP Transistor (BJT) | — |  | both |  |
@@ -153,7 +162,7 @@ So the source of each identification is marked, because they are not equally sol
 
 ## Connectors
 
-| Tinkercad name | Actual part | Part src | Listed in | Notes |
+| Catalogue name | Actual part | Part src | Listed in | Notes |
 |---|---|---|---|---|
 | 8 Pin Header | — |  | both |  |
 | USB standard A | — |  | both |  |
@@ -162,7 +171,7 @@ So the source of each identification is marked, because they are not equally sol
 
 Every part in this section is named by its slug, so none of these is a guess. They are all 74HC — the CMOS family. The same number in 74LS is the older TTL part: different thresholds, different drive, not a drop-in. A few of these (73, 75, 93) are TTL-era functions that were not all carried into HC, so check availability before designing one in.
 
-| Tinkercad name | Actual part | Part src | Listed in | Notes |
+| Catalogue name | Actual part | Part src | Listed in | Notes |
 |---|---|---|---|---|
 | Quad NAND gate | **74HC00** | `slug` | both |  |
 | Quad NOR gate | **74HC02** | `slug` | both |  |
@@ -189,16 +198,16 @@ Every part in this section is named by its slug, so none of these is a guess. Th
 
 ## Substituting a part that is not there
 
-Tinkercad's library is small on purpose. Autodesk's own guidance (Becky Stern, *Choose Sensor Substitutes in Tinkercad Circuits*, 29 July 2020) is to represent a missing component with a similar one rather than expect an exact match:
+The target library is small on purpose. Autodesk's own guidance (Becky Stern, vendor guidance on sensor substitutes, 29 July 2020) is to represent a missing component with a similar one rather than expect an exact match:
 
 | You want | Substitute | Why, and the catch |
 |---|---|---|
 | Any 3-pin analog sensor | Potentiometer, or TMP36 | Both have power/ground/signal. They are not equivalent: a pot is purely resistive, while the TMP36 expects a regulated 2.7-5.5 V supply. |
-| Any 2-pin analog sensor | Photoresistor | The only two-pin analog input available. The piezo is output-only in Tinkercad, so it cannot stand in. |
+| Any 2-pin analog sensor | Photoresistor | The only two-pin analog input available. The piezo is output-only in the reference catalogue, so it cannot stand in. |
 | Any digital high/low sensor | Pushbutton, slideswitch, DIP switch, tilt sensor, PIR | Reed switches, vibration switches and the like all reduce to a contact closing. Tilt and PIR simulate their own behaviour, so pick those when the timing matters. |
 | Anything on I2C, SPI or a custom protocol | *No substitute* | You can paste the library into the sketch, but no component will answer it. |
 
-Two caveats on that last row, because the article is from 2020 and the library has moved since. Tinkercad now ships three real I2C devices - the PCF8574 expander, the I2C 16x2 LCD and the I2C clock display - so "no I2C component exists" is no longer strictly true, though it still holds for an arbitrary I2C sensor of your choosing. The same drift explains the help page: it omits all five of the picker-only parts below.
+Two caveats on that last row, because the article is from 2020 and the library has moved since. The catalogue now ships three real I2C devices - the PCF8574 expander, the I2C 16x2 LCD and the I2C clock display - so "no I2C component exists" is no longer strictly true, though it still holds for an arbitrary I2C sensor of your choosing. The same drift explains the help page: it omits all five of the picker-only parts below.
 
 The article also suggests annotating the circuit where you substitute, so the intent survives for whoever opens it next.
 
@@ -216,8 +225,8 @@ The picker also carries 67 prebuilt example assemblies, every one with a `starte
 Three sources, which do not agree with each other:
 
 1. **A saved copy of the component picker** (`partslist.html`) - 110 parts and 67 starters.
-2. **Tinkercad's official help page**, "Is there a list of all of the components available in Tinkercad Circuits?" - 109 entries.
-3. **The public thumbnail CDN**, `editor.tinkercad.com/components/thumbnails/<slug>.png`, which returns 200 for a component that exists and 403 for one that does not. That makes it an oracle rather than a list: you cannot enumerate it, but you can test any guess against it.
+2. **The vendor's official help page**, "Is there a list of all available components?" - 109 entries.
+3. **The public thumbnail CDN**, the vendor thumbnail CDN (`<slug>.png`), which returns 200 for a component that exists and 403 for one that does not. That makes it an oracle rather than a list: you cannot enumerate it, but you can test any guess against it.
 
 Sources 1 and 2 disagree **in both directions**, so neither is complete on its own:
 
@@ -228,5 +237,5 @@ This file is the **union of both, 114 parts**, with the "Listed in" column recor
 
 On completeness: about 100 plausible slugs were probed against the CDN following the naming conventions the real ones use - the rest of the 74HC family, CD40xx parts, other Arduino boards, steppers, OLED, DHT11, ULN2803, L298N, MAX7219, HT16K33, rotary encoders. **Not one existed.** Combined with Autodesk describing the library as deliberately small, that is good evidence the list is complete - but it is not proof, since a component with a slug nobody guessed would not show up.
 
-One figure remains unexplained: a third-party summary claims Tinkercad has "over 200 components". 114 parts plus 67 starters is 181. It may be counting variants, or it may be wrong. It is recorded here rather than quietly dropped.
+One figure remains unexplained: a third-party summary claims the catalogue has "over 200 components". 114 parts plus 67 starters is 181. It may be counting variants, or it may be wrong. It is recorded here rather than quietly dropped.
 

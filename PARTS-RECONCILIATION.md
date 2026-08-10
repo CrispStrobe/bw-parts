@@ -37,12 +37,12 @@ different repos. **bw-parts slug wins.** The owning repo should rename.
 | `556` | `timer_556` | — | bw-board: rename to `556` |
 | `light_sensor` | `ambient_light` / `phototransistor` | — | bw-board: alias both to `light_sensor` |
 | `hobby_gearmotor` | `gearmotor` | `gearmotor` | bw-parts: accept `gearmotor` as canonical? Or both rename. |
-| `motor_driver_l293d` | `h_bridge` | `l293d` | Three slugs for one part. Propose: `l293d` (shortest, matches Tinkercad slug) |
+| `motor_driver_l293d` | `h_bridge` | `l293d` | Three slugs for one part. Propose: `l293d` (shortest, matches reference catalogue slug) |
 | `buzzer` | `piezo` | `buzzer` | bw-board: rename to `buzzer` |
 | `pir` | `pir` | `pir_sensor` | bw-circuit-ui: rename to `pir` |
 | `keypad_4x4` | `keypad_4x4` | `keypad` | bw-circuit-ui: rename to `keypad_4x4` |
 | `dc_motor_encoder` | `dc_motor_encoder` | `motor_encoder` | bw-circuit-ui: rename to `dc_motor_encoder` |
-| `comparator_lm393` | `lm393` | — | bw-parts: accept `lm393` (shorter, matches Tinkercad slug) |
+| `comparator_lm393` | `lm393` | — | bw-parts: accept `lm393` (shorter, matches reference catalogue slug) |
 | `comparator_lm339` | `lm339` | — | bw-parts: accept `lm339` |
 | `seven_segment_clock` | `clock_display` | `clock_display` | Propose: `clock_display` (both others use it) |
 | `lcd_i2c` | `char_lcd_i2c` | `char_lcd_i2c` | Propose: `char_lcd_i2c` (both others use it) |
@@ -70,7 +70,7 @@ Legend: ✓ = present, — = absent, *alias* = present under different slug
 | 11 | `dip_switch_dpst` | — | *dip_switch* | *dip_switch* | ✓ | |
 | 12 | `ldr` | — | ✓ | ✓ | ✓ | |
 | 13 | `photodiode` | — | ✓ | ✓ | ✓ | |
-| 14 | `light_sensor` | Ambient Light Sensor | *ambient_light* | — | ✓ | Tinkercad: phototransistor |
+| 14 | `light_sensor` | Ambient Light Sensor | *ambient_light* | — | ✓ | reference catalogue: phototransistor |
 | 15 | `flex_sensor` | — | ✓ | — | ✓ | |
 | 16 | `force_sensor` | — | ✓ | — | ✓ | |
 | 17 | `ir_receiver` | IR sensor | ✓ | ✓ | ✓ | |
@@ -189,9 +189,9 @@ should rename to match rather than forcing two renames:
 | `seven_segment_clock` | `clock_display` | bw-board + bw-circuit-ui both use `clock_display` |
 | `lcd_i2c` | `char_lcd_i2c` | bw-board + bw-circuit-ui both use it |
 | `header_8pin` | `header` | bw-board + bw-circuit-ui both use `header` |
-| `comparator_lm393` | `lm393` | shorter, matches Tinkercad slug |
-| `comparator_lm339` | `lm339` | shorter, matches Tinkercad slug |
-| `motor_driver_l293d` | `l293d` | Tinkercad slug; shortest of three |
+| `comparator_lm393` | `lm393` | shorter, matches reference catalogue slug |
+| `comparator_lm339` | `lm339` | shorter, matches reference catalogue slug |
+| `motor_driver_l293d` | `l293d` | reference catalogue slug; shortest of three |
 | `tilt_switch` + `tilt_switch_v2` | `tilt_sensor` (+ variant) | bw-board + bw-circuit-ui both use `tilt_sensor` |
 | `555` | keep | bw-board should rename `timer_555` → `555` |
 | `buzzer` | keep | bw-board should rename `piezo` → `buzzer` |

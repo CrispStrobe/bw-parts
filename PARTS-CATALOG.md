@@ -5,7 +5,7 @@
 > catalogue entry, slug, art, variants, identification confidence.
 > Chip designations (74HC08, TMP36, L293D, etc.) are manufacturer names.
 >
-> **Last updated:** 2026-08-09 — reconciled against verified Tinkercad
+> **Last updated:** 2026-08-09 — reconciled against verified reference
 > library (114 parts) + coordinator target inventory.
 
 ## How to read this catalog
@@ -15,7 +15,7 @@
 | **Kind slug** | The key. Art files, sidecars, engine registrations, and UI palette all key on this. Changing it requires updating all four. |
 | **Engine** | `modeled` = in bw-board solver. `registry-candidate` = plugin interface exists. `drawable-only` = art/palette only. |
 | **Art** | `done` / `dip-gen` / `pending`. |
-| **Confidence** | `verified` = part number confirmed from Tinkercad slug or label. `standard` = conventional part for that function. **`unverified`** = more than one candidate is plausible; the sidecar documents the assumption. *(blank)* = generic component. |
+| **Confidence** | `verified` = part number confirmed from the reference catalogue's slug or label. `standard` = conventional part for that function. **`unverified`** = more than one candidate is plausible; the sidecar documents the assumption. *(blank)* = generic component. |
 
 ### Variant collapses
 
@@ -33,7 +33,7 @@ kind slug + SVG. The collapse is explicit here so nobody re-discovers it as a ga
 
 ### Unverified identifications
 
-These four parts are marked **unverified** because Tinkercad does not name
+These four parts are marked **unverified** because the reference catalogue does not name
 a specific part and more than one candidate is plausible. The uncertainty
 is documented in the JSON sidecar `_note` field, not just here.
 
@@ -214,7 +214,7 @@ like any other part (per bw-board ruling 2db84b2).
 
 ## Engine-only parts (not in reference library)
 
-Modeled in bw-board, useful, not in the Tinkercad reference. Kept as extras.
+Modeled in bw-board, useful, not in the reference catalogue. Kept as extras.
 
 | # | Kind slug | Notes | Art |
 |---|-----------|-------|-----|

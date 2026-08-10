@@ -19,7 +19,7 @@
 |---|---|---|---|
 | STC12 pin map used generic 8051 names (PSEN/ALE/EA don't exist on this part) | 8173386 | eeb54b9 | Checked against stc/docs/PINOUT.md |
 | L293D right-side pins scrambled (en2/in3/out3 in wrong positions) | initial hand-drawn | f7389af | Audited against TI SLRS008 |
-| 5 art files wrongly deleted during reconciliation | 811bcdc | e3c6ebf | Compared against Tinkercad verified list |
+| 5 art files wrongly deleted during reconciliation | 811bcdc | e3c6ebf | Compared against verified reference catalogue |
 | Current ratings: passives as null instead of 0 | 126a878 | 8882a86 | Disagreement with bw-board's semantics |
 
 ## Assert the property, not the symptom
