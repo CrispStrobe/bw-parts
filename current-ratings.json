@@ -1,28 +1,29 @@
 {
-  "_comment": "Max supply current in mA for chip-budget DRC. null = cannot rate from kind alone. 0 = source/infrastructure. See CURRENT-RATINGS.md for sources.",
-  "_schema": "{ kind: number | null }",
+  "_comment": "Max supply current in mA for chip-budget DRC. See CURRENT-RATINGS.md for sources.",
+  "_schema": "number = rated mA | 0 = not a consumer | 'circuit' = depends on wiring | null = not yet rated",
 
-  "resistor": null, "capacitor": null, "polarized_cap": null,
-  "diode": null, "zener": null, "inductor": null,
+  "resistor": 0, "capacitor": 0, "polarized_cap": 0,
+  "diode": 0, "zener": 0, "inductor": 0,
 
-  "button": null, "potentiometer": null, "slide_switch": null,
-  "dip_switch_spst": null, "dip_switch_dpst": null,
-  "ldr": null, "photodiode": null, "flex_sensor": null,
-  "force_sensor": null, "tilt_switch": null, "tilt_switch_v2": null,
-  "ntc": null, "keypad_4x4": null, "ir_remote": null,
+  "button": 0, "potentiometer": 0, "slide_switch": 0,
+  "dip_switch_spst": 0, "dip_switch_dpst": 0,
+  "ldr": 0, "photodiode": 0, "flex_sensor": 0,
+  "force_sensor": 0, "tilt_switch": 0, "tilt_switch_v2": 0,
+  "ntc": 0, "keypad_4x4": 0, "ir_remote": 0,
+  "switch": 0,
 
   "light_sensor": 0.1, "ir_receiver": 5, "ultrasonic": 15,
   "ultrasonic_3pin": 15, "pir": 0.15, "soil_moisture": 0.05,
   "tmp36": 0.05, "gas_sensor": 150,
 
-  "led": null, "rgb_led": null, "light_bulb": null,
-  "neopixel": null, "neopixel_jewel": null,
-  "neopixel_ring": null, "neopixel_strip": null,
-  "seven_segment": null,
+  "led": "circuit", "rgb_led": "circuit", "light_bulb": "circuit",
+  "neopixel": "circuit", "neopixel_jewel": "circuit",
+  "neopixel_ring": "circuit", "neopixel_strip": "circuit",
+  "seven_segment": "circuit",
 
-  "vibration_motor": 80, "dc_motor": null,
-  "dc_motor_encoder": null, "servo": 350,
-  "hobby_gearmotor": null, "buzzer": 30,
+  "vibration_motor": 80, "dc_motor": "circuit",
+  "dc_motor_encoder": "circuit", "servo": 350,
+  "hobby_gearmotor": "circuit", "buzzer": 30,
 
   "seven_segment_clock": 10, "char_lcd": 2, "lcd_i2c": 2,
 
@@ -30,10 +31,13 @@
   "solar_cell": 0, "potato_battery": 0, "lemon_battery": 0,
   "lm7805": 5, "ld1117v33": 5, "breadboard_psu": 10,
 
-  "npn": null, "pnp": null, "nmos": null, "pmos": null,
-  "nmos_power": null, "pmos_power": null, "tip120": null,
-  "relay": null, "relay_dpdt": null,
-  "motor_driver_l293d": null, "optocoupler": 0,
+  "npn": "circuit", "pnp": "circuit",
+  "nmos": "circuit", "pmos": "circuit",
+  "nmos_power": "circuit", "pmos_power": "circuit",
+  "tip120": "circuit",
+  "relay": "circuit", "relay_dpdt": "circuit",
+  "motor_driver_l293d": "circuit",
+  "optocoupler": 0,
 
   "74hc00": 1, "74hc02": 1, "74hc04": 1, "74hc08": 1,
   "74hc10": 1, "74hc11": 1, "74hc14": 1, "74hc20": 1,
@@ -53,6 +57,6 @@
   "breadboard_full": 0, "breadboard_half": 0, "breadboard_mini": 0,
   "header": 0, "usb_a": 0,
 
-  "switch": null, "temp_sensor": null, "eeprom": null,
+  "temp_sensor": null, "eeprom": null,
   "led_matrix": null, "led_cube": null, "microbit": null
 }

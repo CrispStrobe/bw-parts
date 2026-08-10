@@ -1,10 +1,23 @@
 # Current Ratings for Chip-Budget DRC
 
 > Consumed by bw-board `getMaxCurrent(kind)`.
-> Every `null` lands in the "Y parts not counted" bucket.
+> bw-parts owns the data (datasheets, sourcing). bw-board owns the
+> semantics (what the number means, how the DRC uses it).
 >
-> **Three states:** rated (number + source), circuit-dependent (null,
-> cannot be rated from kind alone), not-yet-rated (null, work remaining).
+> **Four states in `current-ratings.json`:**
+>
+> | Value | Meaning | DRC behaviour |
+> |---|---|---|
+> | `number` | Rated max supply current in mA | Sum into budget |
+> | `0` | Not a consumer of chip supply current (passives, sources, infrastructure) | Ignore — does not affect budget |
+> | `"circuit"` | Depends on circuit wiring — cannot be rated from kind alone | Display "depends on your circuit" |
+> | `null` | Not yet rated — could be rated with more research | Display "not yet rated" |
+>
+> The `0` vs `"circuit"` distinction settles the passive disagreement:
+> a resistor is a current-limiter, not a current-consumer — it has no
+> Icc, no VCC pin, and contributes 0 to the chip supply budget.
+> An LED *does* draw from VCC but how much depends on its series
+> resistor, so it is `"circuit"` not `0`.
 
 ## Rated parts — defensible max supply current (mA)
 
@@ -125,41 +138,54 @@ e.g. SN74HC00 SCLS154 §6.7: Icc max = 80µA (quiescent, VCC=6V).
 
 ---
 
-## Circuit-dependent — cannot be rated from kind alone
+## Not consumers — rated 0
 
-These return `null` and should display as "depends on your circuit" rather
-than "not yet rated". Their current is determined by external components
-(resistor values, supply voltage, load) and genuinely cannot be summed
-without solving the netlist.
+Passives, switches, and variable resistors are current-limiters, not
+current-consumers. They have no Icc, no VCC pin, and contribute 0 to
+the chip supply budget. A resistor in a voltage divider draws current,
+but that current flows *through* the supply's budget, not *from* it
+as a separate consumer.
 
-| Kind | Why circuit-dependent |
+| Kind | Why 0 |
 |---|---|
-| `resistor` | I = V/R, depends on applied voltage and ohms param |
-| `capacitor` | Transient/AC current depends on frequency and voltage |
-| `polarized_cap` | Same as capacitor |
-| `inductor` | Current depends on applied voltage and time |
-| `diode` | Forward current set by external circuit |
-| `zener` | Current set by series resistor and supply |
-| `led` | Current set by series resistor — the LED does not limit it |
-| `rgb_led` | Same — three channels, each set by its resistor |
-| `light_bulb` | I = V/R, depends on ohms param and supply |
-| `neopixel` | Up to 60mA per pixel at full white, but depends on color/brightness — cannot rate without knowing the pattern |
-| `neopixel_jewel` | Same (7 pixels, up to ~420mA, but depends on use) |
-| `neopixel_ring` | Same (12-24 pixels, up to ~1.4A, but depends on use) |
-| `neopixel_strip` | Same (4-20 pixels) |
-| `seven_segment` | Depends on which segments are lit and series resistors |
-| `button` | Contact closure — passes whatever the circuit provides |
+| `resistor` | Current-limiter — no Icc of its own |
+| `capacitor` | Energy storage — no steady-state supply draw |
+| `polarized_cap` | Same |
+| `inductor` | Energy storage |
+| `diode` | Current-limiter — forward current set by circuit |
+| `zener` | Current-limiter — set by series resistor |
+| `button` | Contact closure — passes current, does not consume it |
 | `switch` | Same |
 | `slide_switch` | Same |
 | `dip_switch_spst` | Same |
 | `dip_switch_dpst` | Same |
 | `tilt_switch` | Same |
 | `tilt_switch_v2` | Same |
-| `potentiometer` | Current depends on where it sits in the circuit |
-| `ldr` | Resistance varies with light — current depends on circuit |
-| `photodiode` | Photocurrent is µA-scale, external circuit sets operating point |
-| `flex_sensor` | Variable resistance — current depends on circuit |
-| `force_sensor` | Variable resistance — current depends on circuit |
+| `potentiometer` | Variable resistor — no Icc |
+| `ldr` | Variable resistor |
+| `photodiode` | Photocurrent is µA, no supply pin |
+| `flex_sensor` | Variable resistor |
+| `force_sensor` | Variable resistor |
+| `ntc` | Variable resistor |
+| `keypad_4x4` | Passive matrix — no supply pin |
+| `ir_remote` | Standalone unit — no supply connection to circuit |
+
+## Circuit-dependent (`"circuit"`) — cannot be rated from kind alone
+
+These parts DO draw from the supply, but how much depends on external
+wiring. The DRC should display "depends on your circuit" for these,
+not "not counted". They are `"circuit"` in the JSON, not `null`.
+
+| Kind | Why circuit-dependent |
+|---|---|
+| `led` | Current set by series resistor — the LED does not limit it |
+| `rgb_led` | Same — three channels, each set by its resistor |
+| `light_bulb` | I = V/R, depends on ohms param and supply |
+| `neopixel` | Up to 60mA/pixel at full white, depends on color/brightness |
+| `neopixel_jewel` | Same (7 pixels, up to ~420mA) |
+| `neopixel_ring` | Same (12-24 pixels, up to ~1.4A) |
+| `neopixel_strip` | Same (4-20 pixels) |
+| `seven_segment` | Depends on which segments lit and series resistors |
 | `npn` | Collector current set by base drive and load |
 | `pnp` | Same |
 | `nmos` | Drain current set by gate voltage and load |
@@ -167,17 +193,26 @@ without solving the netlist.
 | `nmos_power` | Same |
 | `pmos_power` | Same |
 | `tip120` | Darlington — collector current set by base drive and load |
-| `relay` | Coil current is fixed (~70mA typical), but varies by relay; contact current depends on load |
+| `relay` | Coil current ~70mA typical but varies by relay; contact current depends on load |
 | `relay_dpdt` | Same |
-| `motor_driver_l293d` | Quiescent Icc ~24mA (TI L293D), but motor current depends on load |
-| `dc_motor` | Stall current varies by motor (200mA to >1A); no single figure |
+| `motor_driver_l293d` | Quiescent Icc ~24mA (TI L293D SLRS008), but motor current depends on load |
+| `dc_motor` | Stall current varies by motor (200mA to >1A) |
 | `dc_motor_encoder` | Same as dc_motor plus encoder (~10mA) |
 | `hobby_gearmotor` | Same as dc_motor |
-| `ir_remote` | Standalone unit, no supply connection to the circuit |
-| `ntc` | Variable resistance — current depends on circuit |
-| `temp_sensor` | DS18B20 Icc ~1mA, but this is a 1-wire device and current depends on bus pull-up |
-| `eeprom` | I2C EEPROM Icc ~3mA (write), but bus current depends on pull-ups |
-| `keypad_4x4` | Passive matrix — current depends on scanning circuit |
+
+## Not yet rated (`null`) — work remaining
+
+These could be rated with more research. They are distinct from
+"circuit-dependent" — they have a knowable Icc that nobody has
+looked up yet.
+
+| Kind | What is needed |
+|---|---|
+| `temp_sensor` | DS18B20 Icc ~1mA (datasheet), but 1-wire bus current depends on pull-up — could rate the IC portion |
+| `eeprom` | 24LC256 Icc ~3mA write / ~1mA read (Microchip datasheet) — could rate |
+| `led_matrix` | Composite — depends on how many LEDs lit; could rate per-LED |
+| `led_cube` | Same |
+| `microbit` | Board — could rate base MCU Icc once v1/v2 is resolved |
 
 ## Sources not in supply path — rated 0
 
@@ -203,43 +238,16 @@ without solving the netlist.
 | `breadboard_mini` | Passive interconnect |
 | `header` | Passive connector |
 | `usb_a` | Passive connector |
-| `led_matrix` | Composite — current depends on how many LEDs are lit |
-| `led_cube` | Composite — same |
-| `microbit` | Board — current depends on what peripherals are active; not yet rated |
 
 ---
 
-## Machine-readable summary
+## Counts
 
-For `getMaxCurrent(kind)` implementation. `null` = cannot rate or not yet rated.
+| State | Count | DRC effect |
+|---|---|---|
+| Rated (number > 0) | 33 | Summed into "at least X mA" |
+| Not a consumer (0) | 44 | Ignored — no budget impact |
+| Circuit-dependent (`"circuit"`) | 21 | "depends on your circuit" |
+| Not yet rated (`null`) | 5 | "N parts not yet rated" |
 
-```
-resistor:null, capacitor:null, polarized_cap:null, diode:null, zener:null,
-inductor:null, button:null, potentiometer:null, slide_switch:null,
-dip_switch_spst:null, dip_switch_dpst:null, ldr:null, photodiode:null,
-light_sensor:0.1, flex_sensor:null, force_sensor:null, ir_receiver:5,
-ultrasonic:15, ultrasonic_3pin:15, pir:0.15, soil_moisture:0.05,
-tilt_switch:null, tilt_switch_v2:null, tmp36:0.05, gas_sensor:150,
-keypad_4x4:null, ir_remote:null, led:null, rgb_led:null, light_bulb:null,
-neopixel:null, neopixel_jewel:null, neopixel_ring:null, neopixel_strip:null,
-vibration_motor:80, dc_motor:null, dc_motor_encoder:null, servo:350,
-hobby_gearmotor:null, buzzer:30, seven_segment:null, seven_segment_clock:10,
-char_lcd:2, lcd_i2c:2, battery_9v:0, battery_aa:0, battery_coin:0,
-solar_cell:0, potato_battery:0, lemon_battery:0, lm7805:5, ld1117v33:5,
-breadboard_psu:10, npn:null, pnp:null, nmos:null, pmos:null,
-nmos_power:null, pmos_power:null, tip120:null, relay:null, relay_dpdt:null,
-motor_driver_l293d:null, optocoupler:0, 74hc00:1, 74hc02:1, 74hc04:1,
-74hc08:1, 74hc10:1, 74hc11:1, 74hc14:1, 74hc20:1, 74hc21:1, 74hc27:1,
-74hc32:1, 74hc73:1, 74hc74:1, 74hc75:1, 74hc86:1, 74hc93:1, 74hc95:1,
-74hc132:1, 74hc283:1, 74hc595:1, cd4017:1, cd4511:1, pcf8574:0.1,
-555:15, 556:30, opamp:3, lm393:2.5, lm339:2.5, arduino_uno:50,
-attiny85:12, stc_mcu:20, mcu:20, multimeter:0, oscilloscope:0,
-function_gen:0, power_supply:0, vcc:0, gnd:0, vsource:0, isource:0,
-breadboard_full:0, breadboard_half:0, breadboard_mini:0, header:0,
-usb_a:0, switch:null, ntc:null, temp_sensor:null, eeprom:null,
-led_matrix:null, led_cube:null, microbit:null
-```
-
-**Rated:** 55 kinds with a number (including 0 for sources/infra)
-**Circuit-dependent:** 48 kinds that genuinely cannot be rated from kind alone
-**Not yet rated:** ~5 kinds (microbit, led_matrix, led_cube, relay coil, L293D quiescent could be rated with more research)
+Machine-readable data is in `current-ratings.json`.
