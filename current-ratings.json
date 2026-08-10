@@ -96,6 +96,11 @@
     "chip_mA": "number = rated | 0 = not a pin consumer | 'circuit' = depends on wiring | null = not yet rated",
     "supply_mA": "number = rated supply draw | 0 = not a supply consumer | 'circuit' = depends on wiring | null = not yet rated"
   },
+  "arduino_nano": {
+    "_src": "Same MCU as Uno (ATmega328P). Different board regulator (AMS1117 800mA vs NCP1117 1A).",
+    "chip_mA": 0,
+    "supply_mA": 50
+  },
   "arduino_uno": {
     "_src": "ATmega328P ~20mA (Microchip DS40002061) + regulator + power LED",
     "chip_mA": 0,
@@ -402,6 +407,11 @@
   "photodiode": {
     "chip_mA": 0,
     "supply_mA": 0
+  },
+  "pi_pico": {
+    "_src": "RP2040 Icc ~25mA typical + peripherals. 3V3 rail from on-board SMPS, 300mA max.",
+    "chip_mA": 0,
+    "supply_mA": 50
   },
   "pir": {
     "_src": "HC-SR501 quiescent 50-150uA",

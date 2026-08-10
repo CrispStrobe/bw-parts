@@ -32,5 +32,6 @@
     { "name": "a4",    "x": 134, "y": 120 },
     { "name": "a5",    "x": 142, "y": 120 }
   ],
-  "variants": null
+  "variants": null,
+  "_note": "ATmega328P. Pin table in docs/pin-table-atmega328p.md."
 }
