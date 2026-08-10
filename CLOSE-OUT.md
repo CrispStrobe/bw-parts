@@ -26,7 +26,7 @@ external input are:
 
 1. **Manufacturer datasheet pin assignments** (factual data, not
    copyrightable) — cited per chip in `DIP-AUDIT.md` with document IDs
-2. **An MIT-licensed component element library's visual style** as a reference for the rendering
+2. **The wokwi-elements visual style** as a reference for the rendering
    register (bench-style front-view components) — no code or SVG paths
    were copied; the style is independently reimplemented
 
