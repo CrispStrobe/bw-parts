@@ -2,8 +2,9 @@
 
 ## Where things stand
 
-All deliverables complete. 122 catalog kinds, 121 SVG files, 121 JSON
-sidecars, zero pending art items. Everything pushed to origin main.
+124 catalog kinds, 123 SVG files, 123 JSON sidecars. Everything pushed.
+Multi-arch board track started: Uno pin table done, Nano sidecar+art done,
+Pi Pico sidecar+art+pin table done.
 
 ## What was done this session
 
@@ -35,11 +36,29 @@ sidecars, zero pending art items. Everything pushed to origin main.
 
 ## Next concrete steps for whoever resumes
 
-1. The 10 remaining slug mismatches (spec-updates/003-slug-renames.md)
-   need action from bw-board and bw-circuit-ui, not from here. Tell
-   their agents.
-2. The tilt_switch and dip_switch collapse questions need an owner
+1. **Notify bw-board** of new boards: arduino_nano and pi_pico need engine
+   registration. Uno already modeled; Nano is same MCU. Pico needs an
+   RP2040 engine (or drawable-only until one exists).
+2. **Notify bw-circuit-ui** of new board sidecars for palette rendering.
+3. The 10 remaining slug mismatches (spec-updates/003-slug-renames.md)
+   need action from bw-board and bw-circuit-ui, not from here.
+4. The tilt_switch and dip_switch collapse questions need an owner
    decision — they are design choices, not bugs.
-3. No licence file exists. The owner has not ruled on this.
-4. The four unverified identifications (clock_display, attiny85, microbit,
+5. No licence file exists. The owner has not ruled on this.
+6. The four unverified identifications (clock_display, attiny85, microbit,
    gas_sensor) cannot be resolved without external confirmation.
+
+## What was ruled out
+
+- **tilt_switch → tilt_sensor rename**: both other repos use tilt_sensor,
+  but bw-parts has two variants (2-pin and 4-pin) as separate slugs.
+  Collapsing them changes the sidecar contract. Left open.
+- **dip_switch collapse**: same pattern. Left open.
+- **esp8266**: declined, WiFi simulation out of scope.
+- **Automated test suite**: not built. verify-art.js is visual only.
+- **Terminal cross-validation in a running renderer**: not done.
+- **RP2040 flexible pin mux in pin table**: the table shows SDK defaults
+  only. The RP2040 can remap nearly any peripheral to nearly any GPIO,
+  but documenting every possible assignment would be a matrix, not a table.
+  The pin-chooser dialog should show defaults with a note that remapping
+  is possible.
