@@ -1,23 +1,70 @@
-# Current Ratings for Chip-Budget DRC
+# Current Ratings for DRC
 
-> Consumed by bw-board `getMaxCurrent(kind)`.
 > bw-parts owns the data (datasheets, sourcing). bw-board owns the
-> semantics (what the number means, how the DRC uses it).
->
-> **Four states in `current-ratings.json`:**
->
-> | Value | Meaning | DRC behaviour |
-> |---|---|---|
-> | `number` | Rated max supply current in mA | Sum into budget |
-> | `0` | Not a consumer of chip supply current (passives, sources, infrastructure) | Ignore — does not affect budget |
-> | `"circuit"` | Depends on circuit wiring — cannot be rated from kind alone | Display "depends on your circuit" |
-> | `null` | Not yet rated — could be rated with more research | Display "not yet rated" |
->
-> The `0` vs `"circuit"` distinction settles the passive disagreement:
-> a resistor is a current-limiter, not a current-consumer — it has no
-> Icc, no VCC pin, and contributes 0 to the chip supply budget.
-> An LED *does* draw from VCC but how much depends on its series
-> resistor, so it is `"circuit"` not `0`.
+> semantics (what the number means, how each DRC uses it).
+
+## Two budgets, not one
+
+A servo draws 350mA — from the supply rail, not from the MCU pin.
+The pin carries a 50Hz PWM signal into a high-impedance input:
+microamps. If the chip-budget DRC counts the servo's motor current,
+every servo circuit trips a false 120mA warning.
+
+This is a new category: **a large consumer that is not the chip's
+consumer**. The same applies to DC motors (via H-bridge), NeoPixels
+(VCC rail powered, data pin is signal), relay coils (via transistor),
+ultrasonic sensors (own VCC), and all external ICs (own supply pins).
+
+So `current-ratings.json` now has **two fields per part**:
+
+| Field | Budget | Limit | DRC question |
+|---|---|---|---|
+| `chip_mA` | MCU I/O pin current | 120mA total (STC12 §4.1), 20mA per pin | "Will this brown out the chip?" |
+| `supply_mA` | Power rail current | 500mA (USB), battery capacity | "Will this brown out the supply?" |
+
+Each field uses the same four-state convention:
+
+| Value | Meaning |
+|---|---|
+| `number` | Rated max in mA |
+| `0` | Not a consumer for this budget |
+| `"circuit"` | Depends on wiring — cannot rate from kind alone |
+| `null` | Not yet rated |
+
+### The decision, and why
+
+A servo is `chip_mA: 0, supply_mA: 350`. The chip budget ignores it
+(correct — no pin current). The supply budget counts it (correct —
+350mA from the rail). A circuit with an MCU and two servos shows:
+
+- Chip budget: "at least 20 mA" (just the MCU)
+- Supply budget: "at least 720 mA" (MCU + 2x servo) → over USB limit
+
+Without the split, the chip budget would either cry wolf (counting
+350mA against a 120mA limit that doesn't apply) or stay silent about
+a real USB brownout hazard. Both are wrong; the split is the only
+answer that is right for both warnings.
+
+### Parts that moved
+
+| Kind | Old (single field) | New chip_mA | New supply_mA | Why |
+|---|---|---|---|---|
+| `servo` | 350 | 0 | 350 | Pin is signal; motor current is rail |
+| `vibration_motor` | 80 | 0 | 80 | Same — driven from supply via transistor |
+| `ultrasonic` | 15 | 0 | 15 | Own VCC pin, not driven by MCU I/O |
+| `pir` | 0.15 | 0 | 0.15 | Own VCC pin |
+| `tmp36` | 0.05 | 0 | 0.05 | Own VCC pin |
+| `gas_sensor` | 150 | 0 | 150 | Heater on VCC rail |
+| `neopixel*` | "circuit" | 0 | "circuit" | Data pin is signal; power is rail |
+| `relay*` | "circuit" | 0 | "circuit" | Coil via transistor, not direct MCU pin |
+| All ICs (74HC, 555, etc.) | 1-30 | 0 | 1-30 | ICs have own VCC pins |
+| `char_lcd` / `lcd_i2c` | 2 | 0 | 2 | Own VCC |
+| `lm7805` / `ld1117v33` | 5 | 0 | 5 | Regulators — own supply path |
+
+The general rule: if a part has its own VCC pin (not connected to an
+MCU I/O pin), its current is `supply_mA`, not `chip_mA`. Parts whose
+current flows through an MCU I/O pin (LEDs driven directly, buzzers
+connected to a port pin) are `chip_mA`.
 
 ## Rated parts — defensible max supply current (mA)
 
@@ -243,11 +290,22 @@ looked up yet.
 
 ## Counts
 
+### chip_mA (MCU I/O pin budget)
+
 | State | Count | DRC effect |
 |---|---|---|
-| Rated (number > 0) | 33 | Summed into "at least X mA" |
-| Not a consumer (0) | 44 | Ignored — no budget impact |
-| Circuit-dependent (`"circuit"`) | 21 | "depends on your circuit" |
-| Not yet rated (`null`) | 5 | "N parts not yet rated" |
+| Rated > 0 | 2 | Summed: LEDs/buzzers driven directly from MCU pin |
+| Not a pin consumer (0) | 92 | Most parts — own VCC or passive |
+| Circuit-dependent | 15 | LEDs, transistors — depends on wiring |
+| Not yet rated | 5 | temp_sensor, eeprom, led_matrix, led_cube, microbit |
+
+### supply_mA (power rail budget)
+
+| State | Count | DRC effect |
+|---|---|---|
+| Rated > 0 | 33 | Summed: ICs, sensors, motors, MCU boards |
+| Not a supply consumer (0) | 44 | Passives, switches, sources, infrastructure |
+| Circuit-dependent | 21 | Motors, transistors, NeoPixels, relays |
+| Not yet rated | 5 | Same 5 as above |
 
 Machine-readable data is in `current-ratings.json`.
