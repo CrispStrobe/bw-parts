@@ -4,10 +4,11 @@ This file tracks all external sources consulted or used in the bw-parts reposito
 
 ## Style references
 
-- **wokwi-elements** (MIT License, https://github.com/wokwi/wokwi-elements):
+- **MIT-licensed component element library** (GitHub, MIT licence):
   Visual style reference for bench-style front-view component rendering.
   No SVG paths or code were copied; art is drawn independently in the same
-  photoreal-ish register.
+  photoreal-ish register. Full URL available on request; omitted from public
+  files to avoid naming a competing product.
 
 ## Datasheet references (factual pin data, not copyrightable)
 

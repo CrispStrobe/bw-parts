@@ -100,8 +100,8 @@ Documented in each JSON sidecar's `_note` field:
 - **No test suite.** There are no automated tests. The DIP audit is a
   one-time document, not a CI check.
 - **No licence file.** The repo has no LICENSE. SVG art is original work
-  (see `ART-PROVENANCE.md`); wokwi-elements was a style reference only,
-  not a code source (see `THIRD-PARTY.md`).
+  (see `ART-PROVENANCE.md`); an MIT-licensed element library was a style
+  reference only, not a code source (see `THIRD-PARTY.md`).
 
 ## Repo structure
 

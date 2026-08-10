@@ -42,9 +42,10 @@ component type (a resistor has colour bands, an LED has a dome, a servo
 is blue with a horn) but are not traced from any specific manufacturer's
 photograph, technical drawing, or third-party SVG.
 
-The visual register is "photoreal-ish front view" inspired by the
-wokwi-elements style (documented in THIRD-PARTY.md), but no SVG paths,
-coordinates, or code were copied from wokwi-elements or any other source.
+The visual register is "photoreal-ish front view" inspired by an
+MIT-licensed component element library (documented in THIRD-PARTY.md),
+but no SVG paths, coordinates, or code were copied from that or any
+other source.
 
 ### Terminal positions
 
@@ -66,8 +67,8 @@ work. The only external inputs are:
 
 1. Manufacturer datasheet pin assignments (factual data, not
    copyrightable)
-2. The wokwi-elements visual style as a reference for the rendering
-   register (no code or paths copied)
+2. An MIT-licensed component element library's visual style as a
+   reference for the rendering register (no code or paths copied)
 3. Standard component appearances (what a resistor, capacitor, or
    DIP package looks like) which are generic physical descriptions
 
