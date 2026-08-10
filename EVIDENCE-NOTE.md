@@ -37,7 +37,7 @@ The fix found three classes of error:
 
 ## What did NOT catch it
 
-`bw-circuit-ui` commit `a2fb98f` ran a terminal cross-check between its
+`bw-circuit-ui` commit `341e3db` ran a terminal cross-check between its
 own registry and `bw-parts`' sidecars, and reported agreement. But
 `bw-circuit-ui` has no `PSEN` anywhere — so a real disagreement existed,
 and the cross-check did not surface it.
