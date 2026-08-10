@@ -237,18 +237,20 @@ const PIN_MAPS = [
     kind: 'pcf8574', pinCount: 16, label: 'PCF8574', sublabel: 'I2C EXPAND',
     pins: ['a0','a1','a2','p0','p1','p2','p3','vss', 'p4','p5','p6','p7','int','scl','sda','vdd'],
   },
-  // ── STC12C5A60S2: 40-pin DIP, 8051-compatible ────────────────────
-  // Pin map from STC12C5A60S2 datasheet (STC Micro), 8051-standard
-  // pinout with STC extensions on P4. Pins 1-20 left, 21-40 right.
+  // ── STC12C5A60S2: 40-pin DIP ────────────────────────────────────
+  // Pin map from stc/docs/PINOUT.md (sourced from official STC12C5A60S2
+  // datasheet, rev 2011-07-15). Uses PORT NAMES, not generic 8051
+  // functional aliases — that exact trap is documented in the lab notes.
+  // P0 runs DESCENDING: pin 32=P0.7, pin 39=P0.0.
   {
     kind: 'stc_mcu', pinCount: 40, label: 'STC12', sublabel: 'C5A60S2',
     pins: [
-      'p1.0','p1.1','p1.2','p1.3','p1.4','p1.5','p1.6','p1.7',  // 1-8
-      'rst','rxd','txd','int0','int1','t0','t1','wr',            // 9-16
-      'rd','xtal2','xtal1','gnd',                                 // 17-20
-      'p2.0','p2.1','p2.2','p2.3','p2.4','p2.5','p2.6','p2.7',  // 21-28
-      'psen','ale','ea','p0.7','p0.6','p0.5','p0.4','p0.3',      // 29-32, 33-36
-      'p0.2','p0.1','p0.0','vcc',                                // 37-40
+      'P1.0','P1.1','P1.2','P1.3','P1.4','P1.5','P1.6','P1.7',  // 1-8
+      'RST','P3.0','P3.1','P3.2','P3.3','P3.4','P3.5','P3.6',   // 9-16
+      'P3.7','XTAL2','XTAL1','GND',                               // 17-20
+      'P2.0','P2.1','P2.2','P2.3','P2.4','P2.5','P2.6','P2.7',  // 21-28
+      'P4.4','P4.5','P4.6','P0.7','P0.6','P0.5','P0.4','P0.3',  // 29-36
+      'P0.2','P0.1','P0.0','VCC',                                 // 37-40
     ],
   },
   // ── NE556 Dual Timer: 14-pin DIP ─────────────────────────────────
