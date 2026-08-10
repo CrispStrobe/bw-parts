@@ -24,5 +24,26 @@
       "y": 56
     }
   ],
-  "variants": null
+  "variants": null,
+  "footprint": {
+    "refTerminal": "vcc",
+    "leads": {
+      "vcc": {
+        "dRow": 0,
+        "dCol": 0
+      },
+      "gnd": {
+        "dRow": 0,
+        "dCol": 1
+      },
+      "sda": {
+        "dRow": 0,
+        "dCol": 2
+      },
+      "scl": {
+        "dRow": 0,
+        "dCol": 3
+      }
+    }
+  }
 }
