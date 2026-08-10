@@ -4,10 +4,10 @@
 
 20+ commits taking an empty repo to a production-ready parts library:
 
-- **115 SVGs** with JSON terminal sidecars (27 DIP-generated, 88 hand-drawn)
+- **117 SVGs** with JSON terminal sidecars (27 DIP-generated, 90 hand-drawn)
 - **`generate-dip.js`** — parametric DIP template; add a chip in 3 lines
 - **`PARTS-CATALOG.md`** — single canonical parts list for the fleet (118 kinds)
-- **`PARTS-RECONCILIATION.md`** — cross-repo slug/coverage table (17 mismatches named)
+- **`PARTS-RECONCILIATION.md`** — cross-repo slug/coverage table (7 of 17 mismatches resolved by renaming bw-parts slugs)
 - **`CURRENT-RATINGS.md` + `current-ratings.json`** — two-budget current ratings (chip pin budget + supply rail budget), zero nulls, sourced to named datasheets
 - **`CONSUMING-RATINGS.md`** — consumer guide for the ratings schema, including the `"circuit"` string coercion trap
 - **`DIP-AUDIT.md`** — all 29 DIP pin maps verified against manufacturer datasheets (28 correct, 1 fixed)
@@ -76,16 +76,14 @@ pin order as a risk, but because the audit checked what each pin IS.
 different from "resistor has no rating" (the symptom). Same null,
 different facts, different DRC message.
 
-## Unfinished items
+## Previously unfinished items — now complete
 
-| Kind | Priority | Why deferred |
+| Kind | Status | Completed |
 |---|---|---|
-| `microbit_breakout` | low | Combo part (micro:bit in breakout board); nobody blocked on it; no consumer in the current campaign |
-| `pololu_motor_ctrl` | lowest | Help-page-only in the reference catalogue; a board not a chip; no engine model planned |
+| `microbit_breakout` | done (faa08a3) | micro:bit in breakout board with 10 exposed pins |
+| `pololu_motor_ctrl` | done (faa08a3) | Board-level motor controller, 6 terminals |
 
-Both are drawable-only parts with no engine model and no consumer
-waiting. If someone needs them, they are straightforward hand-drawn
-SVGs with simple terminal sidecars.
+All 118 catalog entries now have SVG art and JSON sidecars.
 
 ## What I did not verify
 
