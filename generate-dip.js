@@ -33,7 +33,7 @@ const DOT_R       = 1.5;    // pin-1 dot radius
 function dipGeometry(pinCount) {
   const half = pinCount / 2;
   const bodyH = (half - 1) * PIN_SPACING + 12;  // padding top/bottom
-  const bodyW = 50;
+  const bodyW = pinCount > 20 ? 60 : 50;        // wider body for DIP-40+
   const svgW  = bodyW + 2 * BODY_X;
   const svgH  = bodyH + 4;  // small margin
   const bodyY = 2;
@@ -236,6 +236,20 @@ const PIN_MAPS = [
   {
     kind: 'pcf8574', pinCount: 16, label: 'PCF8574', sublabel: 'I2C EXPAND',
     pins: ['a0','a1','a2','p0','p1','p2','p3','vss', 'p4','p5','p6','p7','int','scl','sda','vdd'],
+  },
+  // ── STC12C5A60S2: 40-pin DIP, 8051-compatible ────────────────────
+  // Pin map from STC12C5A60S2 datasheet (STC Micro), 8051-standard
+  // pinout with STC extensions on P4. Pins 1-20 left, 21-40 right.
+  {
+    kind: 'stc_mcu', pinCount: 40, label: 'STC12', sublabel: 'C5A60S2',
+    pins: [
+      'p1.0','p1.1','p1.2','p1.3','p1.4','p1.5','p1.6','p1.7',  // 1-8
+      'rst','rxd','txd','int0','int1','t0','t1','wr',            // 9-16
+      'rd','xtal2','xtal1','gnd',                                 // 17-20
+      'p2.0','p2.1','p2.2','p2.3','p2.4','p2.5','p2.6','p2.7',  // 21-28
+      'psen','ale','ea','p0.7','p0.6','p0.5','p0.4','p0.3',      // 29-32, 33-36
+      'p0.2','p0.1','p0.0','vcc',                                // 37-40
+    ],
   },
 ];
 
