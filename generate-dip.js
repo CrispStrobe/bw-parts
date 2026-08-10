@@ -224,7 +224,7 @@ const PIN_MAPS = [
   // ── L293D: TI L293D datasheet (SLRS008) — 16-pin H-bridge motor driver
   // The four GND pins (4,5,12,13) are heat-sink pads, not just signal ground.
   {
-    kind: 'motor_driver_l293d', pinCount: 16, label: 'L293D', sublabel: 'H-BRIDGE',
+    kind: 'l293d', pinCount: 16, label: 'L293D', sublabel: 'H-BRIDGE',
     pins: ['en1','in1','out1','gnd1','gnd2','out2','in2','vcc2', 'en2','in3','out3','gnd3','gnd4','out4','in4','vcc1'],
   },
   // ── Added from gap analysis, pin maps from datasheets ───

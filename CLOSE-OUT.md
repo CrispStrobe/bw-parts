@@ -91,7 +91,7 @@ SVGs with simple terminal sidecars.
 
 - Terminal positions are mathematically placed but not cross-validated
   in a running bw-circuit-ui renderer
-- The 4 unverified identifications remain unverified (seven_segment_clock
+- The 4 unverified identifications remain unverified (clock_display
   controller, ATtiny variant, micro:bit generation, gas sensor family)
 - Breadboard hole grids are visual art; the circuit model's hole-to-node
   mapping is bw-circuit-ui's responsibility

@@ -1,5 +1,5 @@
 {
-  "kind": "motor_driver_l293d",
+  "kind": "l293d",
   "w": 70,
   "h": 51,
   "terminals": [

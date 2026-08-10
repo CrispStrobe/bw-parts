@@ -79,7 +79,7 @@ field and in `PARTS-CATALOG.md`:
 
 | Kind | What is generic | Why |
 |---|---|---|
-| `seven_segment_clock` | Terminal names use clk/dio (could be scl/sda) | HT16K33 vs TM1637 unresolved |
+| `clock_display` | Terminal names use clk/dio (could be scl/sda) | HT16K33 vs TM1637 unresolved |
 | `attiny85` | Pin map assumes ATtiny85 | Could be ATtiny45/25 |
 | `microbit` | Board shape is generic | v1 (nRF51822) vs v2 (nRF52833) unresolved |
 | `gas_sensor` | Generic MQ-style can | MQ-2/3/4 span different gases |

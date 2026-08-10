@@ -58,7 +58,7 @@ answer that is right for both warnings.
 | `neopixel*` | "circuit" | 0 | "circuit" | Data pin is signal; power is rail |
 | `relay*` | "circuit" | 0 | "circuit" | Coil via transistor, not direct MCU pin |
 | All ICs (74HC, 555, etc.) | 1-30 | 0 | 1-30 | ICs have own VCC pins |
-| `char_lcd` / `lcd_i2c` | 2 | 0 | 2 | Own VCC |
+| `char_lcd` / `char_lcd_i2c` | 2 | 0 | 2 | Own VCC |
 | `lm7805` / `ld1117v33` | 5 | 0 | 5 | Regulators — own supply path |
 
 The general rule: if a part has its own VCC pin (not connected to an
@@ -146,8 +146,8 @@ e.g. SN74HC00 SCLS154 §6.7: Icc max = 80µA (quiescent, VCC=6V).
 | Kind | mA | Source |
 |---|---|---|
 | `char_lcd` | 2 | HD44780 logic: ~1-2mA (backlight is load-dependent, not counted here) |
-| `lcd_i2c` | 2 | HD44780 + PCF8574: logic ~2mA total (backlight separate) |
-| `seven_segment_clock` | 10 | I2C driver + LEDs at typical brightness, estimated from HT16K33 datasheet: Icc ~10mA |
+| `char_lcd_i2c` | 2 | HD44780 + PCF8574: logic ~2mA total (backlight separate) |
+| `clock_display` | 10 | I2C driver + LEDs at typical brightness, estimated from HT16K33 datasheet: Icc ~10mA |
 
 ### MCU boards
 
@@ -242,10 +242,10 @@ not "not counted". They are `"circuit"` in the JSON, not `null`.
 | `tip120` | Darlington — collector current set by base drive and load |
 | `relay` | Coil current ~70mA typical but varies by relay; contact current depends on load |
 | `relay_dpdt` | Same |
-| `motor_driver_l293d` | Quiescent Icc ~24mA (TI L293D SLRS008), but motor current depends on load |
+| `l293d` | Quiescent Icc ~24mA (TI L293D SLRS008), but motor current depends on load |
 | `dc_motor` | Stall current varies by motor (200mA to >1A) |
 | `dc_motor_encoder` | Same as dc_motor plus encoder (~10mA) |
-| `hobby_gearmotor` | Same as dc_motor |
+| `gearmotor` | Same as dc_motor |
 
 ## Not yet rated (`null`) — work remaining
 

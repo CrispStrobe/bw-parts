@@ -1,139 +1,528 @@
 {
-  "_comment": "Two current budgets. chip_mA = MCU I/O pin current (120mA chip total per STC12 §4.1). supply_mA = power rail current (USB 500mA, battery capacity). See CURRENT-RATINGS.md and CONSUMING-RATINGS.md.",
-  "_schema": {
-    "chip_mA": "number = rated | 0 = not a pin consumer | 'circuit' = depends on wiring | null = not yet rated",
-    "supply_mA": "number = rated supply draw | 0 = not a supply consumer | 'circuit' = depends on wiring | null = not yet rated",
-    "_per_unit_mA": "optional: max supply current per unit (per pixel, per LED) for parts whose total depends on count"
+  "555": {
+    "_src": "TI NE555 SLFS022: Icc max 15mA",
+    "chip_mA": 0,
+    "supply_mA": 15
   },
-
-  "resistor":        { "chip_mA": 0, "supply_mA": 0 },
-  "capacitor":       { "chip_mA": 0, "supply_mA": 0 },
-  "polarized_cap":   { "chip_mA": 0, "supply_mA": 0 },
-  "diode":           { "chip_mA": 0, "supply_mA": 0 },
-  "zener":           { "chip_mA": 0, "supply_mA": 0 },
-  "inductor":        { "chip_mA": 0, "supply_mA": 0 },
-
-  "button":          { "chip_mA": 0, "supply_mA": 0 },
-  "potentiometer":   { "chip_mA": 0, "supply_mA": 0 },
-  "slide_switch":    { "chip_mA": 0, "supply_mA": 0 },
-  "dip_switch_spst": { "chip_mA": 0, "supply_mA": 0 },
-  "dip_switch_dpst": { "chip_mA": 0, "supply_mA": 0 },
-  "ldr":             { "chip_mA": 0, "supply_mA": 0 },
-  "photodiode":      { "chip_mA": 0, "supply_mA": 0 },
-  "flex_sensor":     { "chip_mA": 0, "supply_mA": 0 },
-  "force_sensor":    { "chip_mA": 0, "supply_mA": 0 },
-  "tilt_switch":     { "chip_mA": 0, "supply_mA": 0 },
-  "tilt_switch_v2":  { "chip_mA": 0, "supply_mA": 0 },
-  "ntc":             { "chip_mA": 0, "supply_mA": 0 },
-  "keypad_4x4":      { "chip_mA": 0, "supply_mA": 0 },
-  "ir_remote":       { "chip_mA": 0, "supply_mA": 0 },
-  "switch":          { "chip_mA": 0, "supply_mA": 0 },
-
-  "light_sensor":    { "chip_mA": 0.1,  "supply_mA": 0.1, "_src": "phototransistor Icc negligible" },
-  "ir_receiver":     { "chip_mA": 5,    "supply_mA": 5,   "_src": "TSOP-series Icc max ~5mA" },
-  "ultrasonic":      { "chip_mA": 0,    "supply_mA": 15,  "_src": "HC-SR04 operating ~15mA (Elecfreaks)" },
-  "ultrasonic_3pin": { "chip_mA": 0,    "supply_mA": 15,  "_src": "Parallax PING))) ~15mA" },
-  "pir":             { "chip_mA": 0,    "supply_mA": 0.15,"_src": "HC-SR501 quiescent 50-150uA" },
-  "soil_moisture":   { "chip_mA": 0.05, "supply_mA": 0.05 },
-  "tmp36":           { "chip_mA": 0,    "supply_mA": 0.05,"_src": "Analog Devices TMP36 Iq max 50uA" },
-  "gas_sensor":      { "chip_mA": 0,    "supply_mA": 150, "_src": "MQ-series heater coil ~150mA. Nearly 1/3 of USB budget in a part a learner would not suspect." },
-
-  "led":             { "chip_mA": "circuit", "supply_mA": "circuit", "_reason": "current set by series resistor, not by the LED" },
-  "rgb_led":         { "chip_mA": "circuit", "supply_mA": "circuit" },
-  "light_bulb":      { "chip_mA": "circuit", "supply_mA": "circuit" },
-  "seven_segment":   { "chip_mA": "circuit", "supply_mA": "circuit", "_per_unit_mA": 20, "_reason": "~20mA per segment, 7 segments + DP; total depends on which are lit" },
-
-  "neopixel":        { "chip_mA": 0, "supply_mA": "circuit", "_per_unit_mA": 60, "_src": "WS2812B: 60mA/pixel at full white (20mA R + 20mA G + 20mA B). Actual draw depends on color/brightness." },
-  "neopixel_jewel":  { "chip_mA": 0, "supply_mA": "circuit", "_per_unit_mA": 60, "_units": 7, "_max_mA": 420, "_src": "7 x WS2812B" },
-  "neopixel_ring":   { "chip_mA": 0, "supply_mA": "circuit", "_per_unit_mA": 60, "_src": "WS2812B ring; 12 LEDs = 720mA max, 16 = 960mA, 24 = 1440mA" },
-  "neopixel_strip":  { "chip_mA": 0, "supply_mA": "circuit", "_per_unit_mA": 60, "_src": "WS2812B strip; 8 LEDs = 480mA max, 20 = 1200mA" },
-
-  "servo":           { "chip_mA": 0, "supply_mA": 350, "_src": "SG90-class stall ~350mA (Tower Pro SG90)" },
-  "vibration_motor": { "chip_mA": 0, "supply_mA": 80,  "_src": "coin-type vibration motor 60-100mA typical" },
-  "dc_motor":        { "chip_mA": 0, "supply_mA": 800, "_src": "typical hobby DC motor STALL current ~800mA. Rated at stall, not running, because stall is when brownout occurs. Class estimate — no single datasheet." },
-  "dc_motor_encoder":{ "chip_mA": 0, "supply_mA": 800, "_src": "same as dc_motor stall + encoder ~10mA" },
-  "hobby_gearmotor": { "chip_mA": 0, "supply_mA": 800, "_src": "TT motor class stall ~800mA. Gearbox reduces speed but not stall current." },
-  "buzzer":          { "chip_mA": "circuit", "supply_mA": 30, "_src": "piezo buzzer operating ~20-30mA" },
-
-  "seven_segment_clock": { "chip_mA": 0, "supply_mA": 10, "_src": "HT16K33/TM1637 driver + LEDs at typical brightness (unverified IC)" },
-  "char_lcd":        { "chip_mA": 0, "supply_mA": 2,  "_src": "HD44780 logic ~1-2mA (backlight separate)" },
-  "lcd_i2c":         { "chip_mA": 0, "supply_mA": 2,  "_src": "HD44780 + PCF8574 logic ~2mA (backlight separate)" },
-
-  "battery_9v":      { "chip_mA": 0, "supply_mA": 0 },
-  "battery_aa":      { "chip_mA": 0, "supply_mA": 0 },
-  "battery_coin":    { "chip_mA": 0, "supply_mA": 0 },
-  "solar_cell":      { "chip_mA": 0, "supply_mA": 0 },
-  "potato_battery":  { "chip_mA": 0, "supply_mA": 0 },
-  "lemon_battery":   { "chip_mA": 0, "supply_mA": 0 },
-  "lm7805":          { "chip_mA": 0, "supply_mA": 5,  "_src": "TI LM7805 SLVS056: Iq max ~8mA, typ ~5mA" },
-  "ld1117v33":       { "chip_mA": 0, "supply_mA": 5,  "_src": "ST LD1117: Iq typ 5mA" },
-  "breadboard_psu":  { "chip_mA": 0, "supply_mA": 10, "_src": "AMS1117-based: Iq ~5-10mA" },
-
-  "npn":             { "chip_mA": "circuit", "supply_mA": "circuit", "_reason": "collector current set by base drive and load" },
-  "pnp":             { "chip_mA": "circuit", "supply_mA": "circuit" },
-  "nmos":            { "chip_mA": "circuit", "supply_mA": "circuit", "_reason": "drain current set by gate voltage and load" },
-  "pmos":            { "chip_mA": "circuit", "supply_mA": "circuit" },
-  "nmos_power":      { "chip_mA": "circuit", "supply_mA": "circuit" },
-  "pmos_power":      { "chip_mA": "circuit", "supply_mA": "circuit" },
-  "tip120":          { "chip_mA": "circuit", "supply_mA": "circuit", "_reason": "Darlington — collector current set by base drive and load" },
-  "relay":           { "chip_mA": 0, "supply_mA": 70, "_src": "typical 5V SPDT relay coil ~70 ohm -> 5V/70ohm = ~70mA. SRD-05VDC class." },
-  "relay_dpdt":      { "chip_mA": 0, "supply_mA": 140,"_src": "two coils, ~70mA each. DPDT relays with single coil would be ~70mA." },
-  "motor_driver_l293d": { "chip_mA": 0, "supply_mA": 24, "_src": "TI L293D SLRS008: quiescent Icc ~24mA. Motor current passes through but is the motor's supply_mA, not the L293D's." },
-  "optocoupler":     { "chip_mA": 0, "supply_mA": 0, "_reason": "4N35: phototransistor output draws from load circuit" },
-
-  "74hc00": { "chip_mA": 0, "supply_mA": 1, "_src": "TI SCLS series: Icc max 80uA quiescent + switching margin" },
-  "74hc02": { "chip_mA": 0, "supply_mA": 1 },
-  "74hc04": { "chip_mA": 0, "supply_mA": 1 },
-  "74hc08": { "chip_mA": 0, "supply_mA": 1 },
-  "74hc10": { "chip_mA": 0, "supply_mA": 1 },
-  "74hc11": { "chip_mA": 0, "supply_mA": 1 },
-  "74hc14": { "chip_mA": 0, "supply_mA": 1 },
-  "74hc20": { "chip_mA": 0, "supply_mA": 1 },
-  "74hc21": { "chip_mA": 0, "supply_mA": 1 },
-  "74hc27": { "chip_mA": 0, "supply_mA": 1 },
-  "74hc32": { "chip_mA": 0, "supply_mA": 1 },
-  "74hc73": { "chip_mA": 0, "supply_mA": 1 },
-  "74hc74": { "chip_mA": 0, "supply_mA": 1 },
-  "74hc75": { "chip_mA": 0, "supply_mA": 1 },
-  "74hc86": { "chip_mA": 0, "supply_mA": 1 },
-  "74hc93": { "chip_mA": 0, "supply_mA": 1 },
-  "74hc95": { "chip_mA": 0, "supply_mA": 1 },
-  "74hc132": { "chip_mA": 0, "supply_mA": 1 },
-  "74hc283": { "chip_mA": 0, "supply_mA": 1 },
-  "74hc595": { "chip_mA": 0, "supply_mA": 1 },
-  "cd4017": { "chip_mA": 0, "supply_mA": 1 },
-  "cd4511": { "chip_mA": 0, "supply_mA": 1 },
-  "pcf8574": { "chip_mA": 0, "supply_mA": 0.1, "_src": "NXP PCF8574 Rev 5: Idd max 100uA" },
-
-  "555":    { "chip_mA": 0, "supply_mA": 15, "_src": "TI NE555 SLFS022: Icc max 15mA" },
-  "556":    { "chip_mA": 0, "supply_mA": 30, "_src": "TI NE556 SLFS023: two 555s" },
-  "opamp":  { "chip_mA": 0, "supply_mA": 3,  "_src": "TI uA741 SLOS094: Icc max 2.8mA" },
-  "lm393":  { "chip_mA": 0, "supply_mA": 2.5,"_src": "TI LM393 SLCS007: Icc max 2.5mA" },
-  "lm339":  { "chip_mA": 0, "supply_mA": 2.5,"_src": "TI LM339 SLCS006: Icc max 2.5mA" },
-
-  "arduino_uno": { "chip_mA": 0, "supply_mA": 50, "_src": "ATmega328P ~20mA (Microchip DS40002061) + regulator + power LED" },
-  "attiny85":    { "chip_mA": 0, "supply_mA": 12, "_src": "Microchip ATtiny85 DS2586: Icc max 12mA at 20MHz" },
-  "stc_mcu":     { "chip_mA": 0, "supply_mA": 20, "_src": "STC12C5A60S2; per contract PINOUT.md: Icc typ ~20mA" },
-  "mcu":         { "chip_mA": 0, "supply_mA": 20 },
-
-  "multimeter":   { "chip_mA": 0, "supply_mA": 0 },
-  "oscilloscope": { "chip_mA": 0, "supply_mA": 0 },
-  "function_gen": { "chip_mA": 0, "supply_mA": 0 },
-  "power_supply": { "chip_mA": 0, "supply_mA": 0 },
-
-  "vcc": { "chip_mA": 0, "supply_mA": 0 },
-  "gnd": { "chip_mA": 0, "supply_mA": 0 },
-  "vsource": { "chip_mA": 0, "supply_mA": 0 },
-  "isource": { "chip_mA": 0, "supply_mA": 0 },
-  "breadboard_full": { "chip_mA": 0, "supply_mA": 0 },
-  "breadboard_half": { "chip_mA": 0, "supply_mA": 0 },
-  "breadboard_mini": { "chip_mA": 0, "supply_mA": 0 },
-  "header": { "chip_mA": 0, "supply_mA": 0 },
-  "usb_a":  { "chip_mA": 0, "supply_mA": 0 },
-
-  "temp_sensor": { "chip_mA": 0, "supply_mA": 1,  "_src": "Maxim DS18B20: Icc max 1mA active" },
-  "eeprom":      { "chip_mA": 0, "supply_mA": 3,  "_src": "Microchip 24LC256: Icc max 3mA (write)" },
-  "led_matrix":  { "chip_mA": "circuit", "supply_mA": "circuit", "_per_unit_mA": 20, "_reason": "~20mA per LED, 64 LEDs max = 1280mA; depends on which are lit" },
-  "led_cube":    { "chip_mA": "circuit", "supply_mA": "circuit", "_per_unit_mA": 20, "_reason": "multiplexed; instantaneous current depends on scan pattern" },
-  "microbit":    { "chip_mA": 0, "supply_mA": 30, "_src": "nRF51822 Icc ~15mA + LED matrix scanning; 30mA conservative. Variant unverified." }
+  "556": {
+    "_src": "TI NE556 SLFS023: two 555s",
+    "chip_mA": 0,
+    "supply_mA": 30
+  },
+  "74hc00": {
+    "_src": "TI SCLS series: Icc max 80uA quiescent + switching margin",
+    "chip_mA": 0,
+    "supply_mA": 1
+  },
+  "74hc02": {
+    "chip_mA": 0,
+    "supply_mA": 1
+  },
+  "74hc04": {
+    "chip_mA": 0,
+    "supply_mA": 1
+  },
+  "74hc08": {
+    "chip_mA": 0,
+    "supply_mA": 1
+  },
+  "74hc10": {
+    "chip_mA": 0,
+    "supply_mA": 1
+  },
+  "74hc11": {
+    "chip_mA": 0,
+    "supply_mA": 1
+  },
+  "74hc132": {
+    "chip_mA": 0,
+    "supply_mA": 1
+  },
+  "74hc14": {
+    "chip_mA": 0,
+    "supply_mA": 1
+  },
+  "74hc20": {
+    "chip_mA": 0,
+    "supply_mA": 1
+  },
+  "74hc21": {
+    "chip_mA": 0,
+    "supply_mA": 1
+  },
+  "74hc27": {
+    "chip_mA": 0,
+    "supply_mA": 1
+  },
+  "74hc283": {
+    "chip_mA": 0,
+    "supply_mA": 1
+  },
+  "74hc32": {
+    "chip_mA": 0,
+    "supply_mA": 1
+  },
+  "74hc595": {
+    "chip_mA": 0,
+    "supply_mA": 1
+  },
+  "74hc73": {
+    "chip_mA": 0,
+    "supply_mA": 1
+  },
+  "74hc74": {
+    "chip_mA": 0,
+    "supply_mA": 1
+  },
+  "74hc75": {
+    "chip_mA": 0,
+    "supply_mA": 1
+  },
+  "74hc86": {
+    "chip_mA": 0,
+    "supply_mA": 1
+  },
+  "74hc93": {
+    "chip_mA": 0,
+    "supply_mA": 1
+  },
+  "74hc95": {
+    "chip_mA": 0,
+    "supply_mA": 1
+  },
+  "_comment": "Two current budgets. chip_mA = MCU I/O pin current (120mA chip total per STC12 \u00a74.1). supply_mA = power rail current (USB 500mA, battery capacity). See CURRENT-RATINGS.md and CONSUMING-RATINGS.md.",
+  "_schema": {
+    "_per_unit_mA": "optional: max supply current per unit (per pixel, per LED) for parts whose total depends on count",
+    "chip_mA": "number = rated | 0 = not a pin consumer | 'circuit' = depends on wiring | null = not yet rated",
+    "supply_mA": "number = rated supply draw | 0 = not a supply consumer | 'circuit' = depends on wiring | null = not yet rated"
+  },
+  "arduino_uno": {
+    "_src": "ATmega328P ~20mA (Microchip DS40002061) + regulator + power LED",
+    "chip_mA": 0,
+    "supply_mA": 50
+  },
+  "attiny85": {
+    "_src": "Microchip ATtiny85 DS2586: Icc max 12mA at 20MHz",
+    "chip_mA": 0,
+    "supply_mA": 12
+  },
+  "battery_9v": {
+    "chip_mA": 0,
+    "supply_mA": 0
+  },
+  "battery_aa": {
+    "chip_mA": 0,
+    "supply_mA": 0
+  },
+  "battery_coin": {
+    "chip_mA": 0,
+    "supply_mA": 0
+  },
+  "breadboard_full": {
+    "chip_mA": 0,
+    "supply_mA": 0
+  },
+  "breadboard_half": {
+    "chip_mA": 0,
+    "supply_mA": 0
+  },
+  "breadboard_mini": {
+    "chip_mA": 0,
+    "supply_mA": 0
+  },
+  "breadboard_psu": {
+    "_src": "AMS1117-based: Iq ~5-10mA",
+    "chip_mA": 0,
+    "supply_mA": 10
+  },
+  "button": {
+    "chip_mA": 0,
+    "supply_mA": 0
+  },
+  "buzzer": {
+    "_src": "piezo buzzer operating ~20-30mA",
+    "chip_mA": "circuit",
+    "supply_mA": 30
+  },
+  "capacitor": {
+    "chip_mA": 0,
+    "supply_mA": 0
+  },
+  "cd4017": {
+    "chip_mA": 0,
+    "supply_mA": 1
+  },
+  "cd4511": {
+    "chip_mA": 0,
+    "supply_mA": 1
+  },
+  "char_lcd": {
+    "_src": "HD44780 logic ~1-2mA (backlight separate)",
+    "chip_mA": 0,
+    "supply_mA": 2
+  },
+  "char_lcd_i2c": {
+    "_src": "HD44780 + PCF8574 logic ~2mA (backlight separate)",
+    "chip_mA": 0,
+    "supply_mA": 2
+  },
+  "clock_display": {
+    "_src": "HT16K33/TM1637 driver + LEDs at typical brightness (unverified IC)",
+    "chip_mA": 0,
+    "supply_mA": 10
+  },
+  "dc_motor": {
+    "_src": "typical hobby DC motor STALL current ~800mA. Rated at stall, not running, because stall is when brownout occurs. Class estimate \u2014 no single datasheet.",
+    "chip_mA": 0,
+    "supply_mA": 800
+  },
+  "dc_motor_encoder": {
+    "_src": "same as dc_motor stall + encoder ~10mA",
+    "chip_mA": 0,
+    "supply_mA": 800
+  },
+  "diode": {
+    "chip_mA": 0,
+    "supply_mA": 0
+  },
+  "dip_switch_dpst": {
+    "chip_mA": 0,
+    "supply_mA": 0
+  },
+  "dip_switch_spst": {
+    "chip_mA": 0,
+    "supply_mA": 0
+  },
+  "eeprom": {
+    "_src": "Microchip 24LC256: Icc max 3mA (write)",
+    "chip_mA": 0,
+    "supply_mA": 3
+  },
+  "flex_sensor": {
+    "chip_mA": 0,
+    "supply_mA": 0
+  },
+  "force_sensor": {
+    "chip_mA": 0,
+    "supply_mA": 0
+  },
+  "function_gen": {
+    "chip_mA": 0,
+    "supply_mA": 0
+  },
+  "gas_sensor": {
+    "_src": "MQ-series heater coil ~150mA. Nearly 1/3 of USB budget in a part a learner would not suspect.",
+    "chip_mA": 0,
+    "supply_mA": 150
+  },
+  "gearmotor": {
+    "_src": "TT motor class stall ~800mA. Gearbox reduces speed but not stall current.",
+    "chip_mA": 0,
+    "supply_mA": 800
+  },
+  "gnd": {
+    "chip_mA": 0,
+    "supply_mA": 0
+  },
+  "header": {
+    "chip_mA": 0,
+    "supply_mA": 0
+  },
+  "inductor": {
+    "chip_mA": 0,
+    "supply_mA": 0
+  },
+  "ir_receiver": {
+    "_src": "TSOP-series Icc max ~5mA",
+    "chip_mA": 5,
+    "supply_mA": 5
+  },
+  "ir_remote": {
+    "chip_mA": 0,
+    "supply_mA": 0
+  },
+  "isource": {
+    "chip_mA": 0,
+    "supply_mA": 0
+  },
+  "keypad_4x4": {
+    "chip_mA": 0,
+    "supply_mA": 0
+  },
+  "l293d": {
+    "_src": "TI L293D SLRS008: quiescent Icc ~24mA. Motor current passes through but is the motor's supply_mA, not the L293D's.",
+    "chip_mA": 0,
+    "supply_mA": 24
+  },
+  "ld1117v33": {
+    "_src": "ST LD1117: Iq typ 5mA",
+    "chip_mA": 0,
+    "supply_mA": 5
+  },
+  "ldr": {
+    "chip_mA": 0,
+    "supply_mA": 0
+  },
+  "led": {
+    "_reason": "current set by series resistor, not by the LED",
+    "chip_mA": "circuit",
+    "supply_mA": "circuit"
+  },
+  "led_cube": {
+    "_per_unit_mA": 20,
+    "_reason": "multiplexed; instantaneous current depends on scan pattern",
+    "chip_mA": "circuit",
+    "supply_mA": "circuit"
+  },
+  "led_matrix": {
+    "_per_unit_mA": 20,
+    "_reason": "~20mA per LED, 64 LEDs max = 1280mA; depends on which are lit",
+    "chip_mA": "circuit",
+    "supply_mA": "circuit"
+  },
+  "lemon_battery": {
+    "chip_mA": 0,
+    "supply_mA": 0
+  },
+  "light_bulb": {
+    "chip_mA": "circuit",
+    "supply_mA": "circuit"
+  },
+  "light_sensor": {
+    "_src": "phototransistor Icc negligible",
+    "chip_mA": 0.1,
+    "supply_mA": 0.1
+  },
+  "lm339": {
+    "_src": "TI LM339 SLCS006: Icc max 2.5mA",
+    "chip_mA": 0,
+    "supply_mA": 2.5
+  },
+  "lm393": {
+    "_src": "TI LM393 SLCS007: Icc max 2.5mA",
+    "chip_mA": 0,
+    "supply_mA": 2.5
+  },
+  "lm7805": {
+    "_src": "TI LM7805 SLVS056: Iq max ~8mA, typ ~5mA",
+    "chip_mA": 0,
+    "supply_mA": 5
+  },
+  "mcu": {
+    "chip_mA": 0,
+    "supply_mA": 20
+  },
+  "microbit": {
+    "_src": "nRF51822 Icc ~15mA + LED matrix scanning; 30mA conservative. Variant unverified.",
+    "chip_mA": 0,
+    "supply_mA": 30
+  },
+  "multimeter": {
+    "chip_mA": 0,
+    "supply_mA": 0
+  },
+  "neopixel": {
+    "_per_unit_mA": 60,
+    "_src": "WS2812B: 60mA/pixel at full white (20mA R + 20mA G + 20mA B). Actual draw depends on color/brightness.",
+    "chip_mA": 0,
+    "supply_mA": "circuit"
+  },
+  "neopixel_jewel": {
+    "_max_mA": 420,
+    "_per_unit_mA": 60,
+    "_src": "7 x WS2812B",
+    "_units": 7,
+    "chip_mA": 0,
+    "supply_mA": "circuit"
+  },
+  "neopixel_ring": {
+    "_per_unit_mA": 60,
+    "_src": "WS2812B ring; 12 LEDs = 720mA max, 16 = 960mA, 24 = 1440mA",
+    "chip_mA": 0,
+    "supply_mA": "circuit"
+  },
+  "neopixel_strip": {
+    "_per_unit_mA": 60,
+    "_src": "WS2812B strip; 8 LEDs = 480mA max, 20 = 1200mA",
+    "chip_mA": 0,
+    "supply_mA": "circuit"
+  },
+  "nmos": {
+    "_reason": "drain current set by gate voltage and load",
+    "chip_mA": "circuit",
+    "supply_mA": "circuit"
+  },
+  "nmos_power": {
+    "chip_mA": "circuit",
+    "supply_mA": "circuit"
+  },
+  "npn": {
+    "_reason": "collector current set by base drive and load",
+    "chip_mA": "circuit",
+    "supply_mA": "circuit"
+  },
+  "ntc": {
+    "chip_mA": 0,
+    "supply_mA": 0
+  },
+  "opamp": {
+    "_src": "TI uA741 SLOS094: Icc max 2.8mA",
+    "chip_mA": 0,
+    "supply_mA": 3
+  },
+  "optocoupler": {
+    "_reason": "4N35: phototransistor output draws from load circuit",
+    "chip_mA": 0,
+    "supply_mA": 0
+  },
+  "oscilloscope": {
+    "chip_mA": 0,
+    "supply_mA": 0
+  },
+  "pcf8574": {
+    "_src": "NXP PCF8574 Rev 5: Idd max 100uA",
+    "chip_mA": 0,
+    "supply_mA": 0.1
+  },
+  "photodiode": {
+    "chip_mA": 0,
+    "supply_mA": 0
+  },
+  "pir": {
+    "_src": "HC-SR501 quiescent 50-150uA",
+    "chip_mA": 0,
+    "supply_mA": 0.15
+  },
+  "pmos": {
+    "chip_mA": "circuit",
+    "supply_mA": "circuit"
+  },
+  "pmos_power": {
+    "chip_mA": "circuit",
+    "supply_mA": "circuit"
+  },
+  "pnp": {
+    "chip_mA": "circuit",
+    "supply_mA": "circuit"
+  },
+  "polarized_cap": {
+    "chip_mA": 0,
+    "supply_mA": 0
+  },
+  "potato_battery": {
+    "chip_mA": 0,
+    "supply_mA": 0
+  },
+  "potentiometer": {
+    "chip_mA": 0,
+    "supply_mA": 0
+  },
+  "power_supply": {
+    "chip_mA": 0,
+    "supply_mA": 0
+  },
+  "relay": {
+    "_src": "typical 5V SPDT relay coil ~70 ohm -> 5V/70ohm = ~70mA. SRD-05VDC class.",
+    "chip_mA": 0,
+    "supply_mA": 70
+  },
+  "relay_dpdt": {
+    "_src": "two coils, ~70mA each. DPDT relays with single coil would be ~70mA.",
+    "chip_mA": 0,
+    "supply_mA": 140
+  },
+  "resistor": {
+    "chip_mA": 0,
+    "supply_mA": 0
+  },
+  "rgb_led": {
+    "chip_mA": "circuit",
+    "supply_mA": "circuit"
+  },
+  "servo": {
+    "_src": "SG90-class stall ~350mA (Tower Pro SG90)",
+    "chip_mA": 0,
+    "supply_mA": 350
+  },
+  "seven_segment": {
+    "_per_unit_mA": 20,
+    "_reason": "~20mA per segment, 7 segments + DP; total depends on which are lit",
+    "chip_mA": "circuit",
+    "supply_mA": "circuit"
+  },
+  "slide_switch": {
+    "chip_mA": 0,
+    "supply_mA": 0
+  },
+  "soil_moisture": {
+    "chip_mA": 0.05,
+    "supply_mA": 0.05
+  },
+  "solar_cell": {
+    "chip_mA": 0,
+    "supply_mA": 0
+  },
+  "stc_mcu": {
+    "_src": "STC12C5A60S2; per contract PINOUT.md: Icc typ ~20mA",
+    "chip_mA": 0,
+    "supply_mA": 20
+  },
+  "switch": {
+    "chip_mA": 0,
+    "supply_mA": 0
+  },
+  "temp_sensor": {
+    "_src": "Maxim DS18B20: Icc max 1mA active",
+    "chip_mA": 0,
+    "supply_mA": 1
+  },
+  "tilt_switch": {
+    "chip_mA": 0,
+    "supply_mA": 0
+  },
+  "tilt_switch_v2": {
+    "chip_mA": 0,
+    "supply_mA": 0
+  },
+  "tip120": {
+    "_reason": "Darlington \u2014 collector current set by base drive and load",
+    "chip_mA": "circuit",
+    "supply_mA": "circuit"
+  },
+  "tmp36": {
+    "_src": "Analog Devices TMP36 Iq max 50uA",
+    "chip_mA": 0,
+    "supply_mA": 0.05
+  },
+  "ultrasonic": {
+    "_src": "HC-SR04 operating ~15mA (Elecfreaks)",
+    "chip_mA": 0,
+    "supply_mA": 15
+  },
+  "ultrasonic_3pin": {
+    "_src": "Parallax PING))) ~15mA",
+    "chip_mA": 0,
+    "supply_mA": 15
+  },
+  "usb_a": {
+    "chip_mA": 0,
+    "supply_mA": 0
+  },
+  "vcc": {
+    "chip_mA": 0,
+    "supply_mA": 0
+  },
+  "vibration_motor": {
+    "_src": "coin-type vibration motor 60-100mA typical",
+    "chip_mA": 0,
+    "supply_mA": 80
+  },
+  "vsource": {
+    "chip_mA": 0,
+    "supply_mA": 0
+  },
+  "zener": {
+    "chip_mA": 0,
+    "supply_mA": 0
+  }
 }

@@ -39,7 +39,7 @@ is documented in the JSON sidecar `_note` field, not just here.
 
 | Kind slug | What is uncertain | Assumed | Alternative |
 |---|---|---|---|
-| `seven_segment_clock` | Controller IC | generic clk/dio terminals | HT16K33 (I2C) vs TM1637 (custom 2-wire) — NOT interchangeable |
+| `clock_display` | Controller IC | generic clk/dio terminals | HT16K33 (I2C) vs TM1637 (custom 2-wire) — NOT interchangeable |
 | `attiny85` | ATtiny variant | ATtiny85 (8-pin, usual one) | Could be ATtiny45 or ATtiny25 |
 | `microbit` | Board generation | generic | v1 (nRF51822) vs v2 (nRF52833) |
 | `gas_sensor` | MQ-series variant | generic MQ-style | MQ-2/MQ-3/MQ-4 span air/smoke/alcohol/methane |
@@ -98,12 +98,12 @@ is documented in the JSON sidecar `_note` field, not just here.
 | 36 | `dc_motor` | DC Motor / Gleichstrommotor | a, b | modeled | done | |
 | 37 | `dc_motor_encoder` | DC Motor with Encoder / Motor mit Encoder | a, b, enc_a, enc_b | drawable-only | done | |
 | 38 | `servo` | Micro Servo / Micro-Servo | signal, vcc, gnd | modeled | done | `standard`: SG90-class |
-| 39 | `hobby_gearmotor` | Hobby Gearmotor / Hobby-Getriebemotor | a, b | registry-candidate | done | |
+| 39 | `gearmotor` | Hobby Gearmotor / Hobby-Getriebemotor | a, b | registry-candidate | done | |
 | 40 | `buzzer` | Piezo / Piezo-Summer | a, b | modeled | done | |
 | 41 | `seven_segment` | 7-Segment Display / 7-Segment-Anzeige | (composite) | modeled | done | |
-| 42 | `seven_segment_clock` | 7-Segment Clock Display / 7-Segment-Uhranzeige | clk, dio, vcc, gnd | drawable-only | done | **unverified**: HT16K33 vs TM1637 |
+| 42 | `clock_display` | 7-Segment Clock Display / 7-Segment-Uhranzeige | clk, dio, vcc, gnd | drawable-only | done | **unverified**: HT16K33 vs TM1637 |
 | 43 | `char_lcd` | LCD 16x2 / LCD 16x2 | rs, rw, e, d0-d7, vcc, gnd, vo, bl_a, bl_k | modeled | done | `standard`: HD44780 |
-| 44 | `lcd_i2c` | LCD 16x2 (I2C) / LCD 16x2 (I2C) | vcc, gnd, sda, scl | drawable-only | done | `standard`: HD44780 + PCF8574 |
+| 44 | `char_lcd_i2c` | LCD 16x2 (I2C) / LCD 16x2 (I2C) | vcc, gnd, sda, scl | drawable-only | done | `standard`: HD44780 + PCF8574 |
 
 ## Power (9 kinds)
 
@@ -132,7 +132,7 @@ is documented in the JSON sidecar `_note` field, not just here.
 | 60 | `tip120` | TIP120 Darlington / TIP120-Darlington | base, collector, emitter | drawable-only | done |
 | 61 | `relay` | Relay SPDT / SPDT-Relais | coil_a, coil_b, com, nc, no | modeled | done |
 | 62 | `relay_dpdt` | Relay DPDT / DPDT-Relais | coil_a, coil_b, no1, com1, nc1, no2, com2, nc2 | drawable-only | done |
-| 63 | `motor_driver_l293d` | H-Bridge L293D / H-Bruecke L293D | (16-pin DIP) | registry-candidate | done |
+| 63 | `l293d` | H-Bridge L293D / H-Bruecke L293D | (16-pin DIP) | registry-candidate | done |
 
 ## Logic ICs — DIP family (23 kinds)
 
@@ -236,28 +236,14 @@ Modeled in bw-board, useful, not in the reference catalogue. Kept as extras.
 
 | | Kinds | With art |
 |---|---|---|
-| Reference library match | 107 | 92 |
+| Reference library match | 107 | 105 |
 | Engine-only extras | 11 | 11 |
 | Declined | 1 | — |
-| **Total** | **118 + 1 declined** | **103** |
+| **Total** | **118 + 1 declined** | **116** |
 
-### Art remaining (15 kinds needing art)
+### Art remaining (2 kinds, both low priority)
 
-| Priority | Kind slug | Effort |
+| Kind slug | Effort | Why deferred |
 |---|---|---|
-| 1 | `556` | DIP-gen (14-pin, add pin map) |
-| 2 | `comparator_lm393` | DIP-gen (8-pin) |
-| 3 | `comparator_lm339` | DIP-gen (14-pin) |
-| 4 | `attiny85` | DIP-gen (8-pin) |
-| 5 | `multimeter` | New drawing (instrument) |
-| 6 | `function_gen` | New drawing (instrument) |
-| 7 | `oscilloscope` | New drawing (instrument) |
-| 8 | `breadboard_full` | New drawing |
-| 9 | `breadboard_half` | New drawing |
-| 10 | `breadboard_mini` | New drawing |
-| 11 | `header_8pin` | New drawing (trivial) |
-| 12 | `usb_a` | New drawing (trivial) |
-| 13 | `microbit` | New drawing (board) |
-| 14 | `stc_mcu` | New drawing (board, unique to bw) |
-| 15 | `microbit_breakout` | New drawing (board + breakout) |
-| low | `pololu_motor_ctrl` | New drawing (board, help-page-only) |
+| `microbit_breakout` | New drawing (board + breakout) | Combo part, no consumer in current campaign |
+| `pololu_motor_ctrl` | New drawing (board) | Help-page-only in reference catalogue, no engine model |

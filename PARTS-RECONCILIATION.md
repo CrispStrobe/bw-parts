@@ -31,25 +31,33 @@ are valid but the catalogue granularity is canonical.
 These are cases where the same physical part has a different slug in
 different repos. **bw-parts slug wins.** The owning repo should rename.
 
+### Resolved (bw-parts renamed to match consensus)
+
+| Old bw-parts slug | New canonical | Reason |
+|---|---|---|
+| `hobby_gearmotor` | `gearmotor` | bw-board + bw-circuit-ui both used `gearmotor` |
+| `motor_driver_l293d` | `l293d` | reference catalogue slug; shortest of three |
+| `comparator_lm393` | `lm393` | shorter, matches reference catalogue slug |
+| `comparator_lm339` | `lm339` | shorter, matches reference catalogue slug |
+| `seven_segment_clock` | `clock_display` | bw-board + bw-circuit-ui both used it |
+| `lcd_i2c` | `char_lcd_i2c` | bw-board + bw-circuit-ui both used it |
+| `header_8pin` | `header` | files already used `header`; pin count is a param |
+
+### Still open (other repos need to rename)
+
 | Canonical (bw-parts) | bw-board uses | bw-circuit-ui uses | Action needed |
 |---|---|---|---|
 | `555` | `timer_555` | `555` | bw-board: rename to `555` |
 | `556` | `timer_556` | — | bw-board: rename to `556` |
 | `light_sensor` | `ambient_light` / `phototransistor` | — | bw-board: alias both to `light_sensor` |
-| `hobby_gearmotor` | `gearmotor` | `gearmotor` | bw-parts: accept `gearmotor` as canonical? Or both rename. |
-| `motor_driver_l293d` | `h_bridge` | `l293d` | Three slugs for one part. Propose: `l293d` (shortest, matches reference catalogue slug) |
+| `l293d` | `h_bridge` | `l293d` | bw-board: rename `h_bridge` to `l293d` |
 | `buzzer` | `piezo` | `buzzer` | bw-board: rename to `buzzer` |
 | `pir` | `pir` | `pir_sensor` | bw-circuit-ui: rename to `pir` |
 | `keypad_4x4` | `keypad_4x4` | `keypad` | bw-circuit-ui: rename to `keypad_4x4` |
 | `dc_motor_encoder` | `dc_motor_encoder` | `motor_encoder` | bw-circuit-ui: rename to `dc_motor_encoder` |
-| `comparator_lm393` | `lm393` | — | bw-parts: accept `lm393` (shorter, matches reference catalogue slug) |
-| `comparator_lm339` | `lm339` | — | bw-parts: accept `lm339` |
-| `seven_segment_clock` | `clock_display` | `clock_display` | Propose: `clock_display` (both others use it) |
-| `lcd_i2c` | `char_lcd_i2c` | `char_lcd_i2c` | Propose: `char_lcd_i2c` (both others use it) |
-| `header_8pin` | `header` | `header` | Propose: `header` (simpler; pin count is a param) |
-| `tilt_switch` / `tilt_switch_v2` | `tilt_sensor` | `tilt_sensor` | Propose: `tilt_sensor` (both others use it), variants for 2-pin/4-pin |
-| `dip_switch_spst` / `dip_switch_dpst` | `dip_switch` | `dip_switch` | Both others collapse to one slug; keep separate or use `dip_switch` + variant? |
-| `74hc595` | `shift_register` + `74hc595` | `shift_register` | bw-board has both; UI has old name. DIP slug `74hc595` is canonical for the chip. |
+| `tilt_switch` / `tilt_switch_v2` | `tilt_sensor` | `tilt_sensor` | Open: rename bw-parts to `tilt_sensor` + variant, or keep? |
+| `dip_switch_spst` / `dip_switch_dpst` | `dip_switch` | `dip_switch` | Open: collapse to `dip_switch` + variant, or keep separate? |
+| `74hc595` | `shift_register` + `74hc595` | `shift_register` | bw-board has both; UI has old name. DIP slug `74hc595` is canonical. |
 
 ## Full reconciliation table
 
@@ -95,12 +103,12 @@ Legend: ✓ = present, — = absent, *alias* = present under different slug
 | 36 | `dc_motor` | — | ✓ | ✓ | ✓ | |
 | 37 | `dc_motor_encoder` | + large variant | ✓ | *motor_encoder* | ✓ | |
 | 38 | `servo` | — | ✓ | ✓ | ✓ | |
-| 39 | `hobby_gearmotor` | — | *gearmotor* | *gearmotor* | ✓ | propose rename to `gearmotor` |
+| 39 | `gearmotor` | — | ✓ | ✓ | done | renamed from `hobby_gearmotor` |
 | 40 | `buzzer` | Piezo | *piezo* | ✓ | ✓ | |
 | 41 | `seven_segment` | — | ✓ | ✓ | ✓ | |
-| 42 | `seven_segment_clock` | 4-digit clock | *clock_display* | *clock_display* | ✓ | **unverified**; propose `clock_display` |
+| 42 | `clock_display` | 4-digit clock | ✓ | ✓ | done | renamed from `seven_segment_clock`; **unverified** |
 | 43 | `char_lcd` | LCD 16x2 | ✓ | ✓ | ✓ | |
-| 44 | `lcd_i2c` | LCD 16x2 I2C | *char_lcd_i2c* | *char_lcd_i2c* | ✓ | propose `char_lcd_i2c` |
+| 44 | `char_lcd_i2c` | LCD 16x2 I2C | ✓ | ✓ | done | renamed from `lcd_i2c` |
 | 45 | `battery_9v` | — | ✓ | — | ✓ | engine also has generic `battery` |
 | 46 | `battery_aa` | — | ✓ | — | ✓ | |
 | 47 | `battery_coin` | — | ✓ | — | ✓ | |
@@ -119,7 +127,7 @@ Legend: ✓ = present, — = absent, *alias* = present under different slug
 | 60 | `tip120` | TIP120 Darlington | *darlington_driver* | ✓ | ✓ | |
 | 61 | `relay` | SPDT | ✓ | ✓ | ✓ | |
 | 62 | `relay_dpdt` | DPDT | ✓ | ✓ | ✓ | |
-| 63 | `motor_driver_l293d` | H-bridge | *h_bridge* | *l293d* | ✓ | three slugs; propose `l293d` |
+| 63 | `l293d` | H-bridge | *h_bridge* | ✓ | done | renamed from `motor_driver_l293d`; bw-board still uses `h_bridge` |
 | 64 | `optocoupler` | 4N35 | ✓ | — | ✓ | |
 | 65-81 | `74hc00`..`74hc132` | 17 logic ICs | ✓ (most) | ✓ (6 of 17) | dip-gen | |
 | 82 | `74hc283` | 4-bit Adder | ✓ | — | dip-gen | |
@@ -130,23 +138,23 @@ Legend: ✓ = present, — = absent, *alias* = present under different slug
 | 87 | `74hc75` | Quad Latch | ✓ | — | dip-gen | |
 | 88 | `74hc95` | 4-bit Shift Reg | ✓ | — | dip-gen | |
 | 89 | `555` | NE555 Timer | *timer_555* | ✓ | done | |
-| 90 | `556` | NE556 Dual Timer | *timer_556* | — | pending | |
+| 90 | `556` | NE556 Dual Timer | *timer_556* | — | dip-gen | |
 | 91 | `opamp` | uA741 | ✓ | ✓ | done | |
-| 92 | `comparator_lm393` | LM393 Dual | *lm393* | — | pending | propose `lm393` |
-| 93 | `comparator_lm339` | LM339 Quad | *lm339* | — | pending | propose `lm339` |
+| 92 | `lm393` | LM393 Dual | ✓ | — | dip-gen | renamed from `comparator_lm393` |
+| 93 | `lm339` | LM339 Quad | ✓ | — | dip-gen | renamed from `comparator_lm339` |
 | 94 | `arduino_uno` | — | ✓ (as mcu) | ✓ (as mcu) | done | |
 | 95 | `attiny85` | — | ✓ (avr8js, a7fef9a) | — | dip-gen | **unverified** |
-| 96 | `microbit` | — | — | — | pending | **unverified** |
-| 97 | `stc_mcu` | — | — | — | pending | unique to bw |
-| 98 | `multimeter` | — | — | *meter* | pending | |
+| 96 | `microbit` | — | — | — | done | **unverified** |
+| 97 | `stc_mcu` | — | — | — | done | unique to bw |
+| 98 | `multimeter` | — | — | *meter* | done | |
 | 99 | `power_supply` | — | ✓ (as vsource) | ✓ (as vsource) | done (vsource art) | |
-| 100 | `function_gen` | — | ✓ (as vsource variant) | — | pending | |
-| 101 | `oscilloscope` | — | — | — | pending | |
-| 102 | `breadboard_full` | — | — | *breadboard* | pending | |
-| 103 | `breadboard_half` | — | — | — | pending | |
-| 104 | `breadboard_mini` | — | — | — | pending | |
-| 105 | `header_8pin` | *header* | *header* | pending | propose `header` |
-| 106 | `usb_a` | ✓ | ✓ | pending | |
+| 100 | `function_gen` | — | ✓ (as vsource variant) | — | done | |
+| 101 | `oscilloscope` | — | — | — | done | |
+| 102 | `breadboard_full` | — | — | *breadboard* | done | |
+| 103 | `breadboard_half` | — | — | — | done | |
+| 104 | `breadboard_mini` | — | — | — | done | |
+| 105 | `header` | — | ✓ | ✓ | done | renamed from `header_8pin` |
+| 106 | `usb_a` | ✓ | ✓ | done | |
 | 107 | `microbit_breakout` | — | — | — | pending | |
 | 108 | `pololu_motor_ctrl` | — | — | — | pending | help-page-only |
 | 109 | `switch` | — | ✓ | ✓ | done | engine-only; kept alongside slide_switch |
@@ -178,21 +186,7 @@ bw-board registers these but bw-parts has no catalogue entry:
 | `decade_counter` | Abstract decade counter | Superseded by CD4017; keep as engine shorthand |
 | `ir_transmitter` | IR transmitter | Separate from ir_remote? Clarify |
 
-## Proposed slug renames (for discussion)
+## Proposed slug renames — completed
 
-Where two repos already agree and bw-parts is the outlier, bw-parts
-should rename to match rather than forcing two renames:
-
-| Current bw-parts slug | Proposed rename | Reason |
-|---|---|---|
-| `hobby_gearmotor` | `gearmotor` | bw-board + bw-circuit-ui both use `gearmotor` |
-| `seven_segment_clock` | `clock_display` | bw-board + bw-circuit-ui both use `clock_display` |
-| `lcd_i2c` | `char_lcd_i2c` | bw-board + bw-circuit-ui both use it |
-| `header_8pin` | `header` | bw-board + bw-circuit-ui both use `header` |
-| `comparator_lm393` | `lm393` | shorter, matches reference catalogue slug |
-| `comparator_lm339` | `lm339` | shorter, matches reference catalogue slug |
-| `motor_driver_l293d` | `l293d` | reference catalogue slug; shortest of three |
-| `tilt_switch` + `tilt_switch_v2` | `tilt_sensor` (+ variant) | bw-board + bw-circuit-ui both use `tilt_sensor` |
-| `555` | keep | bw-board should rename `timer_555` → `555` |
-| `buzzer` | keep | bw-board should rename `piezo` → `buzzer` |
-| `pir` | keep | bw-circuit-ui should rename `pir_sensor` → `pir` |
+All 7 bw-parts renames have been executed (see "Resolved" above). The
+remaining open items are for bw-board and bw-circuit-ui to resolve.
