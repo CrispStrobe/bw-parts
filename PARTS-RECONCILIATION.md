@@ -5,7 +5,7 @@
 > Where a slug differs between repos, the canonical slug (this file) wins
 > and the other repo renames once.
 >
-> **Last updated:** 2026-08-09
+> **Last updated:** 2026-08-10
 
 ## Slug conventions
 
@@ -135,7 +135,7 @@ Legend: ✓ = present, — = absent, *alias* = present under different slug
 | 92 | `comparator_lm393` | LM393 Dual | *lm393* | — | pending | propose `lm393` |
 | 93 | `comparator_lm339` | LM339 Quad | *lm339* | — | pending | propose `lm339` |
 | 94 | `arduino_uno` | — | ✓ (as mcu) | ✓ (as mcu) | done | |
-| 95 | `attiny85` | — | — | — | pending | **unverified** |
+| 95 | `attiny85` | — | ✓ (avr8js, a7fef9a) | — | dip-gen | **unverified** |
 | 96 | `microbit` | — | — | — | pending | **unverified** |
 | 97 | `stc_mcu` | — | — | — | pending | unique to bw |
 | 98 | `multimeter` | — | — | *meter* | pending | |
