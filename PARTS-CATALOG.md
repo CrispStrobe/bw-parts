@@ -229,6 +229,10 @@ Modeled in bw-board, useful, not in the reference catalogue. Kept as extras.
 | 116 | `gnd` | Ground reference | done |
 | 117 | `vsource` | Ideal voltage source | done |
 | 118 | `isource` | Ideal current source | done |
+| 119 | `fuse` | Fuse (glass cartridge) | done |
+| 120 | `solenoid` | Solenoid (electromagnetic actuator) | done |
+| 121 | `stepper` | Stepper motor (4-wire bipolar) | done |
+| 122 | `ir_transmitter` | IR LED transmitter | done |
 
 ---
 
@@ -237,10 +241,10 @@ Modeled in bw-board, useful, not in the reference catalogue. Kept as extras.
 | | Kinds | With art |
 |---|---|---|
 | Reference library match | 107 | 107 |
-| Engine-only extras | 11 | 11 |
+| Engine-only extras | 15 | 15 |
 | Declined | 1 | — |
-| **Total** | **118 + 1 declined** | **118** |
+| **Total** | **122 + 1 declined** | **122** |
 
 ### Art status: complete
 
-All 118 parts have SVG art and JSON terminal sidecars. No pending items.
+All 122 parts have SVG art and JSON terminal sidecars. No pending items.

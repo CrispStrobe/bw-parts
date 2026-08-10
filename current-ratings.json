@@ -210,6 +210,11 @@
     "chip_mA": 0,
     "supply_mA": 0
   },
+  "fuse": {
+    "_src": "Passive protective device, draws no current itself",
+    "chip_mA": 0,
+    "supply_mA": 0
+  },
   "gas_sensor": {
     "_src": "MQ-series heater coil ~150mA. Nearly 1/3 of USB budget in a part a learner would not suspect.",
     "chip_mA": 0,
@@ -239,6 +244,11 @@
   },
   "ir_remote": {
     "chip_mA": 0,
+    "supply_mA": 0
+  },
+  "ir_transmitter": {
+    "_src": "Typical IR LED forward current ~20mA",
+    "chip_mA": 20,
     "supply_mA": 0
   },
   "isource": {
@@ -471,10 +481,20 @@
     "chip_mA": 0,
     "supply_mA": 0
   },
+  "solenoid": {
+    "_src": "Coil current varies by solenoid (100mA to >1A), always via driver",
+    "chip_mA": 0,
+    "supply_mA": "circuit"
+  },
   "stc_mcu": {
     "_src": "STC12C5A60S2; per contract PINOUT.md: Icc typ ~20mA",
     "chip_mA": 0,
     "supply_mA": 20
+  },
+  "stepper": {
+    "_src": "Coil current varies by motor and driver; always via H-bridge or driver board",
+    "chip_mA": 0,
+    "supply_mA": "circuit"
   },
   "switch": {
     "chip_mA": 0,

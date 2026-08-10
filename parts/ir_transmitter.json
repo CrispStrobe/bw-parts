@@ -1,0 +1,11 @@
+{
+  "kind": "ir_transmitter",
+  "w": 30,
+  "h": 44,
+  "terminals": [
+    { "name": "anode", "x": 10, "y": 44 },
+    { "name": "cathode", "x": 20, "y": 44 }
+  ],
+  "variants": null,
+  "_note": "IR LED transmitter. Separate from ir_remote (which is a standalone handheld unit) and ir_receiver (which is a 3-pin module). This is just the bare IR LED."
+}
