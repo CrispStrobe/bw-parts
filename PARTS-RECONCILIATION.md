@@ -36,9 +36,9 @@ different repos. **bw-parts slug wins.** The owning repo should rename.
 | Old bw-parts slug | New canonical | Reason |
 |---|---|---|
 | `hobby_gearmotor` | `gearmotor` | bw-board + bw-circuit-ui both used `gearmotor` |
-| `motor_driver_l293d` | `l293d` | reference catalogue slug; shortest of three |
-| `comparator_lm393` | `lm393` | shorter, matches reference catalogue slug |
-| `comparator_lm339` | `lm339` | shorter, matches reference catalogue slug |
+| `motor_driver_l293d` | `l293d` | Tinkercad slug; shortest of three |
+| `comparator_lm393` | `lm393` | shorter, matches Tinkercad slug |
+| `comparator_lm339` | `lm339` | shorter, matches Tinkercad slug |
 | `seven_segment_clock` | `clock_display` | bw-board + bw-circuit-ui both used it |
 | `lcd_i2c` | `char_lcd_i2c` | bw-board + bw-circuit-ui both used it |
 | `header_8pin` | `header` | files already used `header`; pin count is a param |
@@ -78,7 +78,7 @@ Legend: ✓ = present, — = absent, *alias* = present under different slug
 | 11 | `dip_switch_dpst` | — | *dip_switch* | *dip_switch* | ✓ | |
 | 12 | `ldr` | — | ✓ | ✓ | ✓ | |
 | 13 | `photodiode` | — | ✓ | ✓ | ✓ | |
-| 14 | `light_sensor` | Ambient Light Sensor | *ambient_light* | — | ✓ | reference catalogue: phototransistor |
+| 14 | `light_sensor` | Ambient Light Sensor | *ambient_light* | — | ✓ | Tinkercad: phototransistor |
 | 15 | `flex_sensor` | — | ✓ | — | ✓ | |
 | 16 | `force_sensor` | — | ✓ | — | ✓ | |
 | 17 | `ir_receiver` | IR sensor | ✓ | ✓ | ✓ | |

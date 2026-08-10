@@ -42,7 +42,7 @@ photograph, technical drawing, or third-party SVG.
 |---|---|---|---|
 | STC12 pin map: generic 8051 names (PSEN/ALE/EA don't exist) | 8173386 | eeb54b9 | Checked against stc/docs/PINOUT.md |
 | L293D: right-side pins scrambled | initial hand-drawn | f7389af | Audited against TI SLRS008 |
-| 5 art files wrongly deleted during reconciliation | 811bcdc | e3c6ebf | Compared against verified reference catalogue |
+| 5 art files wrongly deleted during reconciliation | 811bcdc | e3c6ebf | Compared against verified Tinkercad library |
 | Current ratings: passives as null instead of 0 | 126a878 | 8882a86 | Disagreement with bw-board's semantics |
 | Vendor name in 8 committed files | various | 25ac1c2, dbfe4f2 | Coordinator caught it; `git grep -il` found 2 more the first scrub missed |
 | Rating schema changed without telling consumer | cf3eb7d | 0516aa1 | Coordinator caught vendored copy holding old shape |

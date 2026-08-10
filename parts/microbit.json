@@ -10,5 +10,5 @@
     { "name": "gnd", "x": 83, "y": 56 }
   ],
   "variants": null,
-  "_note": "The reference catalogue does not confirm micro:bit v1 (nRF51822) vs v2 (nRF52833). This art is generic. Edge connector shows only the 5 large pads accessible without a breakout board."
+  "_note": "Tinkercad does not confirm micro:bit v1 (nRF51822) vs v2 (nRF52833). This art is generic. Edge connector shows only the 5 large pads accessible without a breakout board."
 }

@@ -25,5 +25,5 @@
     }
   ],
   "variants": null,
-  "_note": "Controller IC unverified: The reference catalogue does not name it. Could be HT16K33 (I2C) or TM1637 (custom 2-wire); they are NOT interchangeable. Terminal names here use generic clk/dio which work for TM1637; if HT16K33 is confirmed, rename to scl/sda."
+  "_note": "Controller IC unverified: Tinkercad does not name it. Could be HT16K33 (I2C) or TM1637 (custom 2-wire); they are NOT interchangeable. Terminal names here use generic clk/dio which work for TM1637; if HT16K33 is confirmed, rename to scl/sda."
 }

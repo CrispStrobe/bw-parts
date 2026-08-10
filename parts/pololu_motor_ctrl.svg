@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 60" width="100" height="60">
   <!-- Pololu Simple Motor Controller — bench-style top view -->
   <!-- A board-level motor controller. Takes USB/serial/RC/analog input. -->
-  <!-- Help-page-only in the reference catalogue. -->
+  <!-- Help-page-only in Tinkercad's library. -->
 
   <!-- PCB -->
   <rect x="4" y="4" width="92" height="52" rx="2" fill="#1a3d6b" stroke="#0f2847" stroke-width="0.8"/>

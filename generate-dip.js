@@ -227,7 +227,7 @@ const PIN_MAPS = [
     kind: 'l293d', pinCount: 16, label: 'L293D', sublabel: 'H-BRIDGE',
     pins: ['en1','in1','out1','gnd1','gnd2','out2','in2','vcc2', 'en2','in3','out3','gnd3','gnd4','out4','in4','vcc1'],
   },
-  // ── Added from gap analysis, pin maps from datasheets ───
+  // ── Added from Tinkercad gap analysis, pin maps from datasheets ───
   // 74HC75: TI SN74HC75 datasheet (SCLS154) — 16-pin quad bistable latch
   {
     kind: '74hc75', pinCount: 16, label: '74HC75', sublabel: 'QUAD LATCH',
@@ -279,11 +279,11 @@ const PIN_MAPS = [
   },
   // ── ATtiny85: 8-pin DIP ───────────────────────────────────────────
   // Pin map from Microchip ATtiny85 datasheet.
-  // The reference catalogue does not confirm it is ATtiny85 specifically (unverified).
+  // Tinkercad does not confirm it is ATtiny85 specifically (unverified).
   {
     kind: 'attiny85', pinCount: 8, label: 'ATtiny85', sublabel: 'unverified',
     pins: ['pb5','pb3','pb4','gnd', 'pb0','pb1','pb2','vcc'],
-    _note: 'The reference catalogue shows an 8-pin ATtiny but does not name the variant. ATtiny85 assumed (most common). Could be ATtiny45 or ATtiny25.',
+    _note: 'Tinkercad shows an 8-pin ATtiny but does not name the variant. ATtiny85 assumed (most common). Could be ATtiny45 or ATtiny25.',
   },
 ];
 
