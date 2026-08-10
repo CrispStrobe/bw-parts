@@ -251,6 +251,32 @@ const PIN_MAPS = [
       'p0.2','p0.1','p0.0','vcc',                                // 37-40
     ],
   },
+  // ── NE556 Dual Timer: 14-pin DIP ─────────────────────────────────
+  // Pin map from TI NE556 datasheet (SLFS023)
+  {
+    kind: '556', pinCount: 14, label: 'NE556', sublabel: 'DUAL TIMER',
+    pins: ['1dis','1thr','1ctl','1rst','1out','1trg','gnd', '2trg','2out','2rst','2ctl','2thr','2dis','vcc'],
+  },
+  // ── LM393 Dual Comparator: 8-pin DIP ─────────────────────────────
+  // Pin map from TI LM393 datasheet (SLCS007)
+  {
+    kind: 'lm393', pinCount: 8, label: 'LM393', sublabel: 'DUAL COMP',
+    pins: ['1out','1inp','1inn','gnd', '2inn','2inp','2out','vcc'],
+  },
+  // ── LM339 Quad Comparator: 14-pin DIP ────────────────────────────
+  // Pin map from TI LM339 datasheet (SLCS006)
+  {
+    kind: 'lm339', pinCount: 14, label: 'LM339', sublabel: 'QUAD COMP',
+    pins: ['2out','3out','vcc','4inn','4inp','4out','gnd', '1out','1inp','1inn','2inn','2inp','3inn','3inp'],
+  },
+  // ── ATtiny85: 8-pin DIP ───────────────────────────────────────────
+  // Pin map from Microchip ATtiny85 datasheet.
+  // Tinkercad does not confirm it is ATtiny85 specifically (unverified).
+  {
+    kind: 'attiny85', pinCount: 8, label: 'ATtiny85', sublabel: 'unverified',
+    pins: ['pb5','pb3','pb4','gnd', 'pb0','pb1','pb2','vcc'],
+    _note: 'Tinkercad shows an 8-pin ATtiny but does not name the variant. ATtiny85 assumed (most common). Could be ATtiny45 or ATtiny25.',
+  },
 ];
 
 // ── Main ────────────────────────────────────────────────────────────
