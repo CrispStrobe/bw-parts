@@ -6,27 +6,32 @@
     {
       "name": "p0",
       "x": 19,
-      "y": 56
+      "y": 56,
+      "functions": null
     },
     {
       "name": "p1",
       "x": 35,
-      "y": 56
+      "y": 56,
+      "functions": null
     },
     {
       "name": "p2",
       "x": 51,
-      "y": 56
+      "y": 56,
+      "functions": null
     },
     {
       "name": "3v",
       "x": 67,
-      "y": 56
+      "y": 56,
+      "functions": null
     },
     {
       "name": "gnd",
       "x": 83,
-      "y": 56
+      "y": 56,
+      "functions": null
     }
   ],
   "variants": null,

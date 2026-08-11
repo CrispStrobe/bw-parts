@@ -6,82 +6,98 @@
     {
       "name": "1q",
       "x": 0,
-      "y": 8
+      "y": 8,
+      "functions": null
     },
     {
       "name": "1qn",
       "x": 0,
-      "y": 13
+      "y": 13,
+      "functions": null
     },
     {
       "name": "1d",
       "x": 0,
-      "y": 18
+      "y": 18,
+      "functions": null
     },
     {
       "name": "3_4e",
       "x": 0,
-      "y": 23
+      "y": 23,
+      "functions": null
     },
     {
       "name": "vcc",
       "x": 0,
-      "y": 28
+      "y": 28,
+      "functions": null
     },
     {
       "name": "3d",
       "x": 0,
-      "y": 33
+      "y": 33,
+      "functions": null
     },
     {
       "name": "3qn",
       "x": 0,
-      "y": 38
+      "y": 38,
+      "functions": null
     },
     {
       "name": "3q",
       "x": 0,
-      "y": 43
+      "y": 43,
+      "functions": null
     },
     {
       "name": "4q",
       "x": 70,
-      "y": 43
+      "y": 43,
+      "functions": null
     },
     {
       "name": "4qn",
       "x": 70,
-      "y": 38
+      "y": 38,
+      "functions": null
     },
     {
       "name": "4d",
       "x": 70,
-      "y": 33
+      "y": 33,
+      "functions": null
     },
     {
       "name": "gnd",
       "x": 70,
-      "y": 28
+      "y": 28,
+      "functions": null
     },
     {
       "name": "1_2e",
       "x": 70,
-      "y": 23
+      "y": 23,
+      "functions": null
     },
     {
       "name": "2d",
       "x": 70,
-      "y": 18
+      "y": 18,
+      "functions": null
     },
     {
       "name": "2qn",
       "x": 70,
-      "y": 13
+      "y": 13,
+      "functions": null
     },
     {
       "name": "2q",
       "x": 70,
-      "y": 8
+      "y": 8,
+      "functions": null
     }
   ],
   "variants": null,

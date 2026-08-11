@@ -6,82 +6,98 @@
     {
       "name": "qb",
       "x": 0,
-      "y": 8
+      "y": 8,
+      "functions": null
     },
     {
       "name": "qc",
       "x": 0,
-      "y": 13
+      "y": 13,
+      "functions": null
     },
     {
       "name": "qd",
       "x": 0,
-      "y": 18
+      "y": 18,
+      "functions": null
     },
     {
       "name": "qe",
       "x": 0,
-      "y": 23
+      "y": 23,
+      "functions": null
     },
     {
       "name": "qf",
       "x": 0,
-      "y": 28
+      "y": 28,
+      "functions": null
     },
     {
       "name": "qg",
       "x": 0,
-      "y": 33
+      "y": 33,
+      "functions": null
     },
     {
       "name": "qh",
       "x": 0,
-      "y": 38
+      "y": 38,
+      "functions": null
     },
     {
       "name": "gnd",
       "x": 0,
-      "y": 43
+      "y": 43,
+      "functions": null
     },
     {
       "name": "qh_s",
       "x": 70,
-      "y": 43
+      "y": 43,
+      "functions": null
     },
     {
       "name": "srclr",
       "x": 70,
-      "y": 38
+      "y": 38,
+      "functions": null
     },
     {
       "name": "srclk",
       "x": 70,
-      "y": 33
+      "y": 33,
+      "functions": null
     },
     {
       "name": "rclk",
       "x": 70,
-      "y": 28
+      "y": 28,
+      "functions": null
     },
     {
       "name": "oe",
       "x": 70,
-      "y": 23
+      "y": 23,
+      "functions": null
     },
     {
       "name": "ser",
       "x": 70,
-      "y": 18
+      "y": 18,
+      "functions": null
     },
     {
       "name": "qa",
       "x": 70,
-      "y": 13
+      "y": 13,
+      "functions": null
     },
     {
       "name": "vcc",
       "x": 70,
-      "y": 8
+      "y": 8,
+      "functions": null
     }
   ],
   "variants": null,

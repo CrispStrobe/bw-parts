@@ -6,82 +6,98 @@
     {
       "name": "q5",
       "x": 0,
-      "y": 8
+      "y": 8,
+      "functions": null
     },
     {
       "name": "q1",
       "x": 0,
-      "y": 13
+      "y": 13,
+      "functions": null
     },
     {
       "name": "q0",
       "x": 0,
-      "y": 18
+      "y": 18,
+      "functions": null
     },
     {
       "name": "q2",
       "x": 0,
-      "y": 23
+      "y": 23,
+      "functions": null
     },
     {
       "name": "q6",
       "x": 0,
-      "y": 28
+      "y": 28,
+      "functions": null
     },
     {
       "name": "q7",
       "x": 0,
-      "y": 33
+      "y": 33,
+      "functions": null
     },
     {
       "name": "q3",
       "x": 0,
-      "y": 38
+      "y": 38,
+      "functions": null
     },
     {
       "name": "gnd",
       "x": 0,
-      "y": 43
+      "y": 43,
+      "functions": null
     },
     {
       "name": "q8",
       "x": 70,
-      "y": 43
+      "y": 43,
+      "functions": null
     },
     {
       "name": "q4",
       "x": 70,
-      "y": 38
+      "y": 38,
+      "functions": null
     },
     {
       "name": "q9",
       "x": 70,
-      "y": 33
+      "y": 33,
+      "functions": null
     },
     {
       "name": "co",
       "x": 70,
-      "y": 28
+      "y": 28,
+      "functions": null
     },
     {
       "name": "en",
       "x": 70,
-      "y": 23
+      "y": 23,
+      "functions": null
     },
     {
       "name": "clk",
       "x": 70,
-      "y": 18
+      "y": 18,
+      "functions": null
     },
     {
       "name": "rst",
       "x": 70,
-      "y": 13
+      "y": 13,
+      "functions": null
     },
     {
       "name": "vcc",
       "x": 70,
-      "y": 8
+      "y": 8,
+      "functions": null
     }
   ],
   "variants": null,

@@ -6,12 +6,14 @@
     {
       "name": "probe_a",
       "x": 22,
-      "y": 90
+      "y": 90,
+      "functions": null
     },
     {
       "name": "probe_b",
       "x": 48,
-      "y": 90
+      "y": 90,
+      "functions": null
     }
   ],
   "variants": null,

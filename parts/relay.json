@@ -6,27 +6,32 @@
     {
       "name": "coil_a",
       "x": 15,
-      "y": 50
+      "y": 50,
+      "functions": null
     },
     {
       "name": "coil_b",
       "x": 28,
-      "y": 50
+      "y": 50,
+      "functions": null
     },
     {
       "name": "no",
       "x": 42,
-      "y": 50
+      "y": 50,
+      "functions": null
     },
     {
       "name": "com",
       "x": 52,
-      "y": 50
+      "y": 50,
+      "functions": null
     },
     {
       "name": "nc",
       "x": 62,
-      "y": 50
+      "y": 50,
+      "functions": null
     }
   ],
   "variants": null,

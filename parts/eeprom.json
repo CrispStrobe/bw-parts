@@ -6,22 +6,26 @@
     {
       "name": "sda",
       "x": 25,
-      "y": 33
+      "y": 33,
+      "functions": null
     },
     {
       "name": "scl",
       "x": 45,
-      "y": 33
+      "y": 33,
+      "functions": null
     },
     {
       "name": "vcc",
       "x": 70,
-      "y": 8
+      "y": 8,
+      "functions": null
     },
     {
       "name": "gnd",
       "x": 0,
-      "y": 8
+      "y": 8,
+      "functions": null
     }
   ],
   "variants": null,

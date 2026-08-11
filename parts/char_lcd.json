@@ -6,32 +6,38 @@
     {
       "name": "rs",
       "x": 20,
-      "y": 53
+      "y": 53,
+      "functions": null
     },
     {
       "name": "e",
       "x": 40,
-      "y": 53
+      "y": 53,
+      "functions": null
     },
     {
       "name": "d4",
       "x": 60,
-      "y": 53
+      "y": 53,
+      "functions": null
     },
     {
       "name": "d5",
       "x": 80,
-      "y": 53
+      "y": 53,
+      "functions": null
     },
     {
       "name": "d6",
       "x": 100,
-      "y": 53
+      "y": 53,
+      "functions": null
     },
     {
       "name": "d7",
       "x": 120,
-      "y": 53
+      "y": 53,
+      "functions": null
     }
   ],
   "variants": null,

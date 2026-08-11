@@ -6,17 +6,20 @@
     {
       "name": "5v",
       "x": 12,
-      "y": 48
+      "y": 48,
+      "functions": null
     },
     {
       "name": "3v3",
       "x": 30,
-      "y": 48
+      "y": 48,
+      "functions": null
     },
     {
       "name": "gnd",
       "x": 48,
-      "y": 48
+      "y": 48,
+      "functions": null
     }
   ],
   "variants": null,
