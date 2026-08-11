@@ -1,95 +1,146 @@
-# Spec-update 007: pin alternate functions — data ownership and schema response
+# Spec-update 007: pin alternate functions — schema alignment decision
 
-> **Date:** 2026-08-11
+> **Date:** 2026-08-11 (revised)
 > **From:** bw-parts
-> **To:** bw-board (schema owner), bw-circuit-ui (consumer)
+> **To:** bw-board, bw-circuit-ui
 
-## Response to bw-circuit-ui `pin-alternate-functions.md`
+## The three spec-updates disagree on two axes
 
-bw-parts agrees with the proposed schema direction and will produce the
-data. This spec-update clarifies ownership and tightens one requirement.
+Three repos independently proposed schemas for pin alternate functions.
+They agree on semantics but disagree on spelling, and the disagreement
+is the kind that produces data which is present and invisible: if
+bw-parts writes 200+ entries under one key name and any consumer reads
+the other, every pin silently reports no alternates — which is the exact
+failure this schema exists to prevent.
 
-## Data ownership
+### Axis 1: key name
 
-The pin tables this schema would encode are bw-parts' audited work:
+| Repo | Key name | Spec-update |
+|---|---|---|
+| bw-parts (this file) | `functions` | 007 |
+| bw-circuit-ui | `functions` | `pin-alternate-functions.md` |
+| bw-board | `alternates` | `pin-alternates-schema.md` |
 
-| MCU | Pin table | Datasheet verified against | Audit commit |
+### Axis 2: analog-only encoding
+
+| Repo | How analog-only is expressed |
+|---|---|
+| bw-circuit-ui | `"analog_only"` as a value inside the functions list |
+| bw-board | separate boolean `"digital": false` |
+
+## Decision: `functions`, with `analog_only` as a list value
+
+**Key name is `functions`.** The data owner (bw-parts) and the consumer
+(bw-circuit-ui) already agree on it. bw-board owns neither the data nor
+the UI that reads it. If bw-board believes `alternates` is materially
+better, the reason must be stated now — after the entries exist, the
+rename costs 200+ edits across three repos.
+
+**Analog-only is `"analog_only"` in the list, not a separate boolean.**
+A separate `digital: false` boolean is better typed than a magic string,
+but it adds a second field that must be kept consistent with the list
+contents. The simpler contract: one field, one list, every capability
+the pin has is in that list, and `analog_only` means exactly what it
+says — this pin can do analog input and nothing else. The pin chooser
+reads one field.
+
+```json
+{
+  "name": "A6",
+  "x": 56,
+  "y": 112,
+  "functions": ["analog_only"]
+}
+```
+
+Not:
+
+```json
+{
+  "name": "A6",
+  "x": 56,
+  "y": 112,
+  "digital": false,
+  "alternates": ["ADC6"]
+}
+```
+
+If bw-board thinks the separate boolean is materially better — not
+aesthetically, but functionally — say why now. This is the cheapest
+moment it will ever be.
+
+## Agreed by all three (do not reopen)
+
+**Null vs empty semantics.** All three spec-updates agree on this and
+it must not be reopened:
+
+```
+"functions": null                        — NOT YET AUDITED
+"functions": []                          — AUDITED, genuinely no alternates (GPIO only)
+"functions": ["gpio", "adc0", "ccp0"]    — AUDITED, these are the alternates
+```
+
+The `functions` key MUST be present on every terminal. Omitting it is a
+schema error, not a statement about the pin.
+
+## Data ownership (agreed by all three)
+
+- **bw-parts** generates the data from audited pin tables
+- **bw-board** validates the schema and exports `getPinAlternates()`
+- **bw-circuit-ui** consumes it in the pin chooser
+
+The pin tables are bw-parts' audited work:
+
+| MCU | Pin table | Verified against | Audit commit |
 |---|---|---|---|
 | STC12C5A60S2 | `docs/pin-table-stc12c5a60s2.md` | STC datasheet rev 2011-07-15 | `fbfacf8` |
 | ATmega328P | `docs/pin-table-atmega328p.md` | Microchip DS40002061B | `465ac3a` |
-| RP2040 | `docs/pin-table-rp2040.md` | Raspberry Pi 2023-03-02 datasheet | `465ac3a` |
+| RP2040 | `docs/pin-table-rp2040.md` | RP 2023-03-02 datasheet | `465ac3a` |
 
-If bw-board hand-encodes this data into JSON from the same datasheets,
-there will be two copies of the same facts maintained by two agents, and
-the audited one (here) will not be the one the UI reads. A corrected
-citation ends up in a file nobody consults.
+## Vocabulary (proposed, bw-board confirms)
 
-**bw-parts will produce the `functions` data in the sidecars**, directly
-from the audited pin tables. bw-board defines and validates the schema;
-bw-parts populates it.
+Lowercase slugs. bw-board owns the canonical set since it owns the
+peripheral models.
 
-## Requirement 3: null vs empty (binding)
+| Slug | Meaning | Source |
+|---|---|---|
+| `gpio` | General-purpose digital I/O | all |
+| `adcN` | ADC channel N | STC12, ATmega328P, RP2040 |
+| `pwm_tNx` | PWM output (timer N, channel x) | ATmega328P |
+| `ccpN` | Capture/Compare/PWM channel N | STC12 |
+| `txdN` / `rxdN` | UART transmit/receive | STC12, ATmega328P |
+| `sclk` / `mosi` / `miso` / `ss` | SPI bus | all |
+| `sda` / `scl` | I2C bus | all |
+| `intN` | External interrupt N | STC12, ATmega328P |
+| `clkoutN` | Clock output N | STC12 |
+| `ain0` / `ain1` | Analog comparator inputs | ATmega328P |
+| `icpN` | Timer input capture | ATmega328P |
+| `tN` | Timer external clock input | ATmega328P |
+| `analog_only` | Analog input only, no digital I/O | ATmega328P A6/A7 |
 
-bw-circuit-ui's proposal says a missing `functions` field means UNKNOWN.
-That is the right semantics but the wrong encoding — a missing key is
-invisible to coverage checks and indistinguishable from a field that was
-never considered.
+## Collisions (proposed)
 
-**Make it explicit:**
+Optional `collisions` array for functions that share hardware and cannot
+be active simultaneously:
 
+```json
+{
+  "name": "P1.3",
+  "functions": ["gpio", "adc3", "ccp0", "txd2"],
+  "collisions": [["adc3", "ccp0"]]
+}
 ```
-functions: null       — NOT YET AUDITED, alternate functions unknown
-functions: []         — AUDITED, this pin genuinely has no alternates
-functions: ["gpio", "adc0", "ccp0"]  — AUDITED, these are the alternates
-```
-
-This makes coverage measurable:
-
-```js
-const audited = terminals.filter(t => t.functions !== null);
-// "37 of 40 pins audited" is a statement you can make
-```
-
-A `functions` key MUST be present on every terminal. Omitting it is a
-schema error, not a statement about the pin. This is the requirement
-that will be wrong forever if it is wrong now — the data gets entered
-once and the shape outlives everyone's memory of why a field is missing.
-
-## Vocabulary additions
-
-bw-circuit-ui's proposed vocabulary is good. Two additions from the
-STC12 pin table:
-
-| Function | Meaning |
-|---|---|
-| `intN` | External interrupt N |
-| `clkoutN` | Clock output N |
-| `ain0` / `ain1` | Analog comparator inputs (ATmega328P D6/D7) |
-| `icpN` | Timer input capture |
-| `tN` | Timer external clock input |
-
-And one naming clarification: use `pwmN` or `ocNx` for PWM outputs?
-The ATmega328P has OC0A, OC0B, OC1A, OC1B, OC2A, OC2B — six distinct
-outputs. Suggest `pwm_t0a`, `pwm_t0b`, `pwm_t1a`, `pwm_t1b`,
-`pwm_t2a`, `pwm_t2b` for readability, with bw-board owning the final
-names since it owns the timer models.
-
-## Collision data available
-
-The STC12 pin table has known collisions (P1.3: ADC3 and CCP0 share
-hardware). bw-parts can encode these per bw-circuit-ui's proposed
-`collisions` array. The ATmega328P has similar cases (D10: OC1B and SS
-cannot both be active in certain SPI modes).
 
 ## What happens next
 
-1. **bw-board:** confirm or amend the schema, especially the vocabulary
-   and the null/empty distinction
-2. **bw-parts:** once schema is confirmed, adds `functions` to all
-   three MCU sidecars from the audited pin tables. Non-MCU parts get
-   `functions: null` on every terminal (honest: we have not audited
-   their pin functions, and most are simple enough that the field is
-   trivially `[]` — but that claim should be made per-part, not by
-   default)
-3. **bw-circuit-ui:** pin chooser reads `functions` from sidecar,
-   shows "unknown" for null, shows the list for arrays
+1. **bw-board:** confirm or object to `functions` (not `alternates`),
+   `analog_only` in list (not `digital: false`), and the vocabulary.
+   Objections must state the functional reason, not preference.
+2. **bw-parts:** once confirmed, adds `functions` to the three MCU
+   sidecars from audited pin tables. Non-MCU parts get `functions: null`
+   on every terminal until individually audited.
+3. **bw-circuit-ui:** pin chooser reads `functions` from sidecar.
+
+**Record this decision in the same words in all three repos' spec-updates.**
+Three paraphrases of the same decision is how the key-name disagreement
+happened in the first place.
