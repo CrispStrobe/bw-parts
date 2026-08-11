@@ -80,10 +80,18 @@ raises coverage from 13% is improving something people can see.
 gas_sensor — need external confirmation of which specific component
 the catalog entry represents.
 
-**Licence not settled.** A `LICENSE` file (MPL-2.0) is present and
-pushed, but the owner has not confirmed this choice. A file on disk
-reads as decided — it is not. The next session must not treat it as
-final without owner confirmation.
+**Licence settled: MPL-2.0.** Owner-confirmed for bw-parts,
+bw-circuit-ui, bw-cfront, bw-bundle, and sb3-creator. The reasoning:
+MPL-2.0 requires attribution, keeps improvements open at file level,
+permits combination into a larger work under other terms, and §3.3
+leaves the door open to GPL or AGPL later (the reverse would not).
+sb3-creator was explicitly relicensed from AGPL-3.0 to MPL-2.0
+because AGPL anywhere in a bundle blocks app-store distribution
+(brickwright-lite vendors ten of its files into a BSD-3 tree).
+Repos NOT under MPL are constrained by upstream: ucsim-stc (GPL-2,
+inherited from ucsim), emu8051-stc (MIT, inherited from Jari Komppa),
+brickwright-lite (BSD-3, from upstream), stc lab (MIT + Apache-2.0
+NOTICE for two derived examples). Do not reopen.
 
 ## Open — owned elsewhere
 
