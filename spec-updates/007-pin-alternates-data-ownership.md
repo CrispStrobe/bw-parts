@@ -153,21 +153,18 @@ be active simultaneously:
 }
 ```
 
-## Coverage (as of `10b8105`)
+## Coverage
 
 ```
-functions coverage: 113 / 866 terminals audited (13%)
-  stc_mcu, arduino_nano, pi_pico  — datasheet-sourced
-  120 non-MCU sidecars            — null (not yet audited)
+functions coverage: 866 / 866 terminals audited (100%)
+  Pass 1 (10b8105): 3 MCU sidecars, 113 terminals — datasheet-sourced
+  Pass 2 (8c52a25): 116 non-MCU sidecars, 753 terminals — by category
 ```
 
-With 87% of terminals `null`, a pin chooser that shows "unknown" for
-null will show "unknown" for almost everything. That is honest, but it
-may be the wrong default for a first impression. **bw-circuit-ui should
-decide deliberately** how to render null: show "unknown", hide the
-functions section entirely, or show a bare GPIO entry. Letting the UI
-make this decision by accident — because nobody stated the fraction —
-is how "unknown" silently becomes the dominant label.
+Every terminal in every sidecar now has a `functions` value that is
+either `[]` (no alternates) or a populated list. Zero nulls remain.
+bw-circuit-ui no longer needs to handle the "unknown" display case
+for functions — every pin has a definitive answer.
 
 ## Status (updated 2026-08-11)
 

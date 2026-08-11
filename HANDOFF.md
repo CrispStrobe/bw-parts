@@ -11,9 +11,10 @@
 - **Breadboard footprints** on all 123 sidecars (`b44aec7`):
   `refTerminal`, `leads`, `straddlesGutter`, `minCols` — consumed
   by bw-circuit-ui for breadboard placement
-- **`functions` field on all 866 terminals** (`10b8105`), 113 audited
-  from datasheets, 753 `null` (not yet audited). Schema per spec-update
-  007, confirmed by all three repos
+- **`functions` field on all 866 terminals** — 100% coverage.
+  Pass 1 (`10b8105`): 3 MCU sidecars, 113 terminals from datasheets.
+  Pass 2 (`8c52a25`): 116 non-MCU sidecars, 753 terminals by category.
+  Schema per spec-update 007, confirmed by all three repos
 - **Three datasheet-audited pin tables:**
   - STC12C5A60S2 vs datasheet rev 2011-07-15 (`fbfacf8`) — 40 pins,
     three-way check against `stc/docs/PINOUT.md`
@@ -64,17 +65,9 @@ with updated lookup tables.
 
 ## Open — owned by bw-parts
 
-**753 terminals with `functions: null` (87%).** Coverage moves by
-auditing sidecars against datasheets — the method is established
-(read the pin table, map to vocabulary slugs, add to the lookup in
-`scripts/add-functions-to-sidecars.py`, re-run). Most non-MCU parts
-are simple (resistor: genuinely `[]`, LED: genuinely `[]`) so a bulk
-pass could raise coverage quickly. The claim must be made per-part,
-not by default.
-
-**This data is now rendered to users.** bw-circuit-ui's `c4f349e`
-shows `null` on screen as "GPIO ?" for 87% of terminals. Whoever
-raises coverage from 13% is improving something people can see.
+**Functions coverage: 100% (866/866).** No nulls remain. New parts
+added in the future need a `functions` entry on every terminal — use
+`scripts/audit-simple-parts-functions.py` as the template.
 
 **4 unverified identifications:** clock_display, attiny85, microbit,
 gas_sensor — need external confirmation of which specific component
