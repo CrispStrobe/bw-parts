@@ -64,20 +64,21 @@ The Uno and Nano are 5V.
 terminals, art, and pin-function documentation. It did not deliver and
 did not design:
 
-- An AVR execution model for the ATmega328P (Nano/Uno)
-- A Cortex-M0+ execution model for the RP2040 (Pico)
 - An RP2040 peripheral model (PIO, DMA, dual-core, flexible I/O mux)
-- Debug or trace support for either architecture
+- Debug or trace support for AVR or ARM architectures
 
-bw-board's current simulation and debug capability — `stc12_trace`, the
-emu8051/ucsim targets, the `DEBUG-CONTROL-MODEL.md` capability matrix —
-is 8051-specific. Neither AVR nor ARM is served by any of it. The Uno
-already has `modeled (avr8js)` in the catalog, meaning avr8js handles
-AVR execution; the Pico has no execution engine at all (`drawable-only`).
+### Execution engine status (updated 2026-08-11)
 
-**Adding board parts is cheap and is done. Adding non-8051 execution
-is a different project.** This spec-update does not propose or scope
-that project — that is an owner decision.
+| Board | Engine | Status |
+|---|---|---|
+| `arduino_uno` | avr8js | modeled — AVR execution via avr8js |
+| `arduino_nano` | avr8js | modeled — same ATmega328P as Uno |
+| `pi_pico` | rp2040js | modeled — lite has `rp2040js-adapter.js` with UF2 image loading and timing test (`bc6476d`, `9f48ad2`, `d044648`) |
+
+The original version of this spec-update (2026-08-10) stated the Pico
+had no execution engine (`drawable-only`). That was true when written.
+lite has since added an RP2040 adapter, making the Pico executable.
+The PARTS-CATALOG.md engine column has been updated to match.
 
 ## Datasheet audit trail
 
