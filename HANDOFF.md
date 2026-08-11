@@ -80,7 +80,10 @@ raises coverage from 13% is improving something people can see.
 gas_sensor — need external confirmation of which specific component
 the catalog entry represents.
 
-**No licence file.** The owner has not ruled.
+**Licence not settled.** A `LICENSE` file (MPL-2.0) is present and
+pushed, but the owner has not confirmed this choice. A file on disk
+reads as decided — it is not. The next session must not treat it as
+final without owner confirmation.
 
 ## Open — owned elsewhere
 
