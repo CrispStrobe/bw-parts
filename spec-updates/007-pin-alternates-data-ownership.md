@@ -86,8 +86,30 @@ schema error, not a statement about the pin.
 ## Data ownership (agreed by all three)
 
 - **bw-parts** generates the data from audited pin tables
-- **bw-board** validates the schema and exports `getPinAlternates()`
+- **bw-board** validates the schema and exports `getPinFunctions()`
 - **bw-circuit-ui** consumes it in the pin chooser
+
+### Two implementations of this schema
+
+The `functions` field is interpreted in two places:
+
+| Repo | File | What it does |
+|---|---|---|
+| bw-board | `src/pin-functions.js` | `getPinFunctions(boardKind, pinName)` — engine-side accessor, 1231 tests |
+| bw-circuit-ui | `src/model/pin-functions.js` | Reads vendored sidecars directly for UI pin chooser |
+
+This split is architecturally correct — bw-circuit-ui should not import
+across a sibling repo path, and the sidecars are already vendored. But
+the four states (`null`, `[]`, `[...]`, `["analog_only"]`) are now
+handled in two files that do not reference each other. As of 2026-08-11
+both agree on all four states.
+
+**Anyone changing the schema must update both accessors.** A fifth state
+or a change to what `analog_only` means that updates one side only will
+not fail — the UI will render one thing and the engine will believe
+another, and the first symptom will be a pin that behaves unlike its
+label. Each file should name the other in a comment so the second call
+site is discoverable from the first.
 
 The pin tables are bw-parts' audited work:
 
@@ -131,16 +153,29 @@ be active simultaneously:
 }
 ```
 
-## What happens next
+## Coverage (as of `10b8105`)
 
-1. **bw-board:** confirm or object to `functions` (not `alternates`),
-   `analog_only` in list (not `digital: false`), and the vocabulary.
-   Objections must state the functional reason, not preference.
-2. **bw-parts:** once confirmed, adds `functions` to the three MCU
-   sidecars from audited pin tables. Non-MCU parts get `functions: null`
-   on every terminal until individually audited.
-3. **bw-circuit-ui:** pin chooser reads `functions` from sidecar.
+```
+functions coverage: 113 / 866 terminals audited (13%)
+  stc_mcu, arduino_nano, pi_pico  — datasheet-sourced
+  120 non-MCU sidecars            — null (not yet audited)
+```
 
-**Record this decision in the same words in all three repos' spec-updates.**
+With 87% of terminals `null`, a pin chooser that shows "unknown" for
+null will show "unknown" for almost everything. That is honest, but it
+may be the wrong default for a first impression. **bw-circuit-ui should
+decide deliberately** how to render null: show "unknown", hide the
+functions section entirely, or show a bare GPIO entry. Letting the UI
+make this decision by accident — because nobody stated the fraction —
+is how "unknown" silently becomes the dominant label.
+
+## Status (updated 2026-08-11)
+
+Schema confirmed by all three repos:
+- bw-board `b376472`: adopted `functions` (not `alternates`)
+- bw-circuit-ui `9d7d01e`: adopted same
+- bw-parts `10b8105`: populated all 866 terminals
+
+**Record schema changes in the same words in all three repos' spec-updates.**
 Three paraphrases of the same decision is how the key-name disagreement
 happened in the first place.
