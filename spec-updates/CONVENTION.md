@@ -49,11 +49,21 @@ there was no acknowledgement to read.
 At **session start** and after **completing any task**, run:
 
 ```bash
-ls ../bw-parts/spec-updates/
-ls ../bw-board/spec-updates/
-ls ../bw-circuit-ui/spec-updates/
-# ... any other repos you consume from
+ls -d /mnt/volume1/code/*/spec-updates/ | while read dir; do
+  echo "=== $dir ===" && ls "$dir"
+done
 ```
+
+**Enumerate the filesystem, not a remembered list.** The glob
+`/mnt/volume1/code/*/spec-updates/` discovers every producer that
+exists, including ones you have never exchanged with. A hardcoded
+list of known correspondents misses exactly the traffic a convention
+exists to catch — established pairs are already talking.
+
+This was tested: bw-blocks scanned bw-board and bw-parts (its known
+correspondents) and missed `bw-cfront/spec-updates/array-subscript-dialect.md`
+(a new producer it had never had traffic from). The glob would have
+found it.
 
 Unread items are visible by number. If you last acted on 005, anything
 numbered 006+ is new.
