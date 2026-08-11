@@ -7,19 +7,19 @@
       "name": "vcc",
       "x": 14,
       "y": 36,
-      "functions": null
+      "functions": []
     },
     {
       "name": "sig",
       "x": 24,
       "y": 36,
-      "functions": null
+      "functions": []
     },
     {
       "name": "gnd",
       "x": 34,
       "y": 36,
-      "functions": null
+      "functions": []
     }
   ],
   "variants": null,

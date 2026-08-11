@@ -7,97 +7,117 @@
       "name": "a0",
       "x": 0,
       "y": 8,
-      "functions": null
+      "functions": []
     },
     {
       "name": "a1",
       "x": 0,
       "y": 13,
-      "functions": null
+      "functions": []
     },
     {
       "name": "a2",
       "x": 0,
       "y": 18,
-      "functions": null
+      "functions": []
     },
     {
       "name": "p0",
       "x": 0,
       "y": 23,
-      "functions": null
+      "functions": [
+        "gpio"
+      ]
     },
     {
       "name": "p1",
       "x": 0,
       "y": 28,
-      "functions": null
+      "functions": [
+        "gpio"
+      ]
     },
     {
       "name": "p2",
       "x": 0,
       "y": 33,
-      "functions": null
+      "functions": [
+        "gpio"
+      ]
     },
     {
       "name": "p3",
       "x": 0,
       "y": 38,
-      "functions": null
+      "functions": [
+        "gpio"
+      ]
     },
     {
       "name": "vss",
       "x": 0,
       "y": 43,
-      "functions": null
+      "functions": []
     },
     {
       "name": "p4",
       "x": 70,
       "y": 43,
-      "functions": null
+      "functions": [
+        "gpio"
+      ]
     },
     {
       "name": "p5",
       "x": 70,
       "y": 38,
-      "functions": null
+      "functions": [
+        "gpio"
+      ]
     },
     {
       "name": "p6",
       "x": 70,
       "y": 33,
-      "functions": null
+      "functions": [
+        "gpio"
+      ]
     },
     {
       "name": "p7",
       "x": 70,
       "y": 28,
-      "functions": null
+      "functions": [
+        "gpio"
+      ]
     },
     {
       "name": "int",
       "x": 70,
       "y": 23,
-      "functions": null
+      "functions": []
     },
     {
       "name": "scl",
       "x": 70,
       "y": 18,
-      "functions": null
+      "functions": [
+        "scl"
+      ]
     },
     {
       "name": "sda",
       "x": 70,
       "y": 13,
-      "functions": null
+      "functions": [
+        "sda"
+      ]
     },
     {
       "name": "vdd",
       "x": 70,
       "y": 8,
-      "functions": null
+      "functions": []
     }
   ],
   "variants": null,

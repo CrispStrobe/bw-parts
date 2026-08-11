@@ -7,49 +7,49 @@
       "name": "gnd",
       "x": 0,
       "y": 8,
-      "functions": null
+      "functions": []
     },
     {
       "name": "trigger",
       "x": 0,
       "y": 18,
-      "functions": null
+      "functions": []
     },
     {
       "name": "output",
       "x": 0,
       "y": 28,
-      "functions": null
+      "functions": []
     },
     {
       "name": "reset",
       "x": 0,
       "y": 38,
-      "functions": null
+      "functions": []
     },
     {
       "name": "vcc",
       "x": 60,
       "y": 8,
-      "functions": null
+      "functions": []
     },
     {
       "name": "discharge",
       "x": 60,
       "y": 18,
-      "functions": null
+      "functions": []
     },
     {
       "name": "threshold",
       "x": 60,
       "y": 28,
-      "functions": null
+      "functions": []
     },
     {
       "name": "control",
       "x": 60,
       "y": 38,
-      "functions": null
+      "functions": []
     }
   ],
   "variants": null,

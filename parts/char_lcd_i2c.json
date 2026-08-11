@@ -7,25 +7,29 @@
       "name": "vcc",
       "x": 56,
       "y": 56,
-      "functions": null
+      "functions": []
     },
     {
       "name": "gnd",
       "x": 64,
       "y": 56,
-      "functions": null
+      "functions": []
     },
     {
       "name": "sda",
       "x": 72,
       "y": 56,
-      "functions": null
+      "functions": [
+        "sda"
+      ]
     },
     {
       "name": "scl",
       "x": 80,
       "y": 56,
-      "functions": null
+      "functions": [
+        "scl"
+      ]
     }
   ],
   "variants": null,

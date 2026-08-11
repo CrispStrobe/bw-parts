@@ -7,13 +7,13 @@
       "name": "out",
       "x": 24,
       "y": 56,
-      "functions": null
+      "functions": []
     },
     {
       "name": "gnd",
       "x": 40,
       "y": 56,
-      "functions": null
+      "functions": []
     }
   ],
   "variants": null,

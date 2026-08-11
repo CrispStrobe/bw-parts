@@ -7,97 +7,97 @@
       "name": "b",
       "x": 0,
       "y": 8,
-      "functions": null
+      "functions": []
     },
     {
       "name": "c",
       "x": 0,
       "y": 13,
-      "functions": null
+      "functions": []
     },
     {
       "name": "lt",
       "x": 0,
       "y": 18,
-      "functions": null
+      "functions": []
     },
     {
       "name": "bi",
       "x": 0,
       "y": 23,
-      "functions": null
+      "functions": []
     },
     {
       "name": "le",
       "x": 0,
       "y": 28,
-      "functions": null
+      "functions": []
     },
     {
       "name": "d",
       "x": 0,
       "y": 33,
-      "functions": null
+      "functions": []
     },
     {
       "name": "a",
       "x": 0,
       "y": 38,
-      "functions": null
+      "functions": []
     },
     {
       "name": "gnd",
       "x": 0,
       "y": 43,
-      "functions": null
+      "functions": []
     },
     {
       "name": "e",
       "x": 70,
       "y": 43,
-      "functions": null
+      "functions": []
     },
     {
       "name": "d_out",
       "x": 70,
       "y": 38,
-      "functions": null
+      "functions": []
     },
     {
       "name": "c_out",
       "x": 70,
       "y": 33,
-      "functions": null
+      "functions": []
     },
     {
       "name": "b_out",
       "x": 70,
       "y": 28,
-      "functions": null
+      "functions": []
     },
     {
       "name": "a_out",
       "x": 70,
       "y": 23,
-      "functions": null
+      "functions": []
     },
     {
       "name": "g",
       "x": 70,
       "y": 18,
-      "functions": null
+      "functions": []
     },
     {
       "name": "f",
       "x": 70,
       "y": 13,
-      "functions": null
+      "functions": []
     },
     {
       "name": "vcc",
       "x": 70,
       "y": 8,
-      "functions": null
+      "functions": []
     }
   ],
   "variants": null,

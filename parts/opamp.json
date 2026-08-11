@@ -7,19 +7,19 @@
       "name": "inp",
       "x": 0,
       "y": 15,
-      "functions": null
+      "functions": []
     },
     {
       "name": "inn",
       "x": 0,
       "y": 35,
-      "functions": null
+      "functions": []
     },
     {
       "name": "out",
       "x": 60,
       "y": 25,
-      "functions": null
+      "functions": []
     }
   ],
   "variants": null,

@@ -7,85 +7,85 @@
       "name": "1a",
       "x": 0,
       "y": 8,
-      "functions": null
+      "functions": []
     },
     {
       "name": "1y",
       "x": 0,
       "y": 13,
-      "functions": null
+      "functions": []
     },
     {
       "name": "2a",
       "x": 0,
       "y": 18,
-      "functions": null
+      "functions": []
     },
     {
       "name": "2y",
       "x": 0,
       "y": 23,
-      "functions": null
+      "functions": []
     },
     {
       "name": "3a",
       "x": 0,
       "y": 28,
-      "functions": null
+      "functions": []
     },
     {
       "name": "3y",
       "x": 0,
       "y": 33,
-      "functions": null
+      "functions": []
     },
     {
       "name": "gnd",
       "x": 0,
       "y": 38,
-      "functions": null
+      "functions": []
     },
     {
       "name": "4y",
       "x": 70,
       "y": 38,
-      "functions": null
+      "functions": []
     },
     {
       "name": "4a",
       "x": 70,
       "y": 33,
-      "functions": null
+      "functions": []
     },
     {
       "name": "5y",
       "x": 70,
       "y": 28,
-      "functions": null
+      "functions": []
     },
     {
       "name": "5a",
       "x": 70,
       "y": 23,
-      "functions": null
+      "functions": []
     },
     {
       "name": "6y",
       "x": 70,
       "y": 18,
-      "functions": null
+      "functions": []
     },
     {
       "name": "6a",
       "x": 70,
       "y": 13,
-      "functions": null
+      "functions": []
     },
     {
       "name": "vcc",
       "x": 70,
       "y": 8,
-      "functions": null
+      "functions": []
     }
   ],
   "variants": null,

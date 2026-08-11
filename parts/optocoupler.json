@@ -7,25 +7,25 @@
       "name": "anode",
       "x": 0,
       "y": 8,
-      "functions": null
+      "functions": []
     },
     {
       "name": "cathode",
       "x": 0,
       "y": 14,
-      "functions": null
+      "functions": []
     },
     {
       "name": "emitter",
       "x": 48,
       "y": 20,
-      "functions": null
+      "functions": []
     },
     {
       "name": "collector",
       "x": 48,
       "y": 14,
-      "functions": null
+      "functions": []
     }
   ],
   "variants": null,

@@ -7,31 +7,31 @@
       "name": "coil_a",
       "x": 15,
       "y": 50,
-      "functions": null
+      "functions": []
     },
     {
       "name": "coil_b",
       "x": 28,
       "y": 50,
-      "functions": null
+      "functions": []
     },
     {
       "name": "no",
       "x": 42,
       "y": 50,
-      "functions": null
+      "functions": []
     },
     {
       "name": "com",
       "x": 52,
       "y": 50,
-      "functions": null
+      "functions": []
     },
     {
       "name": "nc",
       "x": 62,
       "y": 50,
-      "functions": null
+      "functions": []
     }
   ],
   "variants": null,

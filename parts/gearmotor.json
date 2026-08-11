@@ -7,13 +7,13 @@
       "name": "a",
       "x": 57,
       "y": 70,
-      "functions": null
+      "functions": []
     },
     {
       "name": "b",
       "x": 64,
       "y": 70,
-      "functions": null
+      "functions": []
     }
   ],
   "variants": null,

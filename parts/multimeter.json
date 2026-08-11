@@ -7,13 +7,13 @@
       "name": "probe_a",
       "x": 22,
       "y": 90,
-      "functions": null
+      "functions": []
     },
     {
       "name": "probe_b",
       "x": 48,
       "y": 90,
-      "functions": null
+      "functions": []
     }
   ],
   "variants": null,

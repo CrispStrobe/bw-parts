@@ -7,37 +7,37 @@
       "name": "rs",
       "x": 20,
       "y": 53,
-      "functions": null
+      "functions": []
     },
     {
       "name": "e",
       "x": 40,
       "y": 53,
-      "functions": null
+      "functions": []
     },
     {
       "name": "d4",
       "x": 60,
       "y": 53,
-      "functions": null
+      "functions": []
     },
     {
       "name": "d5",
       "x": 80,
       "y": 53,
-      "functions": null
+      "functions": []
     },
     {
       "name": "d6",
       "x": 100,
       "y": 53,
-      "functions": null
+      "functions": []
     },
     {
       "name": "d7",
       "x": 120,
       "y": 53,
-      "functions": null
+      "functions": []
     }
   ],
   "variants": null,

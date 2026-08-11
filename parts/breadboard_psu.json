@@ -7,19 +7,19 @@
       "name": "5v",
       "x": 12,
       "y": 48,
-      "functions": null
+      "functions": []
     },
     {
       "name": "3v3",
       "x": 30,
       "y": 48,
-      "functions": null
+      "functions": []
     },
     {
       "name": "gnd",
       "x": 48,
       "y": 48,
-      "functions": null
+      "functions": []
     }
   ],
   "variants": null,

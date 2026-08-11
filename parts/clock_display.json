@@ -7,25 +7,25 @@
       "name": "clk",
       "x": 18,
       "y": 36,
-      "functions": null
+      "functions": []
     },
     {
       "name": "dio",
       "x": 28,
       "y": 36,
-      "functions": null
+      "functions": []
     },
     {
       "name": "vcc",
       "x": 38,
       "y": 36,
-      "functions": null
+      "functions": []
     },
     {
       "name": "gnd",
       "x": 48,
       "y": 36,
-      "functions": null
+      "functions": []
     }
   ],
   "variants": null,

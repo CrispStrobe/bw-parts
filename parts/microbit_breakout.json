@@ -7,61 +7,76 @@
       "name": "p0",
       "x": 4,
       "y": 64,
-      "functions": null
+      "functions": [
+        "gpio",
+        "adc0"
+      ]
     },
     {
       "name": "p1",
       "x": 4,
       "y": 72,
-      "functions": null
+      "functions": [
+        "gpio",
+        "adc1"
+      ]
     },
     {
       "name": "p2",
       "x": 4,
       "y": 80,
-      "functions": null
+      "functions": [
+        "gpio",
+        "adc2"
+      ]
     },
     {
       "name": "3v_l",
       "x": 4,
       "y": 88,
-      "functions": null
+      "functions": []
     },
     {
       "name": "gnd_l",
       "x": 4,
       "y": 96,
-      "functions": null
+      "functions": []
     },
     {
       "name": "p8",
       "x": 156,
       "y": 64,
-      "functions": null
+      "functions": [
+        "gpio"
+      ]
     },
     {
       "name": "p12",
       "x": 156,
       "y": 72,
-      "functions": null
+      "functions": [
+        "gpio"
+      ]
     },
     {
       "name": "p16",
       "x": 156,
       "y": 80,
-      "functions": null
+      "functions": [
+        "gpio"
+      ]
     },
     {
       "name": "3v_r",
       "x": 156,
       "y": 88,
-      "functions": null
+      "functions": []
     },
     {
       "name": "gnd_r",
       "x": 156,
       "y": 96,
-      "functions": null
+      "functions": []
     }
   ],
   "variants": null,

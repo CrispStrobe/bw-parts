@@ -7,97 +7,97 @@
       "name": "qb",
       "x": 0,
       "y": 8,
-      "functions": null
+      "functions": []
     },
     {
       "name": "qc",
       "x": 0,
       "y": 13,
-      "functions": null
+      "functions": []
     },
     {
       "name": "qd",
       "x": 0,
       "y": 18,
-      "functions": null
+      "functions": []
     },
     {
       "name": "qe",
       "x": 0,
       "y": 23,
-      "functions": null
+      "functions": []
     },
     {
       "name": "qf",
       "x": 0,
       "y": 28,
-      "functions": null
+      "functions": []
     },
     {
       "name": "qg",
       "x": 0,
       "y": 33,
-      "functions": null
+      "functions": []
     },
     {
       "name": "qh",
       "x": 0,
       "y": 38,
-      "functions": null
+      "functions": []
     },
     {
       "name": "gnd",
       "x": 0,
       "y": 43,
-      "functions": null
+      "functions": []
     },
     {
       "name": "qh_s",
       "x": 70,
       "y": 43,
-      "functions": null
+      "functions": []
     },
     {
       "name": "srclr",
       "x": 70,
       "y": 38,
-      "functions": null
+      "functions": []
     },
     {
       "name": "srclk",
       "x": 70,
       "y": 33,
-      "functions": null
+      "functions": []
     },
     {
       "name": "rclk",
       "x": 70,
       "y": 28,
-      "functions": null
+      "functions": []
     },
     {
       "name": "oe",
       "x": 70,
       "y": 23,
-      "functions": null
+      "functions": []
     },
     {
       "name": "ser",
       "x": 70,
       "y": 18,
-      "functions": null
+      "functions": []
     },
     {
       "name": "qa",
       "x": 70,
       "y": 13,
-      "functions": null
+      "functions": []
     },
     {
       "name": "vcc",
       "x": 70,
       "y": 8,
-      "functions": null
+      "functions": []
     }
   ],
   "variants": null,

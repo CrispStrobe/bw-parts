@@ -7,97 +7,97 @@
       "name": "s2",
       "x": 0,
       "y": 8,
-      "functions": null
+      "functions": []
     },
     {
       "name": "b2",
       "x": 0,
       "y": 13,
-      "functions": null
+      "functions": []
     },
     {
       "name": "a2",
       "x": 0,
       "y": 18,
-      "functions": null
+      "functions": []
     },
     {
       "name": "s1",
       "x": 0,
       "y": 23,
-      "functions": null
+      "functions": []
     },
     {
       "name": "a1",
       "x": 0,
       "y": 28,
-      "functions": null
+      "functions": []
     },
     {
       "name": "b1",
       "x": 0,
       "y": 33,
-      "functions": null
+      "functions": []
     },
     {
       "name": "cin",
       "x": 0,
       "y": 38,
-      "functions": null
+      "functions": []
     },
     {
       "name": "gnd",
       "x": 0,
       "y": 43,
-      "functions": null
+      "functions": []
     },
     {
       "name": "cout",
       "x": 70,
       "y": 43,
-      "functions": null
+      "functions": []
     },
     {
       "name": "s4",
       "x": 70,
       "y": 38,
-      "functions": null
+      "functions": []
     },
     {
       "name": "b4",
       "x": 70,
       "y": 33,
-      "functions": null
+      "functions": []
     },
     {
       "name": "a4",
       "x": 70,
       "y": 28,
-      "functions": null
+      "functions": []
     },
     {
       "name": "s3",
       "x": 70,
       "y": 23,
-      "functions": null
+      "functions": []
     },
     {
       "name": "a3",
       "x": 70,
       "y": 18,
-      "functions": null
+      "functions": []
     },
     {
       "name": "b3",
       "x": 70,
       "y": 13,
-      "functions": null
+      "functions": []
     },
     {
       "name": "vcc",
       "x": 70,
       "y": 8,
-      "functions": null
+      "functions": []
     }
   ],
   "variants": null,

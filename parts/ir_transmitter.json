@@ -7,13 +7,13 @@
       "name": "anode",
       "x": 10,
       "y": 44,
-      "functions": null
+      "functions": []
     },
     {
       "name": "cathode",
       "x": 20,
       "y": 44,
-      "functions": null
+      "functions": []
     }
   ],
   "variants": null,

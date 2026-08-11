@@ -7,19 +7,19 @@
       "name": "a",
       "x": 10,
       "y": 20,
-      "functions": null
+      "functions": []
     },
     {
       "name": "com",
       "x": 18,
       "y": 20,
-      "functions": null
+      "functions": []
     },
     {
       "name": "b",
       "x": 26,
       "y": 20,
-      "functions": null
+      "functions": []
     }
   ],
   "variants": null,

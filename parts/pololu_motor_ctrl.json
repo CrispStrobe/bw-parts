@@ -7,37 +7,37 @@
       "name": "vin",
       "x": 24,
       "y": 60,
-      "functions": null
+      "functions": []
     },
     {
       "name": "gnd",
       "x": 40,
       "y": 60,
-      "functions": null
+      "functions": []
     },
     {
       "name": "motor_p",
       "x": 96,
       "y": 18,
-      "functions": null
+      "functions": []
     },
     {
       "name": "motor_n",
       "x": 96,
       "y": 32,
-      "functions": null
+      "functions": []
     },
     {
       "name": "tx",
       "x": 4,
       "y": 10,
-      "functions": null
+      "functions": []
     },
     {
       "name": "rx",
       "x": 4,
       "y": 44,
-      "functions": null
+      "functions": []
     }
   ],
   "variants": null,

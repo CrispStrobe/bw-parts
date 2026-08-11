@@ -7,19 +7,19 @@
       "name": "a",
       "x": 5,
       "y": 50,
-      "functions": null
+      "functions": []
     },
     {
       "name": "wiper",
       "x": 30,
       "y": 10,
-      "functions": null
+      "functions": []
     },
     {
       "name": "b",
       "x": 55,
       "y": 50,
-      "functions": null
+      "functions": []
     }
   ],
   "variants": null,

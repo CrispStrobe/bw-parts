@@ -7,25 +7,25 @@
       "name": "r_anode",
       "x": 8,
       "y": 48,
-      "functions": null
+      "functions": []
     },
     {
       "name": "g_anode",
       "x": 18,
       "y": 48,
-      "functions": null
+      "functions": []
     },
     {
       "name": "b_anode",
       "x": 28,
       "y": 48,
-      "functions": null
+      "functions": []
     },
     {
       "name": "cathode",
       "x": 38,
       "y": 48,
-      "functions": null
+      "functions": []
     }
   ],
   "variants": null,

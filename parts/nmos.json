@@ -7,19 +7,19 @@
       "name": "gate",
       "x": 0,
       "y": 22,
-      "functions": null
+      "functions": []
     },
     {
       "name": "drain",
       "x": 22,
       "y": 0,
-      "functions": null
+      "functions": []
     },
     {
       "name": "source",
       "x": 22,
       "y": 44,
-      "functions": null
+      "functions": []
     }
   ],
   "variants": null,

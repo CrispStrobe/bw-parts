@@ -7,49 +7,49 @@
       "name": "1a",
       "x": 9.5,
       "y": 0,
-      "functions": null
+      "functions": []
     },
     {
       "name": "2a",
       "x": 16.5,
       "y": 0,
-      "functions": null
+      "functions": []
     },
     {
       "name": "3a",
       "x": 23.5,
       "y": 0,
-      "functions": null
+      "functions": []
     },
     {
       "name": "4a",
       "x": 30.5,
       "y": 0,
-      "functions": null
+      "functions": []
     },
     {
       "name": "1b",
       "x": 9.5,
       "y": 28,
-      "functions": null
+      "functions": []
     },
     {
       "name": "2b",
       "x": 16.5,
       "y": 28,
-      "functions": null
+      "functions": []
     },
     {
       "name": "3b",
       "x": 23.5,
       "y": 28,
-      "functions": null
+      "functions": []
     },
     {
       "name": "4b",
       "x": 30.5,
       "y": 28,
-      "functions": null
+      "functions": []
     }
   ],
   "variants": [

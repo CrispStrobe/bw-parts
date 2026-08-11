@@ -7,25 +7,25 @@
       "name": "din",
       "x": 0,
       "y": 4,
-      "functions": null
+      "functions": []
     },
     {
       "name": "vcc",
       "x": 20,
       "y": 4,
-      "functions": null
+      "functions": []
     },
     {
       "name": "gnd",
       "x": 0,
       "y": 16,
-      "functions": null
+      "functions": []
     },
     {
       "name": "dout",
       "x": 20,
       "y": 16,
-      "functions": null
+      "functions": []
     }
   ],
   "variants": null,

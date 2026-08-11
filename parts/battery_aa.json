@@ -7,13 +7,13 @@
       "name": "pos",
       "x": 52,
       "y": 10,
-      "functions": null
+      "functions": []
     },
     {
       "name": "neg",
       "x": 2,
       "y": 10,
-      "functions": null
+      "functions": []
     }
   ],
   "variants": null,

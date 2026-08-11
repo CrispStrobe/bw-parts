@@ -7,19 +7,19 @@
       "name": "ch1",
       "x": 20,
       "y": 64,
-      "functions": null
+      "functions": []
     },
     {
       "name": "ch2",
       "x": 36,
       "y": 64,
-      "functions": null
+      "functions": []
     },
     {
       "name": "gnd",
       "x": 52,
       "y": 64,
-      "functions": null
+      "functions": []
     }
   ],
   "variants": null,

@@ -7,19 +7,19 @@
       "name": "vin",
       "x": 12,
       "y": 48,
-      "functions": null
+      "functions": []
     },
     {
       "name": "gnd",
       "x": 22,
       "y": 48,
-      "functions": null
+      "functions": []
     },
     {
       "name": "vout",
       "x": 32,
       "y": 48,
-      "functions": null
+      "functions": []
     }
   ],
   "variants": null,

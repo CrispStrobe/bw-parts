@@ -7,25 +7,25 @@
       "name": "vcc",
       "x": 7,
       "y": 16,
-      "functions": null
+      "functions": []
     },
     {
       "name": "d_minus",
       "x": 11,
       "y": 16,
-      "functions": null
+      "functions": []
     },
     {
       "name": "d_plus",
       "x": 15,
       "y": 16,
-      "functions": null
+      "functions": []
     },
     {
       "name": "gnd",
       "x": 19,
       "y": 16,
-      "functions": null
+      "functions": []
     }
   ],
   "variants": null,

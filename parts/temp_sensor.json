@@ -7,19 +7,19 @@
       "name": "vcc",
       "x": 6,
       "y": 12,
-      "functions": null
+      "functions": []
     },
     {
       "name": "gnd",
       "x": 26,
       "y": 12,
-      "functions": null
+      "functions": []
     },
     {
       "name": "dq",
       "x": 16,
       "y": 37,
-      "functions": null
+      "functions": []
     }
   ],
   "variants": null,
