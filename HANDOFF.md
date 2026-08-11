@@ -11,9 +11,10 @@
 - **Breadboard footprints** on all 123 sidecars (`b44aec7`):
   `refTerminal`, `leads`, `straddlesGutter`, `minCols` — consumed
   by bw-circuit-ui for breadboard placement
-- **`functions` field on all 866 terminals** — 100% coverage.
-  Pass 1 (`10b8105`): 3 MCU sidecars, 113 terminals from datasheets.
-  Pass 2 (`8c52a25`): 116 non-MCU sidecars, 753 terminals by category.
+- **`functions` field on all 866 terminals** — no unknowns remain.
+  167 terminals have alternate functions recorded (MCU/IC sidecars,
+  datasheet-sourced). 699 terminals audited as genuinely no alternates
+  (passives, fixed-pin ICs). Zero null.
   Schema per spec-update 007, confirmed by all three repos
 - **Three datasheet-audited pin tables:**
   - STC12C5A60S2 vs datasheet rev 2011-07-15 (`fbfacf8`) — 40 pins,
@@ -65,9 +66,10 @@ with updated lookup tables.
 
 ## Open — owned by bw-parts
 
-**Functions coverage: 100% (866/866).** No nulls remain. New parts
-added in the future need a `functions` entry on every terminal — use
-`scripts/audit-simple-parts-functions.py` as the template.
+**Functions: no unknowns remain (866/866 decided, 167 populated, 699
+empty, 0 null).** New parts added in the future need a `functions`
+entry on every terminal — use `scripts/audit-simple-parts-functions.py`
+as the template.
 
 **4 unverified identifications:** clock_display, attiny85, microbit,
 gas_sensor — need external confirmation of which specific component

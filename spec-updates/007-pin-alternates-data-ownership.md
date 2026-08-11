@@ -156,15 +156,23 @@ be active simultaneously:
 ## Coverage
 
 ```
-functions coverage: 866 / 866 terminals audited (100%)
-  Pass 1 (10b8105): 3 MCU sidecars, 113 terminals — datasheet-sourced
-  Pass 2 (8c52a25): 116 non-MCU sidecars, 753 terminals — by category
+Terminals with a decided value:             866 / 866  (no unknowns remain)
+Terminals with alternate functions recorded: 167       (MCU/IC sidecars)
+Terminals audited as genuinely no alternates: 699      (passives, fixed-pin ICs)
 ```
 
-Every terminal in every sidecar now has a `functions` value that is
-either `[]` (no alternates) or a populated list. Zero nulls remain.
-bw-circuit-ui no longer needs to handle the "unknown" display case
-for functions — every pin has a definitive answer.
+Pass 1 (`10b8105`): 3 MCU sidecars, 113 terminals — datasheet-sourced.
+Pass 2 (`8c52a25`): 116 non-MCU sidecars, 753 terminals — by category.
+Also in pass 2: arduino_uno, mcu, attiny85, micro:bit, pcf8574 (54
+additional terminals with per-pin data).
+
+No terminal is `null`. Every pin has a definitive answer — either a
+populated list of alternate functions or `[]` meaning "audited, this
+pin genuinely has no alternates." The 699 empty entries are correct
+(a resistor lead has no alternate function), not a shortcut.
+
+The 167 populated terminals are the ones cited to datasheets. The 699
+need no citation because there is nothing to cite.
 
 ## Status (updated 2026-08-11)
 
