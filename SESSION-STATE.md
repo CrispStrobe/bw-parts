@@ -1,64 +1,107 @@
-# Session state — 2026-08-10
+# Session state — 2026-08-10/11
 
 ## Where things stand
 
-124 catalog kinds, 123 SVG files, 123 JSON sidecars. Everything pushed.
-Multi-arch board track started: Uno pin table done, Nano sidecar+art done,
-Pi Pico sidecar+art+pin table done.
+124 catalog kinds, 123 SVG files, 123 JSON sidecars, all with breadboard
+footprint data (80 with footprints, 43 explicit null). Everything pushed
+through `b44aec7`.
 
-## What was done this session
+## What was done
 
-1. Slug renames (db77e8b): 7 bw-parts slugs renamed to match bw-board
-   and bw-circuit-ui consensus. Files, sidecars, current-ratings.json,
-   generate-dip.js, and all documentation updated.
-2. Final two SVGs (faa08a3): microbit_breakout, pololu_motor_ctrl.
-3. Four engine-only parts (88b6928): fuse, solenoid, stepper, ir_transmitter.
-4. README (bb57d0c): written from scratch — the repo had none.
-5. Naming corrections (38e1256, 6af32e0): wokwi-elements attribution
+1. **Slug renames** (db77e8b): 7 bw-parts slugs renamed to match
+   bw-board/bw-circuit-ui consensus.
+2. **Final two SVGs** (faa08a3): microbit_breakout, pololu_motor_ctrl.
+3. **Four engine-only parts** (88b6928): fuse, solenoid, stepper,
+   ir_transmitter.
+4. **README** (bb57d0c): written from scratch — repo had none.
+5. **Naming corrections** (38e1256, 6af32e0): wokwi-elements attribution
    restored; Tinkercad naming restored in private internal files.
+6. **Multi-arch boards** (465ac3a): Arduino Nano sidecar+SVG (30 terminals),
+   Pi Pico sidecar+SVG (43 terminals), ATmega328P pin table (audited
+   against Microchip DS40002061B), RP2040 pin table (audited against
+   2023-03-02 datasheet).
+7. **STC12 three-way audit** (fbfacf8): stc_mcu.json checked against
+   STC12C5A60S2 datasheet AND stc/docs/PINOUT.md. All 40 pins agree
+   across all three sources. Five known traps verified (VCC pin 40,
+   P0 descending, no EA/PSEN, only P4.4–P4.7, RST active high).
+8. **Spec-update 004** (6ab8a9b): durable doc for bw-board (frozen) on
+   what it must do for Nano and Pico. Names the boundary: parts and pin
+   tables delivered, simulation for non-8051 cores neither built nor
+   designed.
+9. **Spec-update 005** (e817263): vendored sidecars in bw-circuit-ui are
+   stale (115 vs 123). Lists the 8 missing and 4 renamed files.
+10. **Breadboard footprints** (b44aec7): footprint field added to all 123
+    sidecars, matching bw-circuit-ui's proposed shape (refTerminal, leads,
+    straddlesGutter, minCols).
 
-## What was ruled out
+## What was ruled out and why
 
-- **tilt_switch → tilt_sensor rename**: both other repos use tilt_sensor,
-  but bw-parts has two variants (2-pin and 4-pin) as separate slugs.
-  Collapsing them changes the sidecar contract. Left as an open question
-  in PARTS-RECONCILIATION.md rather than forcing it.
-- **dip_switch collapse**: same pattern — bw-parts keeps dpst and spst
-  separate, both others collapse to one slug. Left open.
-- **esp8266**: declined, WiFi simulation out of scope. Recorded in catalog.
-- **Automated test suite**: considered but not built. The DIP audit is a
-  one-time document, not a CI check. verify-art.js is visual, not
-  assertion-based. A future session could add JSON schema validation
-  or terminal-position-in-viewBox checks, but neither was started.
-- **Terminal cross-validation in a running renderer**: not done. Positions
-  are mathematically placed but never tested in bw-circuit-ui. Documented
-  in spec-updates/001.
+### Sidecar format decisions (deliberate constraints)
 
-## Next concrete steps for whoever resumes
+- **Alternate-function data does NOT go in sidecars.** The STC audit
+  (fbfacf8) confirmed sidecars carry port names only (P1.0, not ADC0).
+  This is deliberate — the pin-chooser dialog must read alternate
+  functions from the pin tables (`docs/pin-table-*.md`), not from
+  sidecars. bw-board's `rst-polarity` spec-update (in their repo)
+  makes the same point. If bw-board needs structured JSON for pin
+  functions, it should specify the schema and bw-parts will produce it.
+  Until then, the human-readable markdown tables are the source.
 
-1. **Notify bw-board** of new boards: arduino_nano and pi_pico need engine
-   registration. Uno already modeled; Nano is same MCU. Pico needs an
-   RP2040 engine (or drawable-only until one exists).
-2. **Notify bw-circuit-ui** of new board sidecars for palette rendering.
-3. The 10 remaining slug mismatches (spec-updates/003-slug-renames.md)
-   need action from bw-board and bw-circuit-ui, not from here.
-4. The tilt_switch and dip_switch collapse questions need an owner
-   decision — they are design choices, not bugs.
-5. No licence file exists. The owner has not ruled on this.
-6. The four unverified identifications (clock_display, attiny85, microbit,
-   gas_sensor) cannot be resolved without external confirmation.
+- **RST polarity is NOT in the sidecar format.** bw-board decided
+  (spec-updates/rst-polarity.md in their repo) that the engine
+  hard-codes reset polarity per part kind, not per sidecar instance.
+  The sidecar format deliberately cannot express it. This is a binding
+  constraint: the next person adding a part with unusual reset behaviour
+  (e.g., active-low AVR vs active-high 8051) needs to know the sidecar
+  won't carry that information — it lives in the engine's per-family
+  table. Documented here so it is not rediscovered as a gap.
 
-## What was ruled out
+### Slug decisions (left open for owner)
 
-- **tilt_switch → tilt_sensor rename**: both other repos use tilt_sensor,
-  but bw-parts has two variants (2-pin and 4-pin) as separate slugs.
-  Collapsing them changes the sidecar contract. Left open.
+- **tilt_switch → tilt_sensor**: both other repos use tilt_sensor, but
+  bw-parts has two variants (2-pin and 4-pin) as separate slugs.
+  Collapsing changes the sidecar contract. Left open.
 - **dip_switch collapse**: same pattern. Left open.
+
+### Scope decisions
+
 - **esp8266**: declined, WiFi simulation out of scope.
+- **RP2040 full pin mux matrix**: pin tables show SDK defaults only.
+  Documenting every possible GPIO-to-peripheral assignment would be a
+  matrix, not a table. The pin chooser should show defaults with a note
+  that remapping is possible.
 - **Automated test suite**: not built. verify-art.js is visual only.
-- **Terminal cross-validation in a running renderer**: not done.
-- **RP2040 flexible pin mux in pin table**: the table shows SDK defaults
-  only. The RP2040 can remap nearly any peripheral to nearly any GPIO,
-  but documenting every possible assignment would be a matrix, not a table.
-  The pin-chooser dialog should show defaults with a note that remapping
-  is possible.
+  A future session could add JSON schema validation or
+  terminal-position-in-viewBox checks.
+- **Terminal cross-validation in a running renderer**: not done. Positions
+  are mathematically placed but never tested in bw-circuit-ui.
+
+### Footprint assumptions
+
+- DIP footprints use the standard convention: pin 1 top-left, numbering
+  goes down the left side then up the right side. `dRow=0` is the left
+  row, `dRow=5` is the right row (across gutter).
+- Inline parts (resistor, LED, etc.) assume standard through-hole
+  breadboard spacing. A resistor spans 4 columns (1 inch); an LED spans
+  1 column (adjacent holes). These match common breadboard practice but
+  are not mechanically derived from component datasheets.
+- Parts without a breadboard footprint (`null`) include batteries,
+  instruments, motors, abstract parts, and modules too large for
+  standard breadboard placement (Arduino Uno, relays, displays).
+  The Uno gets `null` because it's too wide to straddle the gutter —
+  it sits beside the board and connects via wires.
+
+## Next concrete steps
+
+1. bw-circuit-ui needs to re-sync vendored sidecars (spec-update 005).
+   123 files now, with footprint data they need for breadboard placement.
+2. bw-board needs to register arduino_nano and pi_pico (spec-update 004).
+   bw-board is frozen — they will find the spec-update cold.
+3. If bw-board or bw-circuit-ui needs pin alt-function data as structured
+   JSON (not markdown), bw-parts should produce it. No schema has been
+   proposed.
+4. The 10 remaining slug mismatches (spec-update 003) need action from
+   bw-board and bw-circuit-ui.
+5. No licence file exists. The owner has not ruled.
+6. Four unverified identifications (clock_display, attiny85, microbit,
+   gas_sensor) need external confirmation.
