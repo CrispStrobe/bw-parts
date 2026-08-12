@@ -1,6 +1,6 @@
 # bw-parts handoff — 2026-08-12
 
-> **Last commit:** `734e1be`
+> **Last commit:** `3b62f4e`
 > **Tree:** clean, pushed to origin main
 
 ## Done and pushed
@@ -25,6 +25,11 @@
   (`CONVENTION.md`) with the enumerate-don't-remember fix (`b1e3e4b`)
 - **Pi Pico engine status** updated from `drawable-only` to
   `modeled (rp2040js)` after lite added its adapter (`44947b5`)
+- **Nano/Uno sidecars audited** (`3b62f4e`): D13 onboard LED documented
+  in `_note`, Uno notes A6/A7 absence. All terminal counts, pin
+  positions, and alternate functions verified against DS40002061B.
+  Pi Pico sidecar verified against RP2040 2023-03-02 datasheet — 43
+  terminals (40 header + 3 SWD), all functions correct
 
 ## What was ruled out and why
 
@@ -100,6 +105,10 @@ or a change to `analog_only` semantics that updates one side only will
 not fail — the UI will render one thing and the engine will believe
 another. Spec-update 007 records this; each file should add a comment
 pointing to the other.
+
+**Vendored sidecars in bw-circuit-ui are stale** — missing `functions`
+field on all terminals. `npm run sync:parts` in bw-circuit-ui will fix.
+See BLOCKED.md.
 
 **10 slug mismatches** (spec-update 003) need action from bw-board and
 bw-circuit-ui.
