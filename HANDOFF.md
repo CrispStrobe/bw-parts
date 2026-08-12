@@ -1,6 +1,6 @@
-# bw-parts handoff — 2026-08-11
+# bw-parts handoff — 2026-08-12
 
-> **Last commit:** `8e63037`
+> **Last commit:** `734e1be`
 > **Tree:** clean, pushed to origin main
 
 ## Done and pushed
