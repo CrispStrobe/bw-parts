@@ -102,7 +102,7 @@ is documented in the JSON sidecar `_note` field, not just here.
 | 40 | `buzzer` | Piezo / Piezo-Summer | a, b | modeled | done | |
 | 41 | `seven_segment` | 7-Segment Display / 7-Segment-Anzeige | (composite) | modeled | done | |
 | 42 | `clock_display` | 7-Segment Clock Display / 7-Segment-Uhranzeige | clk, dio, vcc, gnd | drawable-only | done | **unverified**: HT16K33 vs TM1637 |
-| 43 | `char_lcd` | LCD 16x2 / LCD 16x2 | rs, rw, e, d0-d7, vcc, gnd, vo, bl_a, bl_k | modeled | done | `standard`: HD44780 |
+| 43 | `char_lcd` | LCD 16x2 / LCD 16x2 | vss, vdd, v0, rs, rw, e, d0-d7, a, k | modeled | done | `verified`: HD44780U (ADE-207-272(Z)) |
 | 44 | `char_lcd_i2c` | LCD 16x2 (I2C) / LCD 16x2 (I2C) | vcc, gnd, sda, scl | drawable-only | done | `standard`: HD44780 + PCF8574 |
 
 ## Power (9 kinds)
