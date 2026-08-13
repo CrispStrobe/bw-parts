@@ -28,7 +28,7 @@
       "functions": []
     },
     {
-      "name": "rts",
+      "name": "rtsb",
       "x": 0,
       "y": 28,
       "functions": []
@@ -142,14 +142,14 @@
       "functions": []
     },
     {
-      "name": "rwb",
+      "name": "rw",
       "x": 70,
       "y": 63,
       "functions": []
     }
   ],
   "variants": null,
-  "_note": "Motorola MC6850 Asynchronous Communications Interface Adapter. Pin table audited against Motorola MC6850 datasheet (DS9493, rev 4). DIP-24 package. Full-duplex serial: TxD (pin 6), RxD (pin 2). Separate Tx/Rx clocks: TxCLK (pin 4), RxCLK (pin 3). Modem control: RTS (pin 5, active low output), CTS (pin 24, active low input), DCD (pin 23, active low input). Bus interface: D0-D7 (pins 22-15), RS (pin 11, register select), E (pin 14, enable/clock), R/W (pin 13). Three chip selects: CS0 (pin 8, active high), CS1 (pin 10, active high), CS2B (pin 9, active low). IRQB (pin 7, open drain). VSS=pin 1, VCC=pin 12. Searle Z80 preset: directly wired to Z80 bus, no VIA needed.",
+  "_note": "Motorola MC6850 Asynchronous Communications Interface Adapter. Pin table audited against Motorola MC6850 datasheet (DS9493, rev 4). DIP-24 package. Full-duplex serial: TxD (pin 6), RxD (pin 2). Separate Tx/Rx clocks: TxCLK (pin 4), RxCLK (pin 3). Modem control: RTSB (pin 5, active low output), CTSB (pin 24, active low input), DCDB (pin 23, active low input). Bus interface: D0-D7 (pins 22-15), RS (pin 11, register select), E (pin 14, enable/clock), RW (pin 13, high=read). Three chip selects: CS0 (pin 8, active high), CS1 (pin 10, active high), CS2B (pin 9, active low). IRQB (pin 7, open drain). VSS=pin 1, VCC=pin 12. Searle Z80 preset: directly wired to Z80 bus, no VIA needed.",
   "footprint": {
     "refTerminal": "vss",
     "leads": {
@@ -169,7 +169,7 @@
         "dRow": 0,
         "dCol": 3
       },
-      "rts": {
+      "rtsb": {
         "dRow": 0,
         "dCol": 4
       },
@@ -245,7 +245,7 @@
         "dRow": 5,
         "dCol": 10
       },
-      "rwb": {
+      "rw": {
         "dRow": 5,
         "dCol": 11
       }
