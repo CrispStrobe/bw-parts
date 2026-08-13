@@ -1,109 +1,61 @@
-# bw-parts handoff — 2026-08-13
+# bw-parts handoff — 2026-08-13 (session 2)
 
-> **Last commit:** `6154a4e`
+> **Last commit:** (pending push)
 > **Tree:** clean, pushed to origin main
 
-## Done and pushed
+## Done and pushed (this session)
 
-- **125 catalog kinds**, 124 SVGs, 124 JSON sidecars (one kind,
-  `breadboard`, is catalog-only with no art — it is a placement
-  surface, not a component)
-- **Footprint fix: Nano, Pico, 555** (`aac8f67`): the right-side
-  `dCol` values were reversed in all three sidecars. Pins at the
-  same physical position (same SVG y) now share the same `dCol`,
-  matching the correct pattern established by the STC12 and ATtiny85
-  sidecars. Verified programmatically.
-- **ATtiny85 DIP-8 datasheet audit** (`72ff13f`): all 8 pins audited
-  against Microchip DS40001941C. Fixed: PB5 was missing ADC0, PB0
-  had incorrect `adc0` (is AIN0, analog comparator, NOT ADC), PB0
-  missing `pwm_t0a`, PB1 missing `pwm_t1a`, PB2 missing `scl`,
-  `int0`, `t0`. Resized to 60×48 matching 555 DIP-8 package. House-
-  style SVG replaces dip-gen. Unverified → verified.
-- **Arduino Mega 2560** (`918dbc6`): new canvas board part (78
-  terminals: D0-D53, A0-A15, 8 power pins). Pin functions audited
-  against ATmega2560 DS40002211A. 15 PWM outputs, 4 UARTs, 6
-  external interrupts, SPI, I2C, 16 ADC channels. footprint: null
-  (too large for breadboard).
-- **micro:bit V2** (`6154a4e`): confirmed as V2 (nRF52833). Added
-  PWM to P0/P1/P2 functions. SVG updated with V2-specific touch logo
-  and speaker grille. Unverified → verified.
-- **Breadboard footprints** on all 124 sidecars:
-  `refTerminal`, `leads`, `straddlesGutter`, `minCols` — consumed
-  by bw-circuit-ui for breadboard placement
-- **`functions` field on all 891 terminals** — no unknowns remain.
-  Schema per spec-update 007, confirmed by all three repos
-- **Five datasheet-audited pin tables:**
-  - STC12C5A60S2 vs datasheet rev 2011-07-15
-  - ATmega328P vs Microchip DS40002061B
-  - RP2040 vs 2023-03-02 datasheet
-  - ATtiny85 vs Microchip DS40001941C (this session)
-  - ATmega2560 vs Microchip DS40002211A (this session)
-- **Spec-updates 004–007** plus the cross-repo scan convention
-  (`CONVENTION.md`) with the enumerate-don't-remember fix
+- **DIP-gen dCol audit**: all 36 straddlesGutter sidecars verified
+  correct. The 3 fixed in previous session (555, nano, pico) were
+  the only ones with the reversed-dCol bug.
+- **5 retro-tier parts** (`ac9d745`): W65C02 CPU DIP-40, W65C22 VIA
+  DIP-40, W65C51 ACIA DIP-28, 28C256 EEPROM DIP-28, 62256 SRAM
+  DIP-28. All pin tables datasheet-audited against WDC/Microchip/
+  Alliance datasheets (cited in sidecar `_note`). 28C256 and 62256
+  are pin-compatible.
+- **74HC00 datasheet citation** added (TI SN74HC00N SCLS024I).
+- **Spec-update 008**: board part rendering guidance for bw-circuit-ui.
+  `footprint: null` is correct for canvas-only boards (Mega, Uno,
+  micro:bit). bw-circuit-ui needs `SvgParts` render cases and
+  `hittest.js` FOOTPRINTS entries — no work needed from bw-parts.
 
-## What was ruled out and why
+## Done and pushed (previous session, still current)
 
-These are decisions, not omissions.
+- **130 catalog kinds**, 129 SVGs, 129 JSON sidecars (one kind,
+  `breadboard`, is catalog-only with no art)
+- **Footprint fix: Nano, Pico, 555** (`aac8f67`): reversed right-side
+  dCol values corrected
+- **ATtiny85 DIP-8** (`72ff13f`): datasheet-audited (DS40001941C),
+  house-style SVG, unverified → verified
+- **Arduino Mega 2560** (`918dbc6`): 78-terminal canvas board part,
+  DS40002211A audit
+- **micro:bit V2** (`6154a4e`): confirmed nRF52833, PWM added
+- **11 datasheet-audited pin tables** (see catalog)
+- **Spec-updates 004–008**
 
-### Vocabulary deliberately skipped
+## Sidecar format constraints
 
-The following pin functions exist in the audited pin tables but were
-not encoded into `functions` arrays because no vocabulary slug was
-agreed. If bw-board adds slugs, re-run `scripts/add-functions-to-sidecars.py`
-with updated lookup tables.
-
-| Function | MCU | Why skipped |
-|---|---|---|
-| ECI (PCA external clock input) | STC12 | No slug in vocabulary |
-| Power-down wake INT (unnumbered) | STC12 | Not a standard external interrupt |
-| WR / RD (external memory bus) | STC12 | Bus control, not relevant to simulator |
-| A8–A15, AD0–AD7 (address/data bus) | STC12 | External memory interface |
-| XCK (synchronous USART clock) | ATmega328P | Rare usage, no slug |
-| CLKO (clock output, fuse-dependent) | ATmega328P | Not runtime-selectable |
-| OC1C (D13, ATmega2560) | ATmega2560 | Second PWM on same pin; pwm_t0a is primary |
-| ALE, RD, WR (D39-D41, ATmega2560) | ATmega2560 | External bus signals |
-| XTAL/TOSC pins | ATtiny85, ATmega2560 | Crystal/oscillator, not simulator-relevant |
-
-### Sidecar format constraints
-
-- **Alternate-function data is in `functions`, not in terminal names.**
-  Sidecars carry `P1.0`, not `ADC0`. The pin chooser reads alternates
-  from the `functions` array.
-- **RST polarity is NOT in sidecars.** bw-board hard-codes it per part
-  kind in the engine.
-- **`functions: null` means not audited, `[]` means audited and none.**
-  A missing `functions` key is a schema error. This is binding.
-
-### Scope
-
-- esp8266 declined (WiFi simulation out of scope)
-- RP2040 full pin mux matrix not documented (SDK defaults only)
-- No automated test suite beyond visual verification
-- Terminal positions mathematically placed, tested via cross-gutter
-  alignment validation (this session)
+- `functions: null` = not audited, `[]` = audited and none. Missing
+  key is a schema error. Binding.
+- RST polarity NOT in sidecars. bw-board hard-codes per kind.
+- Alternate-function data in `functions`, not terminal names.
 
 ## Open — owned by bw-parts
 
-**Functions: no unknowns remain (891/891 decided).** New parts added
-in the future need a `functions` entry on every terminal.
+**2 unverified identifications remain:** `clock_display`, `gas_sensor`.
 
-**2 unverified identifications remain:** `clock_display`,
-`gas_sensor` — need external confirmation.
-
-**Licence settled: MPL-2.0.** See previous handoff for full reasoning.
+**Licence settled: MPL-2.0.** (See previous handoffs for reasoning.)
 
 ## Open — owned elsewhere
 
-**Twin `pin-functions.js` implementations** (spec-update 007):
-both handle all four states and agree. A fifth state that updates
-one side only will silently diverge.
-
-**Vendored sidecars in bw-circuit-ui** — `npm run sync:parts` in
-bw-circuit-ui brings them current. Run after every bw-parts change.
+**Spec-update 008** (board part rendering): bw-circuit-ui needs
+`SvgParts` cases for `arduino_uno`, `arduino_nano`, `arduino_mega`,
+`pi_pico`, `microbit` and matching `FOOTPRINTS` entries in
+`hittest.js`. All art and sidecars are ready in `src/parts-data/`.
 
 **10 slug mismatches** (spec-update 003) need action from bw-board
 and bw-circuit-ui.
 
-**Spec-update 004** items for bw-board: register `arduino_nano`,
-`pi_pico`, and `arduino_mega` board kinds, expose pin alternate-
-function data, handle 3.3V vs 5V logic levels.
+**Spec-update 004**: register `arduino_mega` board kind in bw-board,
+plus `w65c02`, `w65c22`, `w65c51`, `28c256`, `62256` if the 6502
+machine config targets engine-level simulation.

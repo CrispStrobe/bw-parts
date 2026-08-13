@@ -215,27 +215,43 @@ like any other part (per bw-board ruling f5250e1).
 | 109 | `microbit_breakout` | micro:bit with Breakout / micro:bit mit Breakout | drawable-only | done |
 | 110 | `pololu_motor_ctrl` | Pololu Motor Controller / Pololu-Motorsteuerung | drawable-only | done |
 
+## Retro / 6502 Tier (5 kinds)
+
+Parts for hand-wired 6502-based breadboard builds. All pin tables
+datasheet-audited against manufacturer documents (cited in sidecars).
+
+| # | Kind slug | Name | Pins | Datasheet | Art |
+|---|-----------|------|------|-----------|-----|
+| 111 | `w65c02` | W65C02S CPU | 40 | WDC W65C02S (rev 2018-10-08) | done |
+| 112 | `w65c22` | W65C22S VIA | 40 | WDC W65C22S (rev 2018-10-08) | done |
+| 113 | `w65c51` | W65C51N ACIA | 28 | WDC W65C51N (rev 2018-10-08) | done |
+| 114 | `28c256` | AT28C256 EEPROM | 28 | Microchip AT28C256 (doc 0006) | done |
+| 115 | `62256` | 62256 SRAM | 28 | Alliance AS6C62256 (rev 2.0) | done |
+
+> 28C256 and 62256 are pin-compatible (same DIP-28 pinout). Pin 20
+> is CEB on the EEPROM, CSB on the SRAM — both active low.
+
 ## Engine-only parts (not in reference library)
 
 Modeled in bw-board, useful, not in the Tinkercad library. Kept as extras.
 
 | # | Kind slug | Notes | Art |
 |---|-----------|-------|-----|
-| 111 | `switch` | SPST toggle (engine has it alongside slide_switch) | done |
-| 112 | `ntc` | NTC thermistor (engine models it; TMP36 is analog alternative) | done |
-| 113 | `eeprom` | I2C EEPROM (24LC256-class) | done |
-| 114 | `temp_sensor` | DS18B20 1-wire temp sensor (different from TMP36) | done |
-| 115 | `led_matrix` | 8x8 LED matrix (standalone, no MAX7219) | done |
-| 116 | `led_cube` | LED cube (unique to bw) | done |
-| 117 | `mcu` | Generic MCU (base for arch-specific boards) | done |
-| 118 | `vcc` | VCC supply rail | done |
-| 119 | `gnd` | Ground reference | done |
-| 120 | `vsource` | Ideal voltage source | done |
-| 121 | `isource` | Ideal current source | done |
-| 122 | `fuse` | Fuse (glass cartridge) | done |
-| 123 | `solenoid` | Solenoid (electromagnetic actuator) | done |
-| 124 | `stepper` | Stepper motor (4-wire bipolar) | done |
-| 125 | `ir_transmitter` | IR LED transmitter | done |
+| 116 | `switch` | SPST toggle (engine has it alongside slide_switch) | done |
+| 117 | `ntc` | NTC thermistor (engine models it; TMP36 is analog alternative) | done |
+| 118 | `eeprom` | I2C EEPROM (24LC256-class) | done |
+| 119 | `temp_sensor` | DS18B20 1-wire temp sensor (different from TMP36) | done |
+| 120 | `led_matrix` | 8x8 LED matrix (standalone, no MAX7219) | done |
+| 121 | `led_cube` | LED cube (unique to bw) | done |
+| 122 | `mcu` | Generic MCU (base for arch-specific boards) | done |
+| 123 | `vcc` | VCC supply rail | done |
+| 124 | `gnd` | Ground reference | done |
+| 125 | `vsource` | Ideal voltage source | done |
+| 126 | `isource` | Ideal current source | done |
+| 127 | `fuse` | Fuse (glass cartridge) | done |
+| 128 | `solenoid` | Solenoid (electromagnetic actuator) | done |
+| 129 | `stepper` | Stepper motor (4-wire bipolar) | done |
+| 130 | `ir_transmitter` | IR LED transmitter | done |
 
 ---
 
@@ -245,20 +261,27 @@ Modeled in bw-board, useful, not in the Tinkercad library. Kept as extras.
 |---|---|---|
 | Reference library match | 107 | 107 |
 | Multi-arch boards | 3 | 3 |
+| Retro / 6502 tier | 5 | 5 |
 | Engine-only extras | 15 | 15 |
 | Declined | 1 | — |
-| **Total** | **125 + 1 declined** | **125** |
+| **Total** | **130 + 1 declined** | **130** |
 
 ### Art status: complete
 
-All 124 parts have SVG art and JSON terminal sidecars. No pending items.
+All 129 parts have SVG art and JSON terminal sidecars (breadboard is catalog-only). No pending items.
 
 ### Pin tables (datasheet-audited)
 
-| Board | MCU | Pin table | Datasheet |
+| Part | IC | Pin table | Datasheet |
 |---|---|---|---|
 | Arduino Uno R3 / Nano | ATmega328P | `docs/pin-table-atmega328p.md` | Microchip DS40002061B |
 | Arduino Mega 2560 | ATmega2560 | (sidecar `_note`) | Microchip DS40002211A |
 | ATtiny85 | ATtiny85 | (sidecar `_note`) | Microchip DS40001941C |
 | Raspberry Pi Pico | RP2040 | `docs/pin-table-rp2040.md` | Raspberry Pi RP2040 (2023-03-02) |
 | STC12C5A60S2 | 8051-core | `stc/docs/PINOUT.md` (cross-repo) | STC MCU Limited rev 2011-07-15 |
+| W65C02 CPU | W65C02S | (sidecar `_note`) | WDC W65C02S (rev 2018-10-08) |
+| W65C22 VIA | W65C22S | (sidecar `_note`) | WDC W65C22S (rev 2018-10-08) |
+| W65C51 ACIA | W65C51N | (sidecar `_note`) | WDC W65C51N (rev 2018-10-08) |
+| 28C256 EEPROM | AT28C256 | (sidecar `_note`) | Microchip AT28C256 (doc 0006) |
+| 62256 SRAM | AS6C62256 | (sidecar `_note`) | Alliance AS6C62256 (rev 2.0) |
+| 74HC00 NAND | SN74HC00N | (sidecar `_note`) | TI SN74HC00N (SCLS024I) |
