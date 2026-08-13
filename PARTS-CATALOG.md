@@ -215,10 +215,11 @@ like any other part (per bw-board ruling f5250e1).
 | 109 | `microbit_breakout` | micro:bit with Breakout / micro:bit mit Breakout | drawable-only | done |
 | 110 | `pololu_motor_ctrl` | Pololu Motor Controller / Pololu-Motorsteuerung | drawable-only | done |
 
-## Retro / 6502 Tier (5 kinds)
+## Retro Tier (7 kinds)
 
-Parts for hand-wired 6502-based breadboard builds. All pin tables
-datasheet-audited against manufacturer documents (cited in sidecars).
+Parts for hand-wired retro breadboard builds (6502, Z80). All pin
+tables datasheet-audited against manufacturer documents (cited in
+sidecars). 62256/28C256/74HC00 are shared across both presets.
 
 | # | Kind slug | Name | Pins | Datasheet | Art |
 |---|-----------|------|------|-----------|-----|
@@ -227,9 +228,13 @@ datasheet-audited against manufacturer documents (cited in sidecars).
 | 113 | `w65c51` | W65C51N ACIA | 28 | WDC W65C51N (rev 2018-10-08) | done |
 | 114 | `28c256` | AT28C256 EEPROM | 28 | Microchip AT28C256 (doc 0006) | done |
 | 115 | `62256` | 62256 SRAM | 28 | Alliance AS6C62256 (rev 2.0) | done |
+| 116 | `z80` | Z80 CPU | 40 | Zilog Z80 PS0178 (rev 06) | done |
+| 117 | `mc6850` | MC6850 ACIA | 24 | Motorola DS9493 (rev 4) | done |
 
 > 28C256 and 62256 are pin-compatible (same DIP-28 pinout). Pin 20
 > is CEB on the EEPROM, CSB on the SRAM — both active low.
+> Z80 address and data pins are NOT in sequential pin order on the
+> DIP-40 — this matches the physical chip (A11 at pin 1, D4 at pin 7).
 
 ## Engine-only parts (not in reference library)
 
@@ -237,21 +242,21 @@ Modeled in bw-board, useful, not in the Tinkercad library. Kept as extras.
 
 | # | Kind slug | Notes | Art |
 |---|-----------|-------|-----|
-| 116 | `switch` | SPST toggle (engine has it alongside slide_switch) | done |
-| 117 | `ntc` | NTC thermistor (engine models it; TMP36 is analog alternative) | done |
-| 118 | `eeprom` | I2C EEPROM (24LC256-class) | done |
-| 119 | `temp_sensor` | DS18B20 1-wire temp sensor (different from TMP36) | done |
-| 120 | `led_matrix` | 8x8 LED matrix (standalone, no MAX7219) | done |
-| 121 | `led_cube` | LED cube (unique to bw) | done |
-| 122 | `mcu` | Generic MCU (base for arch-specific boards) | done |
-| 123 | `vcc` | VCC supply rail | done |
-| 124 | `gnd` | Ground reference | done |
-| 125 | `vsource` | Ideal voltage source | done |
-| 126 | `isource` | Ideal current source | done |
-| 127 | `fuse` | Fuse (glass cartridge) | done |
-| 128 | `solenoid` | Solenoid (electromagnetic actuator) | done |
-| 129 | `stepper` | Stepper motor (4-wire bipolar) | done |
-| 130 | `ir_transmitter` | IR LED transmitter | done |
+| 118 | `switch` | SPST toggle (engine has it alongside slide_switch) | done |
+| 119 | `ntc` | NTC thermistor (engine models it; TMP36 is analog alternative) | done |
+| 120 | `eeprom` | I2C EEPROM (24LC256-class) | done |
+| 121 | `temp_sensor` | DS18B20 1-wire temp sensor (different from TMP36) | done |
+| 122 | `led_matrix` | 8x8 LED matrix (standalone, no MAX7219) | done |
+| 123 | `led_cube` | LED cube (unique to bw) | done |
+| 124 | `mcu` | Generic MCU (base for arch-specific boards) | done |
+| 125 | `vcc` | VCC supply rail | done |
+| 126 | `gnd` | Ground reference | done |
+| 127 | `vsource` | Ideal voltage source | done |
+| 128 | `isource` | Ideal current source | done |
+| 129 | `fuse` | Fuse (glass cartridge) | done |
+| 130 | `solenoid` | Solenoid (electromagnetic actuator) | done |
+| 131 | `stepper` | Stepper motor (4-wire bipolar) | done |
+| 132 | `ir_transmitter` | IR LED transmitter | done |
 
 ---
 
@@ -261,14 +266,14 @@ Modeled in bw-board, useful, not in the Tinkercad library. Kept as extras.
 |---|---|---|
 | Reference library match | 107 | 107 |
 | Multi-arch boards | 3 | 3 |
-| Retro / 6502 tier | 5 | 5 |
+| Retro tier | 7 | 7 |
 | Engine-only extras | 15 | 15 |
 | Declined | 1 | — |
-| **Total** | **130 + 1 declined** | **130** |
+| **Total** | **132 + 1 declined** | **132** |
 
 ### Art status: complete
 
-All 129 parts have SVG art and JSON terminal sidecars (breadboard is catalog-only). No pending items.
+All 131 parts have SVG art and JSON terminal sidecars (breadboard is catalog-only). No pending items.
 
 ### Pin tables (datasheet-audited)
 
@@ -285,3 +290,5 @@ All 129 parts have SVG art and JSON terminal sidecars (breadboard is catalog-onl
 | 28C256 EEPROM | AT28C256 | (sidecar `_note`) | Microchip AT28C256 (doc 0006) |
 | 62256 SRAM | AS6C62256 | (sidecar `_note`) | Alliance AS6C62256 (rev 2.0) |
 | 74HC00 NAND | SN74HC00N | (sidecar `_note`) | TI SN74HC00N (SCLS024I) |
+| Z80 CPU | Z80 | (sidecar `_note`) | Zilog Z80 PS0178 (rev 06) |
+| MC6850 ACIA | MC6850 | (sidecar `_note`) | Motorola DS9493 (rev 4) |
