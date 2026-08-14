@@ -255,6 +255,33 @@ sidecars). 62256/28C256/74HC00 are shared across both presets.
 > 74C922 data outputs use datasheet letters: a=D0(LSB), b=D1,
 > c=D2, d=D3(MSB); DA = data available (active high).
 
+## Tier 2 — Engine-modeled additions (9 kinds)
+
+Parts with full engine models on bw-board master, added beyond the reference
+library. All pin tables audited against manufacturer datasheets (cited in
+sidecars).
+
+| # | Kind slug | Name | Pins | Datasheet | Art |
+|---|-----------|------|------|-----------|-----|
+| 139 | `ds1302` | DS1302 RTC | 8 (5 modeled + x1/x2/vcc1 artwork) | Maxim DS1302 (19-5207 rev 4) | done |
+| 140 | `ds18b20` | DS18B20 1-Wire Thermometer | 3 | Maxim DS18B20 (19-7487 rev 6) | done |
+| 141 | `at24c02` | AT24C02 I2C EEPROM | 8 (4 modeled + a0/a1/a2/wp artwork) | Microchip AT24C02 (DS20005202) | done |
+| 142 | `xpt2046` | XPT2046 Touch Controller Module | 10 | Xptek XPT2046 | done |
+| 143 | `ky040` | KY-040 Rotary Encoder Module | 5 | — (module spec) | done |
+| 144 | `74hc165` | 74HC165 8-Bit Par-In Shift Reg | 16 | TI SN74HC165 (SCLS195) | done |
+| 145 | `st7920` | ST7920 128x64 Graphic LCD Module | 6 serial | Sitronix ST7920 (v3.3) | done |
+| 146 | `74hc138` | 74HC138 3-to-8 Decoder | 16 | TI SN74HC138 (SCLS093) | done |
+| 147 | `74hc245` | 74HC245 Octal Bus Transceiver | 20 | TI SN74HC245 (SCLS132) | done |
+
+> DS1302/AT24C02 DIP-8: artwork-only pins (x1/x2/vcc1 and a0/a1/a2/wp
+> respectively) are in the sidecar terminal list for correct breadboard
+> footprint placement but are not wired by the engine model.
+> DS18B20 (`ds18b20`) is a separate kind from `temp_sensor` (#127) — the
+> engine model uses 1-Wire protocol with device serial, vs the generic
+> analog temperature sensor.
+> ST7920: PSB pin shown on artwork strapped to GND (serial mode); not
+> in the terminal list as the engine assumes serial-only operation.
+
 ## Engine-only parts (not in reference library)
 
 Modeled in bw-board, useful, not in the Tinkercad library. Kept as extras.
@@ -286,13 +313,14 @@ Modeled in bw-board, useful, not in the Tinkercad library. Kept as extras.
 | Reference library match | 107 | 107 |
 | Multi-arch boards | 3 | 3 |
 | Retro tier | 13 | 13 |
+| Tier 2 additions | 9 | 9 |
 | Engine-only extras | 15 | 15 |
 | Declined | 1 | — |
-| **Total** | **138 + 1 declined** | **138** |
+| **Total** | **147 + 1 declined** | **147** |
 
 ### Art status: complete
 
-All 138 parts have SVG art and JSON terminal sidecars (breadboard is catalog-only). No pending items.
+All 147 parts have SVG art and JSON terminal sidecars (breadboard is catalog-only). No pending items.
 
 ### Pin tables (datasheet-audited)
 
