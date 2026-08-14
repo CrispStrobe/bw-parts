@@ -282,6 +282,25 @@ sidecars).
 > ST7920: PSB pin shown on artwork strapped to GND (serial mode); not
 > in the terminal list as the engine assumes serial-only operation.
 
+## Bench Instruments — Engine-modeled (4 kinds)
+
+Dedicated bench measurement instruments with live-state display. SVGs are
+static palette thumbnails; bw-circuit-ui renders live readings/needle/lamp
+via `getDeviceState` in JSX (same pattern as meter/oscilloscope).
+
+| # | Kind slug | Name | Terminals | State fields | Art |
+|---|-----------|------|-----------|-------------|-----|
+| 148 | `voltmeter` | Bench Voltmeter | a (+), b (-) | value, unit | done |
+| 149 | `ammeter` | Bench Ammeter (series) | a (+), b (-) | value, unit | done |
+| 150 | `analog_meter` | Analog Panel Meter | a (+), b (-) | state.deflection (0..1), params.fullScale | done |
+| 151 | `logic_probe` | Logic Probe | vcc, gnd, tip | state.level (high/low/float), state.pulsing | done |
+
+> Engine source: bench-meters.js. Voltmeter and analog_meter are parallel
+> instruments; ammeter is a series instrument (internal shunt). Logic probe
+> needs VCC/GND power plus a tip contact.
+> Live state rendering is a bw-circuit-ui responsibility — these SVGs show
+> static representative values as palette thumbnails only.
+
 ## Engine-only parts (not in reference library)
 
 Modeled in bw-board, useful, not in the Tinkercad library. Kept as extras.
@@ -314,13 +333,14 @@ Modeled in bw-board, useful, not in the Tinkercad library. Kept as extras.
 | Multi-arch boards | 3 | 3 |
 | Retro tier | 13 | 13 |
 | Tier 2 additions | 9 | 9 |
+| Bench instruments | 4 | 4 |
 | Engine-only extras | 15 | 15 |
 | Declined | 1 | — |
-| **Total** | **147 + 1 declined** | **147** |
+| **Total** | **151 + 1 declined** | **151** |
 
 ### Art status: complete
 
-All 147 parts have SVG art and JSON terminal sidecars (breadboard is catalog-only). No pending items.
+All 151 parts have SVG art and JSON terminal sidecars (breadboard is catalog-only). No pending items.
 
 ### Pin tables (datasheet-audited)
 
