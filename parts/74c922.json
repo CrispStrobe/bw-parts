@@ -23,7 +23,7 @@
     { "name": "vcc", "x": 70, "y": 8, "functions": [] }
   ],
   "variants": null,
-  "_note": "74C922 16-key (4x4) keypad encoder (National Semiconductor / TI). Pin table from 74C922 datasheet. DIP-18 package. 4 row inputs (Y1-Y4), 4 column scan outputs (X1-X4), 4-bit encoded data output (A-D), DA (pin 12, data available active high), OEB (pin 13, output enable active low). OSC (pin 5, oscillator cap), KBM (pin 6, keybounce mask cap). VSS=pin 9 (GND), VCC=pin 18.",
+  "_note": "74C922 16-key (4x4) keypad encoder (National Semiconductor / TI). Pin table from 74C922 datasheet. DIP-18 package. 4 row inputs (Y1-Y4), 4 column scan outputs (X1-X4), 4-bit encoded data output using datasheet letter names: a=D0 (LSB, pin 17), b=D1 (pin 16), c=D2 (pin 15), d=D3 (MSB, pin 14). DA (pin 12, data available active high), OEB (pin 13, output enable active low). OSC (pin 5, oscillator cap), KBM (pin 6, keybounce mask cap). VSS=pin 9 (GND), VCC=pin 18. Emulation mapping: a/b/c/d correspond to keypadOnVia d0-d3 in bit order.",
   "footprint": {
     "refTerminal": "y1",
     "leads": {
