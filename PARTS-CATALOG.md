@@ -215,9 +215,9 @@ like any other part (per bw-board ruling f5250e1).
 | 109 | `microbit_breakout` | micro:bit with Breakout / micro:bit mit Breakout | drawable-only | done |
 | 110 | `pololu_motor_ctrl` | Pololu Motor Controller / Pololu-Motorsteuerung | drawable-only | done |
 
-## Retro Tier (7 kinds)
+## Retro Tier (12 kinds)
 
-Parts for hand-wired retro breadboard builds (6502, Z80). All pin
+Parts for hand-wired retro breadboard builds (6502, Z80, 6507 SBC). All pin
 tables datasheet-audited against manufacturer documents (cited in
 sidecars). 62256/28C256/74HC00 are shared across both presets.
 
@@ -230,11 +230,22 @@ sidecars). 62256/28C256/74HC00 are shared across both presets.
 | 115 | `62256` | 62256 SRAM | 28 | Alliance AS6C62256 (rev 2.0) | done |
 | 116 | `z80` | Z80 CPU | 40 | Zilog Z80 PS0178 (rev 06) | done |
 | 117 | `mc6850` | MC6850 ACIA | 24 | Motorola DS9493 (rev 4) | done |
+| 118 | `r6507` | R6507 CPU (28-pin 6502) | 28 | Rockwell R6507 | done |
+| 119 | `mos6532` | MOS 6532 RIOT | 40 | MOS Technology 6532 | done |
+| 120 | `74c922` | 74C922 Keypad Encoder | 18 | National Semi / TI 74C922 | done |
+| 121 | `74hc374` | 74HC374 Octal D Flip-Flop | 20 | TI 74HC374 (SCLS125) | done |
+| 122 | `74hc688` | 74HC688 8-Bit Comparator | 20 | TI 74HC688 (SCLS252) | done |
 
 > 28C256 and 62256 are pin-compatible (same DIP-28 pinout). Pin 20
 > is CEB on the EEPROM, CSB on the SRAM — both active low.
 > Z80 address and data pins are NOT in sequential pin order on the
 > DIP-40 — this matches the physical chip (A11 at pin 1, D4 at pin 7).
+> R6507 is the 28-pin NMOS variant of the 6502 — only A0-A12, no
+> IRQ/NMI/SYNC pins. Used in the Atari 2600. PHI2 sits between D4
+> and D5 (pin 21), matching the Rockwell datasheet.
+> MOS 6532 RIOT: 128B RAM + 2x 8-bit I/O + timer. RSB = reset
+> active low, CS2B = chip-select 2 active low, IRQB = interrupt
+> active low. RS (pin 32) selects RAM vs I/O registers.
 
 ## Engine-only parts (not in reference library)
 
@@ -242,21 +253,21 @@ Modeled in bw-board, useful, not in the Tinkercad library. Kept as extras.
 
 | # | Kind slug | Notes | Art |
 |---|-----------|-------|-----|
-| 118 | `switch` | SPST toggle (engine has it alongside slide_switch) | done |
-| 119 | `ntc` | NTC thermistor (engine models it; TMP36 is analog alternative) | done |
-| 120 | `eeprom` | I2C EEPROM (24LC256-class) | done |
-| 121 | `temp_sensor` | DS18B20 1-wire temp sensor (different from TMP36) | done |
-| 122 | `led_matrix` | 8x8 LED matrix (standalone, no MAX7219) | done |
-| 123 | `led_cube` | LED cube (unique to bw) | done |
-| 124 | `mcu` | Generic MCU (base for arch-specific boards) | done |
-| 125 | `vcc` | VCC supply rail | done |
-| 126 | `gnd` | Ground reference | done |
-| 127 | `vsource` | Ideal voltage source | done |
-| 128 | `isource` | Ideal current source | done |
-| 129 | `fuse` | Fuse (glass cartridge) | done |
-| 130 | `solenoid` | Solenoid (electromagnetic actuator) | done |
-| 131 | `stepper` | Stepper motor (4-wire bipolar) | done |
-| 132 | `ir_transmitter` | IR LED transmitter | done |
+| 123 | `switch` | SPST toggle (engine has it alongside slide_switch) | done |
+| 124 | `ntc` | NTC thermistor (engine models it; TMP36 is analog alternative) | done |
+| 125 | `eeprom` | I2C EEPROM (24LC256-class) | done |
+| 126 | `temp_sensor` | DS18B20 1-wire temp sensor (different from TMP36) | done |
+| 127 | `led_matrix` | 8x8 LED matrix (standalone, no MAX7219) | done |
+| 128 | `led_cube` | LED cube (unique to bw) | done |
+| 129 | `mcu` | Generic MCU (base for arch-specific boards) | done |
+| 130 | `vcc` | VCC supply rail | done |
+| 131 | `gnd` | Ground reference | done |
+| 132 | `vsource` | Ideal voltage source | done |
+| 133 | `isource` | Ideal current source | done |
+| 134 | `fuse` | Fuse (glass cartridge) | done |
+| 135 | `solenoid` | Solenoid (electromagnetic actuator) | done |
+| 136 | `stepper` | Stepper motor (4-wire bipolar) | done |
+| 137 | `ir_transmitter` | IR LED transmitter | done |
 
 ---
 
@@ -266,14 +277,14 @@ Modeled in bw-board, useful, not in the Tinkercad library. Kept as extras.
 |---|---|---|
 | Reference library match | 107 | 107 |
 | Multi-arch boards | 3 | 3 |
-| Retro tier | 7 | 7 |
+| Retro tier | 12 | 12 |
 | Engine-only extras | 15 | 15 |
 | Declined | 1 | — |
-| **Total** | **132 + 1 declined** | **132** |
+| **Total** | **137 + 1 declined** | **137** |
 
 ### Art status: complete
 
-All 131 parts have SVG art and JSON terminal sidecars (breadboard is catalog-only). No pending items.
+All 137 parts have SVG art and JSON terminal sidecars (breadboard is catalog-only). No pending items.
 
 ### Pin tables (datasheet-audited)
 
