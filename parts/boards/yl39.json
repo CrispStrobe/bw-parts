@@ -1,0 +1,24 @@
+{
+  "board": "yl39",
+  "title": "YL-39 Minimum System",
+  "w": 320,
+  "h": 240,
+  "_note": "Board face descriptor for YL-39 minimum-system STC89C52 board. Element at:{x,y,w,h} in SVG viewBox units. IDs match face element contract.",
+  "elements": {
+    "D1": { "type": "led", "at": { "x": 46, "y": 22, "w": 12, "h": 12 } },
+    "D2": { "type": "led", "at": { "x": 74, "y": 22, "w": 12, "h": 12 } },
+    "D3": { "type": "led", "at": { "x": 102, "y": 22, "w": 12, "h": 12 } },
+    "D4": { "type": "led", "at": { "x": 130, "y": 22, "w": 12, "h": 12 } },
+    "D5": { "type": "led", "at": { "x": 158, "y": 22, "w": 12, "h": 12 } },
+    "D6": { "type": "led", "at": { "x": 186, "y": 22, "w": 12, "h": 12 } },
+    "D7": { "type": "led", "at": { "x": 214, "y": 22, "w": 12, "h": 12 } },
+    "D8": { "type": "led", "at": { "x": 242, "y": 22, "w": 12, "h": 12 } },
+    "SEG": { "type": "seven_segment_4", "at": { "x": 240, "y": 46, "w": 66, "h": 30 } },
+    "BZ":  { "type": "buzzer", "at": { "x": 26, "y": 156, "w": 28, "h": 28 } },
+    "POT": { "type": "potentiometer", "at": { "x": 266, "y": 156, "w": 28, "h": 28 } },
+    "S1":  { "type": "button", "at": { "x": 104, "y": 158, "w": 16, "h": 12 } },
+    "S2":  { "type": "button", "at": { "x": 128, "y": 158, "w": 16, "h": 12 } },
+    "S3":  { "type": "button", "at": { "x": 152, "y": 158, "w": 16, "h": 12 } },
+    "S4":  { "type": "button", "at": { "x": 176, "y": 158, "w": 16, "h": 12 } }
+  }
+}

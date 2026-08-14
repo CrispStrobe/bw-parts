@@ -1,0 +1,72 @@
+{
+  "board": "prechin-a2",
+  "title": "PRECHIN A2 Learning Board",
+  "w": 440,
+  "h": 320,
+  "_note": "Board face descriptor for PRECHIN A2 learning board. Element at:{x,y,w,h} in SVG viewBox units. IDs match face element contract.",
+  "elements": {
+    "MATRIX": {
+      "type": "led_matrix_8x8",
+      "at": { "x": 20, "y": 20, "w": 90, "h": 90 },
+      "_note": "8x8 LED matrix driven by 2x 74HC595 daisy-chain"
+    },
+    "KEYPAD": {
+      "type": "keypad_4x4",
+      "at": { "x": 320, "y": 20, "w": 100, "h": 100 },
+      "_note": "4x4 membrane keypad via 74C922 encoder"
+    },
+    "SEG_PAIR": {
+      "type": "seven_segment_2",
+      "at": { "x": 330, "y": 186, "w": 50, "h": 28 },
+      "_note": "2-digit 7-segment display"
+    },
+    "L1": { "type": "led", "at": { "x": 305, "y": 165, "w": 10, "h": 10 } },
+    "L2": { "type": "led", "at": { "x": 321, "y": 165, "w": 10, "h": 10 } },
+    "L3": { "type": "led", "at": { "x": 337, "y": 165, "w": 10, "h": 10 } },
+    "L4": { "type": "led", "at": { "x": 353, "y": 165, "w": 10, "h": 10 } },
+    "L5": { "type": "led", "at": { "x": 369, "y": 165, "w": 10, "h": 10 } },
+    "L6": { "type": "led", "at": { "x": 385, "y": 165, "w": 10, "h": 10 } },
+    "L7": { "type": "led", "at": { "x": 401, "y": 165, "w": 10, "h": 10 } },
+    "L8": { "type": "led", "at": { "x": 417, "y": 165, "w": 10, "h": 10 } },
+    "DS1302": {
+      "type": "rtc",
+      "at": { "x": 20, "y": 200, "w": 44, "h": 20 },
+      "_note": "DS1302 RTC with crystal and battery holder"
+    },
+    "DS18B20": {
+      "type": "temp_sensor",
+      "at": { "x": 86, "y": 202, "w": 20, "h": 20 },
+      "_note": "DS18B20 1-Wire temperature sensor (TO-92)"
+    },
+    "AT24C02": {
+      "type": "eeprom",
+      "at": { "x": 120, "y": 204, "w": 34, "h": 14 },
+      "_note": "AT24C02 I2C EEPROM"
+    },
+    "LCD_HDR": {
+      "type": "lcd_header",
+      "at": { "x": 20, "y": 148, "w": 100, "h": 12 },
+      "_note": "16-pin header for LCD1602 module"
+    },
+    "IR": {
+      "type": "ir_receiver",
+      "at": { "x": 180, "y": 200, "w": 20, "h": 20 },
+      "_note": "IR receiver on P3.3 (INT1)"
+    },
+    "BZ": {
+      "type": "buzzer",
+      "at": { "x": 218, "y": 200, "w": 24, "h": 24 },
+      "_note": "Buzzer on P2.2 (active low)"
+    },
+    "HDR_P0": {
+      "type": "header_8pin",
+      "at": { "x": 420, "y": 200, "w": 10, "h": 70 },
+      "_note": "P0 expansion header (P0.0-P0.7)"
+    },
+    "HDR_P2": {
+      "type": "header_8pin",
+      "at": { "x": 400, "y": 200, "w": 10, "h": 70 },
+      "_note": "P2 expansion header (P2.0-P2.7)"
+    }
+  }
+}
