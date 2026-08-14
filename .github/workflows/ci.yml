@@ -1,0 +1,21 @@
+name: CI
+on: [push, pull_request]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Validate part sidecars and SVGs
+        run: node test/validate-parts.js
+      - name: Install dependencies
+        run: npm ci
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps chromium
+      - name: Generate ART-PROOF montage
+        run: node verify-art.js
+      - name: Verify ART-PROOF was generated
+        run: test -f ART-PROOF.png && echo "ART-PROOF.png exists ($(wc -c < ART-PROOF.png) bytes)"
