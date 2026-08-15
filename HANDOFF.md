@@ -23,12 +23,12 @@
 
 ## Inventory
 
-- 176 part JSON sidecars + 176 SVGs in parts/
+- 210 part JSON sidecars + 210 SVGs in parts/
 - 2 board face SVGs + 2 board JSONs in parts/boards/
-- 177 parts in PARTS-CATALOG.md
-- 178 files pass validate-parts.js
-- 133 footprinted parts pass verify-seating.js (57 DIP, 76 module)
-- 176/176 synced to bw-circuit-ui src/parts-data/
+- 212 files pass validate-parts.js
+- 168 footprinted parts pass verify-seating.js (72 DIP, 96 module)
+- 210/210 synced to bw-circuit-ui src/parts-data/
+- 0 gaps vs bw-board registerDevice() kinds (116/116 covered)
 - CI: green
 
 ## Sidecar format constraints (unchanged)
