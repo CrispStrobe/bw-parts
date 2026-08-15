@@ -23,11 +23,12 @@
 
 ## Inventory
 
-- 175 part JSON sidecars + 175 SVGs in parts/
+- 176 part JSON sidecars + 176 SVGs in parts/
 - 2 board face SVGs + 2 board JSONs in parts/boards/
-- 176 parts in PARTS-CATALOG.md
-- 177 files pass validate-parts.js
-- 132 footprinted parts pass verify-seating.js (57 DIP, 75 module)
+- 177 parts in PARTS-CATALOG.md
+- 178 files pass validate-parts.js
+- 133 footprinted parts pass verify-seating.js (57 DIP, 76 module)
+- 176/176 synced to bw-circuit-ui src/parts-data/
 - CI: green
 
 ## Sidecar format constraints (unchanged)
@@ -45,4 +46,4 @@
 **Spec-update 008** (board part rendering): bw-circuit-ui needs
 `SvgParts` cases for board-type parts.
 
-**22 new sidecars** need sync to bw-circuit-ui src/parts-data/.
+Parts-data sync complete (176/176, bw-circuit-ui 3961ee6).
