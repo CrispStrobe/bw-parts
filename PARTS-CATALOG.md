@@ -5,8 +5,9 @@
 > catalogue entry, slug, art, variants, identification confidence.
 > Chip designations (74HC08, TMP36, L293D, etc.) are manufacturer names.
 >
-> **Last updated:** 2026-08-09 — reconciled against the verified Tinkercad
-> Circuits library (114 parts) + coordinator target inventory.
+> **Last updated:** 2026-08-15 — 176 parts. Reconciled against the verified
+> reference library (114 parts) + coordinator target inventory + session 3–5
+> additions (sensors, audio, I2C, video/retro, board faces).
 
 ## How to read this catalog
 
@@ -301,6 +302,74 @@ via `getDeviceState` in JSX (same pattern as meter/oscilloscope).
 > Live state rendering is a bw-circuit-ui responsibility — these SVGs show
 > static representative values as palette thumbnails only.
 
+## Sensors & Modules — Session 3+ additions (15 kinds)
+
+Engine-modeled sensor modules from bw-board kit-sensors.js and thirtyseven.js.
+Terminal names match engine kind tables exactly.
+
+| # | Kind slug | Name | Terminals | Engine source | Art |
+|---|-----------|------|-----------|---------------|-----|
+| 152 | `dht11` | DHT11 Temp/Humidity | vcc, data, gnd | kit-sensors.js | done |
+| 153 | `joystick` | Dual-Axis Joystick Module | vcc, gnd, vrx, vry, sw | kit-sensors.js | done |
+| 154 | `ds3231` | DS3231 RTC Module | vcc, gnd, sda, scl | rtc-display.js | done |
+| 155 | `max7219` | MAX7219 8x8 LED Matrix Module | vcc, gnd, din, clk, cs, dout | rtc-display.js | done |
+| 156 | `hall_analog` | Hall Effect Analog Sensor | vcc, gnd, ao, do | thirtyseven.js | done |
+| 157 | `hall_digital` | Hall Effect Digital Sensor | vcc, gnd, do | thirtyseven.js | done |
+| 158 | `reed_switch` | Reed Switch | a, b | thirtyseven.js | done |
+| 159 | `touch_ttp223` | TTP223 Capacitive Touch Sensor | vcc, gnd, do | thirtyseven.js | done |
+| 160 | `photo_interrupter` | Photo Interrupter (Slot Opto) | vcc, gnd, do | thirtyseven.js | done |
+| 161 | `flame_sensor` | Flame Sensor Module | vcc, gnd, ao, do | thirtyseven.js | done |
+| 162 | `ir_reflect` | IR Reflective Sensor | vcc, gnd, do | thirtyseven.js | done |
+| 163 | `sound_module` | Sound Sensor Module | vcc, gnd, ao, do | thirtyseven.js | done |
+| 164 | `heartbeat` | Heartbeat / Pulse Sensor | vcc, gnd, ao | thirtyseven.js | done |
+| 165 | `led_7color` | 7-Color Auto-Cycling LED | a, k | thirtyseven.js | done |
+| 166 | `mpu6050` | MPU-6050 IMU (GY-521 Module) | vcc, gnd, sda, scl, ad0, int | mpu6050.js | done |
+
+> 37-in-1 kit modules (hall_analog through led_7color) use the small
+> blue-PCB breakout style. reed_switch and led_7color are 2-terminal
+> discrete components, not modules.
+> mpu6050 is drawn as the GY-521 breakout module face, not the bare QFN.
+
+## Audio & I2C — Session 3+ additions (5 kinds)
+
+Audio ICs from audio-parts.js and I2C display from ssd1306.js.
+
+| # | Kind slug | Name | Terminals | Engine source | Art |
+|---|-----------|------|-----------|---------------|-----|
+| 167 | `um66t` | UM66T Melody Generator | vdd, gnd, out | audio-parts.js | done |
+| 168 | `kd9561` | KD9561 4-Sound Effect IC | vdd, gnd, out, sel1, sel2 | audio-parts.js | done |
+| 169 | `isd1820` | ISD1820 Voice Record/Playback | vcc, gnd, rec, playe, playl, mic, sp_p, sp_n | audio-parts.js | done |
+| 170 | `ssd1306` | SSD1306 128x64 OLED Module | vcc, gnd, sda, scl | ssd1306.js | done |
+| 171 | `ili9341` | ILI9341 2.4" TFT (SPI Module) | vcc, gnd, cs, rst, dc, mosi, sck, miso, led | ili9341.js | done |
+
+> um66t and kd9561 are TO-92 / DIP-style packages (no module PCB).
+> kd9561 has DIP layout with straddlesGutter footprint.
+> isd1820 is an 8-pin red-PCB module with electret mic and speaker terminals.
+> ssd1306: framebuffer-driven (fb Uint8Array 1024, displayOn, inverted).
+> ili9341: 9-pin SPI header, engine-registered kind with exact terminal match.
+
+## Video & Retro — Session 3+ additions (5 kinds)
+
+Video display processors and card modules for retro breadboard builds.
+
+| # | Kind slug | Name | Pins | Datasheet | Art |
+|---|-----------|------|------|-----------|-----|
+| 172 | `tms9918` | TMS9918A Video Display Processor | 40 | TI SPPS017 | done |
+| 173 | `mc6845` | MC6845 CRT Controller | 40 | Motorola DS9563 | done |
+| 174 | `simplevga_card` | SimpleVGA6502 Card | 3 (vcc, gnd, bus) | — (gfoot, Unlicense) | done |
+| 175 | `vga_prop_card` | VGA Propeller Tile Card | 3 (vcc, gnd, bus) | — (card module) | done |
+| 176 | `ili9341_parallel` | ILI9341 TFT (8080 Parallel) | 16 | ILI9341 datasheet | done |
+
+> tms9918: CPU bus d0-d7, VRAM pins (ad0-ad7, rd0-rd7) are decorative —
+> the machine owns VRAM. Pin 1 and 40 are NC on TMS9918A (were VBB/VCC
+> +12V on the original TMS9918).
+> mc6845: Motorola pinout. MA0-MA13 memory address, RA0-RA4 row address,
+> D0-D7 CPU data bus. Control via E/R̄W̄/C̄S̄/RS. VSS=pin 1, VDD=pin 20.
+> simplevga_card and vga_prop_card are machine-level card faces with
+> placeholder bus terminal — art is what matters.
+> ili9341_parallel: 16-pin 8080-style header (WR#, RD#, D0-D7), distinct
+> from the 9-pin SPI module (ili9341).
+
 ## Engine-only parts (not in reference library)
 
 Modeled in bw-board, useful, not in the Tinkercad library. Kept as extras.
@@ -334,13 +403,18 @@ Modeled in bw-board, useful, not in the Tinkercad library. Kept as extras.
 | Retro tier | 13 | 13 |
 | Tier 2 additions | 9 | 9 |
 | Bench instruments | 4 | 4 |
+| Sensors & modules (session 3+) | 15 | 15 |
+| Audio & I2C (session 3+) | 5 | 5 |
+| Video & retro (session 3+) | 5 | 5 |
 | Engine-only extras | 15 | 15 |
 | Declined | 1 | — |
-| **Total** | **151 + 1 declined** | **151** |
+| **Total** | **176 + 1 declined** | **176** |
 
 ### Art status: complete
 
-All 151 parts have SVG art and JSON terminal sidecars (breadboard is catalog-only). No pending items.
+All 176 parts have SVG art and JSON terminal sidecars (breadboard is catalog-only).
+Additionally, 2 board face SVGs (boards/yl39, boards/prechin-a2) with element
+geometry sidecars. No pending items.
 
 ### Pin tables (datasheet-audited)
 
@@ -359,3 +433,5 @@ All 151 parts have SVG art and JSON terminal sidecars (breadboard is catalog-onl
 | 74HC00 NAND | SN74HC00N | (sidecar `_note`) | TI SN74HC00N (SCLS024I) |
 | Z80 CPU | Z80 | (sidecar `_note`) | Zilog Z80 PS0178 (rev 06) |
 | MC6850 ACIA | MC6850 | (sidecar `_note`) | Motorola DS9493 (rev 4) |
+| TMS9918A VDP | TMS9918A | (sidecar `_note`) | TI SPPS017 |
+| MC6845 CRTC | MC6845 | (sidecar `_note`) | Motorola DS9563 |
