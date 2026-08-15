@@ -1,7 +1,7 @@
 # Blocked items
 
-> Updated: 2026-08-12
+> Updated: 2026-08-15
 
-No blockers at this time. Vendored sidecars in bw-circuit-ui synced
-(119/123 updated, `--check` passes) — bw-circuit-ui agent needs to
-commit the result.
+No blockers at this time. 25 new sidecars since last sync need
+propagation to bw-circuit-ui src/parts-data/ — bw-circuit-ui agent
+owns that sync.

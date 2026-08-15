@@ -1,61 +1,48 @@
-# bw-parts handoff — 2026-08-13 (session 2)
+# bw-parts handoff — 2026-08-15 (session 5)
 
-> **Last commit:** (pending push)
+> **Last commit:** 9e75f15
 > **Tree:** clean, pushed to origin main
 
 ## Done and pushed (this session)
 
-- **DIP-gen dCol audit**: all 36 straddlesGutter sidecars verified
-  correct. The 3 fixed in previous session (555, nano, pico) were
-  the only ones with the reversed-dCol bug.
-- **5 retro-tier parts** (`ac9d745`): W65C02 CPU DIP-40, W65C22 VIA
-  DIP-40, W65C51 ACIA DIP-28, 28C256 EEPROM DIP-28, 62256 SRAM
-  DIP-28. All pin tables datasheet-audited against WDC/Microchip/
-  Alliance datasheets (cited in sidecar `_note`). 28C256 and 62256
-  are pin-compatible.
-- **74HC00 datasheet citation** added (TI SN74HC00N SCLS024I).
-- **Spec-update 008**: board part rendering guidance for bw-circuit-ui.
-  `footprint: null` is correct for canvas-only boards (Mega, Uno,
-  micro:bit). bw-circuit-ui needs `SvgParts` render cases and
-  `hittest.js` FOOTPRINTS entries — no work needed from bw-parts.
+- **15 sensor/module parts** (dht11, joystick, ds3231, max7219,
+  hall_analog/digital, reed_switch, touch_ttp223, photo_interrupter,
+  flame_sensor, ir_reflect, sound_module, heartbeat, led_7color, mpu6050)
+- **5 audio/I2C parts** (um66t, kd9561, isd1820, ssd1306, ili9341 SPI)
+- **5 video/retro parts** (tms9918 DIP-40, mc6845 DIP-40,
+  simplevga_card, vga_prop_card, ili9341_parallel 8080 16-pin)
+- **2 board face SVGs** (boards/yl39, boards/prechin-a2) with element
+  geometry JSON sidecars (at:{x,y,w,h} for face descriptor adoption)
+- **CI workflow** (.github/workflows/ci.yml): validate-parts + 
+  verify-seating + playwright ART-PROOF montage. All green.
+- **Seating verification test** (test/verify-seating.js): automated gate
+  for 57 DIPs + 75 modules. Two fixes applied (kd9561 minCols,
+  pi_pico SWD debug pads).
+- **PARTS-CATALOG.md** updated: 151 → 176 cataloged parts across 3 new
+  sections. Datasheet table updated with TMS9918A + MC6845.
 
-## Done and pushed (previous session, still current)
+## Inventory
 
-- **130 catalog kinds**, 129 SVGs, 129 JSON sidecars (one kind,
-  `breadboard`, is catalog-only with no art)
-- **Footprint fix: Nano, Pico, 555** (`aac8f67`): reversed right-side
-  dCol values corrected
-- **ATtiny85 DIP-8** (`72ff13f`): datasheet-audited (DS40001941C),
-  house-style SVG, unverified → verified
-- **Arduino Mega 2560** (`918dbc6`): 78-terminal canvas board part,
-  DS40002211A audit
-- **micro:bit V2** (`6154a4e`): confirmed nRF52833, PWM added
-- **11 datasheet-audited pin tables** (see catalog)
-- **Spec-updates 004–008**
+- 175 part JSON sidecars + 175 SVGs in parts/
+- 2 board face SVGs + 2 board JSONs in parts/boards/
+- 176 parts in PARTS-CATALOG.md
+- 177 files pass validate-parts.js
+- 132 footprinted parts pass verify-seating.js (57 DIP, 75 module)
+- CI: green
 
-## Sidecar format constraints
+## Sidecar format constraints (unchanged)
 
-- `functions: null` = not audited, `[]` = audited and none. Missing
-  key is a schema error. Binding.
+- `functions: null` = not audited, `[]` = audited and none.
 - RST polarity NOT in sidecars. bw-board hard-codes per kind.
-- Alternate-function data in `functions`, not terminal names.
+- 28C256 uses `ceb`, 62256 uses `csb` — different names, same pin 20.
 
 ## Open — owned by bw-parts
 
 **2 unverified identifications remain:** `clock_display`, `gas_sensor`.
 
-**Licence settled: MPL-2.0.** (See previous handoffs for reasoning.)
-
 ## Open — owned elsewhere
 
 **Spec-update 008** (board part rendering): bw-circuit-ui needs
-`SvgParts` cases for `arduino_uno`, `arduino_nano`, `arduino_mega`,
-`pi_pico`, `microbit` and matching `FOOTPRINTS` entries in
-`hittest.js`. All art and sidecars are ready in `src/parts-data/`.
+`SvgParts` cases for board-type parts.
 
-**10 slug mismatches** (spec-update 003) need action from bw-board
-and bw-circuit-ui.
-
-**Spec-update 004**: register `arduino_mega` board kind in bw-board,
-plus `w65c02`, `w65c22`, `w65c51`, `28c256`, `62256` if the 6502
-machine config targets engine-level simulation.
+**22 new sidecars** need sync to bw-circuit-ui src/parts-data/.
