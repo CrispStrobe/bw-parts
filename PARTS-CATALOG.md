@@ -375,6 +375,61 @@ Video display processors and card modules for retro breadboard builds.
 > ili9341_parallel: 16-pin 8080-style header (WR#, RD#, D0-D7), distinct
 > from the 9-pin SPI module (ili9341).
 
+## Engine-kind gap closure (session 5) — 34 kinds
+
+All bw-board `registerDevice()` kinds that previously lacked sidecars.
+Terminal names match the engine exactly.
+
+| # | Kind slug | Name | Terminals | Art |
+|---|-----------|------|-----------|-----|
+| 178 | `piezo` | Piezoelectric element | a, b | done |
+| 179 | `tilt_sensor` | Tilt sensor (ball switch) | a, b | done |
+| 180 | `phototransistor` | Phototransistor | collector, emitter | done |
+| 181 | `solar_cell` | Solar cell | pos, neg | done |
+| 182 | `vreg` | Generic voltage regulator | in, out, gnd | done |
+| 183 | `ambient_light` | Ambient light sensor | vcc, out, gnd | done |
+| 184 | `rf433_tx` | RF 433MHz transmitter | vcc, gnd, data | done |
+| 185 | `rf433_rx` | RF 433MHz receiver | vcc, gnd, data | done |
+| 186 | `spectrum_display` | Spectrum analyzer display | vcc, gnd | done |
+| 187 | `hx711` | HX711 load cell ADC | vcc, gnd, dout, sck | done |
+| 188 | `ze08_ch2o` | ZE08-CH2O formaldehyde sensor | vcc, gnd, tx, rx | done |
+| 189 | `usb_a` | USB Type-A connector | vbus, dm, dp, gnd | done |
+| 190 | `dfplayer_mini` | DFPlayer Mini MP3 module | vcc, gnd, rx, tx, busy | done |
+| 191 | `msgeq7` | MSGEQ7 graphic EQ filter | vcc, gnd, strobe, reset, out | done |
+| 192 | `dff` | D flip-flop (single) | d, clk, set, rst, q, q_bar | done |
+| 193 | `hc05` | HC-05 Bluetooth module | vcc, gnd, rxd, txd, key, state | done |
+| 194 | `jkff` | JK flip-flop (single) | j, k, clk, set, rst, q, q_bar | done |
+| 195 | `dip_switch` | DIP switch 4-position | s0_a/b, s1_a/b, s2_a/b, s3_a/b | done |
+| 196 | `tcs3200` | TCS3200 color sensor | vcc, gnd, s0-s3, oe, out | done |
+| 197 | `nrf24l01` | nRF24L01 2.4GHz wireless | vcc, gnd, ce, csn, sck, mosi, miso, irq | done |
+| 198 | `lm393` | LM393 dual comparator | 1_pos/neg/out, 2_pos/neg/out, vcc, gnd | done |
+| 199 | `lm339` | LM339 quad comparator | 1-4_pos/neg/out, vcc, gnd | done |
+| 200 | `lm358` | LM358 dual op-amp | vcc, gnd, 1_pos/neg/out, 2_pos/neg/out | done |
+| 201 | `level_shifter4` | 4-ch level shifter | lv, hv, gnd, lv1-lv4, hv1-hv4 | done |
+| 202 | `h_bridge` | L293D H-bridge motor driver | vcc, gnd, en1/2, in1-in4, out1-out4 | done |
+| 203 | `decade_counter` | CD4017 decade counter | clk, rst, en, q0-q9, co | done |
+| 204 | `timer_556` | Dual 555 timer (556) | 1/2_trigger/threshold/control/discharge/output/reset, vcc, gnd | done |
+| 205 | `lm3915` | LM3915 dot/bar driver | vcc, gnd, sig, mode, l1-l10 | done |
+| 206 | `darlington_driver` | ULN2003/2803 Darlington array | in0-in7, out0-out7, com, gnd | done |
+| 207 | `bargraph` | 10-segment LED bargraph | a0/k0 through a9/k9 | done |
+| 208 | `matrix8x8` | 8x8 LED matrix (bare) | col0-col7, row0-row7 | done |
+| 209 | `mcp3008` | MCP3008 8-ch SPI ADC | vcc, gnd, vref, csb, clk, din, dout, ch0-ch7 | done |
+| 210 | `cd74hc4067` | CD74HC4067 16-ch analog mux | vcc, gnd, s0-s3, eb, z, c0-c15 | done |
+| 211 | `ili9341_par` | ILI9341 TFT (8080 parallel, engine names) | vcc, gnd, cs, rst, rs, wr, rd, d0-d7, led | done |
+| — | `battery` | Generic battery (alias) | pos, neg | done |
+| — | `timer_555` | Timer 555 (engine alias of 555) | (same as 555) | done |
+| — | `hd44780` | HD44780 LCD (datasheet names, alias of char_lcd) | vss, vdd, v0, rs, rw, e, d0-d7, a, k | done |
+| — | `eater6502` | Ben Eater 6502 (board preset) | via1.pa0-pa7, via1.pb0-pb7, 5v, gnd | done |
+
+> Engine aliases with matching sidecars:
+> - `battery` (pos/neg): generic base for battery_9v/aa/coin
+> - `timer_555`: engine alias of 555 with identical terminals
+> - `hd44780`: datasheet terminal names (vss/vdd/v0/a/k), same
+>   silicon as char_lcd (house names vcc/gnd/vo/bl_a/bl_k)
+> - `ili9341_par`: engine-canonical terminals (rs/wr/rd), distinct
+>   from the old ili9341_parallel sidecar (dc/wrb/rdb)
+> - `eater6502`: board preset (via1.pa0-pa7, via1.pb0-pb7, 5v, gnd)
+
 ## Engine-only parts (not in reference library)
 
 Modeled in bw-board, useful, not in the Tinkercad library. Kept as extras.
@@ -411,15 +466,18 @@ Modeled in bw-board, useful, not in the Tinkercad library. Kept as extras.
 | Sensors & modules (session 3+) | 15 | 15 |
 | Audio & I2C (session 3+) | 5 | 5 |
 | Video & retro (session 3+) | 6 | 6 |
+| Engine-kind gap closure (session 5) | 34 | 34 |
 | Engine-only extras | 15 | 15 |
 | Declined | 1 | — |
-| **Total** | **177 + 1 declined** | **177** |
+| **Total** | **211 + 1 declined** | **211** |
 
 ### Art status: complete
 
-All 176 parts have SVG art and JSON terminal sidecars (breadboard is catalog-only).
+All 210 parts have SVG art and JSON terminal sidecars (breadboard is
+catalog-only; ili9341_parallel kept alongside engine-canonical ili9341_par).
 Additionally, 2 board face SVGs (boards/yl39, boards/prechin-a2) with element
-geometry sidecars. No pending items.
+geometry sidecars. 0 gaps vs bw-board registerDevice() kinds (116/116).
+No pending items.
 
 ### Pin tables (datasheet-audited)
 
