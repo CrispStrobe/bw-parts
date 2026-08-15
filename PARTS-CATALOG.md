@@ -416,6 +416,9 @@ Terminal names match the engine exactly.
 | 209 | `mcp3008` | MCP3008 8-ch SPI ADC | vcc, gnd, vref, csb, clk, din, dout, ch0-ch7 | done |
 | 210 | `cd74hc4067` | CD74HC4067 16-ch analog mux | vcc, gnd, s0-s3, eb, z, c0-c15 | done |
 | 211 | `ili9341_par` | ILI9341 TFT (8080 parallel, engine names) | vcc, gnd, cs, rst, rs, wr, rd, d0-d7, led | done |
+| 212 | `adxl335` | ADXL335 3-axis accelerometer | vcc, gnd, xout, yout, zout, st | done |
+| 213 | `memsic2125` | Memsic MX2125 2-axis accelerometer | vcc, gnd, xout, yout | done |
+| 214 | `attiny88` | ATtiny88 MCU (DIP-28) | PB0-7, PC0-7, PD0-7, PA0-3, VCC, GND, AVCC | done |
 | — | `battery` | Generic battery (alias) | pos, neg | done |
 | — | `timer_555` | Timer 555 (engine alias of 555) | (same as 555) | done |
 | — | `hd44780` | HD44780 LCD (datasheet names, alias of char_lcd) | vss, vdd, v0, rs, rw, e, d0-d7, a, k | done |
@@ -466,10 +469,10 @@ Modeled in bw-board, useful, not in the Tinkercad library. Kept as extras.
 | Sensors & modules (session 3+) | 15 | 15 |
 | Audio & I2C (session 3+) | 5 | 5 |
 | Video & retro (session 3+) | 6 | 6 |
-| Engine-kind gap closure (session 5) | 34 | 34 |
+| Engine-kind gap closure (session 5) | 37 | 37 |
 | Engine-only extras | 15 | 15 |
 | Declined | 1 | — |
-| **Total** | **211 + 1 declined** | **211** |
+| **Total** | **214 + 1 declined** | **214** |
 
 ### Art status: complete
 
