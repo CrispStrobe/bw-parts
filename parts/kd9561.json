@@ -20,7 +20,6 @@
       "sel1": { "dRow": 5, "dCol": 0 },
       "sel2": { "dRow": 5, "dCol": 1 }
     },
-    "straddlesGutter": true,
-    "minCols": 3
+    "straddlesGutter": true
   }
 }

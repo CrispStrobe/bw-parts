@@ -11,6 +11,8 @@ jobs:
           node-version: 22
       - name: Validate part sidecars and SVGs
         run: node test/validate-parts.js
+      - name: Verify breadboard seating (DIP row conduction)
+        run: node test/verify-seating.js
       - name: Install dependencies
         run: npm install
       - name: Install Playwright browsers
