@@ -25,6 +25,7 @@
 
 - 210 part JSON sidecars + 210 SVGs in parts/
 - 2 board face SVGs + 2 board JSONs in parts/boards/
+- 211 parts in PARTS-CATALOG.md (0 inventory gaps)
 - 212 files pass validate-parts.js
 - 168 footprinted parts pass verify-seating.js (72 DIP, 96 module)
 - 210/210 synced to bw-circuit-ui src/parts-data/
