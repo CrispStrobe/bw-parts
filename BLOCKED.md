@@ -2,6 +2,5 @@
 
 > Updated: 2026-08-15
 
-No blockers at this time. 25 new sidecars since last sync need
-propagation to bw-circuit-ui src/parts-data/ — bw-circuit-ui agent
-owns that sync.
+No blockers at this time. Parts-data sync complete (175/175 parts,
+bw-circuit-ui e0c1e69).
