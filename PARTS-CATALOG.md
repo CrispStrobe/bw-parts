@@ -359,7 +359,12 @@ Video display processors and card modules for retro breadboard builds.
 | 174 | `simplevga_card` | SimpleVGA6502 Card | 3 (vcc, gnd, bus) | — (gfoot, Unlicense) | done |
 | 175 | `vga_prop_card` | VGA Propeller Tile Card | 3 (vcc, gnd, bus) | — (card module) | done |
 | 176 | `ili9341_parallel` | ILI9341 TFT (8080 Parallel) | 16 | ILI9341 datasheet | done |
+| 177 | `tilevga` | TileVGA Card (rene6502) | 3 (vcc, gnd, bus) | — (machine chip) | done |
 
+> tilevga: rene6502/6502-vga-prop (public domain). P8X32A Propeller
+> driving 320x240 VGA, 40x30 tiles, 16-of-64 colors. 16K dual-port
+> VRAM window. System font: funscii (public domain, Wuerfel21).
+> Machine-level chip (kind 'tilevga' in m6502-machine.js).
 > tms9918: CPU bus d0-d7, VRAM pins (ad0-ad7, rd0-rd7) are decorative —
 > the machine owns VRAM. Pin 1 and 40 are NC on TMS9918A (were VBB/VCC
 > +12V on the original TMS9918).
@@ -405,10 +410,10 @@ Modeled in bw-board, useful, not in the Tinkercad library. Kept as extras.
 | Bench instruments | 4 | 4 |
 | Sensors & modules (session 3+) | 15 | 15 |
 | Audio & I2C (session 3+) | 5 | 5 |
-| Video & retro (session 3+) | 5 | 5 |
+| Video & retro (session 3+) | 6 | 6 |
 | Engine-only extras | 15 | 15 |
 | Declined | 1 | — |
-| **Total** | **176 + 1 declined** | **176** |
+| **Total** | **177 + 1 declined** | **177** |
 
 ### Art status: complete
 
