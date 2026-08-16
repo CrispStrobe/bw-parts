@@ -26,21 +26,28 @@ Per coordinator override, the bw-parts agent built the following in
 - **S-expression parser** (`src/importers/sexpr.js`): minimal recursive-
   descent parser for KiCad's Lisp-like format.
 - **Wokwi importer + exporter** (`src/importers/wokwi.js`): bidirectional
-  diagram.json support — 35+ wokwi part types mapped, pin name aliases,
-  position preservation, round-trip export.
-- **Test suite** (`test/importers.test.js`): 22 tests (6 suites) — sexpr
-  parser, KiCad mapping, Wokwi import/export, registry dispatch, Eater
-  8-bit acceptance corpus. All green.
+  diagram.json support — 36 wokwi part types mapped (incl. breadboard),
+  pin name aliases (74HC595, LED polarity, instance/side suffixes),
+  v1 array + v2 object connection formats, position preservation,
+  round-trip export.
+- **Test suite** (`test/importers.test.js`): **50 tests (12 suites)** —
+  sexpr parser, KiCad mapping (s-expr + XML), Wokwi import/export,
+  registry dispatch, Eater 8-bit acceptance corpus (embedded + real XML),
+  3 real Wokwi fixture acceptance suites. All green.
+- **Test fixtures** (`test/fixtures/`): 3 public Wokwi diagram.json files
+  (wokwi/arduino-simon-game, arcostasi/avr8js-electron-playground blink,
+  Aruack/7LED breadboard).
 
 This work lives in bw-circuit-ui; bw-parts owns only the sidecar data
 that informed the pin mapping tables.
 
-## Current session: acceptance & hardening
+## Session 6 acceptance results
 
-- [ ] Clone Upcycle-Electronics/8-Bit-Breadboard-Computer (MIT), test
-      KiCad importer against real exported netlists
-- [ ] Wokwi diagram.json acceptance with real-world files
-- [ ] Push checkpoint
+- **KiCad XML**: 274/275 Eater 8-bit components mapped, 902 wires,
+  0 unmapped, 0 warnings. XML auto-detected.
+- **Wokwi Simon Game**: 14 parts, 48 wires, 74HC595 pin aliases verified
+- **Wokwi Blink (v2)**: 3 parts, 3 wires, object-style connections parsed
+- **Wokwi 7LED**: 18 parts (incl. breadboard), 42 wires, hole coords OK
 
 ## Sidecar format constraints (unchanged)
 
