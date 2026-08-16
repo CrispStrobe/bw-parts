@@ -1,65 +1,50 @@
-# bw-parts handoff — 2026-08-16 (session 6)
+# bw-parts handoff — 2026-08-16 (session 6, context cycle)
 
-> **Last commit:** bea76ca
-> **Tree:** clean, pushed to origin main
+## DONE (pushed, verified on remote)
 
-## Done and pushed (prior sessions)
+### bw-parts (main a0bf177)
+- **KiCad importer** boundary crossing documented
+- **ATtiny2313** DIP-20 + **ATtiny13** DIP-8 sidecars (datasheet-audited)
+- **SSD1306** OLED palette + footprint (terminal contract matched)
+- **German kit canon**: cd4093, mcp4725, dht22, tm1637, ky002 sidecars+SVGs
+- **Bausatz canon**: at89c2051 DIP-20, matrix16x8, matrix9x9, seven_seg_3 sidecars+SVGs
+- 231 validated, 184 seated, 0 errors
 
-- **218 part JSON sidecars + 218 SVGs** in parts/
-- **2 board face SVGs + 2 board JSONs** in parts/boards/
-- **214 parts in PARTS-CATALOG.md** (0 inventory gaps)
-- **CI workflow** (.github/workflows/ci.yml): validate-parts +
-  verify-seating + playwright ART-PROOF montage. All green.
-- **5 SAP-1 TTL tier sidecars**: 74LS173/161/189/157/107
+### bw-board (master 86d24b5, remote ahead at 71957c3)
+- **CD4093** chip-composer (schmitt_nand ×4, CMOS)
+- **MCP4725** I2C DAC device (first analog-output I2C part)
+- **DHT22** device (dht11 buildFrame generalized, 16-bit ×10 encoding)
+- **NxM LED matrix** (matrix8x8 generalized → matrix16x8, matrix9x9)
+- **Slide switch** SPDT + dip_switch_spst + dip_switch_dpst devices
+- Chip-composer count 15→16 (cd4093)
 
-## Boundary crossing: importer registry in bw-circuit-ui
+### bw-circuit-ui (master 9ebb36d, remote ahead at 4c5b580)
+- **Wokwi importer**: real-file acceptance (3 fixtures, breadboard, v2 format)
+- **KiCad XML netlist** support (auto-detect, 274/275 Eater corpus)
+- **50/50 importer tests** green
+- **DIP bodies**: attiny2313, attiny13, at89c2051 (DIP_CHIP_LABELS, mcuChipInfo, footprints)
+- **Palette entries**: ssd1306, cd4093, mcp4725, dht22, ky002, matrix variants, max7219, seven_seg_3, at89c2051
+- **NxM matrix face**: generalized rendering for 8×8/16×8/9×9
+- **KNOWN_GAPS burn-down**: 39→6 (33 kinds healed via KIND_ALIASES, PASSTHROUGH, engine devices)
+- **l293d alias fix**: was backwards (h_bridge→l293d), now correct (l293d→h_bridge)
+- pendant-attiny88.test.js: fixed for device-true attiny88 kind
 
-Per coordinator override, the bw-parts agent built the following in
-**bw-circuit-ui** (commits fe78641..d1f114b):
+## IN FLIGHT (exact next steps)
 
-- **Importer registry** (`src/importers/index.js`): `importCircuit(format, text)`
-  dispatcher with `getSupportedFormats()`.
-- **KiCad netlist importer** (`src/importers/kicad-netlist.js`): parses
-  `.net` s-expression netlists, maps 40+ KiCad libsource part names to
-  engine kind slugs with datasheet-audited pin tables. Handles rescue
-  suffixes, library prefixes, value-based fallback, passive inference.
-- **S-expression parser** (`src/importers/sexpr.js`): minimal recursive-
-  descent parser for KiCad's Lisp-like format.
-- **Wokwi importer + exporter** (`src/importers/wokwi.js`): bidirectional
-  diagram.json support — 36 wokwi part types mapped (incl. breadboard),
-  pin name aliases (74HC595, LED polarity, instance/side suffixes),
-  v1 array + v2 object connection formats, position preservation,
-  round-trip export.
-- **Test suite** (`test/importers.test.js`): **50 tests (12 suites)** —
-  sexpr parser, KiCad mapping (s-expr + XML), Wokwi import/export,
-  registry dispatch, Eater 8-bit acceptance corpus (embedded + real XML),
-  3 real Wokwi fixture acceptance suites. All green.
-- **Test fixtures** (`test/fixtures/`): 3 public Wokwi diagram.json files
-  (wokwi/arduino-simon-game, arcostasi/avr8js-electron-playground blink,
-  Aruack/7LED breadboard).
+1. **Remaining 6 KNOWN_GAPS**: `556` (dual 555 timer model), `74c922`/`74hc374`/`74hc688` (chip-composer entries), `pololu_motor_ctrl` (motor driver model), `seven_seg_3` (engine decomposition — bw-board agent may have started this at 71957c3)
+2. **max7219 face**: engine device exists, palette added, but no BoardCanvas face case yet (bw-cui2 lane)
+3. **seven_seg_3 engine**: needs multiplexed per-digit decomposition in board.js — check if bw-board 71957c3 landed this
+4. **PARTS-CATALOG.md**: needs updating with new parts (at89c2051, matrix16x8, matrix9x9, seven_seg_3, cd4093, mcp4725, dht22, tm1637, ky002)
 
-This work lives in bw-circuit-ui; bw-parts owns only the sidecar data
-that informed the pin mapping tables.
+## BLOCKED
 
-## Session 6 acceptance results
-
-- **KiCad XML**: 274/275 Eater 8-bit components mapped, 902 wires,
-  0 unmapped, 0 warnings. XML auto-detected.
-- **Wokwi Simon Game**: 14 parts, 48 wires, 74HC595 pin aliases verified
-- **Wokwi Blink (v2)**: 3 parts, 3 wires, object-style connections parsed
-- **Wokwi 7LED**: 18 parts (incl. breadboard), 42 wires, hole coords OK
+- **AT89C2051 emulator config**: waiting on emu8051 integration (not this agent's lane)
+- **seven_seg_3 face rendering**: needs engine decomposition first (check bw-board 71957c3)
+- **max7219 BoardCanvas face**: bw-cui2 lane
 
 ## Sidecar format constraints (unchanged)
 
 - `functions: null` = not audited, `[]` = audited and none.
 - RST polarity NOT in sidecars. bw-board hard-codes per kind.
 - 28C256 uses `ceb`, 62256 uses `csb` — different names, same pin 20.
-
-## Open — owned by bw-parts
-
-**2 unverified identifications remain:** `clock_display`, `gas_sensor`.
-
-## Open — owned elsewhere
-
-**Spec-update 008** (board part rendering): bw-circuit-ui needs
-`SvgParts` cases for board-type parts.
+- AT89C2051 uses `p3_0` format (underscore for 8051 P3.0 dot notation).
