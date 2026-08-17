@@ -46,8 +46,12 @@ for (const f of jsonFiles) {
   const termNames = new Set(terminals.map(t => t.name));
   const leadNames = new Set(Object.keys(leads));
 
-  // Every terminal must have a lead entry
+  // Every terminal must have a lead entry — except INTERNAL terminals:
+  // a net the part exposes without a physical breadboard lead (the
+  // Pico's gp25 onboard-LED net). They declare `internal: true`.
+  const internalCount = terminals.filter(t => t.internal).length;
   for (const t of terminals) {
+    if (t.internal) continue;
     if (!leads[t.name]) {
       fail(kind, `terminal "${t.name}" has no footprint.leads entry`);
     }
@@ -88,26 +92,39 @@ for (const f of jsonFiles) {
     leftPins.sort((a, b) => a.dCol - b.dCol);
     rightPins.sort((a, b) => a.dCol - b.dCol);
 
-    // minCols check
+    // minCols check. A PARTIALLY-modeled module (the UM245R sidecar
+    // carries 15 of the DIP-24's pins — NC/3V3/PWREN are unmodeled) has
+    // fewer leads per side than columns, and its dCols legitimately GAP:
+    // the modeled pins sit at their true physical columns, the unmodeled
+    // pins occupy the holes between. Demanding count==minCols and
+    // gap-free dCols rejected exactly the honest layout, so: a side may
+    // not EXCEED minCols, every dCol must fit inside it, and the
+    // sequential rule applies only to fully-modeled sides.
     if (footprint.minCols) {
-      if (leftPins.length !== footprint.minCols) {
-        fail(kind, `left pin count ${leftPins.length} != minCols ${footprint.minCols}`);
+      if (leftPins.length > footprint.minCols) {
+        fail(kind, `left pin count ${leftPins.length} > minCols ${footprint.minCols}`);
       }
-      if (rightPins.length !== footprint.minCols) {
-        fail(kind, `right pin count ${rightPins.length} != minCols ${footprint.minCols}`);
+      if (rightPins.length > footprint.minCols) {
+        fail(kind, `right pin count ${rightPins.length} > minCols ${footprint.minCols}`);
+      }
+      for (const p of [...leftPins, ...rightPins]) {
+        if (p.dCol < 0 || p.dCol >= footprint.minCols) {
+          fail(kind, `pin "${p.name}" dCol=${p.dCol} outside 0..${footprint.minCols - 1}`);
+        }
       }
     }
 
-    // Sequential dCol check (left)
-    for (let i = 0; i < leftPins.length; i++) {
+    // Sequential dCol check — fully-modeled sides only (no minCols, or
+    // the side fills every column).
+    const fullLeft = !footprint.minCols || leftPins.length === footprint.minCols;
+    const fullRight = !footprint.minCols || rightPins.length === footprint.minCols;
+    if (fullLeft) for (let i = 0; i < leftPins.length; i++) {
       if (leftPins[i].dCol !== i) {
         fail(kind, `left pin "${leftPins[i].name}" dCol=${leftPins[i].dCol}, expected ${i}`);
         break;
       }
     }
-
-    // Sequential dCol check (right)
-    for (let i = 0; i < rightPins.length; i++) {
+    if (fullRight) for (let i = 0; i < rightPins.length; i++) {
       if (rightPins[i].dCol !== i) {
         fail(kind, `right pin "${rightPins[i].name}" dCol=${rightPins[i].dCol}, expected ${i}`);
         break;
@@ -116,7 +133,7 @@ for (const f of jsonFiles) {
 
     // Total pin count = 2 * side count + extra pads
     const totalPins = leftPins.length + rightPins.length + extraPads;
-    if (totalPins !== terminals.length) {
+    if (totalPins !== terminals.length - internalCount) {
       fail(kind, `footprint has ${totalPins} leads but terminals has ${terminals.length} entries`);
     }
   } else {
