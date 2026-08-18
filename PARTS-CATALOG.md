@@ -5,10 +5,9 @@
 > catalogue entry, slug, art, variants, identification confidence.
 > Chip designations (74HC08, TMP36, L293D, etc.) are manufacturer names.
 >
-> **Last updated:** 2026-08-18 — 239 parts. Reconciled against the completeness
-> matrix (`scripts/part-matrix.mjs` in bw-circuit-ui) + session 8 additions
-> (max7219 face confirmed, at24c64/ps2 sidecars, cd4093/74ls189/at89c2051/stc15_mcu
-> catalog rows, seven_seg_8 + ledbank8 for Prechin A2, keypad_4x4 c3 fix).
+> **Last updated:** 2026-08-18 — 244 parts. Session 8: matrix reconciliation,
+> A2 device parts, footprint audit (35 fixes), sensor long-tail batch
+> (bmp280, tcs34725, max6675, ina219, ads1115).
 
 ## How to read this catalog
 
@@ -491,7 +490,7 @@ PainfulDiodes bench, and German kit canon.
 > now has all 9 terminals (a–g, dp, common).
 > 74LS series: SAP-1 computer chips from bw-board sap1-chips.js.
 
-## Session 8 additions (8 kinds)
+## Session 8 additions (13 kinds)
 
 Parts found by reconciling the completeness matrix past 231: sidecars that
 existed without catalog rows, plus new engine kinds that lacked sidecars.
@@ -506,6 +505,11 @@ existed without catalog rows, plus new engine kinds that lacked sidecars.
 | 237 | `ps2` | PS/2 Keyboard Interface | 9 | modeled | done |
 | 238 | `seven_seg_8` | 8-Digit 7-Segment Display (2x4) | 16 | drawable-only | done |
 | 239 | `ledbank8` | 8-LED Bank (port-driven) | 10 | drawable-only | done |
+| 240 | `bmp280` | BMP280 Pressure/Temp Sensor | 6 | drawable-only | done |
+| 241 | `tcs34725` | TCS34725 RGB Color Sensor | 5 | drawable-only | done |
+| 242 | `max6675` | MAX6675 Thermocouple Converter | 5 | drawable-only | done |
+| 243 | `ina219` | INA219 Current/Power Monitor | 6 | drawable-only | done |
+| 244 | `ads1115` | ADS1115 16-bit 4-ch ADC | 10 | drawable-only | done |
 
 > cd4093: CMOS quad Schmitt-trigger NAND (TI CD4093B SCHS053). Same DIP-14
 > pinout as 74HC00/74HC132. Used in Wilson-primer SBC address decode with
@@ -532,6 +536,16 @@ existed without catalog rows, plus new engine kinds that lacked sidecars.
 > 7-seg digit select (documented conflict, compile WARNING). 10 terminals.
 > keypad_4x4 fix: sidecar was missing c3 (7 of 8 terminals) and had no
 > footprint — now 8 terminals (r0-r3, c0-c3) with footprint.
+> bmp280: Bosch I2C barometric pressure + temperature sensor. 6-pin breakout
+> (vcc, gnd, sda, scl, csb, sdo). BME280 pin-compatible. 300-1100 hPa.
+> tcs34725: ams/TAOS I2C RGB color sensor. 5-pin breakout with white LED
+> illumination enable. Reports RGBC 16-bit counts. Fixed addr 0x29.
+> max6675: Maxim SPI thermocouple-to-digital converter. 5-pin breakout.
+> 12-bit, 0-1024C in 0.25C steps. Read-only — no write registers.
+> ina219: TI I2C high-side current/power monitor. 6-pin breakout with
+> onboard 0.1 ohm shunt. Bus voltage 0-26V, 12-bit ADC. Default 0x40.
+> ads1115: TI 16-bit 4-channel I2C ADC. 10-pin breakout. Programmable
+> gain, 8-860 SPS. Single-ended (4 ch) or differential (2 ch).
 
 ---
 
@@ -567,13 +581,13 @@ in bw-circuit-ui). Each gap has an owner or a stated reason.
 | Engine-kind gap closure (session 5) | 37 | 37 |
 | Engine-only extras | 15 | 15 |
 | Session 6–7 additions | 17 | 17 |
-| Session 8 additions | 8 | 8 |
+| Session 8 additions | 13 | 13 |
 | Declined | 1 | — |
-| **Total** | **239 + 1 declined** | **239** |
+| **Total** | **244 + 1 declined** | **244** |
 
 ### Art status
 
-All 239 cataloged parts have SVG art and JSON terminal sidecars. The
+All 244 cataloged parts have SVG art and JSON terminal sidecars. The
 completeness matrix (`scripts/part-matrix.mjs` in bw-circuit-ui) tracks
 247 total registered kinds — the delta includes reference-only sidecars
 (sensor variants, board presets, aliases) that are not user-placeable
