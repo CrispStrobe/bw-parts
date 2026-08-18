@@ -34,15 +34,15 @@
   ],
   "variants": null,
   "footprint": {
-    "refTerminal": "vcc",
+    "refTerminal": "gnd",
     "leads": {
       "vcc": {
         "dRow": 0,
-        "dCol": 0
+        "dCol": 1
       },
       "gnd": {
         "dRow": 0,
-        "dCol": 1
+        "dCol": 0
       },
       "sda": {
         "dRow": 0,

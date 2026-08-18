@@ -38,15 +38,15 @@
       },
       "g_anode": {
         "dRow": 0,
-        "dCol": 1
+        "dCol": 2
       },
       "b_anode": {
         "dRow": 0,
-        "dCol": 2
+        "dCol": 3
       },
       "cathode": {
         "dRow": 0,
-        "dCol": 3
+        "dCol": 1
       }
     }
   }
