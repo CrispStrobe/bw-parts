@@ -5,9 +5,10 @@
 > catalogue entry, slug, art, variants, identification confidence.
 > Chip designations (74HC08, TMP36, L293D, etc.) are manufacturer names.
 >
-> **Last updated:** 2026-08-18 — 237 parts. Reconciled against the completeness
+> **Last updated:** 2026-08-18 — 238 parts. Reconciled against the completeness
 > matrix (`scripts/part-matrix.mjs` in bw-circuit-ui) + session 8 additions
-> (max7219 face confirmed, at24c64/ps2 sidecars, cd4093/74ls189/at89c2051/stc15_mcu catalog rows).
+> (max7219 face confirmed, at24c64/ps2 sidecars, cd4093/74ls189/at89c2051/stc15_mcu
+> catalog rows, seven_seg_8 for Prechin 2x4 display).
 
 ## How to read this catalog
 
@@ -490,7 +491,7 @@ PainfulDiodes bench, and German kit canon.
 > now has all 9 terminals (a–g, dp, common).
 > 74LS series: SAP-1 computer chips from bw-board sap1-chips.js.
 
-## Session 8 additions (6 kinds)
+## Session 8 additions (7 kinds)
 
 Parts found by reconciling the completeness matrix past 231: sidecars that
 existed without catalog rows, plus new engine kinds that lacked sidecars.
@@ -503,6 +504,7 @@ existed without catalog rows, plus new engine kinds that lacked sidecars.
 | 235 | `stc15_mcu` | STC15 MCU (DIP-40) | 40 | **blocked** (emu8051) | dip-gen |
 | 236 | `at24c64` | AT24C64 I2C EEPROM (64 Kbit) | 8 | modeled | done |
 | 237 | `ps2` | PS/2 Keyboard Interface | 9 | modeled | done |
+| 238 | `seven_seg_8` | 8-Digit 7-Segment Display (2x4) | 16 | drawable-only | done |
 
 > cd4093: CMOS quad Schmitt-trigger NAND (TI CD4093B SCHS053). Same DIP-14
 > pinout as 74HC00/74HC132. Used in Wilson-primer SBC address decode with
@@ -520,6 +522,10 @@ existed without catalog rows, plus new engine kinds that lacked sidecars.
 > ps2: Machine-side peripheral — data flows through PS2Capture + ps2OnVia,
 > not the MNA. Terminals (d0-d7, da) are for wiring display only. Wires to
 > VIA PA0-PA7 + CA1 (6502) or 74HC245 buffer (Z80). Engine: ps2-device.js.
+> seven_seg_8: 8-digit common-cathode 7-segment display in 2x4 layout
+> (top row com0-com3, bottom row com4-com7). Shared segment bus (a-g, dp)
+> + 8 digit-select commons. Same multiplexing pattern as seven_seg_3 but
+> with 8 digits. 16 terminals total. Prechin console display.
 
 ---
 
@@ -555,13 +561,13 @@ in bw-circuit-ui). Each gap has an owner or a stated reason.
 | Engine-kind gap closure (session 5) | 37 | 37 |
 | Engine-only extras | 15 | 15 |
 | Session 6–7 additions | 17 | 17 |
-| Session 8 additions | 6 | 6 |
+| Session 8 additions | 7 | 7 |
 | Declined | 1 | — |
-| **Total** | **237 + 1 declined** | **237** |
+| **Total** | **238 + 1 declined** | **238** |
 
 ### Art status
 
-All 237 cataloged parts have SVG art and JSON terminal sidecars. The
+All 238 cataloged parts have SVG art and JSON terminal sidecars. The
 completeness matrix (`scripts/part-matrix.mjs` in bw-circuit-ui) tracks
 247 total registered kinds — the delta includes reference-only sidecars
 (sensor variants, board presets, aliases) that are not user-placeable
