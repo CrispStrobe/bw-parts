@@ -5,9 +5,9 @@
 > catalogue entry, slug, art, variants, identification confidence.
 > Chip designations (74HC08, TMP36, L293D, etc.) are manufacturer names.
 >
-> **Last updated:** 2026-08-17 — 231 parts. Reconciled against the completeness
-> matrix (`scripts/part-matrix.mjs` in bw-circuit-ui) + session 6–7 additions
-> (KNOWN_GAPS burn-down, UM245R, z80-extract glue, 7-segment fix, matrix burn-down).
+> **Last updated:** 2026-08-18 — 237 parts. Reconciled against the completeness
+> matrix (`scripts/part-matrix.mjs` in bw-circuit-ui) + session 8 additions
+> (max7219 face confirmed, at24c64/ps2 sidecars, cd4093/74ls189/at89c2051/stc15_mcu catalog rows).
 
 ## How to read this catalog
 
@@ -490,6 +490,37 @@ PainfulDiodes bench, and German kit canon.
 > now has all 9 terminals (a–g, dp, common).
 > 74LS series: SAP-1 computer chips from bw-board sap1-chips.js.
 
+## Session 8 additions (6 kinds)
+
+Parts found by reconciling the completeness matrix past 231: sidecars that
+existed without catalog rows, plus new engine kinds that lacked sidecars.
+
+| # | Kind slug | Name | Pins | Engine | Art |
+|---|-----------|------|------|--------|-----|
+| 232 | `cd4093` | CD4093 Quad Schmitt NAND | 14 | modeled | dip-gen |
+| 233 | `74ls189` | 74LS189 16x4-Bit RAM | 16 | modeled | dip-gen |
+| 234 | `at89c2051` | AT89C2051 8051-core MCU | 20 | **blocked** (emu8051) | dip-gen |
+| 235 | `stc15_mcu` | STC15 MCU (DIP-40) | 40 | **blocked** (emu8051) | dip-gen |
+| 236 | `at24c64` | AT24C64 I2C EEPROM (64 Kbit) | 8 | modeled | done |
+| 237 | `ps2` | PS/2 Keyboard Interface | 9 | modeled | done |
+
+> cd4093: CMOS quad Schmitt-trigger NAND (TI CD4093B SCHS053). Same DIP-14
+> pinout as 74HC00/74HC132. Used in Wilson-primer SBC address decode with
+> hysteresis. Engine: chip-composer.js schmitt_nand gates.
+> 74ls189: 16x4-bit static RAM with INVERTED outputs (TI SN74LS189 SDLS135).
+> DIP-16. THE CLASSIC TRAP: outputs are active-low. SAP-1 computer RAM.
+> at89c2051: Atmel 8051-core MCU (doc0368). DIP-20, 2 KB flash, 128 B RAM.
+> Engine registration exists in bw-circuit-ui palette but emu8051 adapter
+> config not yet wired — stays blocked.
+> stc15_mcu: STC15 series MCU, DIP-40 variant. Sidecar pin table from
+> PINOUT-STC15.md. Engine blocked on emu8051 adapter config (same as AT89C2051).
+> at24c64: Pin-compatible with AT24C02 (same DIP-8 pinout). Engine model
+> in board-ics.js: 8 KB, 32-byte pages, I2C 0b1010|A2A1A0. Used by
+> blinkenrocket pendant build.
+> ps2: Machine-side peripheral — data flows through PS2Capture + ps2OnVia,
+> not the MNA. Terminals (d0-d7, da) are for wiring display only. Wires to
+> VIA PA0-PA7 + CA1 (6502) or 74HC245 buffer (Z80). Engine: ps2-device.js.
+
 ---
 
 ## Gap ledger
@@ -499,9 +530,10 @@ in bw-circuit-ui). Each gap has an owner or a stated reason.
 
 | Gap | Dependency | Owner |
 |-----|-----------|-------|
-| max7219 BoardCanvas face | needs custom face renderer | bw-circuit-ui |
-| AT89C2051 emulation | needs emu8051 adapter config | emu8051-stc |
+| ~~max7219 BoardCanvas face~~ | **resolved** (7e6d57d) | bw-circuit-ui |
+| AT89C2051 + STC15 emulation | needs emu8051 adapter config | emu8051-stc |
 | attiny2313/attiny13 emulation | needs avr8js device config | bw-board |
+| at24c64/ps2 palette + face + footprint | sidecars created, UI integration pending | bw-circuit-ui |
 | 43 palette kinds without custom faces | needs SvgParts cases | bw-circuit-ui |
 | DE BOM labels | i18n for all KIND_LABELS | bw-circuit-ui |
 | ~155 sidecar-only kinds not in palette | catalog parts, not user-placeable | — (by design) |
@@ -523,16 +555,17 @@ in bw-circuit-ui). Each gap has an owner or a stated reason.
 | Engine-kind gap closure (session 5) | 37 | 37 |
 | Engine-only extras | 15 | 15 |
 | Session 6–7 additions | 17 | 17 |
+| Session 8 additions | 6 | 6 |
 | Declined | 1 | — |
-| **Total** | **231 + 1 declined** | **231** |
+| **Total** | **237 + 1 declined** | **237** |
 
 ### Art status
 
-All 231 cataloged parts have SVG art and JSON terminal sidecars. The
+All 237 cataloged parts have SVG art and JSON terminal sidecars. The
 completeness matrix (`scripts/part-matrix.mjs` in bw-circuit-ui) tracks
-237 total sidecar kinds — the delta is ~155 reference-only sidecars
+247 total registered kinds — the delta includes reference-only sidecars
 (sensor variants, board presets, aliases) that are not user-placeable
-catalog entries.
+catalog entries, plus UI aliases (keypad, meter, shift_register, etc.).
 
 ### Pin tables (datasheet-audited)
 
