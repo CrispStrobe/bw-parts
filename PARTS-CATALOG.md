@@ -5,9 +5,9 @@
 > catalogue entry, slug, art, variants, identification confidence.
 > Chip designations (74HC08, TMP36, L293D, etc.) are manufacturer names.
 >
-> **Last updated:** 2026-08-19 — 246 parts. Session 8: matrix reconciliation,
+> **Last updated:** 2026-08-19 — 249 parts. Session 8: matrix reconciliation,
 > A2 device parts, footprint audit (35 fixes), sensor long-tail batch,
-> vl53l0x ToF ranger, ELECFREAKS micro:bit arcade shield.
+> vl53l0x, ELECFREAKS arcade shield, sgp30, veml7700, as5600.
 
 ## How to read this catalog
 
@@ -490,7 +490,7 @@ PainfulDiodes bench, and German kit canon.
 > now has all 9 terminals (a–g, dp, common).
 > 74LS series: SAP-1 computer chips from bw-board sap1-chips.js.
 
-## Session 8 additions (15 kinds)
+## Session 8 additions (18 kinds)
 
 Parts found by reconciling the completeness matrix past 231: sidecars that
 existed without catalog rows, plus new engine kinds that lacked sidecars.
@@ -514,6 +514,7 @@ existed without catalog rows, plus new engine kinds that lacked sidecars.
 | 246 | `microbit_arcade` | ELECFREAKS micro:bit Arcade Shield | 14 | drawable-only | done |
 | 247 | `sgp30` | SGP30 Air Quality Sensor (eCO2/TVOC) | 4 | drawable-only | done |
 | 248 | `veml7700` | VEML7700 Ambient Light Sensor | 4 | drawable-only | done |
+| 249 | `as5600` | AS5600 Magnetic Rotary Position Sensor | 6 | drawable-only | done |
 
 > cd4093: CMOS quad Schmitt-trigger NAND (TI CD4093B SCHS053). Same DIP-14
 > pinout as 74HC00/74HC132. Used in Wilson-primer SBC address decode with
@@ -558,6 +559,13 @@ existed without catalog rows, plus new engine kinds that lacked sidecars.
 > reset. micro:bit V2 plugs into edge connector. 14 logical terminals.
 > Runs MakeCode Arcade (all MIT). The shield is a game console, not a
 > bare sensor — drawn as a handheld face with display + controls.
+> sgp30: Sensirion I2C multi-pixel gas sensor. 4-pin breakout. eCO2
+> 400-60000 ppm, TVOC 0-60000 ppb. Fixed addr 0x58. 1 Hz rate.
+> veml7700: Vishay I2C high-accuracy ambient light sensor. 4-pin
+> breakout. 16-bit, 0-120000 lux, photopic response. Addr 0x10.
+> as5600: ams-OSRAM I2C magnetic rotary position sensor. 6-pin breakout
+> (vcc, gnd, sda, scl, out, dir). 12-bit contactless angle, Hall effect.
+> Programmable start/stop angles. Addr 0x36.
 
 ---
 
@@ -593,13 +601,13 @@ in bw-circuit-ui). Each gap has an owner or a stated reason.
 | Engine-kind gap closure (session 5) | 37 | 37 |
 | Engine-only extras | 15 | 15 |
 | Session 6–7 additions | 17 | 17 |
-| Session 8 additions | 15 | 15 |
+| Session 8 additions | 18 | 18 |
 | Declined | 1 | — |
-| **Total** | **246 + 1 declined** | **246** |
+| **Total** | **249 + 1 declined** | **249** |
 
 ### Art status
 
-All 246 cataloged parts have SVG art and JSON terminal sidecars. The
+All 249 cataloged parts have SVG art and JSON terminal sidecars. The
 completeness matrix (`scripts/part-matrix.mjs` in bw-circuit-ui) tracks
 247 total registered kinds — the delta includes reference-only sidecars
 (sensor variants, board presets, aliases) that are not user-placeable
