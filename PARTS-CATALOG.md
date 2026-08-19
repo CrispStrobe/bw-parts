@@ -5,9 +5,9 @@
 > catalogue entry, slug, art, variants, identification confidence.
 > Chip designations (74HC08, TMP36, L293D, etc.) are manufacturer names.
 >
-> **Last updated:** 2026-08-18 — 244 parts. Session 8: matrix reconciliation,
-> A2 device parts, footprint audit (35 fixes), sensor long-tail batch
-> (bmp280, tcs34725, max6675, ina219, ads1115).
+> **Last updated:** 2026-08-19 — 245 parts. Session 8: matrix reconciliation,
+> A2 device parts, footprint audit (35 fixes), sensor long-tail batch,
+> vl53l0x ToF ranger.
 
 ## How to read this catalog
 
@@ -490,7 +490,7 @@ PainfulDiodes bench, and German kit canon.
 > now has all 9 terminals (a–g, dp, common).
 > 74LS series: SAP-1 computer chips from bw-board sap1-chips.js.
 
-## Session 8 additions (13 kinds)
+## Session 8 additions (14 kinds)
 
 Parts found by reconciling the completeness matrix past 231: sidecars that
 existed without catalog rows, plus new engine kinds that lacked sidecars.
@@ -510,6 +510,7 @@ existed without catalog rows, plus new engine kinds that lacked sidecars.
 | 242 | `max6675` | MAX6675 Thermocouple Converter | 5 | drawable-only | done |
 | 243 | `ina219` | INA219 Current/Power Monitor | 6 | drawable-only | done |
 | 244 | `ads1115` | ADS1115 16-bit 4-ch ADC | 10 | drawable-only | done |
+| 245 | `vl53l0x` | VL53L0X ToF Laser Ranger | 6 | drawable-only | done |
 
 > cd4093: CMOS quad Schmitt-trigger NAND (TI CD4093B SCHS053). Same DIP-14
 > pinout as 74HC00/74HC132. Used in Wilson-primer SBC address decode with
@@ -546,6 +547,9 @@ existed without catalog rows, plus new engine kinds that lacked sidecars.
 > onboard 0.1 ohm shunt. Bus voltage 0-26V, 12-bit ADC. Default 0x40.
 > ads1115: TI 16-bit 4-channel I2C ADC. 10-pin breakout. Programmable
 > gain, 8-860 SPS. Single-ended (4 ch) or differential (2 ch).
+> vl53l0x: STMicroelectronics I2C time-of-flight laser ranger. 6-pin
+> breakout (vcc, gnd, sda, scl, xshut, gpio1). 940 nm VCSEL, 30-2000 mm.
+> XSHUT for multi-sensor address assignment, GPIO1 interrupt.
 
 ---
 
@@ -581,13 +585,13 @@ in bw-circuit-ui). Each gap has an owner or a stated reason.
 | Engine-kind gap closure (session 5) | 37 | 37 |
 | Engine-only extras | 15 | 15 |
 | Session 6–7 additions | 17 | 17 |
-| Session 8 additions | 13 | 13 |
+| Session 8 additions | 14 | 14 |
 | Declined | 1 | — |
-| **Total** | **244 + 1 declined** | **244** |
+| **Total** | **245 + 1 declined** | **245** |
 
 ### Art status
 
-All 244 cataloged parts have SVG art and JSON terminal sidecars. The
+All 245 cataloged parts have SVG art and JSON terminal sidecars. The
 completeness matrix (`scripts/part-matrix.mjs` in bw-circuit-ui) tracks
 247 total registered kinds — the delta includes reference-only sidecars
 (sensor variants, board presets, aliases) that are not user-placeable
