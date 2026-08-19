@@ -512,6 +512,7 @@ existed without catalog rows, plus new engine kinds that lacked sidecars.
 | 244 | `ads1115` | ADS1115 16-bit 4-ch ADC | 10 | drawable-only | done |
 | 245 | `vl53l0x` | VL53L0X ToF Laser Ranger | 6 | drawable-only | done |
 | 246 | `microbit_arcade` | ELECFREAKS micro:bit Arcade Shield | 14 | drawable-only | done |
+| 247 | `sgp30` | SGP30 Air Quality Sensor (eCO2/TVOC) | 4 | drawable-only | done |
 
 > cd4093: CMOS quad Schmitt-trigger NAND (TI CD4093B SCHS053). Same DIP-14
 > pinout as 74HC00/74HC132. Used in Wilson-primer SBC address decode with
