@@ -175,98 +175,98 @@
   "variants": null,
   "_note": "W65C51N Asynchronous Communications Interface Adapter. Pin table audited against WDC W65C51N datasheet (rev 2018-10-08). DIP-28 package. Full-duplex serial: TxD (pin 18), RxD (pin 23). Modem control: RTSB/CTSB/DTRB/DSRB/DCDB. Bus interface: D0-D7 (pins 8-15), RS0/RS1 (pins 16-17), PHI2 (pin 7), RWB (pin 5), CS0/CS1B (pins 2-3). Pin 19 is No Connect on W65C51N (was TxCLK on older R65C51). IRQB (pin 6, open drain). VSS=pin 1, VDD=pin 28.",
   "footprint": {
-    "refTerminal": "vdd",
+    "refTerminal": "vss",
     "leads": {
       "vss": {
-        "dRow": 5,
+        "dRow": 0,
         "dCol": 0
       },
       "cs0": {
-        "dRow": 5,
+        "dRow": 0,
         "dCol": 1
       },
       "cs1b": {
-        "dRow": 5,
+        "dRow": 0,
         "dCol": 2
       },
       "resb": {
-        "dRow": 5,
+        "dRow": 0,
         "dCol": 3
       },
       "rwb": {
-        "dRow": 5,
+        "dRow": 0,
         "dCol": 4
       },
       "irqb": {
-        "dRow": 5,
+        "dRow": 0,
         "dCol": 5
       },
       "phi2": {
-        "dRow": 5,
+        "dRow": 0,
         "dCol": 6
       },
       "d0": {
-        "dRow": 5,
+        "dRow": 0,
         "dCol": 7
       },
       "d1": {
-        "dRow": 5,
+        "dRow": 0,
         "dCol": 8
       },
       "d2": {
-        "dRow": 5,
+        "dRow": 0,
         "dCol": 9
       },
       "d3": {
-        "dRow": 5,
+        "dRow": 0,
         "dCol": 10
       },
       "d4": {
-        "dRow": 5,
+        "dRow": 0,
         "dCol": 11
       },
       "d5": {
-        "dRow": 5,
+        "dRow": 0,
         "dCol": 12
       },
       "d6": {
-        "dRow": 5,
+        "dRow": 0,
         "dCol": 13
       },
       "vdd": {
-        "dRow": 0,
+        "dRow": 5,
         "dCol": 0
       },
       "xtli": {
-        "dRow": 0,
+        "dRow": 5,
         "dCol": 1
       },
       "xtlo": {
-        "dRow": 0,
+        "dRow": 5,
         "dCol": 2
       },
       "dcdb": {
-        "dRow": 0,
+        "dRow": 5,
         "dCol": 3
       },
       "dsrb": {
-        "dRow": 0,
+        "dRow": 5,
         "dCol": 4
       },
       "rxd": {
-        "dRow": 0,
+        "dRow": 5,
         "dCol": 5
       },
       "dtrb": {
-        "dRow": 0,
+        "dRow": 5,
         "dCol": 6
       },
       "ctsb": {
-        "dRow": 0,
+        "dRow": 5,
         "dCol": 7
       },
       "rtsb": {
-        "dRow": 0,
+        "dRow": 5,
         "dCol": 8
       },
       "nc": {
@@ -274,19 +274,19 @@
         "dCol": 9
       },
       "txd": {
-        "dRow": 0,
+        "dRow": 5,
         "dCol": 10
       },
       "rs1": {
-        "dRow": 0,
+        "dRow": 5,
         "dCol": 11
       },
       "rs0": {
-        "dRow": 0,
+        "dRow": 5,
         "dCol": 12
       },
       "d7": {
-        "dRow": 0,
+        "dRow": 5,
         "dCol": 13
       }
     },

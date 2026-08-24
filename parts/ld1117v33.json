@@ -30,11 +30,11 @@
         "dRow": 0,
         "dCol": 0
       },
-      "vout": {
+      "out": {
         "dRow": 0,
         "dCol": 1
       },
-      "vin": {
+      "in": {
         "dRow": 0,
         "dCol": 2
       }

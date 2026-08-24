@@ -78,38 +78,38 @@
   "variants": null,
   "_note": "ATtiny13A 8-bit AVR MCU. Pin table audited against Microchip ATtiny13A datasheet (DS40002307). DIP-8 package. 1 KB flash, 64 B SRAM, 64 B EEPROM, 9.6 MHz internal RC. Port B only (PB0-PB5). PB5 = RESET (active low, fuse-selectable as GPIO/ADC0). PB3 = ADC3, PB4 = ADC2, PB2 = ADC1/INT0/T0, PB5 = ADC0 (if RSTDISBL fused). 4-channel 10-bit ADC. Timer0 8-bit (OC0A on PB0, OC0B on PB1). Analog comparator: AIN0 on PB0, AIN1 on PB1. Pin names match bw-board terminal spelling contract: lowercase pXn.",
   "footprint": {
-    "refTerminal": "vcc",
+    "refTerminal": "pb5",
     "leads": {
       "pb5": {
-        "dRow": 5,
+        "dRow": 0,
         "dCol": 0
       },
       "pb3": {
-        "dRow": 5,
+        "dRow": 0,
         "dCol": 1
       },
       "pb4": {
-        "dRow": 5,
+        "dRow": 0,
         "dCol": 2
       },
       "gnd": {
-        "dRow": 5,
+        "dRow": 0,
         "dCol": 3
       },
       "pb0": {
-        "dRow": 0,
+        "dRow": 5,
         "dCol": 3
       },
       "pb1": {
-        "dRow": 0,
+        "dRow": 5,
         "dCol": 2
       },
       "pb2": {
-        "dRow": 0,
+        "dRow": 5,
         "dCol": 1
       },
       "vcc": {
-        "dRow": 0,
+        "dRow": 5,
         "dCol": 0
       }
     },

@@ -152,7 +152,7 @@
         "dRow": 0,
         "dCol": 6
       },
-      "vss": {
+      "gnd": {
         "dRow": 0,
         "dCol": 7
       },
@@ -184,7 +184,7 @@
         "dRow": 5,
         "dCol": 1
       },
-      "vdd": {
+      "vcc": {
         "dRow": 5,
         "dCol": 0
       }

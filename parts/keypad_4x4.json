@@ -3,28 +3,56 @@
   "w": 56,
   "h": 72,
   "terminals": [
-    { "name": "r0", "x": 11,   "y": 72, "functions": [] },
-    { "name": "r1", "x": 16.5, "y": 72, "functions": [] },
-    { "name": "r2", "x": 22,   "y": 72, "functions": [] },
-    { "name": "r3", "x": 27.5, "y": 72, "functions": [] },
-    { "name": "c0", "x": 33,   "y": 72, "functions": [] },
-    { "name": "c1", "x": 38.5, "y": 72, "functions": [] },
-    { "name": "c2", "x": 44,   "y": 72, "functions": [] },
-    { "name": "c3", "x": 49.5, "y": 72, "functions": [] }
+    {
+      "name": "r0",
+      "x": 11,
+      "y": 72,
+      "functions": []
+    },
+    {
+      "name": "r1",
+      "x": 16.5,
+      "y": 72,
+      "functions": []
+    },
+    {
+      "name": "r2",
+      "x": 22,
+      "y": 72,
+      "functions": []
+    },
+    {
+      "name": "r3",
+      "x": 27.5,
+      "y": 72,
+      "functions": []
+    },
+    {
+      "name": "c0",
+      "x": 33,
+      "y": 72,
+      "functions": []
+    },
+    {
+      "name": "c1",
+      "x": 38.5,
+      "y": 72,
+      "functions": []
+    },
+    {
+      "name": "c2",
+      "x": 44,
+      "y": 72,
+      "functions": []
+    },
+    {
+      "name": "c3",
+      "x": 49.5,
+      "y": 72,
+      "functions": []
+    }
   ],
   "variants": null,
   "_note": "4x4 matrix keypad (membrane style). 8 terminals: 4 rows (r0-r3) + 4 columns (c0-c3). Keys at row/column intersections: scanning drives one row low, reads column inputs. Standard 16-key layout: 1-9, 0, A-D, *, #. A2 board wiring: rows on one port nibble, columns on another.",
-  "footprint": {
-    "refTerminal": "r0",
-    "leads": {
-      "r0": { "dRow": 0, "dCol": 0 },
-      "r1": { "dRow": 0, "dCol": 1 },
-      "r2": { "dRow": 0, "dCol": 2 },
-      "r3": { "dRow": 0, "dCol": 3 },
-      "c0": { "dRow": 0, "dCol": 4 },
-      "c1": { "dRow": 0, "dCol": 5 },
-      "c2": { "dRow": 0, "dCol": 6 },
-      "c3": { "dRow": 0, "dCol": 7 }
-    }
-  }
+  "footprint": null
 }

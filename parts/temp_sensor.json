@@ -24,19 +24,19 @@
   ],
   "variants": null,
   "footprint": {
-    "refTerminal": "dq",
+    "refTerminal": "vcc",
     "leads": {
       "vcc": {
         "dRow": 0,
-        "dCol": 1
+        "dCol": 0
       },
       "gnd": {
         "dRow": 0,
-        "dCol": 2
+        "dCol": 1
       },
       "dq": {
         "dRow": 0,
-        "dCol": 0
+        "dCol": 2
       }
     }
   }

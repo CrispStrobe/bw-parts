@@ -245,168 +245,168 @@
     }
   ],
   "variants": null,
-  "_note": "Zilog Z80 CPU. Pin table audited against Zilog Z80 CPU Product Specification (PS0178, rev 06). DIP-40 package. 16-bit address bus (A0-A15, pins 30-31 and 1-5 and 33-40), 8-bit data bus (D0-D7, pins 14-15 and 7-10 and 12-13 — non-sequential per datasheet). Active-low control: RESETB (pin 26), INTB (pin 16), NMIB (pin 17, edge-triggered), MREQB (pin 19), IORQB (pin 20), RDB (pin 21), WRB (pin 22), RFSHB (pin 28), M1B (pin 27), HALTB (pin 18), BUSRQB (pin 25), BUSAKB (pin 23), WAITB (pin 24). CLK (pin 6) is single-phase clock input. VCC=pin 11, GND=pin 29. Note: address and data pins are NOT in sequential pin order on the DIP-40 — this matches the physical chip.",
+  "_note": "Zilog Z80 CPU. Pin table audited against Zilog Z80 CPU Product Specification (PS0178, rev 06). DIP-40 package. 16-bit address bus (A0-A15, pins 30-31 and 1-5 and 33-40), 8-bit data bus (D0-D7, pins 14-15 and 7-10 and 12-13 \u2014 non-sequential per datasheet). Active-low control: RESETB (pin 26), INTB (pin 16), NMIB (pin 17, edge-triggered), MREQB (pin 19), IORQB (pin 20), RDB (pin 21), WRB (pin 22), RFSHB (pin 28), M1B (pin 27), HALTB (pin 18), BUSRQB (pin 25), BUSAKB (pin 23), WAITB (pin 24). CLK (pin 6) is single-phase clock input. VCC=pin 11, GND=pin 29. Note: address and data pins are NOT in sequential pin order on the DIP-40 \u2014 this matches the physical chip.",
   "footprint": {
-    "refTerminal": "a10",
+    "refTerminal": "a11",
     "leads": {
       "a11": {
-        "dRow": 5,
+        "dRow": 0,
         "dCol": 0
       },
       "a12": {
-        "dRow": 5,
+        "dRow": 0,
         "dCol": 1
       },
       "a13": {
-        "dRow": 5,
+        "dRow": 0,
         "dCol": 2
       },
       "a14": {
-        "dRow": 5,
+        "dRow": 0,
         "dCol": 3
       },
       "a15": {
-        "dRow": 5,
+        "dRow": 0,
         "dCol": 4
       },
       "clk": {
-        "dRow": 5,
+        "dRow": 0,
         "dCol": 5
       },
       "d4": {
-        "dRow": 5,
+        "dRow": 0,
         "dCol": 6
       },
       "d3": {
-        "dRow": 5,
+        "dRow": 0,
         "dCol": 7
       },
       "d5": {
-        "dRow": 5,
+        "dRow": 0,
         "dCol": 8
       },
       "d6": {
-        "dRow": 5,
+        "dRow": 0,
         "dCol": 9
       },
       "vcc": {
-        "dRow": 5,
+        "dRow": 0,
         "dCol": 10
       },
       "d2": {
-        "dRow": 5,
+        "dRow": 0,
         "dCol": 11
       },
       "d7": {
-        "dRow": 5,
+        "dRow": 0,
         "dCol": 12
       },
       "d0": {
-        "dRow": 5,
+        "dRow": 0,
         "dCol": 13
       },
       "d1": {
-        "dRow": 5,
+        "dRow": 0,
         "dCol": 14
       },
       "intb": {
-        "dRow": 5,
+        "dRow": 0,
         "dCol": 15
       },
       "nmib": {
-        "dRow": 5,
+        "dRow": 0,
         "dCol": 16
       },
       "haltb": {
-        "dRow": 5,
+        "dRow": 0,
         "dCol": 17
       },
       "mreqb": {
-        "dRow": 5,
+        "dRow": 0,
         "dCol": 18
       },
       "iorqb": {
-        "dRow": 5,
+        "dRow": 0,
         "dCol": 19
       },
       "a10": {
-        "dRow": 0,
+        "dRow": 5,
         "dCol": 0
       },
       "a9": {
-        "dRow": 0,
+        "dRow": 5,
         "dCol": 1
       },
       "a8": {
-        "dRow": 0,
+        "dRow": 5,
         "dCol": 2
       },
       "a7": {
-        "dRow": 0,
+        "dRow": 5,
         "dCol": 3
       },
       "a6": {
-        "dRow": 0,
+        "dRow": 5,
         "dCol": 4
       },
       "a5": {
-        "dRow": 0,
+        "dRow": 5,
         "dCol": 5
       },
       "a4": {
-        "dRow": 0,
+        "dRow": 5,
         "dCol": 6
       },
       "a3": {
-        "dRow": 0,
+        "dRow": 5,
         "dCol": 7
       },
       "a2": {
-        "dRow": 0,
+        "dRow": 5,
         "dCol": 8
       },
       "a1": {
-        "dRow": 0,
+        "dRow": 5,
         "dCol": 9
       },
       "a0": {
-        "dRow": 0,
+        "dRow": 5,
         "dCol": 10
       },
       "gnd": {
-        "dRow": 0,
+        "dRow": 5,
         "dCol": 11
       },
       "rfshb": {
-        "dRow": 0,
+        "dRow": 5,
         "dCol": 12
       },
       "m1b": {
-        "dRow": 0,
+        "dRow": 5,
         "dCol": 13
       },
       "resetb": {
-        "dRow": 0,
+        "dRow": 5,
         "dCol": 14
       },
       "busrqb": {
-        "dRow": 0,
+        "dRow": 5,
         "dCol": 15
       },
       "waitb": {
-        "dRow": 0,
+        "dRow": 5,
         "dCol": 16
       },
       "busakb": {
-        "dRow": 0,
+        "dRow": 5,
         "dCol": 17
       },
       "wrb": {
-        "dRow": 0,
+        "dRow": 5,
         "dCol": 18
       },
       "rdb": {
-        "dRow": 0,
+        "dRow": 5,
         "dCol": 19
       }
     },

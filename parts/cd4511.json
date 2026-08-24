@@ -116,7 +116,7 @@
         "dRow": 0,
         "dCol": 2
       },
-      "bi": {
+      "bl": {
         "dRow": 0,
         "dCol": 3
       },
@@ -136,31 +136,31 @@
         "dRow": 0,
         "dCol": 7
       },
-      "e": {
+      "qe": {
         "dRow": 5,
         "dCol": 7
       },
-      "d_out": {
+      "qd": {
         "dRow": 5,
         "dCol": 6
       },
-      "c_out": {
+      "qc": {
         "dRow": 5,
         "dCol": 5
       },
-      "b_out": {
+      "qb": {
         "dRow": 5,
         "dCol": 4
       },
-      "a_out": {
+      "qa": {
         "dRow": 5,
         "dCol": 3
       },
-      "g": {
+      "qg": {
         "dRow": 5,
         "dCol": 2
       },
-      "f": {
+      "qf": {
         "dRow": 5,
         "dCol": 1
       },

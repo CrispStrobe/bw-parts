@@ -279,166 +279,166 @@
   "variants": null,
   "_note": "W65C22S Versatile Interface Adapter. Pin table audited against WDC W65C22S datasheet (rev 2018-10-08). DIP-40 package. Two 8-bit GPIO ports (PA0-PA7, PB0-PB7), two 16-bit timers, 8-bit shift register. 4-bit register select (RS0-RS3, pins 38-35). Bus interface: D0-D7 (pins 33-26), PHI2 (pin 25), RWB (pin 22), CS1/CS2B (pins 24/23). IRQB (pin 21, open drain). VSS=pin 1, VDD=pin 20.",
   "footprint": {
-    "refTerminal": "ca1",
+    "refTerminal": "vss",
     "leads": {
       "vss": {
-        "dRow": 5,
+        "dRow": 0,
         "dCol": 0
       },
       "pa0": {
-        "dRow": 5,
+        "dRow": 0,
         "dCol": 1
       },
       "pa1": {
-        "dRow": 5,
+        "dRow": 0,
         "dCol": 2
       },
       "pa2": {
-        "dRow": 5,
+        "dRow": 0,
         "dCol": 3
       },
       "pa3": {
-        "dRow": 5,
+        "dRow": 0,
         "dCol": 4
       },
       "pa4": {
-        "dRow": 5,
+        "dRow": 0,
         "dCol": 5
       },
       "pa5": {
-        "dRow": 5,
+        "dRow": 0,
         "dCol": 6
       },
       "pa6": {
-        "dRow": 5,
+        "dRow": 0,
         "dCol": 7
       },
       "pa7": {
-        "dRow": 5,
+        "dRow": 0,
         "dCol": 8
       },
       "pb0": {
-        "dRow": 5,
+        "dRow": 0,
         "dCol": 9
       },
       "pb1": {
-        "dRow": 5,
+        "dRow": 0,
         "dCol": 10
       },
       "pb2": {
-        "dRow": 5,
+        "dRow": 0,
         "dCol": 11
       },
       "pb3": {
-        "dRow": 5,
+        "dRow": 0,
         "dCol": 12
       },
       "pb4": {
-        "dRow": 5,
+        "dRow": 0,
         "dCol": 13
       },
       "pb5": {
-        "dRow": 5,
+        "dRow": 0,
         "dCol": 14
       },
       "pb6": {
-        "dRow": 5,
+        "dRow": 0,
         "dCol": 15
       },
       "pb7": {
-        "dRow": 5,
+        "dRow": 0,
         "dCol": 16
       },
       "cb1": {
-        "dRow": 5,
+        "dRow": 0,
         "dCol": 17
       },
       "cb2": {
-        "dRow": 5,
+        "dRow": 0,
         "dCol": 18
       },
       "vdd": {
-        "dRow": 5,
+        "dRow": 0,
         "dCol": 19
       },
       "ca1": {
-        "dRow": 0,
+        "dRow": 5,
         "dCol": 0
       },
       "ca2": {
-        "dRow": 0,
+        "dRow": 5,
         "dCol": 1
       },
       "rs0": {
-        "dRow": 0,
+        "dRow": 5,
         "dCol": 2
       },
       "rs1": {
-        "dRow": 0,
+        "dRow": 5,
         "dCol": 3
       },
       "rs2": {
-        "dRow": 0,
+        "dRow": 5,
         "dCol": 4
       },
       "rs3": {
-        "dRow": 0,
+        "dRow": 5,
         "dCol": 5
       },
       "resb": {
-        "dRow": 0,
+        "dRow": 5,
         "dCol": 6
       },
       "d0": {
-        "dRow": 0,
+        "dRow": 5,
         "dCol": 7
       },
       "d1": {
-        "dRow": 0,
+        "dRow": 5,
         "dCol": 8
       },
       "d2": {
-        "dRow": 0,
+        "dRow": 5,
         "dCol": 9
       },
       "d3": {
-        "dRow": 0,
+        "dRow": 5,
         "dCol": 10
       },
       "d4": {
-        "dRow": 0,
+        "dRow": 5,
         "dCol": 11
       },
       "d5": {
-        "dRow": 0,
+        "dRow": 5,
         "dCol": 12
       },
       "d6": {
-        "dRow": 0,
+        "dRow": 5,
         "dCol": 13
       },
       "d7": {
-        "dRow": 0,
+        "dRow": 5,
         "dCol": 14
       },
       "phi2": {
-        "dRow": 0,
+        "dRow": 5,
         "dCol": 15
       },
       "cs1": {
-        "dRow": 0,
+        "dRow": 5,
         "dCol": 16
       },
       "cs2b": {
-        "dRow": 0,
+        "dRow": 5,
         "dCol": 17
       },
       "rwb": {
-        "dRow": 0,
+        "dRow": 5,
         "dCol": 18
       },
       "irqb": {
-        "dRow": 0,
+        "dRow": 5,
         "dCol": 19
       }
     },

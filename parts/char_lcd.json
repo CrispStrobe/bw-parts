@@ -103,23 +103,23 @@
   "variants": null,
   "_note": "HD44780U-compatible 16x2 character LCD module. Pin table audited against Hitachi HD44780U datasheet (ADE-207-272(Z) rev 0.0, 1998-09). 16-pin single-row header: VSS (pin 1), VDD (pin 2), V0 (pin 3, contrast), RS (pin 4, register select: 0=cmd 1=data), RW (pin 5, read/write: 0=write 1=read), E (pin 6, enable), D0-D7 (pins 7-14, data bus), A (pin 15, backlight LED anode), K (pin 16, backlight LED cathode). Supports 4-bit mode (D4-D7 only) and 8-bit mode (D0-D7). Canonical 6502 breadboard wiring: RS/RW/E to VIA PA5-PA7, D0-D7 to VIA PB0-PB7.",
   "footprint": {
-    "refTerminal": "rs",
+    "refTerminal": "gnd",
     "leads": {
-      "vss": {
+      "gnd": {
         "dRow": 0,
         "dCol": 0
       },
-      "vdd": {
+      "vcc": {
         "dRow": 0,
         "dCol": 1
       },
-      "v0": {
+      "vo": {
         "dRow": 0,
         "dCol": 2
       },
       "rs": {
         "dRow": 0,
-        "dCol": 0
+        "dCol": 3
       },
       "rw": {
         "dRow": 0,
@@ -127,7 +127,7 @@
       },
       "e": {
         "dRow": 0,
-        "dCol": 1
+        "dCol": 5
       },
       "d0": {
         "dRow": 0,
@@ -147,25 +147,25 @@
       },
       "d4": {
         "dRow": 0,
-        "dCol": 2
+        "dCol": 10
       },
       "d5": {
         "dRow": 0,
-        "dCol": 3
+        "dCol": 11
       },
       "d6": {
         "dRow": 0,
-        "dCol": 4
+        "dCol": 12
       },
       "d7": {
         "dRow": 0,
-        "dCol": 5
+        "dCol": 13
       },
-      "a": {
+      "bl_a": {
         "dRow": 0,
         "dCol": 14
       },
-      "k": {
+      "bl_k": {
         "dRow": 0,
         "dCol": 15
       }

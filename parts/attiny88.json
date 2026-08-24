@@ -246,119 +246,119 @@
   "variants": null,
   "_note": "ATtiny88 8-bit AVR MCU. Pin table audited against Microchip ATtiny88 datasheet (DS40002178). DIP-28 package. 8 KB flash, 512 B SRAM, 64 B EEPROM, 8 MHz internal RC. Ports B (PB0-PB7), C (PC0-PC7), D (PD0-PD7), and A (PA0-PA3 at 0x2C-0x2E). PC6 = RESET (active low). PB6/PB7 = XTAL1/XTAL2. No UART, no analog comparator pins. Timer0 simplified (CS bits in TCCR0A, no OC0A/OC0B). Used in Blinkenrocket congress badge: PB=columns, PD=rows, PC3=BTN_RIGHT, PC7=BTN_LEFT, PA0=modem input. Pin names match bw-board avr-chips.js ATTINY88_PINS config.",
   "footprint": {
-    "refTerminal": "pb1",
+    "refTerminal": "pc6",
     "leads": {
       "pc6": {
-        "dRow": 5,
+        "dRow": 0,
         "dCol": 0
       },
       "pd0": {
-        "dRow": 5,
+        "dRow": 0,
         "dCol": 1
       },
       "pd1": {
-        "dRow": 5,
+        "dRow": 0,
         "dCol": 2
       },
       "pd2": {
-        "dRow": 5,
+        "dRow": 0,
         "dCol": 3
       },
       "pd3": {
-        "dRow": 5,
+        "dRow": 0,
         "dCol": 4
       },
       "pd4": {
-        "dRow": 5,
+        "dRow": 0,
         "dCol": 5
       },
       "vcc": {
-        "dRow": 5,
+        "dRow": 0,
         "dCol": 6
       },
       "gnd": {
-        "dRow": 5,
+        "dRow": 0,
         "dCol": 7
       },
       "pb6": {
-        "dRow": 5,
+        "dRow": 0,
         "dCol": 8
       },
       "pb7": {
-        "dRow": 5,
+        "dRow": 0,
         "dCol": 9
       },
       "pd5": {
-        "dRow": 5,
+        "dRow": 0,
         "dCol": 10
       },
       "pd6": {
-        "dRow": 5,
+        "dRow": 0,
         "dCol": 11
       },
       "pd7": {
-        "dRow": 5,
+        "dRow": 0,
         "dCol": 12
       },
       "pb0": {
-        "dRow": 5,
+        "dRow": 0,
         "dCol": 13
       },
       "pc7": {
-        "dRow": 0,
-        "dCol": 13
+        "dRow": 5,
+        "dCol": 0
       },
       "pc5": {
-        "dRow": 0,
-        "dCol": 12
-      },
-      "pc4": {
-        "dRow": 0,
-        "dCol": 11
-      },
-      "pc3": {
-        "dRow": 0,
-        "dCol": 10
-      },
-      "pc2": {
-        "dRow": 0,
-        "dCol": 9
-      },
-      "pc1": {
-        "dRow": 0,
-        "dCol": 8
-      },
-      "pc0": {
-        "dRow": 0,
-        "dCol": 7
-      },
-      "pa0": {
-        "dRow": 0,
-        "dCol": 6
-      },
-      "avcc": {
-        "dRow": 0,
-        "dCol": 5
-      },
-      "pb5": {
-        "dRow": 0,
-        "dCol": 4
-      },
-      "pb4": {
-        "dRow": 0,
-        "dCol": 3
-      },
-      "pb3": {
-        "dRow": 0,
-        "dCol": 2
-      },
-      "pb2": {
-        "dRow": 0,
+        "dRow": 5,
         "dCol": 1
       },
+      "pc4": {
+        "dRow": 5,
+        "dCol": 2
+      },
+      "pc3": {
+        "dRow": 5,
+        "dCol": 3
+      },
+      "pc2": {
+        "dRow": 5,
+        "dCol": 4
+      },
+      "pc1": {
+        "dRow": 5,
+        "dCol": 5
+      },
+      "pc0": {
+        "dRow": 5,
+        "dCol": 6
+      },
+      "pa0": {
+        "dRow": 5,
+        "dCol": 7
+      },
+      "avcc": {
+        "dRow": 5,
+        "dCol": 8
+      },
+      "pb5": {
+        "dRow": 5,
+        "dCol": 9
+      },
+      "pb4": {
+        "dRow": 5,
+        "dCol": 10
+      },
+      "pb3": {
+        "dRow": 5,
+        "dCol": 11
+      },
+      "pb2": {
+        "dRow": 5,
+        "dCol": 12
+      },
       "pb1": {
-        "dRow": 0,
-        "dCol": 0
+        "dRow": 5,
+        "dCol": 13
       }
     },
     "straddlesGutter": true,

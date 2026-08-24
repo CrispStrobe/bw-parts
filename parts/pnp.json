@@ -24,19 +24,19 @@
   ],
   "variants": null,
   "footprint": {
-    "refTerminal": "emitter",
+    "refTerminal": "base",
     "leads": {
       "base": {
         "dRow": 0,
-        "dCol": 1
+        "dCol": 0
       },
       "collector": {
         "dRow": 0,
-        "dCol": 2
+        "dCol": 1
       },
       "emitter": {
         "dRow": 0,
-        "dCol": 0
+        "dCol": 2
       }
     }
   }

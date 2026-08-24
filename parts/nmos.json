@@ -24,19 +24,19 @@
   ],
   "variants": null,
   "footprint": {
-    "refTerminal": "source",
+    "refTerminal": "gate",
     "leads": {
       "gate": {
         "dRow": 0,
-        "dCol": 1
+        "dCol": 0
       },
       "drain": {
         "dRow": 0,
-        "dCol": 2
+        "dCol": 1
       },
       "source": {
         "dRow": 0,
-        "dCol": 0
+        "dCol": 2
       }
     }
   }
