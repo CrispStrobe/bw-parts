@@ -28,7 +28,15 @@
       "functions": []
     }
   ],
-  "variants": null,
-  "_note": "4-wire bipolar stepper. For unipolar (5/6-wire), center taps would need additional terminals. bw-board models 4-wire bipolar.",
+  "variants": [
+    {
+      "param": "wiring",
+      "values": [
+        "unipolar",
+        "bipolar"
+      ]
+    }
+  ],
+  "_note": "4-wire bipolar stepper. For unipolar (5/6-wire), center taps would need additional terminals. bw-board models 4-wire bipolar. Terminals here are the BIPOLAR four-wire motor (two coils, H-bridge driven). The engine models both wirings behind params.wiring and defaults to unipolar (coil1-coil4 + com, five wires, centre-tapped) — see variants.",
   "footprint": null
 }
