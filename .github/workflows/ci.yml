@@ -23,12 +23,9 @@ jobs:
       - name: Validate every sidecar against its art
         run: npm test
 
-      # Seating is NOT gating yet, and saying so is the point. On a clean
-      # checkout verify-seating.js reports 73 errors — footprints whose lead
-      # names do not match their own terminals (tmp36's footprint has a lead
-      # "out" the part does not have, and 72 more). That is a real backlog,
-      # not a flaky check, and hiding it behind a green build would be worse
-      # than printing it every time. Gate it once the count reaches zero.
-      - name: Seating report (not gating — 73 known errors)
-        continue-on-error: true
-        run: npm run test:seating
+      # Seating GATES now. It reported 73 errors on 2026-08-26 and 0 on
+      # 2026-08-27: every one was a sidecar disagreeing with itself, a
+      # footprint lead and a terminal for the same physical pin under two
+      # names. Renaming to the engine's spelling closed all of them, and
+      # npm test runs both checks, so this step exists only as its own
+      # line in the log. Do not make it continue-on-error again.
