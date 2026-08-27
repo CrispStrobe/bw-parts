@@ -1,5 +1,9 @@
 {
   "devDependencies": {
     "playwright": "^1.62.1"
+  },
+  "scripts": {
+    "test": "node test/validate-parts.js",
+    "test:seating": "node test/verify-seating.js"
   }
 }
