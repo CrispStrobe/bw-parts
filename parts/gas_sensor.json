@@ -28,6 +28,15 @@
       "functions": []
     }
   ],
-  "variants": null,
-  "footprint": null
+  "variants": [
+    {
+      "param": "package",
+      "values": [
+        "element",
+        "module"
+      ]
+    }
+  ],
+  "footprint": null,
+  "_note": "MQ-series gas sensor, the 4-pin breakout MODULE: vcc, gnd, an analog divider output and a comparator output. The engine models both packages behind params.package and defaults to `element`, the bare sensor with its own heater (a, b, heater_a, heater_b) — see variants."
 }
