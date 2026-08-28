@@ -356,7 +356,7 @@ Video display processors and card modules for retro breadboard builds.
 |---|-----------|------|------|-----------|-----|
 | 172 | `tms9918` | TMS9918A Video Display Processor | 40 | TI SPPS017 | done |
 | 173 | `mc6845` | MC6845 CRT Controller | 40 | Motorola DS9563 | done |
-| 174 | `simplevga_card` | SimpleVGA6502 Card | 3 (vcc, gnd, bus) | — (gfoot, Unlicense) | done |
+| 174 | `simplevga_card` | SimpleVGA6502 Card | 4 (vcc, gnd, bus, bank) | — (gfoot, Unlicense) | done |
 | 175 | `vga_prop_card` | VGA Propeller Tile Card | 3 (vcc, gnd, bus) | — (card module) | done |
 | 176 | `ili9341_parallel` | ILI9341 TFT (8080 Parallel) | 16 | ILI9341 datasheet | done |
 | 177 | `tilevga` | TileVGA Card (rene6502) | 3 (vcc, gnd, bus) | — (machine chip) | done |
@@ -371,7 +371,10 @@ Video display processors and card modules for retro breadboard builds.
 > mc6845: Motorola pinout. MA0-MA13 memory address, RA0-RA4 row address,
 > D0-D7 CPU data bus. Control via E/R̄W̄/C̄S̄/RS. VSS=pin 1, VDD=pin 20.
 > simplevga_card and vga_prop_card are machine-level card faces with
-> placeholder bus terminal — art is what matters.
+> placeholder bus terminal — art is what matters. simplevga_card's `bank`
+> had been DROPPED here and is back (2026-08-28): m6502-extract requires it
+> on the same net as the VIA's PB0, and simplevga.js uses bit 0 to page two
+> 32K VRAM banks, so a card without it cannot double-buffer.
 > ili9341_parallel: 16-pin 8080-style header (WR#, RD#, D0-D7), distinct
 > from the 9-pin SPI module (ili9341).
 
@@ -506,7 +509,7 @@ existed without catalog rows, plus new engine kinds that lacked sidecars.
 | 238 | `seven_seg_8` | 8-Digit 7-Segment Display (2x4) | 16 | drawable-only | done |
 | 239 | `ledbank8` | 8-LED Bank (port-driven) | 10 | drawable-only | done |
 | 240 | `bmp280` | BMP280 Pressure/Temp Sensor | 6 | drawable-only | done |
-| 241 | `tcs34725` | TCS34725 RGB Color Sensor | 5 | drawable-only | done |
+| 241 | `tcs34725` | TCS34725 RGB Color Sensor | 6 | drawable-only | done |
 | 242 | `max6675` | MAX6675 Thermocouple Converter | 5 | drawable-only | done |
 | 243 | `ina219` | INA219 Current/Power Monitor | 6 | drawable-only | done |
 | 244 | `ads1115` | ADS1115 16-bit 4-ch ADC | 10 | drawable-only | done |
@@ -543,8 +546,11 @@ existed without catalog rows, plus new engine kinds that lacked sidecars.
 > footprint — now 8 terminals (r0-r3, c0-c3) with footprint.
 > bmp280: Bosch I2C barometric pressure + temperature sensor. 6-pin breakout
 > (vcc, gnd, sda, scl, csb, sdo). BME280 pin-compatible. 300-1100 hPa.
-> tcs34725: ams/TAOS I2C RGB color sensor. 5-pin breakout with white LED
-> illumination enable. Reports RGBC 16-bit counts. Fixed addr 0x29.
+> tcs34725: ams/TAOS I2C RGB color sensor. 6-pin breakout: white LED
+> illumination enable plus INT, the clear-channel threshold interrupt.
+> Reports RGBC 16-bit counts. Fixed addr 0x29. The INT pad was added on
+> 2026-08-28, AFTER bw-board learned the interrupt (7ee292f) -- drawing a
+> pad for a pin the model ignores offers a terminal that does nothing.
 > max6675: Maxim SPI thermocouple-to-digital converter. 5-pin breakout.
 > 12-bit, 0-1024C in 0.25C steps. Read-only — no write registers.
 > ina219: TI I2C high-side current/power monitor. 6-pin breakout with
