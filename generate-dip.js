@@ -132,6 +132,7 @@ function generateJson(chip) {
     h: svgH,
     terminals,
     variants: null,
+    ...(chip._note ? { _note: chip._note } : {}),
   };
 }
 
@@ -284,6 +285,115 @@ const PIN_MAPS = [
     kind: 'attiny85', pinCount: 8, label: 'ATtiny85', sublabel: 'unverified',
     pins: ['pb5','pb3','pb4','gnd', 'pb0','pb1','pb2','vcc'],
     _note: 'Tinkercad shows an 8-pin ATtiny but does not name the variant. ATtiny85 assumed (most common). Could be ATtiny45 or ATtiny25.',
+  },
+
+  // ── Intel 8086-family support chips (for the bw-board E6 8086 tier) ──
+  // Terminal names are the ones bw-board/src/i8086-extract.js reads BY NAME
+  // (csb, a0, a1, cd, mio); a chip whose select or register lines are
+  // misnamed or miswired extracts to a named refusal instead of a machine.
+
+  // Intel 8255A PPI. DIP-40. Pinout audited against the Intel 8255A
+  // datasheet: PA0-3 pins 1-4, PA4-7 pins 37-40, PB0-7 pins 18-25, PC0-3
+  // pins 14-17, PC4-7 pins 10-13, /RD pin 5, /CS pin 6, A1 pin 8, A0 pin 9,
+  // Vcc pin 26, GND pin 7, D0-7 pins 34-27, RESET pin 35, /WR pin 36.
+  {
+    kind: 'i8255', pinCount: 40, label: '8255', sublabel: 'PPI',
+    pins: [
+      'pa3','pa2','pa1','pa0','rdb','csb','gnd','a1','a0','pc7',   // 1-10
+      'pc6','pc5','pc4','pc0','pc1','pc2','pc3','pb0','pb1','pb2', // 11-20
+      'pb3','pb4','pb5','pb6','pb7','vcc','d7','d6','d5','d4',     // 21-30
+      'd3','d2','d1','d0','reset','wrb','pa4','pa5','pa6','pa7',   // 31-40
+    ],
+    _note: 'Intel 8255A Programmable Peripheral Interface. DIP-40. Extractor reads csb (pin 6), a0 (pin 9), a1 (pin 8). Three 8-bit ports PA/PB/PC; port C is two independently-directioned nibbles. /RD pin 5, /WR pin 36, RESET pin 35 (active HIGH). Pinout audited against Intel 8255A datasheet.',
+  },
+
+  // Intel 8254 PIT. DIP-24. D7-D0 pins 1-8, CLK0/OUT0/GATE0 pins 9-11,
+  // GND pin 12, OUT1/GATE1/CLK1 pins 13-15, GATE2/OUT2/CLK2 pins 16-18,
+  // A0 pin 19, A1 pin 20, /CS pin 21, /RD pin 22, /WR pin 23, Vcc pin 24.
+  {
+    kind: 'i8254', pinCount: 24, label: '8254', sublabel: 'PIT',
+    pins: [
+      'd7','d6','d5','d4','d3','d2','d1','d0','clk0','out0',       // 1-10
+      'gate0','gnd','out1','gate1','clk1','gate2','out2','clk2','a0','a1', // 11-20
+      'csb','rdb','wrb','vcc',                                     // 21-24
+    ],
+    _note: 'Intel 8254 Programmable Interval Timer. DIP-24. Extractor reads csb (pin 21), a0 (pin 19), a1 (pin 20). Three 16-bit counters, each with clk/gate/out. Pinout audited against Intel 8254 datasheet (order 231164).',
+  },
+
+  // Intel 8259A PIC. DIP-28. /CS pin 1, /WR pin 2, /RD pin 3, D7-D0 pins
+  // 4-11, CAS0-2 pins 12-14, GND pin 15, /SP-EN pin 16, INT pin 17,
+  // IR7-IR0 pins 18-25, A0 pin 26, /INTA pin 27, Vcc pin 28.
+  {
+    kind: 'i8259', pinCount: 28, label: '8259', sublabel: 'PIC',
+    pins: [
+      'csb','wrb','rdb','d7','d6','d5','d4','d3','d2','d1',        // 1-10
+      'd0','cas0','cas1','cas2','gnd','sp_enb','intr','ir7','ir6','ir5', // 11-20
+      'ir4','ir3','ir2','ir1','ir0','a0','intab','vcc',           // 21-28
+    ],
+    _note: 'Intel 8259A Programmable Interrupt Controller. DIP-28. Extractor reads csb (pin 1), a0 (pin 26). Eight IR inputs, INT out (to the CPU intr pin), /INTA in. Pinout audited against Intel 8259A datasheet.',
+  },
+
+  // Intel 8251A USART. DIP-28. D2 pin 1, D3 pin 2, RxD pin 3, GND pin 4,
+  // D4-D7 pins 5-8, TxC pin 9, /WR pin 10, /CS pin 11, C/D pin 12, /RD
+  // pin 13, RxRDY pin 14, TxRDY pin 15, SYNDET pin 16, /CTS pin 17,
+  // TxEMPTY pin 18, TxD pin 19, CLK pin 20, RESET pin 21, /DSR pin 22,
+  // /RTS pin 23, /DTR pin 24, RxC pin 25, Vcc pin 26, D0 pin 27, D1 pin 28.
+  {
+    kind: 'i8251', pinCount: 28, label: '8251', sublabel: 'USART',
+    pins: [
+      'd2','d3','rxd','gnd','d4','d5','d6','d7','txc','wrb',       // 1-10
+      'csb','cd','rdb','rxrdy','txrdy','syndet','ctsb','txempty','txd','clk', // 11-20
+      'reset','dsrb','rtsb','dtrb','rxc','vcc','d0','d1',          // 21-28
+    ],
+    _note: 'Intel 8251A USART. DIP-28. Extractor reads csb (pin 11), cd (C/D#, pin 12). C/D# selects data vs control/status. Data bus is scattered: D0 pin 27, D1 pin 28, D2 pin 1, D3 pin 2, D4-D7 pins 5-8. Pinout audited against Intel 8251A datasheet.',
+  },
+
+  // Intel 8284A clock generator. DIP-18. Drawable only — the extractor does
+  // not decode it (it carries no registers); it provides CLK/RESET/READY to
+  // the CPU. CSYNC pin 1, PCLK pin 2, /AEN1 pin 3, RDY1 pin 4, READY pin 5,
+  // RDY2 pin 6, /AEN2 pin 7, CLK pin 8, GND pin 9, F/C pin 10, EFI pin 11,
+  // /ASYNC pin 12, /RES pin 13, RESET pin 14, OSC pin 15, X2 pin 16,
+  // X1 pin 17, Vcc pin 18.
+  {
+    kind: 'i8284', pinCount: 18, label: '8284', sublabel: 'CLK GEN',
+    pins: [
+      'csync','pclk','aen1b','rdy1','ready','rdy2','aen2b','clk','gnd',  // 1-9
+      'fcb','efi','asyncb','resb','reset','osc','x2','x1','vcc',         // 10-18
+    ],
+    _note: 'Intel 8284A clock generator. DIP-18. Drawable only; the extractor does not decode it. Divides the crystal by three to CLK, and synchronises RESET and READY for the CPU. Pinout audited against Intel 8284A datasheet.',
+  },
+
+  // Intel 8086 CPU. DIP-40. SIMPLIFIED TEACHING PART: the real 8086
+  // multiplexes AD0-AD15 and A16/S3-A19/S6, valid only while ALE is high,
+  // and a real build latches them through a 74LS373. This part presents the
+  // DE-MULTIPLEXED address a0-a19 directly — the same clean-address
+  // simplification the 6502 and Z80 parts make — because a first breadboard
+  // lesson wires the address decode and M/IO, which are identical for both,
+  // and the extractor reads only a0-a19 and mio. The ALE-latched realism is
+  // a separate roadmap lesson, not modelled here.
+  {
+    kind: 'i8086', pinCount: 40, label: '8086', sublabel: 'CPU',
+    pins: [
+      'a0','a1','a2','a3','a4','a5','a6','a7','a8','a9',           // 1-10
+      'a10','a11','a12','a13','a14','a15','a16','a17','a18','a19', // 11-20
+      'd0','d1','d2','d3','d4','d5','d6','d7','mio','rdb',         // 21-30
+      'wrb','ale','clk','reset','ready','intr','nmi','intab','gnd','vcc', // 31-40
+    ],
+    _note: 'Intel 8086 CPU. DIP-40. SIMPLIFIED TEACHING PART presenting de-multiplexed address a0-a19 and M/IO# (mio) — the extractor reads exactly these. The real 8086 multiplexes AD0-AD15/A16-A19 behind ALE and needs a 74LS373 latch; that realism is a bw-board E6 roadmap lesson, not this part. d0-d7 shown as the wiring data stub.',
+  },
+
+  // Intel 8088 CPU. Same de-multiplexed teaching layout as the 8086 (the
+  // extractor treats them identically — it reads a0-a19 and mio, and the
+  // 8-bit vs 16-bit data bus does not affect address decode).
+  {
+    kind: 'i8088', pinCount: 40, label: '8088', sublabel: 'CPU',
+    pins: [
+      'a0','a1','a2','a3','a4','a5','a6','a7','a8','a9',           // 1-10
+      'a10','a11','a12','a13','a14','a15','a16','a17','a18','a19', // 11-20
+      'd0','d1','d2','d3','d4','d5','d6','d7','mio','rdb',         // 21-30
+      'wrb','ale','clk','reset','ready','intr','nmi','intab','gnd','vcc', // 31-40
+    ],
+    _note: 'Intel 8088 CPU (8-bit external bus). DIP-40. SIMPLIFIED TEACHING PART, same de-multiplexed a0-a19 + mio layout as the 8086 part — the extractor reads a0-a19 and mio and treats the two identically. The Tier A reference build (TIERA8088) uses this CPU.',
   },
 ];
 
