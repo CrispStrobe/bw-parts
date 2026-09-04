@@ -319,6 +319,15 @@ const PIN_MAPS = [
     ],
     _note: 'Intel 8254 Programmable Interval Timer. DIP-24. Extractor reads csb (pin 21), a0 (pin 19), a1 (pin 20). Three 16-bit counters, each with clk/gate/out. Pinout audited against Intel 8254 datasheet (order 231164).',
   },
+  {
+    kind: 'i8253', pinCount: 24, label: '8253', sublabel: 'PIT',
+    pins: [
+      'd7','d6','d5','d4','d3','d2','d1','d0','clk0','out0',       // 1-10
+      'gate0','gnd','out1','gate1','clk1','gate2','out2','clk2','a0','a1', // 11-20
+      'csb','rdb','wrb','vcc',                                     // 21-24
+    ],
+    _note: 'Intel 8253 Programmable Interval Timer — the earlier, pin-identical part the original IBM PC/XT used; it lacks the 8254 read-back command (the extractor emits variant:8253 so the model refuses it). DIP-24, same bond-out as the 8254. Pinout audited against Intel 8253 datasheet.',
+  },
 
   // Intel 8259A PIC. DIP-28. /CS pin 1, /WR pin 2, /RD pin 3, D7-D0 pins
   // 4-11, CAS0-2 pins 12-14, GND pin 15, /SP-EN pin 16, INT pin 17,
