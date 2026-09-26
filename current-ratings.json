@@ -308,6 +308,11 @@
     "chip_mA": 0.1,
     "supply_mA": 0.1
   },
+  "lm324": {
+    "_src": "TI LM324 SLOS066AE: conservative 3mA whole-package supply budget",
+    "chip_mA": 0,
+    "supply_mA": 3
+  },
   "lm339": {
     "_src": "TI LM339 SLCS006: Icc max 2.5mA",
     "chip_mA": 0,

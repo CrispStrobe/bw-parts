@@ -29,6 +29,7 @@ const SUBTITLES = {
   '74hc125': 'QUAD 3-ST BUF',
   '74hc34': 'HEX BUFFER',
   '74hc4050': 'HEX BUF/LVL',
+  'lm324': 'QUAD OP AMP',
 };
 
 function art(kind, sc) {
