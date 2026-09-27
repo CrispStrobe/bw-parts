@@ -323,6 +323,11 @@
     "chip_mA": 0,
     "supply_mA": 2.5
   },
+  "lm741": {
+    "_src": "TI LM741 SNOSC25D: Icc max 2.8mA",
+    "chip_mA": 0,
+    "supply_mA": 2.8
+  },
   "lm7805": {
     "_src": "TI LM7805 SLVS056: Iq max ~8mA, typ ~5mA",
     "chip_mA": 0,

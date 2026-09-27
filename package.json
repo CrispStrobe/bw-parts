@@ -3,7 +3,7 @@
     "playwright": "^1.62.1"
   },
   "scripts": {
-    "test": "node test/validate-parts.js && node test/verify-seating.js && node test/lm324-pinout.js",
+    "test": "node test/validate-parts.js && node test/verify-seating.js && node test/lm324-pinout.js && node test/lm741-pinout.js",
     "test:seating": "node test/verify-seating.js"
   }
 }
