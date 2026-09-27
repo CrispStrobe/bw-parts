@@ -125,6 +125,7 @@ e.g. SN74HC00 SCLS154 §6.7: Icc max = 80µA (quiescent, VCC=6V).
 | `556` | 30 | TI NE556 SLFS023: two 555s, Icc max 30mA total |
 | `opamp` | 3 | TI uA741 SLOS094: Icc max 2.8mA |
 | `lm324` | 3 | TI LM324 SLOS066AE: conservative whole-package supply budget |
+| `lm741` | 2.8 | TI LM741 SNOSC25D: Icc max 2.8mA |
 | `lm393` | 2.5 | TI LM393 SLCS007: Icc max 2.5mA (both comparators) |
 | `lm339` | 2.5 | TI LM339 SLCS006: Icc max 2.5mA (all four comparators) |
 | `optocoupler` | 0 | 4N35: phototransistor output draws from load circuit, not from the IC supply |
