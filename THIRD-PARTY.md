@@ -15,6 +15,10 @@ DIP IC pin maps in `generate-dip.js` use pin names and positions from
 manufacturer datasheets. See `ART-PROVENANCE.md` for the full list of
 datasheet sources per chip.
 
+- **Analog Devices ADP7118 Rev. H**: factual SOIC-8 pin names/order and
+  maximum operating ground current for `parts/adp7118.json`; the SVG is an
+  original drawing and copies no datasheet artwork.
+
 ## Copied or derived works
 
 None. Every SVG is original work. No paths, coordinates, or code were
