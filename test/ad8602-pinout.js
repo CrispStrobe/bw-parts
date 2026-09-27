@@ -23,8 +23,8 @@ assert.match(svg, />SOIC-8 R</);
 
 const ratings = JSON.parse(fs.readFileSync(path.join(root, 'current-ratings.json'), 'utf8'));
 assert.deepEqual(ratings.ad8602, {
-  _src: 'Analog Devices AD8601/AD8602/AD8604 Rev. I: 750uA maximum supply current per amplifier, 1.5mA whole dual package',
+  _src: 'Analog Devices AD8601/AD8602/AD8604 Rev. I: 1.5mA maximum supply current per amplifier over temperature, 3mA whole dual package',
   chip_mA: 0,
-  supply_mA: 1.5,
+  supply_mA: 3,
 });
 console.log('AD8602 R-8 pin order, original art, package boundary, and supply budget verified.');
