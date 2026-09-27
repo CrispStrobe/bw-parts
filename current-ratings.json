@@ -338,6 +338,11 @@
     "chip_mA": 0,
     "supply_mA": 2.8
   },
+  "lt1001": {
+    "_src": "Analog Devices LT1001 data sheet: 1.5mA supply-current design budget",
+    "chip_mA": 0,
+    "supply_mA": 1.5
+  },
   "lm7805": {
     "_src": "TI LM7805 SLVS056: Iq max ~8mA, typ ~5mA",
     "chip_mA": 0,
