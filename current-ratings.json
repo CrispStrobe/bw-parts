@@ -313,6 +313,11 @@
     "chip_mA": 0,
     "supply_mA": 3
   },
+  "adtl082": {
+    "_src": "Analog Devices ADTL082/ADTL084 Rev. B: 2.0mA max per amplifier, 4.0mA whole dual package",
+    "chip_mA": 0,
+    "supply_mA": 4
+  },
   "lm339": {
     "_src": "TI LM339 SLCS006: Icc max 2.5mA",
     "chip_mA": 0,
