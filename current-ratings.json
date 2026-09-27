@@ -323,6 +323,11 @@
     "chip_mA": 0,
     "supply_mA": 9
   },
+  "ad8541": {
+    "_src": "Analog Devices AD8541/AD8542/AD8544 Rev. H: 85uA maximum per amplifier over temperature at 5V",
+    "chip_mA": 0,
+    "supply_mA": 0.085
+  },
   "op747": {
     "_src": "Analog Devices OP777/OP727/OP747 Rev. D: 0.45mA max per amplifier, 1.8mA whole quad package",
     "chip_mA": 0,
