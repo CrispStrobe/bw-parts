@@ -328,6 +328,11 @@
     "chip_mA": 0,
     "supply_mA": 0.085
   },
+  "ad8602": {
+    "_src": "Analog Devices AD8601/AD8602/AD8604 Rev. I: 750uA maximum supply current per amplifier, 1.5mA whole dual package",
+    "chip_mA": 0,
+    "supply_mA": 1.5
+  },
   "op747": {
     "_src": "Analog Devices OP777/OP727/OP747 Rev. D: 0.45mA max per amplifier, 1.8mA whole quad package",
     "chip_mA": 0,
