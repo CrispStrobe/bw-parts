@@ -348,6 +348,11 @@
     "chip_mA": 0,
     "supply_mA": 1.5
   },
+  "lt1006": {
+    "_src": "Analog Devices LT1006 data sheet: S8 supply current 570uA max at 5V",
+    "chip_mA": 0,
+    "supply_mA": 0.57
+  },
   "op07": {
     "_src": "Analog Devices OP07 Rev. G: OP07C 150mW max at +/-15V = 5mA supply budget",
     "chip_mA": 0,

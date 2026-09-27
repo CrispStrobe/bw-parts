@@ -106,7 +106,7 @@ is documented in the JSON sidecar `_note` field, not just here.
 | 43 | `char_lcd` | LCD 16x2 / LCD 16x2 | vss, vdd, v0, rs, rw, e, d0-d7, a, k | modeled | done | `verified`: HD44780U (ADE-207-272(Z)) |
 | 44 | `char_lcd_i2c` | LCD 16x2 (I2C) / LCD 16x2 (I2C) | vcc, gnd, sda, scl | drawable-only | done | `standard`: HD44780 + PCF8574 |
 
-## Power (11 kinds)
+## Power (13 kinds)
 
 | # | Kind slug | Name EN / DE | Terminals | Engine | Art |
 |---|-----------|-------------|-----------|--------|-----|
@@ -122,6 +122,7 @@ is documented in the JSON sidecar `_note` field, not just here.
 | 53a | `adp7118` | ADP7118 200mA Low-Noise LDO / ADP7118 200mA Low-Noise-LDO | vout_1, vout_2, sense_adj, gnd, en, ss, vin_7, vin_8 | modeled | done |
 | 53b | `lt1763` | LT1763 500mA Low-Noise LDO / LT1763 500mA Low-Noise-LDO | out, sense_adj, gnd_3, byp, shdn, gnd_6, gnd_7, in | modeled | done |
 | 53c | `adp151` | ADP151 200mA Ultralow-Noise LDO / ADP151 200mA Ultralow-Noise-LDO | vin, gnd, en, nc, vout | modeled | done |
+| 53d | `lt1006` | LT1006 Precision Single-Supply Op Amp / LT1006 Präzisions-Operationsverstärker | offset_1, inn, inp, vneg, offset_5, out, vpos, iset | modeled | done |
 
 ## Power Control / Discrete (10 kinds)
 
