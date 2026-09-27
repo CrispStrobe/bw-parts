@@ -30,6 +30,7 @@ const SUBTITLES = {
   '74hc34': 'HEX BUFFER',
   '74hc4050': 'HEX BUF/LVL',
   'lm324': 'QUAD OP AMP',
+  'lt1014': 'PRECISION QUAD',
   'lm741': 'SINGLE OP AMP',
 };
 

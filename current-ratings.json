@@ -353,6 +353,11 @@
     "chip_mA": 0,
     "supply_mA": 0.57
   },
+  "lt1014": {
+    "_src": "TI LT1014 SLOS039D: 0.55mA max per amplifier at 25C, 2.2mA whole package",
+    "chip_mA": 0,
+    "supply_mA": 2.2
+  },
   "op07": {
     "_src": "Analog Devices OP07 Rev. G: OP07C 150mW max at +/-15V = 5mA supply budget",
     "chip_mA": 0,
