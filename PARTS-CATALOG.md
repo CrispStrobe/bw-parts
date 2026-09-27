@@ -432,7 +432,8 @@ Terminal names match the engine exactly.
 | 211 | `ili9341_par` | ILI9341 TFT (8080 parallel, engine names) | vcc, gnd, cs, rst, rs, wr, rd, d0-d7, led | done |
 | 212 | `adxl335` | ADXL335 3-axis accelerometer | vcc, gnd, xout, yout, zout, st | done |
 | 213 | `memsic2125` | Memsic MX2125 2-axis accelerometer | vcc, gnd, xout, yout | done |
-| 214 | `attiny88` | ATtiny88 MCU (DIP-28) | PB0-7, PC0-7, PD0-7, PA0-3, VCC, GND, AVCC | done |
+| 214 | `attiny88` | ATtiny88 MCU (PDIP-28) | PB0-7, PC0-5/7, PD0-7, VCC, GND/GND2, AVCC | done |
+| 215 | `attiny88_qfn32` | ATtiny88 MCU (QFN/TQFP-32, Blinkenrocket package) | PA0-3, PB0-7, PC0-7, PD0-7, VCC, GND/GND2, AVCC | done |
 | — | `battery` | Generic battery (alias) | pos, neg | done |
 | — | `timer_555` | Timer 555 (engine alias of 555) | (same as 555) | done |
 | — | `hd44780` | HD44780 LCD (datasheet names, alias of char_lcd) | vss, vdd, v0, rs, rw, e, d0-d7, a, k | done |
