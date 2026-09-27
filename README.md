@@ -1,23 +1,23 @@
 # bw-parts
 
 SVG part art and terminal metadata for the bw-circuit-designer campaign.
-122 component kinds, each with a bench-style SVG and a JSON sidecar that
+123 component kinds, each with a bench-style SVG and a JSON sidecar that
 positions terminals for hit-testing. Not a fork — written from scratch.
 
 ## What is in the repo
 
 | Artefact | Count / size | Notes |
 |---|---|---|
-| SVG part drawings (`parts/*.svg`) | 121 files | 29 DIP-generated, 92 hand-drawn |
-| JSON terminal sidecars (`parts/*.json`) | 121 files | `{kind, w, h, terminals:[{name,x,y}]}` |
-| Parts catalog (`PARTS-CATALOG.md`) | 122 kinds | Single source of truth for the fleet |
+| SVG part drawings (`parts/*.svg`) | 122 files | 29 DIP-generated, 93 hand-drawn |
+| JSON terminal sidecars (`parts/*.json`) | 122 files | `{kind, w, h, terminals:[{name,x,y}]}` |
+| Parts catalog (`PARTS-CATALOG.md`) | 123 kinds | Single source of truth for the fleet |
 | Current ratings (`current-ratings.json`) | 124 entries | Two-budget: `chip_mA` (pin) + `supply_mA` (rail) |
 | DIP generator (`generate-dip.js`) | 29 pin maps | Parametric template; add a chip in 3 lines |
 | Cross-repo reconciliation (`PARTS-RECONCILIATION.md`) | 122 rows | Slug/coverage alignment with bw-board and bw-circuit-ui |
 | Art proof montage (`ART-PROOF.png`) | 121 thumbnails | Playwright screenshot of all SVGs on one page |
 | DIP pin map audit (`DIP-AUDIT.md`) | 29 chips | Each checked against its manufacturer datasheet |
 
-The 122 catalog kinds map to 121 SVG files because `power_supply` shares
+The 123 catalog kinds map to 122 SVG files because `power_supply` shares
 the `vsource` art (the engine resolves the slug alias).
 
 ### Variant collapses
