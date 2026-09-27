@@ -318,6 +318,11 @@
     "chip_mA": 0,
     "supply_mA": 4
   },
+  "lt1678": {
+    "_src": "Analog Devices LT1678/LT1679 data sheet: 4.5mA max per amplifier over temperature, 9mA whole dual package",
+    "chip_mA": 0,
+    "supply_mA": 9
+  },
   "op747": {
     "_src": "Analog Devices OP777/OP727/OP747 Rev. D: 0.45mA max per amplifier, 1.8mA whole quad package",
     "chip_mA": 0,
