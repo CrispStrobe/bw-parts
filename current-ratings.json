@@ -323,6 +323,11 @@
     "chip_mA": 0,
     "supply_mA": 1.8
   },
+  "lt1007": {
+    "_src": "Analog Devices LT1007/LT1037 data sheet: 140mW max at +/-15V, rounded to a 5mA supply budget",
+    "chip_mA": 0,
+    "supply_mA": 5
+  },
   "lm339": {
     "_src": "TI LM339 SLCS006: Icc max 2.5mA",
     "chip_mA": 0,
