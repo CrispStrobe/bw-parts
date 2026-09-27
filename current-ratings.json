@@ -333,6 +333,11 @@
     "chip_mA": 0,
     "supply_mA": 3
   },
+  "ada4522_1": {
+    "_src": "Analog Devices ADA4522-1/ADA4522-2/ADA4522-4 Rev. I: 0.97mA maximum per amplifier over temperature",
+    "chip_mA": 0,
+    "supply_mA": 0.97
+  },
   "op747": {
     "_src": "Analog Devices OP777/OP727/OP747 Rev. D: 0.45mA max per amplifier, 1.8mA whole quad package",
     "chip_mA": 0,
