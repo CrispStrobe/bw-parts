@@ -106,7 +106,7 @@ is documented in the JSON sidecar `_note` field, not just here.
 | 43 | `char_lcd` | LCD 16x2 / LCD 16x2 | vss, vdd, v0, rs, rw, e, d0-d7, a, k | modeled | done | `verified`: HD44780U (ADE-207-272(Z)) |
 | 44 | `char_lcd_i2c` | LCD 16x2 (I2C) / LCD 16x2 (I2C) | vcc, gnd, sda, scl | drawable-only | done | `standard`: HD44780 + PCF8574 |
 
-## Power (9 kinds)
+## Power (10 kinds)
 
 | # | Kind slug | Name EN / DE | Terminals | Engine | Art |
 |---|-----------|-------------|-----------|--------|-----|
@@ -119,6 +119,7 @@ is documented in the JSON sidecar `_note` field, not just here.
 | 51 | `lm7805` | LM7805 5V Regulator / LM7805 5V-Regler | vin, gnd, vout | drawable-only | done |
 | 52 | `ld1117v33` | LD1117V33 3.3V LDO / LD1117V33 3,3V-LDO | gnd, vout, vin | drawable-only | done |
 | 53 | `breadboard_psu` | Breadboard Power Supply / Breadboard-Netzteil | 5v, 3v3, gnd | drawable-only | done |
+| 53a | `adp7118` | ADP7118 200mA Low-Noise LDO / ADP7118 200mA Low-Noise-LDO | vout_1, vout_2, sense_adj, gnd, en, ss, vin_7, vin_8 | modeled | done |
 
 ## Power Control / Discrete (10 kinds)
 
@@ -611,11 +612,11 @@ in bw-circuit-ui). Each gap has an owner or a stated reason.
 | Session 6–7 additions | 17 | 17 |
 | Session 8 additions | 18 | 18 |
 | Declined | 1 | — |
-| **Total** | **251 + 1 declined** | **251** |
+| **Total** | **252 + 1 declined** | **252** |
 
 ### Art status
 
-All 249 cataloged parts have SVG art and JSON terminal sidecars. The
+All 252 cataloged parts have SVG art and JSON terminal sidecars. The
 completeness matrix (`scripts/part-matrix.mjs` in bw-circuit-ui) tracks
 247 total registered kinds — the delta includes reference-only sidecars
 (sensor variants, board presets, aliases) that are not user-placeable

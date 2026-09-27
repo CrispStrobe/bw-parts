@@ -121,6 +121,7 @@ e.g. SN74HC00 SCLS154 §6.7: Icc max = 80µA (quiescent, VCC=6V).
 
 | Kind | mA | Source |
 |---|---|---|
+| `adp7118` | 0.32 | Analog Devices ADP7118 Rev. H Table 1: IGND max 320µA at 200mA load; delivered load current is not self-consumption |
 | `555` | 15 | TI NE555 SLFS022: Icc max 15mA (high-state output) |
 | `556` | 30 | TI NE556 SLFS023: two 555s, Icc max 30mA total |
 | `opamp` | 3 | TI uA741 SLOS094: Icc max 2.8mA |

@@ -323,6 +323,11 @@
     "chip_mA": 0,
     "supply_mA": 2.5
   },
+  "adp7118": {
+    "_src": "Analog Devices ADP7118 Rev. H Table 1: IGND max 320uA at 200mA load",
+    "chip_mA": 0,
+    "supply_mA": 0.32
+  },
   "lm741": {
     "_src": "TI LM741 SNOSC25D: Icc max 2.8mA",
     "chip_mA": 0,
