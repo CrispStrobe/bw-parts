@@ -348,6 +348,11 @@
     "chip_mA": 0,
     "supply_mA": 5
   },
+  "op27": {
+    "_src": "Analog Devices OP27 Rev. H Figure 12: conservative 4mA supply budget across the characterized supply range",
+    "chip_mA": 0,
+    "supply_mA": 4
+  },
   "lm7805": {
     "_src": "TI LM7805 SLVS056: Iq max ~8mA, typ ~5mA",
     "chip_mA": 0,
