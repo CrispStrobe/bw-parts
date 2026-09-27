@@ -18,6 +18,9 @@ datasheet sources per chip.
 - **Analog Devices ADP7118 Rev. H**: factual SOIC-8 pin names/order and
   maximum operating ground current for `parts/adp7118.json`; the SVG is an
   original drawing and copies no datasheet artwork.
+- **Analog Devices ADP151 Rev. J**: factual TSOT-5 pin names/order and maximum
+  operating ground current for `parts/adp151.json`; the SVG is an original
+  drawing and copies no datasheet artwork.
 - **Analog Devices LT1763 Rev. H**: factual SO-8 pin names/order and maximum
   operating ground current for `parts/lt1763.json`; the SVG is an original
   drawing and copies no datasheet artwork.

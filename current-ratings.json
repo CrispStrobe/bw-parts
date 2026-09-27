@@ -328,6 +328,11 @@
     "chip_mA": 0,
     "supply_mA": 0.32
   },
+  "adp151": {
+    "_src": "Analog Devices ADP151 Rev. J Table 1: IGND max 350uA at 200mA load",
+    "chip_mA": 0,
+    "supply_mA": 0.35
+  },
   "lt1763": {
     "_src": "Analog Devices LT1763 Rev. H Table 1: IGND max 16mA at 500mA load",
     "chip_mA": 0,

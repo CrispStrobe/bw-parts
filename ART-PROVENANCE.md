@@ -40,7 +40,7 @@ The DIP body shape is generic (all 14/16/40-pin DIPs look the same);
 the pin names are factual data from the datasheets. No package outline
 drawings were traced.
 
-### 2. Hand-drawn (88 parts)
+### 2. Hand-drawn (89 parts)
 
 All hand-drawn SVGs are **stylised bench-style representations** created
 from scratch by the agent. They depict the general appearance of each
