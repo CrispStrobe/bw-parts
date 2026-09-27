@@ -318,6 +318,11 @@
     "chip_mA": 0,
     "supply_mA": 4
   },
+  "op747": {
+    "_src": "Analog Devices OP777/OP727/OP747 Rev. D: 0.45mA max per amplifier, 1.8mA whole quad package",
+    "chip_mA": 0,
+    "supply_mA": 1.8
+  },
   "lm339": {
     "_src": "TI LM339 SLCS006: Icc max 2.5mA",
     "chip_mA": 0,
