@@ -343,6 +343,11 @@
     "chip_mA": 0,
     "supply_mA": 1.5
   },
+  "op07": {
+    "_src": "Analog Devices OP07 Rev. G: OP07C 150mW max at +/-15V = 5mA supply budget",
+    "chip_mA": 0,
+    "supply_mA": 5
+  },
   "lm7805": {
     "_src": "TI LM7805 SLVS056: Iq max ~8mA, typ ~5mA",
     "chip_mA": 0,
