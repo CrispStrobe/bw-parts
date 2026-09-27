@@ -328,6 +328,11 @@
     "chip_mA": 0,
     "supply_mA": 0.32
   },
+  "lt1763": {
+    "_src": "Analog Devices LT1763 Rev. H Table 1: IGND max 16mA at 500mA load",
+    "chip_mA": 0,
+    "supply_mA": 16
+  },
   "lm741": {
     "_src": "TI LM741 SNOSC25D: Icc max 2.8mA",
     "chip_mA": 0,

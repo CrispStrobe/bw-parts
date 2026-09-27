@@ -120,6 +120,7 @@ is documented in the JSON sidecar `_note` field, not just here.
 | 52 | `ld1117v33` | LD1117V33 3.3V LDO / LD1117V33 3,3V-LDO | gnd, vout, vin | drawable-only | done |
 | 53 | `breadboard_psu` | Breadboard Power Supply / Breadboard-Netzteil | 5v, 3v3, gnd | drawable-only | done |
 | 53a | `adp7118` | ADP7118 200mA Low-Noise LDO / ADP7118 200mA Low-Noise-LDO | vout_1, vout_2, sense_adj, gnd, en, ss, vin_7, vin_8 | modeled | done |
+| 53b | `lt1763` | LT1763 500mA Low-Noise LDO / LT1763 500mA Low-Noise-LDO | out, sense_adj, gnd_3, byp, shdn, gnd_6, gnd_7, in | modeled | done |
 
 ## Power Control / Discrete (10 kinds)
 
