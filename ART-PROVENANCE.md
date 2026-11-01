@@ -67,6 +67,18 @@ by the pin count and spacing — they are not hand-placed.
 
 ## Confirmation
 
+### ESP32-4848S040
+
+`parts/esp32_4848s040.svg` is an original, stylised front display drawing
+with a separately labelled rear H1 connector inset. Its primitives, layout
+and coordinates were authored here; no photograph, manufacturer drawing,
+third-party SVG or path was traced or copied. The factual H1 signal labels
+come from the connector photograph linked in
+[`docs/pin-table-esp32-4848s040.md`](docs/pin-table-esp32-4848s040.md).
+The combined views are explicitly not to mechanical scale, and the part
+has no breadboard footprint. The screen labels describe the hardware only,
+not a rendered firmware frame.
+
 **No SVG in this repository is traced from, derived from, or contains
 paths copied from any third-party asset.** All drawings are original
 work. The only external inputs are:
