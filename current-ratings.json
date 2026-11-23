@@ -685,5 +685,13 @@
   "ferrite_coil": {
     "chip_mA": 0,
     "supply_mA": 0
+  },
+  "laser_diode": {
+    "chip_mA": "circuit",
+    "supply_mA": 40
+  },
+  "light_path": {
+    "chip_mA": 0,
+    "supply_mA": 0
   }
 }
