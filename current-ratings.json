@@ -658,5 +658,32 @@
     "_src": "TI LM386 SNAS545: quiescent 4-8mA at VS=6V; output current limit assumed 500mA",
     "chip_mA": 0,
     "supply_mA": 8
+  },
+  "speaker": {
+    "_src": "passive transducer: draws what its driver pushes through the voice coil (8 ohm at 0.5 W rated = 250 mA RMS); the engine scales loudness by ratedWatts",
+    "chip_mA": "circuit",
+    "supply_mA": 0
+  },
+  "earphone": {
+    "_src": "passive transducer: 2 kohm magnetic or crystal earpiece, sub-mA in a crystal set",
+    "chip_mA": "circuit",
+    "supply_mA": 0
+  },
+  "antenna": {
+    "_src": "passive long-wire antenna: received signal currents in the uA range",
+    "chip_mA": 0,
+    "supply_mA": 0
+  },
+  "earth": {
+    "chip_mA": 0,
+    "supply_mA": 0
+  },
+  "tuning_cap": {
+    "chip_mA": 0,
+    "supply_mA": 0
+  },
+  "ferrite_coil": {
+    "chip_mA": 0,
+    "supply_mA": 0
   }
 }
