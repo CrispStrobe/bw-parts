@@ -608,7 +608,7 @@ is a `diode` with `params.part: '1N34A'` (a bw-board parts card).
 | 254 | `earth` | Earth / Erde | earth | modeled | done |
 | 255 | `tuning_cap` | Tuning capacitor / Drehkondensator | a, b | modeled | done |
 | 256 | `ferrite_coil` | Ferrite-rod coil (MW) / Ferritstab-Spule (MW) | a, tap, b, c1, c2 | modeled | done |
-| 257 | `air_coil` | Air-core VHF coil / UKW-Luftspule | a, b | modeled | done |
+| 257 | `vhf_coil` | Air-core VHF coil / UKW-Luftspule | a, b | modeled | done |
 | 258 | `varicap` | Varicap diode / Kapazitätsdiode | anode, cathode | modeled | done |
 
 > speaker: dynamic loudspeaker, voice coil Re + Le (ohms 8, henrys 0.2 mH),
@@ -627,7 +627,9 @@ is a `diode` with `params.part: '1N34A'` (a bw-board parts card).
 > q. Five leads in one row, columns 0-4. The rod is also an antenna
 > (rodHeightM, a turnable control: angle 0..1 = 0..360 degrees) and couples
 > to another rod named in linkTo (distanceM).
-> air_coil: air-core VHF coil (henrys 0.15 uH, q 80), leads two columns apart.
+> vhf_coil: air-core VHF coil (henrys 0.15 uH, q 80), leads two columns apart. Not
+> `air_coil` (the hand-wound sensing coil of the transducers set): this one is an RF
+> tank inductor with a loss Q, no winding/field model.
 > varicap: tuning diode, a diode whose reverse-bias junction capacitance
 > (cjo, vj, m) tunes an RF circuit; named part BB910. Leads four columns
 > apart like a diode. (Added for the regenerative/VHF receivers.)

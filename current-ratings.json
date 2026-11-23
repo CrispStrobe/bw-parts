@@ -686,7 +686,7 @@
     "chip_mA": 0,
     "supply_mA": 0
   },
-  "air_coil": {
+  "vhf_coil": {
     "chip_mA": 0,
     "supply_mA": 0
   },

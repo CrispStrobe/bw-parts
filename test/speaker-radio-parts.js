@@ -21,7 +21,7 @@ const PARTS = {
   earth: [['earth'], [0]],
   tuning_cap: [['a', 'b'], [0, 4]],
   ferrite_coil: [['a', 'tap', 'b', 'c1', 'c2'], [0, 1, 2, 3, 4]],
-  air_coil: [['a', 'b'], [0, 2]],
+  vhf_coil: [['a', 'b'], [0, 2]],
   varicap: [['anode', 'cathode'], [0, 4]],
 };
 
@@ -58,4 +58,4 @@ for (const [kind, [terms, cols]] of Object.entries(PARTS)) {
   assert.ok(catalog.includes(`| \`${kind}\` |`), `${kind}: PARTS-CATALOG.md row`);
 }
 
-console.log('speaker, earphone, antenna, earth, tuning_cap, ferrite_coil, air_coil, varicap: terminals, footprints, art, ratings and catalogue verified.');
+console.log('speaker, earphone, antenna, earth, tuning_cap, ferrite_coil, vhf_coil, varicap: terminals, footprints, art, ratings and catalogue verified.');
