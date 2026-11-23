@@ -5,7 +5,7 @@
 > catalogue entry, slug, art, variants, identification confidence.
 > Chip designations (74HC08, TMP36, L293D, etc.) are manufacturer names.
 >
-> **Last updated:** 2026-11-23 — speaker, earphone and crystal-set parts
+> **Last updated:** 2026-11-23 — field probe; speaker, earphone and crystal-set parts
 > (antenna, earth, tuning_cap, ferrite_coil). 2026-08-19 — 249 parts. Session 8: matrix reconciliation,
 > A2 device parts, footprint audit (35 fixes), sensor long-tail batch,
 > vl53l0x, ELECFREAKS arcade shield, sgp30, veml7700, as5600.
@@ -623,6 +623,25 @@ is a `diode` with `params.part: '1N34A'` (a bw-board parts card).
 > ferrite_coil: MW ferrite-rod coil, main winding a-tap-b (henrys 250 uH,
 > tap 0.25 from a) and coupling winding c1-c2 (couplingRatio 0.1), k, couplingK,
 > q. Five leads in one row, columns 0-4.
+
+## Field probe (1 kind)
+
+A bare wire or plate in the room's electric fields: mains wiring, a charged
+ruler, the learner's finger. Terminal names and params are bw-board's
+(engine device `field_probe`, src/fields.js).
+
+| # | Kind slug | Name EN / DE | Terminals | Engine | Art |
+|---|-----------|-------------|-----------|--------|-----|
+| 257 | `field_probe` | Field probe (bare wire) / Feldsonde (blanker Draht) | a | modeled | done |
+
+> field_probe: one-lead part and a knob control (position 0..1 = how close
+> the field source is). source 'mains' (mainsVolts 230, mainsHz 50), 'charge'
+> (rodVolts 10 kV, a rubbed ruler) or 'body' (contact 'skin' via skinOhms,
+> or 'paper' via paperFarads); maxFarads = coupling at the closest approach,
+> strayFarads / leakOhms = the wire's own capacitance and leak to the room,
+> commonFarads = the circuit's own capacitance to the room, adaptorFarads > 0
+> = powered from a mains adaptor. Junction noise needs no new kind: an npn/pnp
+> with bvEbo or a diode with bv breaks down and carries avalanche noise.
 
 ---
 
