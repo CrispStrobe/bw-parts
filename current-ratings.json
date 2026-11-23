@@ -685,5 +685,13 @@
   "ferrite_coil": {
     "chip_mA": 0,
     "supply_mA": 0
+  },
+  "air_coil": {
+    "chip_mA": 0,
+    "supply_mA": 0
+  },
+  "varicap": {
+    "chip_mA": 0,
+    "supply_mA": 0
   }
 }

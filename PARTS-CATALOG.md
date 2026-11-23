@@ -608,6 +608,8 @@ is a `diode` with `params.part: '1N34A'` (a bw-board parts card).
 | 254 | `earth` | Earth / Erde | earth | modeled | done |
 | 255 | `tuning_cap` | Tuning capacitor / Drehkondensator | a, b | modeled | done |
 | 256 | `ferrite_coil` | Ferrite-rod coil (MW) / Ferritstab-Spule (MW) | a, tap, b, c1, c2 | modeled | done |
+| 257 | `air_coil` | Air-core VHF coil / UKW-Luftspule | a, b | modeled | done |
+| 258 | `varicap` | Varicap diode / Kapazitätsdiode | anode, cathode | modeled | done |
 
 > speaker: dynamic loudspeaker, voice coil Re + Le (ohms 8, henrys 0.2 mH),
 > ratedWatts 0.5 scales the loudness; optional motional impedance
@@ -622,7 +624,13 @@ is a `diode` with `params.part: '1N34A'` (a bw-board parts card).
 > sit at the potentiometer's outer columns (0 and 4).
 > ferrite_coil: MW ferrite-rod coil, main winding a-tap-b (henrys 250 uH,
 > tap 0.25 from a) and coupling winding c1-c2 (couplingRatio 0.1), k, couplingK,
-> q. Five leads in one row, columns 0-4.
+> q. Five leads in one row, columns 0-4. The rod is also an antenna
+> (rodHeightM, a turnable control: angle 0..1 = 0..360 degrees) and couples
+> to another rod named in linkTo (distanceM).
+> air_coil: air-core VHF coil (henrys 0.15 uH, q 80), leads two columns apart.
+> varicap: tuning diode, a diode whose reverse-bias junction capacitance
+> (cjo, vj, m) tunes an RF circuit; named part BB910. Leads four columns
+> apart like a diode. (Added for the regenerative/VHF receivers.)
 
 ---
 
