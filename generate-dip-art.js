@@ -32,6 +32,7 @@ const SUBTITLES = {
   'lm324': 'QUAD OP AMP',
   'lt1014': 'PRECISION QUAD',
   'lm741': 'SINGLE OP AMP',
+  'lm386': 'AUDIO POWER AMP',
 };
 
 function art(kind, sc) {
