@@ -653,5 +653,10 @@
   "zener": {
     "chip_mA": 0,
     "supply_mA": 0
+  },
+  "lm386": {
+    "_src": "TI LM386 SNAS545: quiescent 4-8mA at VS=6V; output current limit assumed 500mA",
+    "chip_mA": 0,
+    "supply_mA": 8
   }
 }

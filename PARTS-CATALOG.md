@@ -535,6 +535,7 @@ existed without catalog rows, plus new engine kinds that lacked sidecars.
 | 247 | `sgp30` | SGP30 Air Quality Sensor (eCO2/TVOC) | 4 | drawable-only | done |
 | 248 | `veml7700` | VEML7700 Ambient Light Sensor | 4 | drawable-only | done |
 | 249 | `as5600` | AS5600 Magnetic Rotary Position Sensor | 6 | drawable-only | done |
+| 250 | `lm386` | LM386 Audio Power Amplifier / NF-Leistungsverstaerker LM386 | (8-pin DIP) | modeled | dip-art | done |
 
 > cd4093: CMOS quad Schmitt-trigger NAND (TI CD4093B SCHS053). Same DIP-14
 > pinout as 74HC00/74HC132. Used in Wilson-primer SBC address decode with
