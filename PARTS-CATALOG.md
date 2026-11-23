@@ -5,7 +5,8 @@
 > catalogue entry, slug, art, variants, identification confidence.
 > Chip designations (74HC08, TMP36, L293D, etc.) are manufacturer names.
 >
-> **Last updated:** 2026-08-19 — 249 parts. Session 8: matrix reconciliation,
+> **Last updated:** 2026-11-23 — speaker, earphone and crystal-set parts
+> (antenna, earth, tuning_cap, ferrite_coil). 2026-08-19 — 249 parts. Session 8: matrix reconciliation,
 > A2 device parts, footprint audit (35 fixes), sensor long-tail batch,
 > vl53l0x, ELECFREAKS arcade shield, sgp30, veml7700, as5600.
 
@@ -591,6 +592,38 @@ existed without catalog rows, plus new engine kinds that lacked sidecars.
 > (vcc, gnd, sda, scl, out, dir). 12-bit contactless angle, Hall effect.
 > Programmable start/stop angles. Addr 0x36.
 
+## Speaker and crystal-set additions (6 kinds)
+
+Audio outputs that sound by their coil current, and the parts of a
+crystal set (antenna, earth, tuned circuit). Terminal names and params are
+bw-board's (engine devices `speaker`, `earphone`, `antenna`, `earth`,
+`tuning_cap`, `ferrite_coil`). The germanium detector is not a new kind: it
+is a `diode` with `params.part: '1N34A'` (a bw-board parts card).
+
+| # | Kind slug | Name EN / DE | Terminals | Engine | Art |
+|---|-----------|-------------|-----------|--------|-----|
+| 251 | `speaker` | Speaker / Lautsprecher | a, b | modeled | done |
+| 252 | `earphone` | Earphone / Ohrhörer | a, b | modeled | done |
+| 253 | `antenna` | Antenna (long wire) / Antenne (Langdraht) | a | modeled | done |
+| 254 | `earth` | Earth / Erde | earth | modeled | done |
+| 255 | `tuning_cap` | Tuning capacitor / Drehkondensator | a, b | modeled | done |
+| 256 | `ferrite_coil` | Ferrite-rod coil (MW) / Ferritstab-Spule (MW) | a, tap, b, c1, c2 | modeled | done |
+
+> speaker: dynamic loudspeaker, voice coil Re + Le (ohms 8, henrys 0.2 mH),
+> ratedWatts 0.5 scales the loudness; optional motional impedance
+> (resonanceHz, motionalOhms, qm). Leads two columns apart.
+> earphone: high-impedance earpiece, type magnetic (2 kohm, 0.1 H) or crystal
+> (capacitance 10 nF, leakOhms 10 Mohm: no DC path). Leads one column apart.
+> antenna / earth: one-lead parts. The antenna (heightM, ohms, farads) picks
+> up the board's broadcast stations against the earth (ohms = stake
+> resistance). `earth` is not `gnd`: a real earth has resistance.
+> tuning_cap: variable capacitor, a knob control like the potentiometer
+> (position 0..1 between minFarads and maxFarads). Panel part; its two leads
+> sit at the potentiometer's outer columns (0 and 4).
+> ferrite_coil: MW ferrite-rod coil, main winding a-tap-b (henrys 250 uH,
+> tap 0.25 from a) and coupling winding c1-c2 (couplingRatio 0.1), k, couplingK,
+> q. Five leads in one row, columns 0-4.
+
 ---
 
 ## Gap ledger
@@ -626,12 +659,13 @@ in bw-circuit-ui). Each gap has an owner or a stated reason.
 | Engine-only extras | 15 | 15 |
 | Session 6–7 additions | 17 | 17 |
 | Session 8 additions | 18 | 18 |
+| Speaker and crystal-set additions | 6 | 6 |
 | Declined | 1 | — |
-| **Total** | **253 + 1 declined** | **253** |
+| **Total** | **259 + 1 declined** | **259** |
 
 ### Art status
 
-All 253 cataloged parts have SVG art and JSON terminal sidecars. The
+All 259 cataloged parts have SVG art and JSON terminal sidecars. The
 completeness matrix (`scripts/part-matrix.mjs` in bw-circuit-ui) tracks
 248 total registered kinds — the delta includes reference-only sidecars
 (sensor variants, board presets, aliases) that are not user-placeable
