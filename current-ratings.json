@@ -685,5 +685,20 @@
   "ferrite_coil": {
     "chip_mA": 0,
     "supply_mA": 0
+  },
+  "thermocouple": {
+    "_src": "passive millivolt source: Seebeck EMF of tens of mV behind a few ohms; never loads a pin",
+    "chip_mA": 0,
+    "supply_mA": 0
+  },
+  "air_coil": {
+    "_src": "passive winding: carries what the circuit drives through its copper resistance (a few ohms to tens of ohms)",
+    "chip_mA": "circuit",
+    "supply_mA": 0
+  },
+  "electrolysis_cell": {
+    "_src": "passive load: electrolyte resistance plus electrode polarisation, microamps below ~1.7 V, milliamps from a 9 V battery",
+    "chip_mA": "circuit",
+    "supply_mA": 0
   }
 }
