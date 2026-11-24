@@ -5,7 +5,7 @@
 > catalogue entry, slug, art, variants, identification confidence.
 > Chip designations (74HC08, TMP36, L293D, etc.) are manufacturer names.
 >
-> **Last updated:** 2026-11-24 — ptc_sensor, cd4046, bending_ruler, spark_gap; dual_gate_mosfet, humidity_comb. 2026-11-23 — field probe; sensing transducers (thermocouple, air_coil,
+> **Last updated:** 2026-11-24 — induction_loop, coil_pendulum; ptc_sensor, cd4046, bending_ruler, spark_gap; dual_gate_mosfet, humidity_comb. 2026-11-23 — field probe; sensing transducers (thermocouple, air_coil,
 > electrolysis_cell); optical links (laser_diode, light_path); speaker, earphone and crystal-set parts
 > (antenna, earth, tuning_cap, ferrite_coil). 2026-08-19 — 249 parts. Session 8: matrix reconciliation,
 > A2 device parts, footprint audit (35 fixes), sensor long-tail batch,
@@ -750,6 +750,28 @@ src/devices/sensing-parts.js; `cd4046`, src/devices/pll-4046.js;
 > one row, three columns.
 > spark_gap: breaks down at 3 kV/mm x gap + 1.35 kV, arc 30 V until 1 mA.
 > Leads two columns apart.
+
+## Magnetic field source and coil pendulum (2 kinds)
+
+A conductor whose audio-frequency magnetic field a pickup coil overhears, and
+an electromagnet that kicks a pendulum. Terminal names and params are
+bw-board's (`induction_loop`, `coil_pendulum`: src/magnetic-coupling.js,
+src/devices/sensing-parts.js).
+
+| # | Kind slug | Name EN / DE | Terminals | Engine | Art |
+|---|-----------|-------------|-----------|--------|-----|
+| 271 | `induction_loop` | Magnetic field source / Magnetfeldquelle | a, b | modeled | done |
+| 272 | `coil_pendulum` | Coil pendulum / Spulenpendel | a, b | modeled | done |
+
+> induction_loop: shape loop (a coil: telephone transformer, induction loop),
+> wire (one conductor) or cable (two cores spacingMm apart: a mains cable);
+> `pickup` names the air_coil that overhears it, coupled by
+> M = N2 pi r2^2 (B/I) cos(angleDeg). Its knob is the distance (0 far .. 1
+> near). Leads three columns apart.
+> coil_pendulum: a wound rod with a pendulum beside its pole; an iron bob
+> (paper clip) is pulled by 1/2 i^2 dL/dtheta, a magnet bob by i dLambda/dtheta;
+> the swing induces back. State angleDeg, amplitudeDeg, periodSec, naturalHz.
+> Leads three columns apart.
 
 ## Gap ledger
 
