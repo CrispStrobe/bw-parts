@@ -188,7 +188,7 @@ const PIN_MAPS = [
   },
   {
     kind: '74hc73', pinCount: 14, label: '74HC73', sublabel: 'DUAL JK-FF',
-    pins: ['1clk','1clr','1k','vcc','2clk','2clr','2k', '2q','2qn','2j','gnd','1q','1qn','1j'],
+    pins: ['1clk','1clr','1k','vcc','2clk','2clr','2j', '2qn','2q','2k','gnd','1q','1qn','1j'],
   },
   {
     kind: '74hc74', pinCount: 14, label: '74HC74', sublabel: 'DUAL D-FF',
@@ -200,7 +200,7 @@ const PIN_MAPS = [
   },
   {
     kind: '74hc93', pinCount: 14, label: '74HC93', sublabel: '4-BIT CTR',
-    pins: ['cka','nc1','nc2','nc3','vcc','r0a','r0b', 'qd','qc','gnd','qb','qa','nc4','ckb'],
+    pins: ['ckb','r0a','r0b','nc1','vcc','nc2','nc3', 'qc','qb','gnd','qd','qa','nc4','cka'],
   },
   {
     kind: '74hc95', pinCount: 14, label: '74HC95', sublabel: '4-BIT SHFT',
@@ -271,13 +271,13 @@ const PIN_MAPS = [
   // Pin map from TI LM393 datasheet (SLCS007)
   {
     kind: 'lm393', pinCount: 8, label: 'LM393', sublabel: 'DUAL COMP',
-    pins: ['1out','1inp','1inn','gnd', '2inn','2inp','2out','vcc'],
+    pins: ['1out','1inn','1inp','gnd', '2inp','2inn','2out','vcc'],
   },
   // ── LM339 Quad Comparator: 14-pin DIP ────────────────────────────
   // Pin map from TI LM339 datasheet (SLCS006)
   {
     kind: 'lm339', pinCount: 14, label: 'LM339', sublabel: 'QUAD COMP',
-    pins: ['2out','3out','vcc','4inn','4inp','4out','gnd', '1out','1inp','1inn','2inn','2inp','3inn','3inp'],
+    pins: ['2out','1out','vcc','1inn','1inp','2inn','2inp', '3inn','3inp','4inn','4inp','gnd','4out','3out'],
   },
   // ── ATtiny85: 8-pin DIP ───────────────────────────────────────────
   // Pin map from Microchip ATtiny85 datasheet.

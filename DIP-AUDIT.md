@@ -141,3 +141,27 @@ port designators. P0 descending (pin 32=P0.7, pin 39=P0.0). Verified.
 | Chips audited | Correct | Fixed | Source |
 |---|---|---|---|
 | 27 DIP-generated + 2 hand-drawn | 28 | 1 (L293D) | TI/NXP/Microchip/STC datasheets |
+
+## 2026-11-24 — nine pin maps put on their datasheet pinout
+
+Re-laying the DIPs onto the breadboard pitch (pin 1 bottom-left) made each
+pin's hole visible, and these sidecars put pins in holes their package does
+not have. Names unchanged; every pin moved to its datasheet position by
+`scripts/fix-dip-pinouts.js` (the pin lists and cited documents are there),
+art regenerated, `test/datasheet-dip-pinouts.js` holds them.
+
+| kind | datasheet | what was wrong |
+|---|---|---|
+| lm358 | TI SLOS068 | pin order invented (VCC at pin 1, OUT1 at pin 8) |
+| lm393 | TI SLCS005 | same invented order as the LM358 sidecar |
+| lm339 | TI SLCS006 | inputs/outputs in name order, VCC at 13, GND at 14 |
+| cd74hc4067 | TI SCHS209 | VCC at pin 1; channels in name order |
+| darlington_driver | TI ULN2803A SLRS049 | OUT0 at pin 9, GND at pin 10 |
+| 74hc244 | TI SCLS130 | pins 11–19 reversed (2OE at pin 11) |
+| 74hc93 | TI SN74LS93 | count inputs and reset/outputs scrambled (only VCC/GND right) |
+| 74hc73 | TI SCLS122 | 2J/2K and 2Q/2Q-bar swapped (pins 7–10) |
+| 74hc4050 | TI CD4050B SCHS046 | 6A/6Y at 15/16 instead of 14/15 |
+
+Not changed (simplified teaching packages with no real pin-for-pin package,
+or names too ambiguous to place): 74hc75, 74hc95, decade_counter, dff, jkff,
+lm3915, mcp3008 (15 legs), timer_556, h_bridge, level_shifter4, r6507.
