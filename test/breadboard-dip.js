@@ -49,7 +49,7 @@ for (const f of fs.readdirSync(dir).filter((n) => n.endsWith('.json'))) {
   assert.match(svg, new RegExp(`viewBox="0 0 ${sc.w} ${sc.h}"`), `${k}: viewBox is the sidecar box`);
 }
 // Pin 1 bottom-left, read from parts whose terminal array is the pin order.
-for (const [k, pin1, pinN] of [['74hc00', '1a', 'vcc'], ['lm386', 'gain1', 'gain8'], ['z80', 'a11', 'a10'], ['555', 'gnd', 'vcc'], ['attiny2313', 'pa2', 'vcc'], ['at89c2051', 'rst', 'vcc']]) {
+for (const [k, pin1, pinN] of [['74hc00', '1a', 'vcc'], ['lm386', 'gain1', 'gain8'], ['z80', 'a11', 'a10'], ['555', 'gnd', 'vcc'], ['attiny2313', 'pa2', 'vcc'], ['at89c2051', 'rst', 'vcc'], ['stc15_mcu', 'P0.0', 'P4.5']]) {
   const sc = JSON.parse(fs.readFileSync(path.join(dir, `${k}.json`), 'utf8'));
   const at = Object.fromEntries(sc.terminals.map((t) => [t.name, t]));
   const bottom = sc.terminals.filter((t) => t.y === ROWS).sort((a, b) => a.x - b.x);

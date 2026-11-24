@@ -240,7 +240,7 @@
     },
     {
       "name": "P4.5",
-      "x": 276,
+      "x": 10,
       "y": 0,
       "functions": [
         "gpio"
@@ -251,7 +251,7 @@
     },
     {
       "name": "P2.7",
-      "x": 262,
+      "x": 24,
       "y": 0,
       "functions": [
         "gpio"
@@ -262,7 +262,7 @@
     },
     {
       "name": "P2.6",
-      "x": 248,
+      "x": 38,
       "y": 0,
       "functions": [
         "gpio"
@@ -273,7 +273,7 @@
     },
     {
       "name": "P2.5",
-      "x": 234,
+      "x": 52,
       "y": 0,
       "functions": [
         "gpio"
@@ -284,7 +284,7 @@
     },
     {
       "name": "P2.4",
-      "x": 220,
+      "x": 66,
       "y": 0,
       "functions": [
         "gpio"
@@ -295,7 +295,7 @@
     },
     {
       "name": "P2.3",
-      "x": 206,
+      "x": 80,
       "y": 0,
       "functions": [
         "gpio"
@@ -306,7 +306,7 @@
     },
     {
       "name": "P2.2",
-      "x": 192,
+      "x": 94,
       "y": 0,
       "functions": [
         "gpio"
@@ -317,7 +317,7 @@
     },
     {
       "name": "P2.1",
-      "x": 178,
+      "x": 108,
       "y": 0,
       "functions": [
         "gpio"
@@ -328,7 +328,7 @@
     },
     {
       "name": "P2.0",
-      "x": 164,
+      "x": 122,
       "y": 0,
       "functions": [
         "gpio"
@@ -339,7 +339,7 @@
     },
     {
       "name": "P4.4",
-      "x": 150,
+      "x": 136,
       "y": 0,
       "functions": [
         "gpio"
@@ -350,7 +350,7 @@
     },
     {
       "name": "P4.2",
-      "x": 136,
+      "x": 150,
       "y": 0,
       "functions": [
         "gpio"
@@ -361,7 +361,7 @@
     },
     {
       "name": "P4.1",
-      "x": 122,
+      "x": 164,
       "y": 0,
       "functions": [
         "gpio"
@@ -372,7 +372,7 @@
     },
     {
       "name": "P3.7",
-      "x": 108,
+      "x": 178,
       "y": 0,
       "functions": [
         "gpio"
@@ -383,7 +383,7 @@
     },
     {
       "name": "P3.6",
-      "x": 94,
+      "x": 192,
       "y": 0,
       "functions": [
         "gpio"
@@ -394,7 +394,7 @@
     },
     {
       "name": "P3.5",
-      "x": 80,
+      "x": 206,
       "y": 0,
       "functions": [
         "gpio"
@@ -405,7 +405,7 @@
     },
     {
       "name": "P3.4",
-      "x": 66,
+      "x": 220,
       "y": 0,
       "functions": [
         "gpio"
@@ -416,7 +416,7 @@
     },
     {
       "name": "P3.3",
-      "x": 52,
+      "x": 234,
       "y": 0,
       "functions": [
         "gpio"
@@ -427,7 +427,7 @@
     },
     {
       "name": "P3.2",
-      "x": 38,
+      "x": 248,
       "y": 0,
       "functions": [
         "gpio"
@@ -438,7 +438,7 @@
     },
     {
       "name": "P3.1",
-      "x": 24,
+      "x": 262,
       "y": 0,
       "functions": [
         "gpio",
@@ -450,7 +450,7 @@
     },
     {
       "name": "P3.0",
-      "x": 10,
+      "x": 276,
       "y": 0,
       "functions": [
         "gpio",
@@ -463,7 +463,7 @@
   ],
   "_pinmap_source": "docs/PINOUT-STC15.md + RETRO-CONSOLE-RBS15667.md schematic transcription (2026-08-16): PDIP-40, VCC pin 18, GND 20, RST=P5.4 pin 17, P5.5 pin 19, P0 ASCENDING from pin 1, no dedicated XTAL pins (P1.6/P1.7 double)",
   "footprint": {
-    "refTerminal": "P3.0",
+    "refTerminal": "P4.5",
     "leads": {
       "P0.0": {
         "dRow": 5,
@@ -547,83 +547,83 @@
       },
       "P4.5": {
         "dRow": 0,
-        "dCol": 19
+        "dCol": 0
       },
       "P2.7": {
         "dRow": 0,
-        "dCol": 18
+        "dCol": 1
       },
       "P2.6": {
         "dRow": 0,
-        "dCol": 17
+        "dCol": 2
       },
       "P2.5": {
         "dRow": 0,
-        "dCol": 16
+        "dCol": 3
       },
       "P2.4": {
         "dRow": 0,
-        "dCol": 15
+        "dCol": 4
       },
       "P2.3": {
         "dRow": 0,
-        "dCol": 14
+        "dCol": 5
       },
       "P2.2": {
         "dRow": 0,
-        "dCol": 13
+        "dCol": 6
       },
       "P2.1": {
         "dRow": 0,
-        "dCol": 12
+        "dCol": 7
       },
       "P2.0": {
         "dRow": 0,
-        "dCol": 11
+        "dCol": 8
       },
       "P4.4": {
         "dRow": 0,
-        "dCol": 10
+        "dCol": 9
       },
       "P4.2": {
         "dRow": 0,
-        "dCol": 9
+        "dCol": 10
       },
       "P4.1": {
         "dRow": 0,
-        "dCol": 8
+        "dCol": 11
       },
       "P3.7": {
         "dRow": 0,
-        "dCol": 7
+        "dCol": 12
       },
       "P3.6": {
         "dRow": 0,
-        "dCol": 6
+        "dCol": 13
       },
       "P3.5": {
         "dRow": 0,
-        "dCol": 5
+        "dCol": 14
       },
       "P3.4": {
         "dRow": 0,
-        "dCol": 4
+        "dCol": 15
       },
       "P3.3": {
         "dRow": 0,
-        "dCol": 3
+        "dCol": 16
       },
       "P3.2": {
         "dRow": 0,
-        "dCol": 2
+        "dCol": 17
       },
       "P3.1": {
         "dRow": 0,
-        "dCol": 1
+        "dCol": 18
       },
       "P3.0": {
         "dRow": 0,
-        "dCol": 0
+        "dCol": 19
       }
     },
     "straddlesGutter": true,
