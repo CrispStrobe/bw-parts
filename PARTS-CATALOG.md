@@ -5,7 +5,7 @@
 > catalogue entry, slug, art, variants, identification confidence.
 > Chip designations (74HC08, TMP36, L293D, etc.) are manufacturer names.
 >
-> **Last updated:** 2026-11-23 — field probe; sensing transducers (thermocouple, air_coil,
+> **Last updated:** 2026-11-24 — dual_gate_mosfet, humidity_comb. 2026-11-23 — field probe; sensing transducers (thermocouple, air_coil,
 > electrolysis_cell); optical links (laser_diode, light_path); speaker, earphone and crystal-set parts
 > (antenna, earth, tuning_cap, ferrite_coil). 2026-08-19 — 249 parts. Session 8: matrix reconciliation,
 > A2 device parts, footprint audit (35 fixes), sensor long-tail batch,
@@ -701,6 +701,29 @@ photodiode, solar cell and a photo-LED receive.
 
 ---
 
+## Depletion MOSFET and humidity comb (2 kinds)
+
+A dual-gate (tetrode) MOSFET that conducts at zero gate voltage and that
+either gate can pinch off, and a salt-film humidity comb whose resistance
+falls steeply with relative humidity. Terminal names and params are
+bw-board's (`dual_gate_mosfet`, src/dual-gate-mosfet.js; `humidity_comb`,
+src/sensing-transducers.js).
+
+| # | Kind slug | Name EN / DE | Terminals | Engine | Art |
+|---|-----------|-------------|-----------|--------|-----|
+| 265 | `dual_gate_mosfet` | Dual-gate MOSFET / Dual-Gate-MOSFET | drain, gate2, gate1, source | modeled | done |
+| 266 | `humidity_comb` | Humidity comb / Feuchtekamm | a, b | modeled | done |
+
+> dual_gate_mosfet: depletion-mode n-channel under two gates in series (gate 1
+> at the source end): two level-1 halves on an internal node, pinch-off vp
+> -1.2 V and k 5 mA/V² per half by default (vp1/vp2, k1/k2 per half), lambda
+> 0.02. With gate 2 held high it is a single-gate depletion MOSFET; at small
+> Vds the channel is a voltage-controlled resistor. Leads in one row, four
+> columns.
+> humidity_comb: interleaved copper combs under a salt film; resistance r50
+> (10 MΩ at 50 % RH) falling a decade per decadePct (12) % RH. Its control is
+> the relative humidity at the film (0..1; a breath is about 0.9), else its
+> humidity param, else the world. Leads two columns apart.
 ## Gap ledger
 
 Gaps tracked against the completeness matrix (`scripts/part-matrix.mjs`

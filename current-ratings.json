@@ -706,6 +706,16 @@
     "chip_mA": "circuit",
     "supply_mA": 0
   },
+  "humidity_comb": {
+    "_src": "passive load: a salt-film resistance, megohms dry, kilohms in breath",
+    "chip_mA": "circuit",
+    "supply_mA": 0
+  },
+  "dual_gate_mosfet": {
+    "_reason": "drain current set by both gate voltages and the load; the gates draw nothing",
+    "chip_mA": "circuit",
+    "supply_mA": 0
+  },
   "laser_diode": {
     "chip_mA": "circuit",
     "supply_mA": 40
