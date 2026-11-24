@@ -94,7 +94,7 @@
     },
     {
       "name": "pd6",
-      "x": 10,
+      "x": 136,
       "y": 0,
       "functions": [
         "gpio",
@@ -103,7 +103,7 @@
     },
     {
       "name": "pb0",
-      "x": 24,
+      "x": 122,
       "y": 0,
       "functions": [
         "gpio",
@@ -112,7 +112,7 @@
     },
     {
       "name": "pb1",
-      "x": 38,
+      "x": 108,
       "y": 0,
       "functions": [
         "gpio",
@@ -121,7 +121,7 @@
     },
     {
       "name": "pb2",
-      "x": 52,
+      "x": 94,
       "y": 0,
       "functions": [
         "gpio",
@@ -130,7 +130,7 @@
     },
     {
       "name": "pb3",
-      "x": 66,
+      "x": 80,
       "y": 0,
       "functions": [
         "gpio",
@@ -139,7 +139,7 @@
     },
     {
       "name": "pb4",
-      "x": 80,
+      "x": 66,
       "y": 0,
       "functions": [
         "gpio",
@@ -148,7 +148,7 @@
     },
     {
       "name": "pb5",
-      "x": 94,
+      "x": 52,
       "y": 0,
       "functions": [
         "gpio",
@@ -157,7 +157,7 @@
     },
     {
       "name": "pb6",
-      "x": 108,
+      "x": 38,
       "y": 0,
       "functions": [
         "gpio",
@@ -166,7 +166,7 @@
     },
     {
       "name": "pb7",
-      "x": 122,
+      "x": 24,
       "y": 0,
       "functions": [
         "gpio",
@@ -175,7 +175,7 @@
     },
     {
       "name": "vcc",
-      "x": 136,
+      "x": 10,
       "y": 0,
       "functions": []
     }
@@ -183,7 +183,7 @@
   "variants": null,
   "_note": "ATtiny2313 8-bit AVR MCU. Pin table audited against Microchip ATtiny2313A datasheet (DS40001894). DIP-20 package. 2 KB flash, 128 B SRAM, 128 B EEPROM, 8 MHz internal RC. Ports A (PA0-PA2), B (PB0-PB7), D (PD0-PD6). PA2 = RESET (active low). PA0/PA1 = XTAL1/XTAL2. PD0/PD1 = RXD/TXD (hardware UART). No ADC. Timer0 8-bit (OC0A on PB2, OC0B on PD5), Timer1 16-bit (OC1A on PB3, OC1B on PB4). INT0 on PD2, INT1 on PD3. Pin names match bw-board terminal spelling contract: lowercase pXn.",
   "footprint": {
-    "refTerminal": "pd6",
+    "refTerminal": "vcc",
     "leads": {
       "pa2": {
         "dRow": 5,
@@ -227,43 +227,43 @@
       },
       "pd6": {
         "dRow": 0,
-        "dCol": 0
+        "dCol": 9
       },
       "pb0": {
         "dRow": 0,
-        "dCol": 1
+        "dCol": 8
       },
       "pb1": {
         "dRow": 0,
-        "dCol": 2
+        "dCol": 7
       },
       "pb2": {
         "dRow": 0,
-        "dCol": 3
+        "dCol": 6
       },
       "pb3": {
         "dRow": 0,
-        "dCol": 4
+        "dCol": 5
       },
       "pb4": {
         "dRow": 0,
-        "dCol": 5
+        "dCol": 4
       },
       "pb5": {
         "dRow": 0,
-        "dCol": 6
+        "dCol": 3
       },
       "pb6": {
         "dRow": 0,
-        "dCol": 7
+        "dCol": 2
       },
       "pb7": {
         "dRow": 0,
-        "dCol": 8
+        "dCol": 1
       },
       "vcc": {
         "dRow": 0,
-        "dCol": 9
+        "dCol": 0
       }
     },
     "straddlesGutter": true,

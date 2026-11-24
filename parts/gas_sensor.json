@@ -17,13 +17,13 @@
     },
     {
       "name": "aout",
-      "x": 26,
+      "x": 34,
       "y": 48,
       "functions": []
     },
     {
       "name": "dout",
-      "x": 34,
+      "x": 26,
       "y": 48,
       "functions": []
     }
@@ -71,5 +71,5 @@
     }
   ],
   "footprint": null,
-  "_note": "MQ-series gas sensor, the 4-pin breakout MODULE: vcc, gnd, an analog divider output and a comparator output. The engine models both packages behind params.package and defaults to `element`, the bare sensor with its own heater (a, b, heater_a, heater_b) — see variants."
+  "_note": "MQ-series gas sensor, the 4-pin breakout MODULE: vcc, gnd, an analog divider output and a comparator output; header order VCC GND DOUT AOUT as on the common FC-22 board. The engine models both packages behind params.package and defaults to `element`, the bare sensor with its own heater (a, b, heater_a, heater_b) — see variants."
 }
