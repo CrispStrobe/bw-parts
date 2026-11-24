@@ -30,4 +30,16 @@ for (const kind of ['laser_diode', 'light_path']) {
   assert.ok(catalog.includes(`| \`${kind}\` |`), `${kind}: PARTS-CATALOG.md row`);
   assert.ok(JSON.parse(read(`parts/${kind}.json`))._note.length > 40, `${kind}: _note`);
 }
-console.log('laser_diode, light_path: terminals, footprints, art, ratings and catalogue verified.');
+// The IR LED and the phototransistor: leads on the breadboard pitch of their
+// footprints (14 units per column), so their art meets the holes when seated.
+for (const [kind, names] of [['ir_transmitter', ['anode', 'cathode']], ['phototransistor', ['collector', 'emitter']]]) {
+  const part = JSON.parse(read(`parts/${kind}.json`));
+  const [a, b] = names.map((n) => part.terminals.find((t) => t.name === n));
+  const cols = part.footprint.leads[names[1]].dCol - part.footprint.leads[names[0]].dCol;
+  assert.equal(b.x - a.x, cols * 14, `${kind}: leads ${cols} column(s) apart on the 14-unit pitch`);
+  assert.equal(a.y, b.y, `${kind}: both leads end on one row`);
+  const svg = read(`parts/${kind}.svg`);
+  assert.match(svg, new RegExp(`viewBox="0 0 ${part.w} ${part.h}"`), `${kind}: art viewBox is the sidecar box`);
+  for (const t of [a, b]) assert.ok(svg.includes(`cx="${t.x}" cy="${t.y}"`), `${kind}.${t.name}: pad at the terminal`);
+}
+console.log('laser_diode, light_path, ir_transmitter, phototransistor: terminals, footprints, art, ratings and catalogue verified.');
