@@ -5,7 +5,8 @@
 > catalogue entry, slug, art, variants, identification confidence.
 > Chip designations (74HC08, TMP36, L293D, etc.) are manufacturer names.
 >
-> **Last updated:** 2026-11-23 — field probe; speaker, earphone and crystal-set parts
+> **Last updated:** 2026-11-23 — field probe; sensing transducers (thermocouple, air_coil,
+> electrolysis_cell); speaker, earphone and crystal-set parts
 > (antenna, earth, tuning_cap, ferrite_coil). 2026-08-19 — 249 parts. Session 8: matrix reconciliation,
 > A2 device parts, footprint audit (35 fixes), sensor long-tail batch,
 > vl53l0x, ELECFREAKS arcade shield, sgp30, veml7700, as5600.
@@ -642,6 +643,32 @@ ruler, the learner's finger. Terminal names and params are bw-board's
 > commonFarads = the circuit's own capacitance to the room, adaptorFarads > 0
 > = powered from a mains adaptor. Junction noise needs no new kind: an npn/pnp
 > with bvEbo or a diode with bv breaks down and carries avalanche noise.
+## Sensing transducer additions (3 kinds)
+
+Parts that turn something the learner controls into a voltage: heat at a
+junction, a magnet or metal near a coil, electrolysis between two
+electrodes. Terminal names and params are bw-board's (engine devices
+`thermocouple`, `air_coil`, `electrolysis_cell`, src/sensing-transducers.js).
+A speaker or earphone used as a microphone is not a new kind: the existing
+parts take `soundDb`/`soundWave`/`soundHz` or `hears` + `distanceCm`
+(src/acoustics.js).
+
+| # | Kind slug | Name EN / DE | Terminals | Engine | Art |
+|---|-----------|-------------|-----------|--------|-----|
+| 257 | `thermocouple` | Thermocouple / Thermoelement | pos, neg | modeled | done |
+| 258 | `air_coil` | Hand-wound coil / Selbstgewickelte Spule | a, b | modeled | done |
+| 259 | `electrolysis_cell` | Electrolysis cell / Elektrolysezelle | a, b | modeled | done |
+
+> thermocouple: Seebeck EMF E(hotC) − E(coldC) from the ITS-90 table of its
+> type (K ≈ 41 µV/K, T copper/constantan, J, E), ohms 5 in series; coldC
+> defaults to the bench temperature. Leads one column apart.
+> air_coil: single-layer air solenoid (turns, radiusM, lengthM, wireMm) with
+> copper resistance and Wheeler inductance; reports field and compass
+> deflection; a dropped magnet induces a pulse; metal nearby shifts L.
+> Leads three columns apart.
+> electrolysis_cell: electrolyte resistance plus double layer and a Tafel
+> electrolysis branch above ~1.7 V; reports Faradaic current, polarisation,
+> hydrogen and a taste level. Leads two columns apart.
 
 ---
 
@@ -679,12 +706,13 @@ in bw-circuit-ui). Each gap has an owner or a stated reason.
 | Session 6–7 additions | 17 | 17 |
 | Session 8 additions | 18 | 18 |
 | Speaker and crystal-set additions | 6 | 6 |
+| Sensing transducer additions | 3 | 3 |
 | Declined | 1 | — |
-| **Total** | **259 + 1 declined** | **259** |
+| **Total** | **262 + 1 declined** | **262** |
 
 ### Art status
 
-All 259 cataloged parts have SVG art and JSON terminal sidecars. The
+All 262 cataloged parts have SVG art and JSON terminal sidecars. The
 completeness matrix (`scripts/part-matrix.mjs` in bw-circuit-ui) tracks
 248 total registered kinds — the delta includes reference-only sidecars
 (sensor variants, board presets, aliases) that are not user-placeable
