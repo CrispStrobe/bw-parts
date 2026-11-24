@@ -731,5 +731,25 @@
   "varicap": {
     "chip_mA": 0,
     "supply_mA": 0
+  },
+  "ptc_sensor": {
+    "_src": "passive load: a 2 kOhm silicon PTC resistance",
+    "chip_mA": "circuit",
+    "supply_mA": 0
+  },
+  "spark_gap": {
+    "_reason": "carries whatever the discharge drives through it",
+    "chip_mA": "circuit",
+    "supply_mA": 0
+  },
+  "bending_ruler": {
+    "_src": "linear Hall sensor module, about 6 mA at 5 V",
+    "chip_mA": 1,
+    "supply_mA": 6
+  },
+  "cd4046": {
+    "_src": "CMOS PLL: outputs carry what the circuit draws; about 1 mA quiescent at 9 V with the VCO running",
+    "chip_mA": "circuit",
+    "supply_mA": 1
   }
 }
