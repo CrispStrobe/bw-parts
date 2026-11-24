@@ -23,6 +23,8 @@ const PARTS = {
   ferrite_coil: [['a', 'tap', 'b', 'c1', 'c2'], [0, 1, 2, 3, 4]],
   // The room's fields (bw-board src/fields.js): a one-lead bare wire.
   field_probe: [['a'], [0]],
+  vhf_coil: [['a', 'b'], [0, 2]],
+  varicap: [['anode', 'cathode'], [0, 4]],
 };
 
 for (const [kind, [terms, cols]] of Object.entries(PARTS)) {
@@ -58,4 +60,4 @@ for (const [kind, [terms, cols]] of Object.entries(PARTS)) {
   assert.ok(catalog.includes(`| \`${kind}\` |`), `${kind}: PARTS-CATALOG.md row`);
 }
 
-console.log('speaker, earphone, antenna, earth, tuning_cap, ferrite_coil, field_probe: terminals, footprints, art, ratings and catalogue verified.');
+console.log('speaker, earphone, antenna, earth, tuning_cap, ferrite_coil, field_probe, vhf_coil, varicap: terminals, footprints, art, ratings and catalogue verified.');

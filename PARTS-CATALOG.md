@@ -593,7 +593,7 @@ existed without catalog rows, plus new engine kinds that lacked sidecars.
 > (vcc, gnd, sda, scl, out, dir). 12-bit contactless angle, Hall effect.
 > Programmable start/stop angles. Addr 0x36.
 
-## Speaker and crystal-set additions (6 kinds)
+## Speaker and crystal-set additions (8 kinds)
 
 Audio outputs that sound by their coil current, and the parts of a
 crystal set (antenna, earth, tuned circuit). Terminal names and params are
@@ -609,6 +609,8 @@ is a `diode` with `params.part: '1N34A'` (a bw-board parts card).
 | 254 | `earth` | Earth / Erde | earth | modeled | done |
 | 255 | `tuning_cap` | Tuning capacitor / Drehkondensator | a, b | modeled | done |
 | 256 | `ferrite_coil` | Ferrite-rod coil (MW) / Ferritstab-Spule (MW) | a, tap, b, c1, c2 | modeled | done |
+| 257 | `vhf_coil` | Air-core VHF coil / UKW-Luftspule | a, b | modeled | done |
+| 258 | `varicap` | Varicap diode / Kapazitätsdiode | anode, cathode | modeled | done |
 
 > speaker: dynamic loudspeaker, voice coil Re + Le (ohms 8, henrys 0.2 mH),
 > ratedWatts 0.5 scales the loudness; optional motional impedance
@@ -623,7 +625,15 @@ is a `diode` with `params.part: '1N34A'` (a bw-board parts card).
 > sit at the potentiometer's outer columns (0 and 4).
 > ferrite_coil: MW ferrite-rod coil, main winding a-tap-b (henrys 250 uH,
 > tap 0.25 from a) and coupling winding c1-c2 (couplingRatio 0.1), k, couplingK,
-> q. Five leads in one row, columns 0-4.
+> q. Five leads in one row, columns 0-4. The rod is also an antenna
+> (rodHeightM, a turnable control: angle 0..1 = 0..360 degrees) and couples
+> to another rod named in linkTo (distanceM).
+> vhf_coil: air-core VHF coil (henrys 0.15 uH, q 80), leads two columns apart. Not
+> `air_coil` (the hand-wound sensing coil of the transducers set): this one is an RF
+> tank inductor with a loss Q, no winding/field model.
+> varicap: tuning diode, a diode whose reverse-bias junction capacitance
+> (cjo, vj, m) tunes an RF circuit; named part BB910. Leads four columns
+> apart like a diode. (Added for the regenerative/VHF receivers.)
 
 ## Field probe (1 kind)
 
@@ -633,7 +643,7 @@ ruler, the learner's finger. Terminal names and params are bw-board's
 
 | # | Kind slug | Name EN / DE | Terminals | Engine | Art |
 |---|-----------|-------------|-----------|--------|-----|
-| 257 | `field_probe` | Field probe (bare wire) / Feldsonde (blanker Draht) | a | modeled | done |
+| 259 | `field_probe` | Field probe (bare wire) / Feldsonde (blanker Draht) | a | modeled | done |
 
 > field_probe: one-lead part and a knob control (position 0..1 = how close
 > the field source is). source 'mains' (mainsVolts 230, mainsHz 50), 'charge'
@@ -655,9 +665,9 @@ parts take `soundDb`/`soundWave`/`soundHz` or `hears` + `distanceCm`
 
 | # | Kind slug | Name EN / DE | Terminals | Engine | Art |
 |---|-----------|-------------|-----------|--------|-----|
-| 257 | `thermocouple` | Thermocouple / Thermoelement | pos, neg | modeled | done |
-| 258 | `air_coil` | Hand-wound coil / Selbstgewickelte Spule | a, b | modeled | done |
-| 259 | `electrolysis_cell` | Electrolysis cell / Elektrolysezelle | a, b | modeled | done |
+| 260 | `thermocouple` | Thermocouple / Thermoelement | pos, neg | modeled | done |
+| 261 | `air_coil` | Hand-wound coil / Selbstgewickelte Spule | a, b | modeled | done |
+| 262 | `electrolysis_cell` | Electrolysis cell / Elektrolysezelle | a, b | modeled | done |
 
 > thermocouple: Seebeck EMF E(hotC) − E(coldC) from the ITS-90 table of its
 > type (K ≈ 41 µV/K, T copper/constantan, J, E), ohms 5 in series; coldC
@@ -678,8 +688,8 @@ photodiode, solar cell and a photo-LED receive.
 
 | # | Kind slug | Name EN / DE | Terminals | Engine | Art |
 |---|-----------|-------------|-----------|--------|-----|
-| 257 | `laser_diode` | Laser diode / Laserdiode | anode, cathode | modeled | done |
-| 258 | `light_path` | Light path / Lichtweg | (none) | modeled | done |
+| 263 | `laser_diode` | Laser diode / Laserdiode | anode, cathode | modeled | done |
+| 264 | `light_path` | Light path / Lichtweg | (none) | modeled | done |
 
 > laser_diode: red 650 nm laser module; an LED junction (2.2 V) electrically,
 > light slopeWPerA (0.5) x (I - thresholdA 20 mA), threshold rising with
@@ -724,14 +734,16 @@ in bw-circuit-ui). Each gap has an owner or a stated reason.
 | Engine-only extras | 15 | 15 |
 | Session 6–7 additions | 17 | 17 |
 | Session 8 additions | 18 | 18 |
-| Speaker and crystal-set additions | 6 | 6 |
+| Speaker and crystal-set additions | 8 | 8 |
+| Field probe | 1 | 1 |
 | Sensing transducer additions | 3 | 3 |
+| Optical-link additions | 2 | 2 |
 | Declined | 1 | — |
-| **Total** | **262 + 1 declined** | **262** |
+| **Total** | **267 + 1 declined** | **267** |
 
 ### Art status
 
-All 262 cataloged parts have SVG art and JSON terminal sidecars. The
+All 267 cataloged parts have SVG art and JSON terminal sidecars. The
 completeness matrix (`scripts/part-matrix.mjs` in bw-circuit-ui) tracks
 248 total registered kinds — the delta includes reference-only sidecars
 (sensor variants, board presets, aliases) that are not user-placeable
