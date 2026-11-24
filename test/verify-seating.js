@@ -3,8 +3,10 @@
  * verify-seating.js — CI gate: verifies breadboard seating for all DIP parts.
  *
  * DIP seating rules (straddlesGutter = true):
- *   - Left pins:  dRow=0, dCol sequential 0..N/2-1
- *   - Right pins: dRow=5, dCol sequential 0..N/2-1
+ *   - Each row: dCol sequential 0..N/2-1 (dRow 0 is row e above the
+ *     gutter, dRow 5 row f below it). Seen from above with the notch left,
+ *     pins 1..N/2 are the dRow 5 row; test/breadboard-dip.js holds the
+ *     re-laid DIPs to that and to their art.
  *   - Terminal count = 2 * minCols
  *   - Every terminal in the terminals[] array appears in footprint.leads
  *   - Every lead in footprint.leads appears in terminals[]

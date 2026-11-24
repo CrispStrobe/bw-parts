@@ -23,7 +23,9 @@ for (let pin = 1; pin <= 14; pin++) {
   const lead = part.footprint.leads[name];
   const left = pin <= 7;
   assert.deepEqual(lead, {
-    dRow: left ? 0 : 5,
+    // Seen from above with the notch left, pins 1..N/2 are the row below the
+    // gutter (dRow 5); dRow 0 for them was the chip seen from underneath.
+    dRow: left ? 5 : 0,
     dCol: left ? pin - 1 : 14 - pin,
   }, `physical pin ${pin} (${name}) occupies its real breadboard column`);
 }

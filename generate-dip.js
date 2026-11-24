@@ -6,7 +6,8 @@
  * generates bench-style DIP package SVGs and matching JSON sidecars
  * in parts/<kind>.svg and parts/<kind>.json.
  *
- * DIP geometry:
+ * DIP geometry (the upright pin order; generate-dip-art.js then re-lays the
+ * part on the breadboard pitch, notch left, pin 1 bottom-left):
  *   Pin 1 is top-left, numbering goes DOWN the left side then
  *   UP the right side (standard DIP convention).
  *   VCC is typically the top-right pin, GND the bottom-left.
@@ -416,6 +417,10 @@ function generate(chip) {
 
   fs.writeFileSync(svgPath, svgContent);
   fs.writeFileSync(jsonPath, JSON.stringify(jsonContent, null, 2) + '\n');
+  // The upright layout above is only the pin order; the part is drawn and
+  // seated on the breadboard pitch (generate-dip-art.js re-lays it, taking
+  // the label and sublabel from the art just written).
+  require('./generate-dip-art.js').generate(chip.kind, PARTS_DIR);
   console.log(`  ${chip.kind} (${chip.pinCount}-pin): ${svgPath}`);
 }
 
