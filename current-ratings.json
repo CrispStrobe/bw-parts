@@ -685,5 +685,10 @@
   "ferrite_coil": {
     "chip_mA": 0,
     "supply_mA": 0
+  },
+  "field_probe": {
+    "_src": "passive bare-wire field probe: picks up nA-to-uA displacement currents from the room's fields",
+    "chip_mA": 0,
+    "supply_mA": 0
   }
 }
