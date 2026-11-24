@@ -215,6 +215,11 @@ const PIN_MAPS = [
     kind: 'cd4017', pinCount: 16, label: 'CD4017', sublabel: 'DECADE CTR',
     pins: ['q5','q1','q0','q2','q6','q7','q3','gnd', 'q8','q4','q9','co','en','clk','rst','vcc'],
   },
+  // 4046-type PLL (CD4046B pinout): bw-board cd4046 terminal names
+  {
+    kind: 'cd4046', pinCount: 16, label: 'CD4046', sublabel: 'PLL',
+    pins: ['pcp_out','pc1_out','comp_in','vco_out','inh','c1a','c1b','vss', 'vco_in','dem_out','r1','r2','pc2_out','sig_in','zener','vdd'],
+  },
   {
     kind: 'cd4511', pinCount: 16, label: 'CD4511', sublabel: 'BCD-7SEG',
     pins: ['b','c','lt','bi','le','d','a','gnd', 'e','d_out','c_out','b_out','a_out','g','f','vcc'],

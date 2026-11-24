@@ -5,7 +5,7 @@
 > catalogue entry, slug, art, variants, identification confidence.
 > Chip designations (74HC08, TMP36, L293D, etc.) are manufacturer names.
 >
-> **Last updated:** 2026-11-24 — dual_gate_mosfet, humidity_comb. 2026-11-23 — field probe; sensing transducers (thermocouple, air_coil,
+> **Last updated:** 2026-11-24 — ptc_sensor, cd4046, bending_ruler, spark_gap; dual_gate_mosfet, humidity_comb. 2026-11-23 — field probe; sensing transducers (thermocouple, air_coil,
 > electrolysis_cell); optical links (laser_diode, light_path); speaker, earphone and crystal-set parts
 > (antenna, earth, tuning_cap, ferrite_coil). 2026-08-19 — 249 parts. Session 8: matrix reconciliation,
 > A2 device parts, footprint audit (35 fixes), sensor long-tail batch,
@@ -724,6 +724,33 @@ src/sensing-transducers.js).
 > (10 MΩ at 50 % RH) falling a decade per decadePct (12) % RH. Its control is
 > the relative humidity at the film (0..1; a breath is about 0.9), else its
 > humidity param, else the world. Leads two columns apart.
+## Temperature, PLL, weighing and static electricity (4 kinds)
+
+A silicon PTC temperature sensor, a 4046-type phase-locked loop, a ruler
+scale whose magnet nears a linear Hall sensor, and a spark gap. Terminal
+names and params are bw-board's (`ptc_sensor`, src/thermal.js +
+src/devices/sensing-parts.js; `cd4046`, src/devices/pll-4046.js;
+`bending_ruler`, src/bending-ruler.js; `spark_gap`, src/devices/spark-gap.js).
+
+| # | Kind slug | Name EN / DE | Terminals | Engine | Art |
+|---|-----------|-------------|-----------|--------|-----|
+| 267 | `ptc_sensor` | Silicon PTC sensor / Silizium-PTC-Fühler | a, b | modeled | done |
+| 268 | `cd4046` | 4046 PLL / PLL 4046 | pcp_out, pc1_out, comp_in, vco_out, inh, c1a, c1b, vss, vco_in, dem_out, r1, r2, pc2_out, sig_in, zener, vdd | modeled | done |
+| 269 | `bending_ruler` | Ruler scale / Linealwaage | vcc, gnd, ao | modeled | done |
+| 270 | `spark_gap` | Spark gap / Funkenstrecke | a, b | modeled | done |
+
+> ptc_sensor: R = r25 (1 + 7.88e-3 dT + 1.937e-5 dT^2), 2 kOhm at 25 C; its
+> temperature is the thermal model's (surroundC = its own surroundings, e.g.
+> fingers or ice water; heatedBy; self-heating) else the bench. Leads two
+> columns apart.
+> cd4046: CD4046B pinout; the VCO runs on the external R1, R2 and C1,
+> f = (V(vco_in)/R1 + (VDD/2)/R2)/(2 C1 VDD). DIP-16 across the gutter.
+> bending_ruler: knob loadG (grams); deflection F L^3/(3 E I), dipole field
+> 1/d^3 on a ratiometric linear Hall sensor (14 mV/mT at 5 V) on ao. Leads in
+> one row, three columns.
+> spark_gap: breaks down at 3 kV/mm x gap + 1.35 kV, arc 30 V until 1 mA.
+> Leads two columns apart.
+
 ## Gap ledger
 
 Gaps tracked against the completeness matrix (`scripts/part-matrix.mjs`
