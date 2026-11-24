@@ -31,7 +31,7 @@ function legsOk(label, box, svg) {
 }
 
 const ONE_ROW = ['as5600', 'bmp280', 'ina219', 'tcs34725', 'vl53l0x', 'neopixel', 'pmos', 'usb_a', 'solar_cell',
-  'tcs3200', 'eater6502', 'ir_remote'];
+  'tcs3200', 'eater6502', 'ir_remote', 'mcp4725'];
 for (const k of ONE_ROW) {
   const sc = JSON.parse(read(`${k}.json`));
   legsOk(k, sc, read(`${k}.svg`));
