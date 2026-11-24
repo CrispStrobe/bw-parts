@@ -35,7 +35,7 @@
     }
   ],
   "variants": null,
-  "_note": "Ferrite-rod medium-wave coil with a tap and a coupling winding. 5-terminal, one row: a, tap, b (main winding, tap at a fraction of its turns from a) and c1, c2 (the coupling winding). Engine (bw-board ferrite_coil): henrys (a-b), tap fraction, couplingRatio (coupling turns / main), k (tap coupling), couplingK, q (unloaded Q). Tunes the medium-wave band with the tuning_cap across a-b.",
+  "_note": "Ferrite-rod medium-wave coil with a tap and a coupling winding. 5-terminal, one row: a, tap, b (main winding, tap at a fraction of its turns from a) and c1, c2 (the coupling winding). Engine (bw-board ferrite_coil): henrys (a-b), tap fraction, couplingRatio (coupling turns / main), k (tap coupling), couplingK, q (unloaded Q). Tunes the medium-wave band with the tuning_cap across a-b. The rod is itself an antenna: rodHeightM (effective height at 1 MHz) times the station's field times cos(rod angle - station bearing); the angle is a turnable control (0..1 = 0..360 degrees). linkTo names another ferrite_coil it couples to magnetically at distanceM (near field).",
   "footprint": {
     "refTerminal": "a",
     "leads": {

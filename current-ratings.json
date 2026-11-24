@@ -90,7 +90,7 @@
     "chip_mA": 0,
     "supply_mA": 1
   },
-  "_comment": "Two current budgets. chip_mA = MCU I/O pin current (120mA chip total per STC12 \u00a74.1). supply_mA = power rail current (USB 500mA, battery capacity). See CURRENT-RATINGS.md and CONSUMING-RATINGS.md.",
+  "_comment": "Two current budgets. chip_mA = MCU I/O pin current (120mA chip total per STC12 §4.1). supply_mA = power rail current (USB 500mA, battery capacity). See CURRENT-RATINGS.md and CONSUMING-RATINGS.md.",
   "_schema": {
     "_per_unit_mA": "optional: max supply current per unit (per pixel, per LED) for parts whose total depends on count",
     "chip_mA": "number = rated | 0 = not a pin consumer | 'circuit' = depends on wiring | null = not yet rated",
@@ -177,7 +177,7 @@
     "supply_mA": 10
   },
   "dc_motor": {
-    "_src": "typical hobby DC motor STALL current ~800mA. Rated at stall, not running, because stall is when brownout occurs. Class estimate \u2014 no single datasheet.",
+    "_src": "typical hobby DC motor STALL current ~800mA. Rated at stall, not running, because stall is when brownout occurs. Class estimate — no single datasheet.",
     "chip_mA": 0,
     "supply_mA": 800
   },
@@ -614,7 +614,7 @@
     "supply_mA": 0
   },
   "tip120": {
-    "_reason": "Darlington \u2014 collector current set by base drive and load",
+    "_reason": "Darlington — collector current set by base drive and load",
     "chip_mA": "circuit",
     "supply_mA": "circuit"
   },
@@ -683,6 +683,42 @@
     "supply_mA": 0
   },
   "ferrite_coil": {
+    "chip_mA": 0,
+    "supply_mA": 0
+  },
+  "field_probe": {
+    "_src": "passive bare-wire field probe: picks up nA-to-uA displacement currents from the room's fields",
+    "chip_mA": 0,
+    "supply_mA": 0
+  },
+  "thermocouple": {
+    "_src": "passive millivolt source: Seebeck EMF of tens of mV behind a few ohms; never loads a pin",
+    "chip_mA": 0,
+    "supply_mA": 0
+  },
+  "air_coil": {
+    "_src": "passive winding: carries what the circuit drives through its copper resistance (a few ohms to tens of ohms)",
+    "chip_mA": "circuit",
+    "supply_mA": 0
+  },
+  "electrolysis_cell": {
+    "_src": "passive load: electrolyte resistance plus electrode polarisation, microamps below ~1.7 V, milliamps from a 9 V battery",
+    "chip_mA": "circuit",
+    "supply_mA": 0
+  },
+  "laser_diode": {
+    "chip_mA": "circuit",
+    "supply_mA": 40
+  },
+  "light_path": {
+    "chip_mA": 0,
+    "supply_mA": 0
+  },
+  "vhf_coil": {
+    "chip_mA": 0,
+    "supply_mA": 0
+  },
+  "varicap": {
     "chip_mA": 0,
     "supply_mA": 0
   }

@@ -5,7 +5,8 @@
 > catalogue entry, slug, art, variants, identification confidence.
 > Chip designations (74HC08, TMP36, L293D, etc.) are manufacturer names.
 >
-> **Last updated:** 2026-11-23 — speaker, earphone and crystal-set parts
+> **Last updated:** 2026-11-23 — field probe; sensing transducers (thermocouple, air_coil,
+> electrolysis_cell); optical links (laser_diode, light_path); speaker, earphone and crystal-set parts
 > (antenna, earth, tuning_cap, ferrite_coil). 2026-08-19 — 249 parts. Session 8: matrix reconciliation,
 > A2 device parts, footprint audit (35 fixes), sensor long-tail batch,
 > vl53l0x, ELECFREAKS arcade shield, sgp30, veml7700, as5600.
@@ -592,7 +593,7 @@ existed without catalog rows, plus new engine kinds that lacked sidecars.
 > (vcc, gnd, sda, scl, out, dir). 12-bit contactless angle, Hall effect.
 > Programmable start/stop angles. Addr 0x36.
 
-## Speaker and crystal-set additions (6 kinds)
+## Speaker and crystal-set additions (8 kinds)
 
 Audio outputs that sound by their coil current, and the parts of a
 crystal set (antenna, earth, tuned circuit). Terminal names and params are
@@ -608,6 +609,8 @@ is a `diode` with `params.part: '1N34A'` (a bw-board parts card).
 | 254 | `earth` | Earth / Erde | earth | modeled | done |
 | 255 | `tuning_cap` | Tuning capacitor / Drehkondensator | a, b | modeled | done |
 | 256 | `ferrite_coil` | Ferrite-rod coil (MW) / Ferritstab-Spule (MW) | a, tap, b, c1, c2 | modeled | done |
+| 257 | `vhf_coil` | Air-core VHF coil / UKW-Luftspule | a, b | modeled | done |
+| 258 | `varicap` | Varicap diode / Kapazitätsdiode | anode, cathode | modeled | done |
 
 > speaker: dynamic loudspeaker, voice coil Re + Le (ohms 8, henrys 0.2 mH),
 > ratedWatts 0.5 scales the loudness; optional motional impedance
@@ -622,7 +625,79 @@ is a `diode` with `params.part: '1N34A'` (a bw-board parts card).
 > sit at the potentiometer's outer columns (0 and 4).
 > ferrite_coil: MW ferrite-rod coil, main winding a-tap-b (henrys 250 uH,
 > tap 0.25 from a) and coupling winding c1-c2 (couplingRatio 0.1), k, couplingK,
-> q. Five leads in one row, columns 0-4.
+> q. Five leads in one row, columns 0-4. The rod is also an antenna
+> (rodHeightM, a turnable control: angle 0..1 = 0..360 degrees) and couples
+> to another rod named in linkTo (distanceM).
+> vhf_coil: air-core VHF coil (henrys 0.15 uH, q 80), leads two columns apart. Not
+> `air_coil` (the hand-wound sensing coil of the transducers set): this one is an RF
+> tank inductor with a loss Q, no winding/field model.
+> varicap: tuning diode, a diode whose reverse-bias junction capacitance
+> (cjo, vj, m) tunes an RF circuit; named part BB910. Leads four columns
+> apart like a diode. (Added for the regenerative/VHF receivers.)
+
+## Field probe (1 kind)
+
+A bare wire or plate in the room's electric fields: mains wiring, a charged
+ruler, the learner's finger. Terminal names and params are bw-board's
+(engine device `field_probe`, src/fields.js).
+
+| # | Kind slug | Name EN / DE | Terminals | Engine | Art |
+|---|-----------|-------------|-----------|--------|-----|
+| 259 | `field_probe` | Field probe (bare wire) / Feldsonde (blanker Draht) | a | modeled | done |
+
+> field_probe: one-lead part and a knob control (position 0..1 = how close
+> the field source is). source 'mains' (mainsVolts 230, mainsHz 50), 'charge'
+> (rodVolts 10 kV, a rubbed ruler) or 'body' (contact 'skin' via skinOhms,
+> or 'paper' via paperFarads); maxFarads = coupling at the closest approach,
+> strayFarads / leakOhms = the wire's own capacitance and leak to the room,
+> commonFarads = the circuit's own capacitance to the room, adaptorFarads > 0
+> = powered from a mains adaptor. Junction noise needs no new kind: an npn/pnp
+> with bvEbo or a diode with bv breaks down and carries avalanche noise.
+## Sensing transducer additions (3 kinds)
+
+Parts that turn something the learner controls into a voltage: heat at a
+junction, a magnet or metal near a coil, electrolysis between two
+electrodes. Terminal names and params are bw-board's (engine devices
+`thermocouple`, `air_coil`, `electrolysis_cell`, src/sensing-transducers.js).
+A speaker or earphone used as a microphone is not a new kind: the existing
+parts take `soundDb`/`soundWave`/`soundHz` or `hears` + `distanceCm`
+(src/acoustics.js).
+
+| # | Kind slug | Name EN / DE | Terminals | Engine | Art |
+|---|-----------|-------------|-----------|--------|-----|
+| 260 | `thermocouple` | Thermocouple / Thermoelement | pos, neg | modeled | done |
+| 261 | `air_coil` | Hand-wound coil / Selbstgewickelte Spule | a, b | modeled | done |
+| 262 | `electrolysis_cell` | Electrolysis cell / Elektrolysezelle | a, b | modeled | done |
+
+> thermocouple: Seebeck EMF E(hotC) − E(coldC) from the ITS-90 table of its
+> type (K ≈ 41 µV/K, T copper/constantan, J, E), ohms 5 in series; coldC
+> defaults to the bench temperature. Leads one column apart.
+> air_coil: single-layer air solenoid (turns, radiusM, lengthM, wireMm) with
+> copper resistance and Wheeler inductance; reports field and compass
+> deflection; a dropped magnet induces a pulse; metal nearby shifts L.
+> Leads three columns apart.
+> electrolysis_cell: electrolyte resistance plus double layer and a Tafel
+> electrolysis branch above ~1.7 V; reports Faradaic current, polarisation,
+> hydrogen and a taste level. Leads two columns apart.
+## Optical-link additions (2 kinds)
+
+An emitter's light reaching a receiver along a placed path with geometry the
+learner controls (bw-board `src/optics.js`). Every LED, `ir_transmitter` and
+the new `laser_diode` emit by their simulated current; phototransistor,
+photodiode, solar cell and a photo-LED receive.
+
+| # | Kind slug | Name EN / DE | Terminals | Engine | Art |
+|---|-----------|-------------|-----------|--------|-----|
+| 263 | `laser_diode` | Laser diode / Laserdiode | anode, cathode | modeled | done |
+| 264 | `light_path` | Light path / Lichtweg | (none) | modeled | done |
+
+> laser_diode: red 650 nm laser module; an LED junction (2.2 V) electrically,
+> light slopeWPerA (0.5) x (I - thresholdA 20 mA), threshold rising with
+> temperature, divergenceMrad 0.5. Leads one column apart.
+> light_path: no leads. from / to name the emitter and receiver (default:
+> the only ones on the bench); medium air | fibre | reflect | prism | liquid |
+> string with that medium's geometry; a knob control (0..1) moves the param
+> named by knob between knobMin and knobMax.
 
 ---
 
@@ -659,13 +734,16 @@ in bw-circuit-ui). Each gap has an owner or a stated reason.
 | Engine-only extras | 15 | 15 |
 | Session 6–7 additions | 17 | 17 |
 | Session 8 additions | 18 | 18 |
-| Speaker and crystal-set additions | 6 | 6 |
+| Speaker and crystal-set additions | 8 | 8 |
+| Field probe | 1 | 1 |
+| Sensing transducer additions | 3 | 3 |
+| Optical-link additions | 2 | 2 |
 | Declined | 1 | — |
-| **Total** | **259 + 1 declined** | **259** |
+| **Total** | **267 + 1 declined** | **267** |
 
 ### Art status
 
-All 259 cataloged parts have SVG art and JSON terminal sidecars. The
+All 267 cataloged parts have SVG art and JSON terminal sidecars. The
 completeness matrix (`scripts/part-matrix.mjs` in bw-circuit-ui) tracks
 248 total registered kinds — the delta includes reference-only sidecars
 (sensor variants, board presets, aliases) that are not user-placeable
