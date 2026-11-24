@@ -6,7 +6,7 @@
 > Chip designations (74HC08, TMP36, L293D, etc.) are manufacturer names.
 >
 > **Last updated:** 2026-11-23 — field probe; sensing transducers (thermocouple, air_coil,
-> electrolysis_cell); speaker, earphone and crystal-set parts
+> electrolysis_cell); optical links (laser_diode, light_path); speaker, earphone and crystal-set parts
 > (antenna, earth, tuning_cap, ferrite_coil). 2026-08-19 — 249 parts. Session 8: matrix reconciliation,
 > A2 device parts, footprint audit (35 fixes), sensor long-tail batch,
 > vl53l0x, ELECFREAKS arcade shield, sgp30, veml7700, as5600.
@@ -669,6 +669,25 @@ parts take `soundDb`/`soundWave`/`soundHz` or `hears` + `distanceCm`
 > electrolysis_cell: electrolyte resistance plus double layer and a Tafel
 > electrolysis branch above ~1.7 V; reports Faradaic current, polarisation,
 > hydrogen and a taste level. Leads two columns apart.
+## Optical-link additions (2 kinds)
+
+An emitter's light reaching a receiver along a placed path with geometry the
+learner controls (bw-board `src/optics.js`). Every LED, `ir_transmitter` and
+the new `laser_diode` emit by their simulated current; phototransistor,
+photodiode, solar cell and a photo-LED receive.
+
+| # | Kind slug | Name EN / DE | Terminals | Engine | Art |
+|---|-----------|-------------|-----------|--------|-----|
+| 257 | `laser_diode` | Laser diode / Laserdiode | anode, cathode | modeled | done |
+| 258 | `light_path` | Light path / Lichtweg | (none) | modeled | done |
+
+> laser_diode: red 650 nm laser module; an LED junction (2.2 V) electrically,
+> light slopeWPerA (0.5) x (I - thresholdA 20 mA), threshold rising with
+> temperature, divergenceMrad 0.5. Leads one column apart.
+> light_path: no leads. from / to name the emitter and receiver (default:
+> the only ones on the bench); medium air | fibre | reflect | prism | liquid |
+> string with that medium's geometry; a knob control (0..1) moves the param
+> named by knob between knobMin and knobMax.
 
 ---
 

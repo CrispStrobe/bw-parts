@@ -705,5 +705,13 @@
     "_src": "passive load: electrolyte resistance plus electrode polarisation, microamps below ~1.7 V, milliamps from a 9 V battery",
     "chip_mA": "circuit",
     "supply_mA": 0
+  },
+  "laser_diode": {
+    "chip_mA": "circuit",
+    "supply_mA": 40
+  },
+  "light_path": {
+    "chip_mA": 0,
+    "supply_mA": 0
   }
 }
