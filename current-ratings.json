@@ -90,7 +90,7 @@
     "chip_mA": 0,
     "supply_mA": 1
   },
-  "_comment": "Two current budgets. chip_mA = MCU I/O pin current (120mA chip total per STC12 §4.1). supply_mA = power rail current (USB 500mA, battery capacity). See CURRENT-RATINGS.md and CONSUMING-RATINGS.md.",
+  "_comment": "Two current budgets. chip_mA = MCU I/O pin current (120mA chip total per STC12 \u00a74.1). supply_mA = power rail current (USB 500mA, battery capacity). See CURRENT-RATINGS.md and CONSUMING-RATINGS.md.",
   "_schema": {
     "_per_unit_mA": "optional: max supply current per unit (per pixel, per LED) for parts whose total depends on count",
     "chip_mA": "number = rated | 0 = not a pin consumer | 'circuit' = depends on wiring | null = not yet rated",
@@ -177,7 +177,7 @@
     "supply_mA": 10
   },
   "dc_motor": {
-    "_src": "typical hobby DC motor STALL current ~800mA. Rated at stall, not running, because stall is when brownout occurs. Class estimate — no single datasheet.",
+    "_src": "typical hobby DC motor STALL current ~800mA. Rated at stall, not running, because stall is when brownout occurs. Class estimate \u2014 no single datasheet.",
     "chip_mA": 0,
     "supply_mA": 800
   },
@@ -614,7 +614,7 @@
     "supply_mA": 0
   },
   "tip120": {
-    "_reason": "Darlington — collector current set by base drive and load",
+    "_reason": "Darlington \u2014 collector current set by base drive and load",
     "chip_mA": "circuit",
     "supply_mA": "circuit"
   },
@@ -760,6 +760,26 @@
   "coil_pendulum": {
     "_src": "passive winding: the electromagnet carries what the circuit drives through its 150 Ohm copper",
     "chip_mA": "circuit",
+    "supply_mA": 0
+  },
+  "sa612": {
+    "_src": "SA612/NE602 datasheet: about 2.4 mA supply at 6 V; outputs carry the core current",
+    "chip_mA": "circuit",
+    "supply_mA": 3
+  },
+  "ceramic_filter": {
+    "_reason": "passive filter: carries the IF signal only",
+    "chip_mA": "circuit",
+    "supply_mA": 0
+  },
+  "fm_if": {
+    "_src": "FM IF limiter/detector IC: a few mA at 6 V",
+    "chip_mA": "circuit",
+    "supply_mA": 3
+  },
+  "dipole": {
+    "_reason": "receiving antenna: microamps of RF",
+    "chip_mA": 0,
     "supply_mA": 0
   }
 }

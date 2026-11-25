@@ -5,7 +5,7 @@
 > catalogue entry, slug, art, variants, identification confidence.
 > Chip designations (74HC08, TMP36, L293D, etc.) are manufacturer names.
 >
-> **Last updated:** 2026-11-24 — induction_loop, coil_pendulum; ptc_sensor, cd4046, bending_ruler, spark_gap; dual_gate_mosfet, humidity_comb. 2026-11-23 — field probe; sensing transducers (thermocouple, air_coil,
+> **Last updated:** 2026-11-24 — sa612, ceramic_filter, fm_if, dipole; induction_loop, coil_pendulum; ptc_sensor, cd4046, bending_ruler, spark_gap; dual_gate_mosfet, humidity_comb. 2026-11-23 — field probe; sensing transducers (thermocouple, air_coil,
 > electrolysis_cell); optical links (laser_diode, light_path); speaker, earphone and crystal-set parts
 > (antenna, earth, tuning_cap, ferrite_coil). 2026-08-19 — 249 parts. Session 8: matrix reconciliation,
 > A2 device parts, footprint audit (35 fixes), sensor long-tail batch,
@@ -772,6 +772,32 @@ src/devices/sensing-parts.js).
 > (paper clip) is pulled by 1/2 i^2 dL/dtheta, a magnet bob by i dLambda/dtheta;
 > the swing induces back. State angleDeg, amplitudeDeg, periodSec, naturalHz.
 > Leads three columns apart.
+
+## Radio: mixer, VHF IF and dipole (4 kinds)
+
+A double-balanced mixer IC with its own oscillator transistor, the 10.7 MHz
+ceramic IF filter, an FM IF IC (limiter and quadrature detector) and a
+half-wave folded dipole. Terminal names and params are bw-board's (`sa612`,
+src/mixer-ic.js + src/devices/mixer-ic-parts.js; `ceramic_filter` and
+`dipole`, src/radio.js; `fm_if`, src/fm-if-ic.js + src/devices/fm-if-parts.js).
+
+| # | Kind slug | Name EN / DE | Terminals | Engine | Art |
+|---|-----------|-------------|-----------|--------|-----|
+| 273 | `sa612` | Mixer IC (SA612) / Mischer-IC (SA612) | in_a, in_b, gnd, out_a, out_b, osc_b, osc_e, vcc | modeled | done |
+| 274 | `ceramic_filter` | Ceramic IF filter 10.7 MHz / Keramikfilter 10,7 MHz | in, gnd, out | modeled | done |
+| 275 | `fm_if` | FM IF IC / UKW-ZF-IC | in, gnd, vcc, out | modeled | done |
+| 276 | `dipole` | Folded dipole / Faltdipol | a, b | modeled | done |
+
+> sa612: Gilbert cell, i_a - i_b = I_T tanh(gm v_rf/I_T) tanh(v_lo/2Vt); at RF
+> its products land in the bands at f_rf +- f_lo, RF and LO in one band beat at
+> audio. SA612/NE602 pinout, DIP-8 across the gutter.
+> ceramic_filter: two-pole Butterworth band-pass (10.7 MHz, 280 kHz, 330 Ohm)
+> in the RF bands only. Leads in one row, three columns.
+> fm_if: limiter + quadrature detector, Kd atan(2Q(f_i - f_q)/f_q) on half the
+> supply behind 5 kOhm; knob = quadrature tank tuning. Leads in one row, four
+> columns.
+> dipole: EMF = field x 0.95 m x cos(turn - bearing) behind 300 Ohm; knob = its
+> turn. Leads two columns apart.
 
 ## Gap ledger
 

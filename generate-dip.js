@@ -215,6 +215,11 @@ const PIN_MAPS = [
     kind: 'cd4017', pinCount: 16, label: 'CD4017', sublabel: 'DECADE CTR',
     pins: ['q5','q1','q0','q2','q6','q7','q3','gnd', 'q8','q4','q9','co','en','clk','rst','vcc'],
   },
+  // Double-balanced mixer with oscillator (SA612/NE602 pinout): bw-board sa612 terminal names
+  {
+    kind: 'sa612', pinCount: 8, label: 'SA612', sublabel: 'MIXER',
+    pins: ['in_a','in_b','gnd','out_a','out_b','osc_b','osc_e','vcc'],
+  },
   // 4046-type PLL (CD4046B pinout): bw-board cd4046 terminal names
   {
     kind: 'cd4046', pinCount: 16, label: 'CD4046', sublabel: 'PLL',
