@@ -751,5 +751,15 @@
     "_src": "CMOS PLL: outputs carry what the circuit draws; about 1 mA quiescent at 9 V with the VCO running",
     "chip_mA": "circuit",
     "supply_mA": 1
+  },
+  "induction_loop": {
+    "_src": "passive winding: carries what the circuit drives through its copper (an ohm or two for a loop, milliohms for a cable)",
+    "chip_mA": "circuit",
+    "supply_mA": 0
+  },
+  "coil_pendulum": {
+    "_src": "passive winding: the electromagnet carries what the circuit drives through its 150 Ohm copper",
+    "chip_mA": "circuit",
+    "supply_mA": 0
   }
 }
