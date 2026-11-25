@@ -17,7 +17,7 @@
     }
   ],
   "variants": null,
-  "_note": "Air-core VHF coil: a few turns of stiff copper wire, self-supporting. 2-terminal: a, b. Engine (bw-board vhf_coil): henrys (default 0.15 uH: with about 18 pF it tunes the FM band near 100 MHz), q (unloaded Q, default 80). Leads two columns apart.",
+  "_note": "Air-core VHF coil: a few turns of stiff copper wire, self-supporting. 2-terminal: a, b. Engine (bw-board vhf_coil): henrys (default 0.15 uH: with about 18 pF it tunes the FM band near 100 MHz), q (unloaded Q, default 80). Leads two columns apart. linkTo names another RF coil it couples to in the near field at distanceM (k = (0.02 m / d)^3 by default, linkRadiusM): a VHF transmitter's tank and a receiver's.",
   "footprint": {
     "refTerminal": "a",
     "leads": {
